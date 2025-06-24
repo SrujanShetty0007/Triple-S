@@ -8,8 +8,6 @@
     justify-content: center;
     overflow: hidden;
     margin-bottom: 2rem;
-    margin-top: -1px;
-    /* Ensure no gap between header and hero */
 }
 
 .hero-background {
@@ -122,7 +120,7 @@
 
 .vtu-logo-bg {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
@@ -132,7 +130,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.05;
+    opacity: 0.1;
     z-index: -1;
 }
 
@@ -320,19 +318,6 @@ header {
     top: 0;
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    animation: headerFadeIn 0.3s ease-out;
-}
-
-@keyframes headerFadeIn {
-    from {
-        opacity: 0.95;
-        transform: translateY(-5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .logo-container {
