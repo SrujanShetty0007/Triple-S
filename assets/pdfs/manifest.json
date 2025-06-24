@@ -37,22 +37,12 @@
     },
     "mathematics": {
       "model-papers": [],
-      "notes": [
-        {
-          "filename": "sample-math-notes.pdf",
-          "name": "Sample Math Notes"
-        }
-      ],
+      "notes": [],
       "previous-papers": []
     },
     "physics": {
       "model-papers": [],
-      "notes": [
-        {
-          "filename": "sample-physics-notes.pdf",
-          "name": "Sample Physics Notes"
-        }
-      ],
+      "notes": [],
       "previous-papers": []
     }
   },
