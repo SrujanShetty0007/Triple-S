@@ -39,15 +39,20 @@
       "model-papers": [],
       "notes": [
         {
-          "filename": "javascript_intermediate certificate.pdf",
-          "name": "Javascript Intermediate Certificate"
+          "filename": "sample-math-notes.pdf",
+          "name": "Sample Math Notes"
         }
       ],
       "previous-papers": []
     },
     "physics": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "sample-physics-notes.pdf",
+          "name": "Sample Physics Notes"
+        }
+      ],
       "previous-papers": []
     }
   },
