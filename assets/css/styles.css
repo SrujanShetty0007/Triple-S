@@ -1389,6 +1389,9 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .pdf-file-item {
@@ -1400,6 +1403,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     transition: transform 0.2s, box-shadow 0.2s;
+    flex-wrap: wrap;
 }
 
 .pdf-file-item:hover {
@@ -1413,11 +1417,14 @@ footer {
     align-items: center;
     gap: 12px;
     flex: 1;
+    min-width: 200px;
+    margin-bottom: 10px;
 }
 
 .pdf-file-info i {
     color: #e74c3c;
     font-size: 1.6rem;
+    flex-shrink: 0;
 }
 
 .pdf-file-name {
@@ -1442,6 +1449,7 @@ footer {
     align-items: center;
     gap: 6px;
     transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .pdf-view-btn {
@@ -1791,14 +1799,18 @@ footer {
     }
 
     .pdf-file-actions {
-        flex-direction: row;
+        display: flex;
         width: 100%;
+        justify-content: space-between;
     }
 
     .pdf-view-btn,
     .pdf-download-btn {
-        padding: 0.6rem 1rem;
+        flex: 1;
+        padding: 0.6rem 0.5rem;
         font-size: 0.8rem;
+        justify-content: center;
+        margin: 0 4px;
     }
 
     .pdf-modal-header h3 {
@@ -1936,6 +1948,26 @@ footer {
     .contact-method {
         gap: 0.6rem;
         margin-bottom: 0.8rem;
+    }
+
+    /* PDF file actions for extra small devices */
+    .pdf-file-item {
+        padding: 12px 10px;
+    }
+
+    .pdf-file-info {
+        margin-bottom: 10px;
+    }
+
+    .pdf-file-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pdf-view-btn,
+    .pdf-download-btn {
+        width: 100%;
+        margin: 0;
     }
 }
 
