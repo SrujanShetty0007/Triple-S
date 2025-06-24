@@ -48,6 +48,9 @@ html {
     justify-content: center;
     overflow: hidden;
     margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .hero-background {
@@ -58,6 +61,8 @@ html {
     height: 100%;
     background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
     z-index: -2;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .animated-wave {
@@ -66,7 +71,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+    background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.15) 100%);
     z-index: -1;
     transform-origin: bottom center;
     animation: wave 15s ease-in-out infinite alternate;
@@ -91,12 +96,14 @@ html {
     width: 100%;
     height: 100%;
     z-index: -1;
+    opacity: 0.8;
 }
 
 .icon {
     position: absolute;
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.2);
     animation: float 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
 }
 
 .icon.book {
@@ -144,17 +151,17 @@ html {
 @keyframes float {
     0% {
         transform: translateY(0) rotate(0deg);
-        opacity: 0.1;
+        opacity: 0.2;
     }
 
     50% {
         transform: translateY(-20px) rotate(5deg);
-        opacity: 0.2;
+        opacity: 0.3;
     }
 
     100% {
         transform: translateY(0) rotate(0deg);
-        opacity: 0.1;
+        opacity: 0.2;
     }
 }
 
@@ -163,15 +170,16 @@ html {
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     background-image: url('../images/VTU-Logo.webp');
-    /* Using existing logo */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.1;
+    opacity: 0.15;
     z-index: -1;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+    animation: pulse 8s ease-in-out infinite alternate;
 }
 
 .hero-content {
@@ -179,6 +187,13 @@ html {
     color: white;
     z-index: 1;
     padding: 2rem;
+    max-width: 800px;
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 1s ease-out;
 }
 
 .hero-title {
@@ -186,16 +201,21 @@ html {
     font-weight: 700;
     margin-bottom: 1rem;
     letter-spacing: 1px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 1s ease-out;
+    background: linear-gradient(to right, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
     font-size: 1.8rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
-    opacity: 0.9;
+    opacity: 0.95;
     animation: fadeInUp 1s ease-out 0.3s both;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-tagline {
@@ -204,8 +224,12 @@ html {
     margin-bottom: 2.5rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.9;
     animation: fadeInUp 1s ease-out 0.6s both;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-block;
 }
 
 .hero-cta {
@@ -226,27 +250,45 @@ html {
     transition: all 0.3s ease;
     font-size: 1rem;
     letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
     background-color: white;
     color: var(--primary-color);
+    border: 2px solid white;
 }
 
 .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.776);
+    background-color: rgba(255, 255, 255, 0.9);
     color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
     background-color: transparent;
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
 }
 
 .btn-secondary:hover {
-    background-color: white;
-    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInDown {
@@ -275,6 +317,22 @@ html {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .hero-section {
+        min-height: 500px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .hero-background {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
     .hero-title {
         font-size: 3.5rem;
     }
@@ -285,6 +343,7 @@ html {
 
     .hero-tagline {
         font-size: 1rem;
+        padding: 6px 12px;
     }
 
     .hero-cta {
@@ -297,15 +356,48 @@ html {
         width: 80%;
         max-width: 300px;
     }
+
+    .vtu-logo-bg {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 @media (max-width: 480px) {
+    .hero-section {
+        min-height: 450px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .hero-background {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .hero-content {
+        padding: 1.2rem;
+        width: 95%;
+    }
+
     .hero-title {
         font-size: 2.8rem;
     }
 
     .hero-subtitle {
         font-size: 1.2rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        padding: 5px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .vtu-logo-bg {
+        width: 200px;
+        height: 200px;
     }
 }
 
