@@ -415,16 +415,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const fileItem = document.createElement('div');
         fileItem.classList.add('pdf-file-item');
-        fileItem.setAttribute('role', 'listitem');
 
         const fileExtension = filePath.split('.').pop().toLowerCase();
         let fileIcon;
         if (fileExtension === 'pdf') {
-            fileIcon = '<i class="far fa-file-pdf" aria-hidden="true"></i>';
+            fileIcon = '<i class="far fa-file-pdf"></i>';
         } else if (['jpg', 'jpeg', 'png'].includes(fileExtension)) {
-            fileIcon = '<i class="far fa-file-image" aria-hidden="true"></i>';
+            fileIcon = '<i class="far fa-file-image"></i>';
         } else {
-            fileIcon = '<i class="far fa-file" aria-hidden="true"></i>';
+            fileIcon = '<i class="far fa-file"></i>';
         }
 
         fileItem.innerHTML = `
@@ -433,11 +432,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="pdf-file-name">${fileName}</span>
             </div>
             <div class="pdf-file-actions">
-                <a href="${viewPath}" class="pdf-view-btn" target="_blank" aria-label="View ${fileName}">
-                    <i class="fas fa-eye" aria-hidden="true"></i> View
+                <a href="${viewPath}" class="pdf-view-btn" target="_blank">
+                    <i class="fas fa-eye"></i> View
                 </a>
-                <a href="${filePath}?download=true" class="pdf-download-btn" download="${fileName}" aria-label="Download ${fileName}">
-                    <i class="fas fa-download" aria-hidden="true"></i> Download
+                <a href="${filePath}?download=true" class="pdf-download-btn" download="${fileName}">
+                    <i class="fas fa-download"></i> Download
                 </a>
             </div>
         `;
