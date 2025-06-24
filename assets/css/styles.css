@@ -168,9 +168,9 @@ html {
 .vtu-logo-bg {
     position: absolute;
     top: 35%;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%, -50%);
-    width: 350px;
+    width: 450px;
     height: 350px;
     background-image: url('../images/VTU-Logo.webp');
     background-size: contain;
@@ -188,12 +188,8 @@ html {
     z-index: 1;
     padding: 2rem;
     max-width: 800px;
-    backdrop-filter: blur(3px);
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     animation: fadeIn 1s ease-out;
+    margin-left: 150px;
 }
 
 .hero-title {
@@ -331,6 +327,7 @@ html {
     .hero-content {
         padding: 1.5rem;
         width: 90%;
+        margin-left: 80px;
     }
 
     .hero-title {
@@ -358,8 +355,9 @@ html {
     }
 
     .vtu-logo-bg {
-        width: 250px;
+        width: 350px;
         height: 250px;
+        left: 30%;
     }
 }
 
@@ -378,6 +376,7 @@ html {
     .hero-content {
         padding: 1.2rem;
         width: 95%;
+        margin-left: 40px;
     }
 
     .hero-title {
@@ -396,8 +395,9 @@ html {
     }
 
     .vtu-logo-bg {
-        width: 200px;
+        width: 280px;
         height: 200px;
+        left: 35%;
     }
 }
 
