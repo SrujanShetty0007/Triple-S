@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple S - Student Study Support</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo">
+                </div>
+                <div class="title-container">
+                    <h1>Triple S</h1>
+                    <p class="tagline">Student Study Support-By Srujan Shetty</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="animated-wave"></div>
+            <div class="floating-icons">
+                <div class="icon book"><i class="fas fa-book"></i></div>
+                <div class="icon gear"><i class="fas fa-cog"></i></div>
+                <div class="icon bulb"><i class="fas fa-lightbulb"></i></div>
+                <div class="icon math"><i class="fas fa-square-root-alt"></i></div>
+                <div class="icon calculator"><i class="fas fa-calculator"></i></div>
+                <div class="icon pencil"><i class="fas fa-pencil-alt"></i></div>
+            </div>
+            <div class="vtu-logo-bg"></div>
+        </div>
+        <div class="hero-content container">
+            <h1 class="hero-title">Triple S</h1>
+            <p class="hero-subtitle">Notes. Model Papers. PYQs. All in One Place.</p>
+            <p class="hero-tagline">Organized. Minimal. Student-Powered.</p>
+            <div class="hero-cta">
+                <a href="#sem1" class="btn btn-primary">Explore PDFs</a>
+                <a href="#contribute" class="btn btn-secondary">Contribute Notes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Remove the welcome-banner div and keep the rest of your content -->
+        <div class="welcome-banner">
+            <h2>Welcome to Triple S</h2>
+            <p>Your one-stop portal for B.E. exam preparation materials</p>
+        </div>
+
+        <!-- Semester Filter Buttons -->
+        <div class="semester-filter">
+            <button class="filter-btn active" data-semester="all">All</button>
+            <button class="filter-btn" data-semester="sem1">Sem 1</button>
+            <button class="filter-btn" data-semester="sem2">Sem 2</button>
+            <button class="filter-btn" data-semester="sem3">Sem 3</button>
+            <button class="filter-btn" data-semester="sem4">Sem 4</button>
+            <button class="filter-btn" data-semester="sem5">Sem 5</button>
+            <button class="filter-btn" data-semester="sem6">Sem 6</button>
+            <button class="filter-btn" data-semester="sem7">Sem 7</button>
+            <button class="filter-btn" data-semester="sem8">Sem 8</button>
+        </div>
+
+        <!-- Semester 1 Section -->
+        <section id="sem1" class="semester-section">
+            <h2>Semester 1</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Mathematics-I for CSE Stream</h3>
+                        <span class="subject-code">BBSCK101</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/mathematics/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/mathematics/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/mathematics/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Chemistry for CSE Stream</h3>
+                        <span class="subject-code">BCHES102</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/chemistry/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/chemistry/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/chemistry/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Computer-Aided Engineering Drawing</h3>
+                        <span class="subject-code">BCADK103</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/engineering-drawing/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/engineering-drawing/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/engineering-drawing/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Electronics Communication</h3>
+                        <span class="subject-code">BESCK104C</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/electronics/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/electronics/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/electronics/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Embedded System</h3>
+                        <span class="subject-code">BETCK105J</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/embedded-systems/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/embedded-systems/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/embedded-systems/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Communicative English</h3>
+                        <span class="subject-code">BENGK106</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/english/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/english/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/english/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Samskrutika Kannada/ Balake Kannada</h3>
+                        <span class="subject-code">BKSK107/ BKBKK107</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/kannada/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/kannada/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/kannada/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Scientific Foundations of Health</h3>
+                        <span class="subject-code">BSFHK158</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem1/health/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem1/health/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem1/health/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 2 Section -->
+        <section id="sem2" class="semester-section">
+            <h2>Semester 2</h2>
+            <div class="subjects-container">
+                <!-- Mathematics-II for CSE Stream -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Mathematics-II for CSE Stream</h3>
+                        <span class="subject-code">BMATS201</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/mathematics/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/sem2/mathematics/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/sem2/mathematics/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mathematics-II for EEE Stream -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Mathematics-II for EEE Stream</h3>
+                        <span class="subject-code">BMATE201</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/mathematics-eee/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/sem2/mathematics-eee/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/sem2/mathematics-eee/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applied Physics for CSE Stream -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Physics for CSE Stream</h3>
+                        <span class="subject-code">BPHYS202</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/physics/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/physics/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/physics/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applied Chemistry for CSE Stream -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Chemistry for CSE Stream</h3>
+                        <span class="subject-code">BCHES202</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/chemistry/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/chemistry/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/chemistry/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applied Chemistry for EEE Stream -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Chemistry for EEE Stream</h3>
+                        <span class="subject-code">BHEE202</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/chemistry-eee/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/chemistry-eee/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/chemistry-eee/notes" class="material-link"><i
+                                    class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principles of Programming using C -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Principles of Programming using C</h3>
+                        <span class="subject-code">BPOPS203</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/programming-c/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/programming-c/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/programming-c/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Aided Engineering Drawing -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Computer Aided Engineering Drawing</h3>
+                        <span class="subject-code">BCEDK203</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/caed-sem2/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/caed-sem2/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/caed-sem2/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Introduction to Electrical Engineering -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Electrical Engineering</h3>
+                        <span class="subject-code">BESCK204B</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/electrical-engineering/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/electrical-engineering/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/electrical-engineering/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Introduction to Electronics and Engineering -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Electronics and Engineering</h3>
+                        <span class="subject-code">BESCK204C</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/electronics-eng/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/electronics-eng/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/electronics-eng/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Introduction to Python Programming -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Python Programming</h3>
+                        <span class="subject-code">BPLCK205B</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/python-programming/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/python-programming/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/python-programming/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Writing Skills in English -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Professional Writing Skills in English</h3>
+                        <span class="subject-code">BPWSK206</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/english/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/english/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/english/notes" class="material-link"><i class="fas fa-book"></i>
+                                Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indian Constitution -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Indian Constitution</h3>
+                        <span class="subject-code">BICOK207</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/indian-constitution/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/indian-constitution/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/indian-constitution/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Innovation and Design Thinking -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Innovation and Design Thinking</h3>
+                        <span class="subject-code">BIDTK258</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem2/design-thinking/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem2/design-thinking/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem2/design-thinking/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 3 Section -->
+        <section id="sem3" class="semester-section">
+            <h2>Semester 3</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Data Structures and Algorithms</h3>
+                        <span class="subject-code">BCS301</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem3/data-structures/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem3/data-structures/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem3/data-structures/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 4 Section -->
+        <section id="sem4" class="semester-section">
+            <h2>Semester 4</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Operating Systems</h3>
+                        <span class="subject-code">BCS401</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem4/operating-systems/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem4/operating-systems/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem4/operating-systems/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 5 Section -->
+        <section id="sem5" class="semester-section">
+            <h2>Semester 5</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Database Management Systems</h3>
+                        <span class="subject-code">BCS501</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem5/database-systems/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem5/database-systems/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem5/database-systems/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 6 Section -->
+        <section id="sem6" class="semester-section">
+            <h2>Semester 6</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Web Technologies</h3>
+                        <span class="subject-code">BCS601</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem6/web-technologies/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem6/web-technologies/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem6/web-technologies/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 7 Section -->
+        <section id="sem7" class="semester-section">
+            <h2>Semester 7</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Machine Learning</h3>
+                        <span class="subject-code">BCS701</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem7/machine-learning/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem7/machine-learning/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem7/machine-learning/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 8 Section -->
+        <section id="sem8" class="semester-section">
+            <h2>Semester 8</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Cloud Computing</h3>
+                        <span class="subject-code">BCS801</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/sem8/cloud-computing/model-papers" class="material-link"><i
+                                    class="fas fa-file-alt"></i> Model Question Papers</a>
+                            <a href="assets/pdfs/sem8/cloud-computing/previous-papers" class="material-link"><i
+                                    class="fas fa-history"></i> Previous Year Papers</a>
+                            <a href="assets/pdfs/sem8/cloud-computing/notes" class="material-link"><i
+                                    class="fas fa-book"></i> Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribution Section -->
+        <section id="contribute-section" class="contact-section">
+            <h2>Contribute Study Materials</h2>
+            <p>Help your fellow students by sharing your study materials</p>
+
+            <div class="upload-illustration">
+                <img src="assets/images/upload.png" alt="Upload Illustration" class="upload-vector">
+            </div>
+
+            <div class="upload-container">
+                <div class="upload-form">
+                    <!-- Contribution Form -->
+                    <form action="https://formsubmit.co/srujanshetty0007@gmail.com" method="POST"
+                        enctype="multipart/form-data" id="contributionForm" target="hiddenFrame">
+                        <!-- FormSubmit.co configuration -->
+                        <input type="hidden" name="_subject" value="New Triple S Contribution">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <!-- Anti-spam honeypot field -->
+                        <input type="text" name="_honey" style="display:none">
+
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="studentName">Your Name</label>
+                            <input type="text" id="studentName" name="name" placeholder="Enter your name" required>
+                        </div>
+
+                        <!-- Semester Selection -->
+                        <div class="form-group">
+                            <label for="semesterSelect">Semester</label>
+                            <select id="semesterSelect" name="semester" required>
+                                <option value="">Select Semester</option>
+                                <option value="sem1">Semester 1</option>
+                                <option value="sem2">Semester 2</option>
+                                <option value="sem3">Semester 3</option>
+                                <option value="sem4">Semester 4</option>
+                                <option value="sem5">Semester 5</option>
+                                <option value="sem6">Semester 6</option>
+                                <option value="sem7">Semester 7</option>
+                                <option value="sem8">Semester 8</option>
+                            </select>
+                        </div>
+
+                        <!-- Subject Selection -->
+                        <div class="form-group">
+                            <label for="subjectSelect">Subject</label>
+                            <select id="subjectSelect" name="subject" required>
+                                <option value="">Select Subject</option>
+                                <!-- Semester 1 Subjects -->
+                                <option value="BMATS101">Mathematics-I for CSE Stream</option>
+                                <option value="BCHES102">Applied Chemistry for CSE Stream</option>
+                                <option value="BCADK103">Computer-Aided Engineering Drawing</option>
+                                <option value="BESCK104C">Introduction to Electronics Communication</option>
+                                <option value="BETCK105J">Introduction to Embedded System</option>
+                                <option value="BENGK106">Communicative English</option>
+                                <option value="BKSK107">Samskrutika Kannada</option>
+                                <option value="BKBKK107">Balake Kannada</option>
+                                <option value="BSFHK158">Scientific Foundations of Health</option>
+                                <!-- Semester 2 Subjects -->
+                                <option value="BMATS201">Mathematics-II for CSE Stream</option>
+                                <option value="BMATE201">Mathematics-II for EEE Stream</option>
+                                <option value="BPHYS202">Applied Physics for CSE Stream</option>
+                                <option value="BCHES202">Applied Chemistry for CSE Stream</option>
+                                <option value="BHEE202">Applied Chemistry for EEE Stream</option>
+                                <option value="BPOPS203">Principles of Programming using C</option>
+                                <option value="BCEDK203">Computer Aided Engineering Drawing</option>
+                                <option value="BESCK204B">Introduction to Electrical Engineering</option>
+                                <option value="BESCK204C">Introduction to Electronics and Engineering</option>
+                                <option value="BPLCK205B">Introduction to Python Programming</option>
+                                <option value="BPWSK206">Professional Writing Skills in English</option>
+                                <option value="BICOK207">Indian Constitution</option>
+                                <option value="BIDTK258">Innovation and Design Thinking</option>
+                            </select>
+                        </div>
+
+                        <!-- Material Type Selection -->
+                        <div class="form-group">
+                            <label for="materialType">Material Type</label>
+                            <select id="materialType" name="materialType" required>
+                                <option value="">Select Type</option>
+                                <option value="model">Model Question Paper</option>
+                                <option value="previous">Previous Year Paper</option>
+                                <option value="notes">Study Notes</option>
+                                <option value="solutions">Solutions</option>
+                            </select>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="form-group file-upload">
+                            <label for="pdfUpload">Upload File (PDF, JPG, JPEG, PNG) - Max 20MB</label>
+                            <input type="file" id="pdfUpload" name="attachment" accept=".pdf,.jpg,.jpeg,.png" required>
+                            <div class="upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Choose File
+                            </div>
+                            <span id="fileNameDisplay">No file chosen</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <button type="submit" id="submitContribution" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Submit Contribution
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Thank You Message (Hidden by default) -->
+                    <div id="thankYouMessage" class="thank-you-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your contribution has been submitted successfully.</p>
+                        <p>Our team will review and upload it soon.</p>
+                    </div>
+
+                    <!-- Alternative Contact Methods -->
+                    <div class="form-group">
+                        <label>Share Via</label>
+                        <div class="share-options">
+                            <a href="mailto:srujanshetty0007@gmail.com" class="share-btn email-btn">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                            <a href="https://wa.me/918217358117" class="share-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Contact Admin</h3>
+                    <p>Have questions or need help? Reach out to us:</p>
+                    <div class="contact-method">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+91 8217358117</span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <span>srujanshetty0007@gmail.com</span>
+                    </div>
+                    <div class="contact-note">
+                        <p>We appreciate your contributions to help build a comprehensive resource for all students.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo" class="footer-logo">
+                    <h3>Triple S</h3>
+                    <p>Student Study Support is dedicated to helping engineering students excel in their academic
+                        journey.</p>
+                </div>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#contribute">Contribute</a></li>
+                            <li><a href="https://github.com/username/triple-s">GitHub</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <div class="contact-methods">
+                            <a href="https://wa.me/+919481314010" class="contact-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="mailto:srujanshetty2002@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 Triple S. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden iframe for form submission -->
+    <iframe name="hiddenFrame" id="hiddenFrame" style="display:none;"></iframe>
+
+    <!-- JavaScript -->
+    <script src="assets/js/auto-pdf-scanner.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Form handling using hidden iframe
+        const form = document.getElementById('contributionForm');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const hiddenFrame = document.getElementById('hiddenFrame');
+
+        // Show loading state
+        function showLoadingState() {
+            const submitBtn = document.getElementById('submitContribution');
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+            }
+        }
+
+        // Reset form and show thank you message
+        function showSuccessMessage() {
+            // Reset submit button
+            const submitBtn = document.getElementById('submitContribution');
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
+                submitBtn.disabled = false;
+            }
+
+            // Reset form
+            if (form) form.reset();
+
+            // Reset file upload UI
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const uploadBtn = document.querySelector('.upload-btn');
+
+            if (fileNameDisplay) fileNameDisplay.textContent = 'No file chosen';
+            if (uploadBtn) {
+                uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                uploadBtn.style.backgroundColor = '';
+            }
+
+            // Show thank you message
+            if (thankYouMessage) {
+                thankYouMessage.classList.add('show');
+                setTimeout(() => {
+                    thankYouMessage.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        // Handle file uploads - Only add event listeners once
+        const fileUpload = document.getElementById('pdfUpload');
+        const uploadBtn = document.querySelector('.upload-btn');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+        // Remove any existing event listeners first
+        if (uploadBtn && uploadBtn._hasClickListener) {
+            // Skip adding a new one
+        } else if (uploadBtn) {
+            uploadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (fileUpload) fileUpload.click();
+            });
+            uploadBtn._hasClickListener = true; // Mark that we've added a listener
+        }
+
+        if (fileUpload && fileUpload._hasChangeListener) {
+            // Skip adding a new one
+        } else if (fileUpload) {
+            fileUpload.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    fileNameDisplay.textContent = file.name;
+                    uploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
+                    uploadBtn.style.backgroundColor = '#d1e7dd';
+                } else {
+                    fileNameDisplay.textContent = 'No file chosen';
+                    uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                    uploadBtn.style.backgroundColor = '';
+                }
+            });
+            fileUpload._hasChangeListener = true; // Mark that we've added a listener
+        }
+
+        // Handle form submission
+        if (form) {
+            form.addEventListener('submit', function () {
+                showLoadingState();
+                // Success handler for iframe load
+                hiddenFrame.onload = function () {
+                    showSuccessMessage();
+                };
+
+                // Fallback in case iframe doesn't trigger onload
+                setTimeout(() => {
+                    const submitBtn = document.getElementById('submitContribution');
+                    if (submitBtn && submitBtn.disabled) {
+                        showSuccessMessage();
+                    }
+                }, 4000);
+            });
+        }
+    </script>
+</body>
+
+</html>

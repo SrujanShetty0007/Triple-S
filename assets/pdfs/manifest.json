@@ -1,0 +1,242 @@
+{
+  "sem1": {
+    "chemistry": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "electronics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "embedded-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "engineering-drawing": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "english": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "health": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "kannada": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mathematics": {
+      "model-papers": [],
+      "notes": [
+        {
+          "filename": "AngularJSNotesForProfessionals.pdf",
+          "name": "Angularjsnotesforprofessionals"
+        }
+      ],
+      "previous-papers": []
+    },
+    "physics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem2": {
+    "caed": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "caed-sem2": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "chemistry": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "chemistry-eee": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "design-thinking": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "electrical-engineering": {
+      "model-papers": [
+        {
+          "filename": "sample-model-paper.pdf",
+          "name": "Sample Model Paper"
+        }
+      ],
+      "notes": [
+        {
+          "filename": "BESCK104C-Mod1.pdf",
+          "name": "Besck104c Mod1"
+        },
+        {
+          "filename": "BESCK104C-Mod2.pdf",
+          "name": "Besck104c Mod2"
+        },
+        {
+          "filename": "BESCK104C-Mod3.pdf",
+          "name": "Besck104c Mod3"
+        },
+        {
+          "filename": "BESCK104C-Mod5.pdf",
+          "name": "Besck104c Mod5"
+        },
+        {
+          "filename": "Module5_BESCK104B-MITK.pdf",
+          "name": "Module5 Besck104b Mitk"
+        }
+      ],
+      "previous-papers": []
+    },
+    "electronics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "electronics-eng": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "english": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "indian-constitution": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mathematics": {
+      "model-papers": [
+        {
+          "filename": "BMATS201.pdf",
+          "name": "Bmats201"
+        },
+        {
+          "filename": "model-paper.pdf",
+          "name": "Model Paper"
+        }
+      ],
+      "notes": [
+        {
+          "filename": "M2 passing @vtunetwork-Copy.pdf",
+          "name": "M2 Passing @vtunetwork Copy"
+        }
+      ],
+      "previous-papers": [
+        {
+          "filename": "II-SEM-CS-AI-ML-MODEL-QP-1-SOLUTION-BMATS201.pdf",
+          "name": "Ii Sem Cs Ai Ml Model Qp 1 Solution Bmats201"
+        }
+      ]
+    },
+    "mathematics-eee": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "physics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "programming-c": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": [
+        {
+          "filename": "Solved PYO.pdf",
+          "name": "Solved Pyo"
+        }
+      ]
+    },
+    "python-programming": {
+      "model-papers": [
+        {
+          "filename": "python-model-questions.pdf",
+          "name": "Python Model Questions"
+        }
+      ],
+      "notes": [
+        {
+          "filename": "Python_module_4.pdf",
+          "name": "Python Module 4"
+        },
+        {
+          "filename": "Python_Module_5.pdf",
+          "name": "Python Module 5"
+        }
+      ],
+      "previous-papers": [
+        {
+          "filename": "Solved PYO.pdf",
+          "name": "Solved Pyo"
+        }
+      ]
+    }
+  },
+  "sem3": {
+    "data-structures": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem4": {
+    "operating-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem5": {
+    "database-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem6": {
+    "web-technologies": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem7": {
+    "machine-learning": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem8": {
+    "cloud-computing": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  }
+}
