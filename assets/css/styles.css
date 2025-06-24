@@ -8,6 +8,8 @@
     justify-content: center;
     overflow: hidden;
     margin-bottom: 2rem;
+    margin-top: -1px;
+    /* Ensure no gap between header and hero */
 }
 
 .hero-background {
@@ -318,13 +320,13 @@ header {
     top: 0;
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    animation: headerFadeIn 0.5s ease-out;
+    animation: headerFadeIn 0.3s ease-out;
 }
 
 @keyframes headerFadeIn {
     from {
-        opacity: 0.8;
-        transform: translateY(-10px);
+        opacity: 0.95;
+        transform: translateY(-5px);
     }
 
     to {
