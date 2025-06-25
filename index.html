@@ -619,11 +619,13 @@
                 <div class="upload-form">
                     <!-- Contribution Form -->
                     <form action="https://formsubmit.co/srujanshetty0007@gmail.com" method="POST"
-                        enctype="multipart/form-data" id="contributionForm" target="hiddenFrame">
+                        enctype="multipart/form-data" id="contributionForm">
                         <!-- FormSubmit.co configuration -->
                         <input type="hidden" name="_subject" value="New Triple S Contribution">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next"
+                            value="https://srujanshetty.github.io/triple-s/index.html#contribute-section">
                         <!-- Anti-spam honeypot field -->
                         <input type="text" name="_honey" style="display:none">
 
@@ -695,7 +697,7 @@
 
                         <!-- File Upload -->
                         <div class="form-group file-upload">
-                            <label for="pdfUpload">Upload File (PDF, JPG, JPEG, PNG) - Max 20MB</label>
+                            <label for="pdfUpload">Upload File (PDF, JPG, JPEG, PNG) - Max 10MB</label>
                             <input type="file" id="pdfUpload" name="attachment" accept=".pdf,.jpg,.jpeg,.png" required>
                             <div class="upload-btn">
                                 <i class="fas fa-cloud-upload-alt"></i> Choose File
@@ -799,80 +801,41 @@
         </div>
     </footer>
 
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hiddenFrame" id="hiddenFrame" style="display:none;"></iframe>
-
     <!-- JavaScript -->
     <script src="assets/js/auto-pdf-scanner.js"></script>
     <script src="assets/js/script.js"></script>
     <script>
-        // Form handling using hidden iframe
+        // Form handling
         const form = document.getElementById('contributionForm');
         const thankYouMessage = document.getElementById('thankYouMessage');
-        const hiddenFrame = document.getElementById('hiddenFrame');
 
-        // Show loading state
-        function showLoadingState() {
-            const submitBtn = document.getElementById('submitContribution');
-            if (submitBtn) {
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-                submitBtn.disabled = true;
-            }
-        }
-
-        // Reset form and show thank you message
-        function showSuccessMessage() {
-            // Reset submit button
-            const submitBtn = document.getElementById('submitContribution');
-            if (submitBtn) {
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
-                submitBtn.disabled = false;
-            }
-
-            // Reset form
-            if (form) form.reset();
-
-            // Reset file upload UI
-            const fileNameDisplay = document.getElementById('fileNameDisplay');
-            const uploadBtn = document.querySelector('.upload-btn');
-
-            if (fileNameDisplay) fileNameDisplay.textContent = 'No file chosen';
-            if (uploadBtn) {
-                uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
-                uploadBtn.style.backgroundColor = '';
-            }
-
-            // Show thank you message
-            if (thankYouMessage) {
-                thankYouMessage.classList.add('show');
-                setTimeout(() => {
-                    thankYouMessage.classList.remove('show');
-                }, 5000);
-            }
-        }
-
-        // Handle file uploads - Only add event listeners once
+        // Handle file uploads
         const fileUpload = document.getElementById('pdfUpload');
         const uploadBtn = document.querySelector('.upload-btn');
         const fileNameDisplay = document.getElementById('fileNameDisplay');
 
-        // Remove any existing event listeners first
-        if (uploadBtn && uploadBtn._hasClickListener) {
-            // Skip adding a new one
-        } else if (uploadBtn) {
+        // File selection UI
+        if (uploadBtn) {
             uploadBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 if (fileUpload) fileUpload.click();
             });
-            uploadBtn._hasClickListener = true; // Mark that we've added a listener
         }
 
-        if (fileUpload && fileUpload._hasChangeListener) {
-            // Skip adding a new one
-        } else if (fileUpload) {
+        if (fileUpload) {
             fileUpload.addEventListener('change', function () {
                 const file = this.files[0];
                 if (file) {
+                    // Check file size (max 10MB)
+                    if (file.size > 10 * 1024 * 1024) {
+                        alert('File size exceeds 10MB. Please select a smaller file.');
+                        this.value = '';
+                        fileNameDisplay.textContent = 'No file chosen';
+                        uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                        uploadBtn.style.backgroundColor = '';
+                        return;
+                    }
+
                     fileNameDisplay.textContent = file.name;
                     uploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
                     uploadBtn.style.backgroundColor = '#d1e7dd';
@@ -882,27 +845,31 @@
                     uploadBtn.style.backgroundColor = '';
                 }
             });
-            fileUpload._hasChangeListener = true; // Mark that we've added a listener
         }
 
-        // Handle form submission
+        // Add form submission handler to show thank you message
         if (form) {
             form.addEventListener('submit', function () {
-                showLoadingState();
-                // Success handler for iframe load
-                hiddenFrame.onload = function () {
-                    showSuccessMessage();
-                };
-
-                // Fallback in case iframe doesn't trigger onload
-                setTimeout(() => {
-                    const submitBtn = document.getElementById('submitContribution');
-                    if (submitBtn && submitBtn.disabled) {
-                        showSuccessMessage();
-                    }
-                }, 4000);
+                // Store the form submission time in localStorage
+                localStorage.setItem('formSubmitted', 'true');
             });
         }
+
+        // Check if form was just submitted (on page load after redirect)
+        document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.getItem('formSubmitted') === 'true') {
+                // Clear the flag
+                localStorage.removeItem('formSubmitted');
+
+                // Show thank you message
+                if (thankYouMessage) {
+                    thankYouMessage.classList.add('show');
+                    setTimeout(() => {
+                        thankYouMessage.classList.remove('show');
+                    }, 5000);
+                }
+            }
+        });
     </script>
 </body>
 
