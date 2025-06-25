@@ -150,7 +150,8 @@
                         target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/srujanshetty0007" class="social-link-about" title="GitHub" target="_blank">
+                    <a href="https://github.com/srujanshetty0007" class="social-link-about" title="GitHub"
+                        target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-link-about" title="Instagram"
@@ -207,7 +208,8 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="index.html#contribute-section">Contribute</a></li>
-                            <li><a href="https://github.com/srujanshetty0007" title="GitHub" target="_blank">GitHub</a></li>
+                            <li><a href="https://github.com/srujanshetty0007" title="GitHub" target="_blank">GitHub</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="footer-contact">
@@ -237,6 +239,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- JavaScript -->
     <script>
         // Add a smooth scrolling effect for internal links
@@ -259,6 +266,27 @@
                     }
                 });
             }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) { // Show after scrolling 300px
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            // Smooth scroll to top when clicked
+            backToTopButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
