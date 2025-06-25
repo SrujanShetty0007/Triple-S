@@ -59,7 +59,12 @@
     },
     "chemistry": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "BCHES102_Mod1.pdf",
+          "name": "Bches102 Mod1"
+        }
+      ],
       "previous-papers": []
     },
     "chemistry-eee": {
@@ -109,9 +114,44 @@
       "previous-papers": []
     },
     "electronics-eng": {
-      "model-papers": [],
-      "notes": [],
-      "previous-papers": []
+      "model-papers": [
+        {
+          "filename": "Electronics-Question-Bank.pdf",
+          "name": "Electronics Question Bank"
+        },
+        {
+          "filename": "model-paper-1.pdf",
+          "name": "Model Paper 1"
+        }
+      ],
+      "notes": [
+        {
+          "filename": "Module_2_ELN.pdf",
+          "name": "Module 2 Eln"
+        },
+        {
+          "filename": "Module_2_notes.pdf",
+          "name": "Module 2 Notes"
+        },
+        {
+          "filename": "Module_3_ELN.pdf",
+          "name": "Module 3 Eln"
+        },
+        {
+          "filename": "Module_4_ELN.pdf",
+          "name": "Module 4 Eln"
+        },
+        {
+          "filename": "Module_5_ELN.pdf",
+          "name": "Module 5 Eln"
+        }
+      ],
+      "previous-papers": [
+        {
+          "filename": "BESCK.pdf",
+          "name": "Besck"
+        }
+      ]
     },
     "english": {
       "model-papers": [],
@@ -128,6 +168,10 @@
         {
           "filename": "BMATS201.pdf",
           "name": "Bmats201"
+        },
+        {
+          "filename": "BMATS201_mqp_1_&_2_solns.pdf",
+          "name": "Bmats201 Mqp 1 & 2 Solns"
         },
         {
           "filename": "model-paper.pdf",
@@ -153,8 +197,42 @@
       "previous-papers": []
     },
     "physics": {
-      "model-papers": [],
-      "notes": [],
+      "model-papers": [
+        {
+          "filename": "CSE_SOLVED_MODEL_QP.pdf",
+          "name": "Cse Solved Model Qp"
+        }
+      ],
+      "notes": [
+        {
+          "filename": "5-Module_Chpter_1_Physics_of_Animation.pdf",
+          "name": "5 Module Chpter 1 Physics Of Animation"
+        },
+        {
+          "filename": "Applied_Physics_for_Computer_Science_and_Allied_Programmes.pdf",
+          "name": "Applied Physics For Computer Science And Allied Programmes"
+        },
+        {
+          "filename": "electrical_conductivity_in_metals.pdf",
+          "name": "Electrical Conductivity In Metals"
+        },
+        {
+          "filename": "Module-2-Quantum Mechanics.pdf",
+          "name": "Module 2 Quantum Mechanics"
+        },
+        {
+          "filename": "MODULE_3-_Lasers_and_Optical_Fibers.pdf",
+          "name": "Module 3  Lasers And Optical Fibers"
+        },
+        {
+          "filename": "module_4.2_-superconductivity.pdf",
+          "name": "Module 4.2  Superconductivity"
+        },
+        {
+          "filename": "Statistical_Physics_For_Computing.pdf",
+          "name": "Statistical Physics For Computing"
+        }
+      ],
       "previous-papers": []
     },
     "programming-c": {
@@ -170,8 +248,24 @@
     "python-programming": {
       "model-papers": [
         {
+          "filename": "Module_1_Important_questions_with_answers.pdf",
+          "name": "Module 1 Important Questions With Answers"
+        },
+        {
+          "filename": "Module_2_Important_questions_with_answer.pdf",
+          "name": "Module 2 Important Questions With Answer"
+        },
+        {
           "filename": "python-model-questions.pdf",
           "name": "Python Model Questions"
+        },
+        {
+          "filename": "Python_Model_Paper-2.pdf",
+          "name": "Python Model Paper 2"
+        },
+        {
+          "filename": "Python_model_paper_1.pdf",
+          "name": "Python Model Paper 1"
         }
       ],
       "notes": [
@@ -185,6 +279,10 @@
         }
       ],
       "previous-papers": [
+        {
+          "filename": "SolutionsetB_merged.pdf",
+          "name": "Solutionsetb Merged"
+        },
         {
           "filename": "Solved PYO.pdf",
           "name": "Solved Pyo"

@@ -9,4 +9,4 @@ echo.
 echo Update complete! You can now commit and push your changes.
 echo.
 
-pause 
+pause

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #f72585;
+    --light-color: #f8f9fa;
+    --body-color: #f5f7fa;
+    --dark-color: #212529;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --card-border-radius: 12px;
+    --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --hero-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --animated-wave-gradient: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.15) 100%);
+    --whatsapp-color: #25D366;
+    --email-color: #EA4335;
+    --nav-color: rgba(67, 97, 238, 0.1);
+}
