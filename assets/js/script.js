@@ -432,9 +432,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="pdf-file-name">${fileName}</span>
             </div>
             <div class="pdf-file-actions">
-                <a href="${viewPath}" class="pdf-view-btn" target="_blank">
-                    <i class="fas fa-eye"></i> View
-                </a>
                 <a href="${filePath}?download=true" class="pdf-download-btn" download="${fileName}">
                     <i class="fas fa-download"></i> Download
                 </a>
