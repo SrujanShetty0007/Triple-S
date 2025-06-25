@@ -13,6 +13,132 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Admin Login Styles -->
+    <style>
+        .admin-login-section {
+            margin: 3rem auto 4rem;
+            max-width: 500px;
+            padding: 0 1rem;
+        }
+
+        .admin-login-container {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid #dc3545;
+        }
+
+        .admin-login-container h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .admin-login-subtitle {
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .admin-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .admin-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .admin-form-group label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        .admin-form-group input {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-form-group input:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+            outline: none;
+        }
+
+        .admin-login-btn {
+            background: linear-gradient(to right, #dc3545, #c82333);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .admin-login-btn:hover {
+            background: linear-gradient(to right, #c82333, #bd2130);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .admin-login-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            display: none;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            border-left: 4px solid #dc3545;
+        }
+
+        .admin-login-error i {
+            font-size: 1.2rem;
+            color: #dc3545;
+        }
+
+        .admin-login-error.show {
+            display: flex;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 576px) {
+            .admin-login-container {
+                padding: 1.5rem;
+            }
+
+            .admin-login-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .admin-login-btn {
+                padding: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -625,14 +751,14 @@
             <div class="upload-container">
                 <div class="upload-form">
                     <!-- Contribution Form -->
-                    <form action="https://formsubmit.co/srujanshetty0007@gmail.com" method="POST"
+                    <form action="https://formsubmit.co/triples.studies.edu@gmail.com" method="POST"
                         enctype="multipart/form-data" id="contributionForm">
                         <!-- FormSubmit.co configuration -->
                         <input type="hidden" name="_subject" value="New Triple S Contribution">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next"
-                            value="https://srujanshetty.github.io/triple-s/index.html#contribute-section">
+                        <input type="hidden" name="_autoresponse"
+                            value="Thank you for your contribution to Triple S! We have received your submission and will review it shortly.">
                         <!-- Anti-spam honeypot field -->
                         <input type="text" name="_honey" style="display:none">
 
@@ -748,18 +874,49 @@
                     <p>Have questions or need help? Reach out to us:</p>
                     <div class="contact-method">
                         <i class="fas fa-envelope"></i>
-                        <span>triples.studies@gmail.com</span>
+                        <span>triples.studies.edu@gmail.com</span>
                     </div>
                     <div class="contact-method">
                         <i class="fab fa-whatsapp"></i>
                         <span>+91 8217358117</span>
-                    </div>    
+                    </div>
                     <div class="contact-note">
                         <p>We appreciate your contributions to help build a comprehensive resource for all students.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Admin Login Section (Fake) -->
+        <section class="admin-login-section">
+            <div class="admin-login-container">
+                <h2>Admin Access</h2>
+                <p class="admin-login-subtitle">Restricted area - Authorized personnel only</p>
+
+                <form id="adminLoginForm" class="admin-login-form">
+                    <div class="admin-form-group">
+                        <label for="adminKey">Admin Key</label>
+                        <input type="text" id="adminKey" name="adminKey" placeholder="Enter admin key" required>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="adminPassword">Admin Password</label>
+                        <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter password"
+                            required>
+                    </div>
+
+                    <button type="submit" class="admin-login-btn">
+                        <i class="fas fa-lock"></i> Access System
+                    </button>
+                </form>
+
+                <div id="adminLoginError" class="admin-login-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Access Denied: Invalid credentials or insufficient permissions.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -779,7 +936,8 @@
                             <li><a href="#">Home</a></li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="#contribute-section">Contribute</a></li>
-                            <li><a href="https://github.com/username/triple-s">GitHub</a></li>
+                            <li><a href="https://github.com/srujanshetty0007" title="GitHub" target="_blank">GitHub</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="footer-contact">
@@ -789,7 +947,7 @@
                                 <i class="fab fa-whatsapp"></i>
                                 <span style="color: #fff;">WhatsApp</span>
                             </a>
-                            <a href="mailto:srujanshetty2002@gmail.com" class="contact-link">
+                            <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
                                 <i class="fas fa-envelope"></i>
                                 <span style="color: #fff;">Email</span>
                             </a>
@@ -855,29 +1013,99 @@
             });
         }
 
-        // Add form submission handler to show thank you message
+        // Form submission handler with FormData and fetch API
         if (form) {
-            form.addEventListener('submit', function () {
-                // Store the form submission time in localStorage
-                localStorage.setItem('formSubmitted', 'true');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Create FormData object
+                const formData = new FormData(form);
+
+                // Show loading state
+                const submitBtn = document.getElementById('submitContribution');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    submitBtn.disabled = true;
+                }
+
+                // Use regular form submission but in a way that doesn't reload the page
+                const formAction = form.getAttribute('action');
+                const formMethod = form.getAttribute('method');
+
+                // Create a hidden iframe for submission
+                const iframe = document.createElement('iframe');
+                iframe.name = 'hidden-iframe';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+
+                // Set form target to the iframe
+                form.setAttribute('target', 'hidden-iframe');
+
+                // Submit the form
+                form.submit();
+
+                // Show thank you message after a short delay
+                setTimeout(() => {
+                    // Show thank you message
+                    if (thankYouMessage) {
+                        thankYouMessage.classList.add('show');
+                        setTimeout(() => {
+                            thankYouMessage.classList.remove('show');
+                        }, 5000);
+                    }
+
+                    // Reset form
+                    form.reset();
+                    fileNameDisplay.textContent = 'No file chosen';
+                    uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                    uploadBtn.style.backgroundColor = '';
+
+                    // Reset button state
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
+                        submitBtn.disabled = false;
+                    }
+                }, 2000);
             });
         }
 
-        // Check if form was just submitted (on page load after redirect)
-        document.addEventListener('DOMContentLoaded', function () {
-            if (localStorage.getItem('formSubmitted') === 'true') {
-                // Clear the flag
-                localStorage.removeItem('formSubmitted');
+        // Admin Login Form Handling
+        const adminForm = document.getElementById('adminLoginForm');
+        const adminError = document.getElementById('adminLoginError');
 
-                // Show thank you message
-                if (thankYouMessage) {
-                    thankYouMessage.classList.add('show');
-                    setTimeout(() => {
-                        thankYouMessage.classList.remove('show');
-                    }, 5000);
+        if (adminForm) {
+            adminForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form inputs
+                const adminKey = document.getElementById('adminKey').value;
+                const adminPassword = document.getElementById('adminPassword').value;
+
+                // Show loading state
+                const loginBtn = adminForm.querySelector('.admin-login-btn');
+                if (loginBtn) {
+                    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+                    loginBtn.disabled = true;
                 }
-            }
-        });
+
+                // Simulate verification delay (always fail)
+                setTimeout(() => {
+                    // Always show error message
+                    if (adminError) {
+                        adminError.classList.add('show');
+                    }
+
+                    // Reset button state
+                    if (loginBtn) {
+                        loginBtn.innerHTML = '<i class="fas fa-lock"></i> Access System';
+                        loginBtn.disabled = false;
+                    }
+
+                    // Clear password field
+                    document.getElementById('adminPassword').value = '';
+                }, 1500);
+            });
+        }
     </script>
 </body>
 

@@ -54,7 +54,12 @@
     },
     "caed-sem2": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "Engineering Graphics-18EGDL25 Notes 2020-21.pdf",
+          "name": "Engineering Graphics 18egdl25 Notes 2020 21"
+        }
+      ],
       "previous-papers": []
     },
     "chemistry": {
@@ -86,6 +91,10 @@
       ],
       "notes": [
         {
+          "filename": "BEE_Module_5.PDF",
+          "name": "Bee Module 5.pdf"
+        },
+        {
           "filename": "BESCK104C-Mod1.pdf",
           "name": "Besck104c Mod1"
         },
@@ -102,15 +111,30 @@
           "name": "Besck104c Mod5"
         },
         {
+          "filename": "Module-1-ESC_Notes.pdf",
+          "name": "Module 1 Esc Notes"
+        },
+        {
+          "filename": "Module-2-ESC_Notes.pdf",
+          "name": "Module 2 Esc Notes"
+        },
+        {
+          "filename": "Module-3-ESC_Notes.pdf",
+          "name": "Module 3 Esc Notes"
+        },
+        {
+          "filename": "Module-4-ESC_Notes.pdf",
+          "name": "Module 4 Esc Notes"
+        },
+        {
+          "filename": "Module-5-ESC_Notes.pdf",
+          "name": "Module 5 Esc Notes"
+        },
+        {
           "filename": "Module5_BESCK104B-MITK.pdf",
           "name": "Module5 Besck104b Mitk"
         }
       ],
-      "previous-papers": []
-    },
-    "electronics": {
-      "model-papers": [],
-      "notes": [],
       "previous-papers": []
     },
     "electronics-eng": {
@@ -180,8 +204,28 @@
       ],
       "notes": [
         {
+          "filename": "Integral Calculus Notes.pdf",
+          "name": "Integral Calculus Notes"
+        },
+        {
           "filename": "M2 passing @vtunetwork-Copy.pdf",
           "name": "M2 Passing @vtunetwork Copy"
+        },
+        {
+          "filename": "Module 2 - Vector Calculus Notes.pdf",
+          "name": "Module 2   Vector Calculus Notes"
+        },
+        {
+          "filename": "Module 3 - Vector Space and Linear Transformations Notes.pdf",
+          "name": "Module 3   Vector Space And Linear Transformations Notes"
+        },
+        {
+          "filename": "Module 4 - Numerical Methods -1 Notes.pdf",
+          "name": "Module 4   Numerical Methods  1 Notes"
+        },
+        {
+          "filename": "Module 5 - Numerical Methods -2 Notes.pdf",
+          "name": "Module 5   Numerical Methods  2 Notes"
         }
       ],
       "previous-papers": [
@@ -213,6 +257,10 @@
           "name": "Applied Physics For Computer Science And Allied Programmes"
         },
         {
+          "filename": "BPHYS102_All-Mod1-5.pdf",
+          "name": "Bphys102 All Mod1 5"
+        },
+        {
           "filename": "electrical_conductivity_in_metals.pdf",
           "name": "Electrical Conductivity In Metals"
         },
@@ -237,7 +285,28 @@
     },
     "programming-c": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "m2 pop.pdf",
+          "name": "M2 Pop"
+        },
+        {
+          "filename": "POP_Module-1_Notes.pdf",
+          "name": "Pop Module 1 Notes"
+        },
+        {
+          "filename": "POP_Module-3_Notes(Arrays).pdf",
+          "name": "Pop Module 3 Notes(arrays)"
+        },
+        {
+          "filename": "POP_Module-4_Notes(Pointers).pdf",
+          "name": "Pop Module 4 Notes(pointers)"
+        },
+        {
+          "filename": "POP_Module-5_Notes.pdf",
+          "name": "Pop Module 5 Notes"
+        }
+      ],
       "previous-papers": [
         {
           "filename": "Solved PYO.pdf",
@@ -269,6 +338,22 @@
         }
       ],
       "notes": [
+        {
+          "filename": "Module_1_Python.pdf",
+          "name": "Module 1 Python"
+        },
+        {
+          "filename": "Module_2_Python.pdf",
+          "name": "Module 2 Python"
+        },
+        {
+          "filename": "Module_3_Python.pdf",
+          "name": "Module 3 Python"
+        },
+        {
+          "filename": "Module_4_Python.pdf",
+          "name": "Module 4 Python"
+        },
         {
           "filename": "Python_module_4.pdf",
           "name": "Python Module 4"
