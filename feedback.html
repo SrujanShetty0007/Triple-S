@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Triple S - Student Study Support</title>
+    <!-- Stylesheets -->
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo">
+                </div>
+                <div class="title-container">
+                    <h1>Triple S</h1>
+                    <p class="tagline">Student Study Support</p>
+                </div>
+            </div>
+            <a href="index.html" class="back-home-link">
+                <i class="fas fa-arrow-left"></i>Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Feedback Hero Section -->
+    <section class="feedback-hero">
+        <div class="feedback-hero-background">
+            <div class="gradient-overlay"></div>
+        </div>
+        <div class="feedback-hero-content container">
+            <h1 class="feedback-hero-title">Student Feedback</h1>
+            <p class="feedback-hero-subtitle">Share your experience and help us improve Triple S for everyone</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Feedback Section -->
+        <section class="feedback-section">
+            <div class="feedback-intro">
+                <i class="fas fa-comment-dots feedback-icon"></i>
+                <h2>Your Opinion Matters</h2>
+                <p>We value your feedback and suggestions to make Triple S better for all students. Whether you found
+                    our resources helpful or have ideas for improvement, we'd love to hear from you!</p>
+            </div>
+
+            <div class="feedback-container">
+                <div class="feedback-form-container">
+                    <h3 class="section-title">Submit Your Feedback</h3>
+                    <form id="feedbackForm" class="feedback-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Feedback subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback">Your Feedback</label>
+                            <textarea id="feedback" name="feedback"
+                                placeholder="Share your thoughts, suggestions, or experiences..." required></textarea>
+                        </div>
+                        <div class="form-group rating-group">
+                            <label>Rate Your Experience</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Submit Feedback
+                        </button>
+                    </form>
+                </div>
+
+                <div class="feedback-info">
+                    <div class="feedback-vector">
+                        <img src="assets/images/user.png" alt="Feedback" class="feedback-image">
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-header">
+                            <i class="fas fa-headset contact-icon"></i>
+                            <h3>Get In Touch</h3>
+                        </div>
+                        <p>Have questions or want to connect directly? Reach out through:</p>
+                        <div class="contact-methods">
+                            <a href="mailto:triples.studies.edu@gmail.com" class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <span>triples.studies.edu@gmail.com</span>
+                            </a>
+                            <a href="https://wa.me/+918217358117" class="contact-method">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+91 8217358117</span>
+                            </a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon"
+                                title="LinkedIn" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub"
+                                target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon"
+                                title="Instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thank You Message (Initially Hidden) -->
+        <div class="thank-you-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You for Your Feedback!</h3>
+            <p>We appreciate you taking the time to share your thoughts with us.</p>
+            <p>Your input helps us improve Triple S for everyone.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-marquee-container">
+            <div class="footer-marquee">
+                <div class="footer-marquee-content">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="footer-marquee-item">Welcome to Triple S - Your #1 resource for engineering study
+                        materials</span>
+                    <i class="fas fa-book"></i>
+                    <span class="footer-marquee-item">Notes, Model Papers, and Previous Year Papers all in one
+                        place</span>
+                    <i class="fas fa-users"></i>
+                    <span class="footer-marquee-item">Join our community of students helping each other excel</span>
+                    <i class="fas fa-lightbulb"></i>
+                    <span class="footer-marquee-item">Knowledge shared is knowledge squared</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-main container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo">
+                </a>
+                <h3>Triple S - Student Study Support</h3>
+                <p>Your comprehensive resource for B.E. exam preparation materials.</p>
+            </div>
+
+            <div class="footer-links-section">
+                <div class="footer-links-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#sem1">Semester 1</a></li>
+                        <li><a href="index.html#sem2">Semester 2</a></li>
+                        <li><a href="index.html#contribute-section">Contribute</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-methods">
+                        <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            Email Us
+                        </a>
+                        <a href="https://wa.me/+918217358117" class="contact-link">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2023 Triple S. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
+                        target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon" title="Instagram"
+                        target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/feedback.js"></script>
+</body>
+
+</html>

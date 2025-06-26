@@ -2551,6 +2551,8 @@ footer::before {
     margin: 0.5rem 0;
     position: relative;
     z-index: 10;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .btn-about {
@@ -2598,6 +2600,14 @@ footer::before {
     left: 100%;
 }
 
+.btn-feedback {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #9c2963 100%);
+    animation: pulse 2s infinite 1s;
+}
+
+.btn-feedback:hover {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #9c2963 100%);
+}
 
 @keyframes pulse {
     0% {
@@ -2913,6 +2923,56 @@ footer::before {
         width: 35px;
         height: 35px;
         font-size: 1rem;
+    }
+}
+
+/* Testimonial Action Button */
+.testimonial-action {
+    text-align: center;
+    margin: 2rem auto 1rem;
+}
+
+.feedback-action-btn {
+    background: var(--gradient);
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.35);
+    transition: var(--transition);
+}
+
+.feedback-action-btn i {
+    font-size: 0.9rem;
+}
+
+.feedback-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.45);
+}
+
+@media (max-width: 768px) {
+    .testimonial-action {
+        margin-top: 1.5rem;
+    }
+
+    .feedback-action-btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-action {
+        margin-top: 1.2rem;
+    }
+
+    .feedback-action-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
     }
 }
 
