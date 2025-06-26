@@ -40,6 +40,7 @@
     <section class="feedback-hero">
         <div class="feedback-hero-background">
             <div class="gradient-overlay"></div>
+            <div class="hero-particles"></div>
         </div>
         <div class="feedback-hero-content container">
             <h1 class="feedback-hero-title">Student Feedback</h1>
@@ -52,10 +53,24 @@
         <!-- Feedback Section -->
         <section class="feedback-section">
             <div class="feedback-intro">
-                <i class="fas fa-comment-dots feedback-icon"></i>
+                <i class="fas fa-comment-dots feedback-icon pulse-animation"></i>
                 <h2>Your Opinion Matters</h2>
                 <p>We value your feedback and suggestions to make Triple S better for all students. Whether you found
                     our resources helpful or have ideas for improvement, we'd love to hear from you!</p>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Happy Students</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Study Materials</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
             </div>
 
             <div class="feedback-container">
@@ -64,20 +79,48 @@
                     <form id="feedbackForm" class="feedback-form">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address"
+                                    required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Feedback subject">
+                            <div class="input-with-icon">
+                                <i class="fas fa-heading"></i>
+                                <input type="text" id="subject" name="subject" placeholder="Feedback subject">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-tag"></i>
+                                <select id="category" name="category">
+                                    <option value="">Select Category</option>
+                                    <option value="website">Website Functionality</option>
+                                    <option value="content">Study Materials</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="issue">Issue Report</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="feedback">Your Feedback</label>
-                            <textarea id="feedback" name="feedback"
-                                placeholder="Share your thoughts, suggestions, or experiences..." required></textarea>
+                            <div class="textarea-with-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <textarea id="feedback" name="feedback"
+                                    placeholder="Share your thoughts, suggestions, or experiences..."
+                                    required></textarea>
+                            </div>
                         </div>
                         <div class="form-group rating-group">
                             <label>Rate Your Experience</label>
@@ -93,6 +136,11 @@
                                 <input type="radio" id="star1" name="rating" value="1">
                                 <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
                             </div>
+                            <span class="rating-text">Select your rating</span>
+                        </div>
+                        <div class="consent-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I agree to share my feedback for improvement purposes</label>
                         </div>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane"></i> Submit Feedback
@@ -103,6 +151,7 @@
                 <div class="feedback-info">
                     <div class="feedback-vector">
                         <img src="assets/images/user.png" alt="Feedback" class="feedback-image">
+                        <div class="image-caption">We value your input!</div>
                     </div>
                     <div class="contact-info">
                         <div class="contact-header">
@@ -120,6 +169,7 @@
                                 <span>+91 8217358117</span>
                             </a>
                         </div>
+                        <div class="connect-label">Connect With Us</div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon"
                                 title="LinkedIn" target="_blank">
@@ -139,12 +189,58 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How is my feedback used? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Your feedback is reviewed by our team to improve the Triple S platform, enhance study materials,
+                        and add new features based on student needs.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I suggest new study materials? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We welcome suggestions for new study materials. Please provide as much detail as
+                        possible about the specific subject and materials you'd like to see.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly will I get a response? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We typically respond to feedback within 48 hours. For urgent matters, please contact us directly
+                        through WhatsApp.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I contribute to Triple S? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We encourage students to contribute study materials through our dedicated contribution
+                        section on the homepage.
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Thank You Message (Initially Hidden) -->
         <div class="thank-you-message">
             <i class="fas fa-check-circle"></i>
             <h3>Thank You for Your Feedback!</h3>
             <p>We appreciate you taking the time to share your thoughts with us.</p>
             <p>Your input helps us improve Triple S for everyone.</p>
+            <button class="return-btn" onclick="window.location.reload()">
+                <i class="fas fa-redo"></i> Submit Another Response
+            </button>
         </div>
     </main>
 

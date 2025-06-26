@@ -2801,7 +2801,7 @@ footer::before {
     transform: translateX(-50%);
     width: 40px;
     height: 3px;
-    background: var(--accent-color);
+    background: var(--primary-color);
     border-radius: 2px;
 }
 
@@ -2888,7 +2888,7 @@ footer::before {
 }
 
 .testimonial-indicator.active {
-    background-color: var(--accent-color);
+    background-color: var(--light-color);
     transform: scale(1.2);
 }
 
@@ -2927,6 +2927,7 @@ footer::before {
 
 .feedback-action-btn {
     background: var(--gradient);
+    color: var(--light-color);
     padding: 0.9rem 1.5rem;
     border-radius: 50px;
     font-weight: 600;
@@ -2934,7 +2935,6 @@ footer::before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.35);
     transition: var(--transition);
 }
 
@@ -2943,8 +2943,8 @@ footer::before {
 }
 
 .feedback-action-btn:hover {
+    color: var(--light-color);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.45);
 }
 
 @media (max-width: 768px) {

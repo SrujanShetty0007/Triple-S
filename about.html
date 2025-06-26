@@ -322,48 +322,82 @@
         // Enhanced Marquee for seamless scrolling
         function setupMarquee() {
             const marquee = document.querySelector('.footer-marquee');
-            if (marquee) {
-                // Clone the content
-                const clone = marquee.innerHTML;
-                // Add the cloned content to create a seamless loop
-                marquee.innerHTML = clone + clone;
+            if (!marquee) return;
 
-                // Adjust marquee speed based on screen width
-                function adjustMarqueeSpeed() {
-                    const screenWidth = window.innerWidth;
-                    let duration;
+            // Save original content
+            const originalContent = marquee.innerHTML;
 
-                    if (screenWidth <= 480) {
-                        duration = '15s'; // Faster on mobile
-                    } else if (screenWidth <= 768) {
-                        duration = '20s'; // Medium on tablets
-                    } else {
-                        duration = '30s'; // Slower on desktop
-                    }
+            // Reset any previous duplications
+            marquee.innerHTML = originalContent;
 
-                    marquee.style.animationDuration = duration;
+            // Clone the content exactly 3 times for best results with transform: translateX(-33.33%)
+            marquee.innerHTML = originalContent + originalContent + originalContent;
+
+            // Calculate optimal speed based on content length and screen width
+            function calculateOptimalSpeed() {
+                const screenWidth = window.innerWidth;
+                const contentWidth = marquee.scrollWidth / 3; // Divide by 3 since we tripled the content
+                const ratio = contentWidth / screenWidth;
+
+                // Base animation times in seconds (adjusted for mobile)
+                let duration;
+                if (screenWidth <= 480) {
+                    duration = 40; // Slower on mobile for readability
+                } else if (screenWidth <= 768) {
+                    duration = 35; // Medium speed for tablets
+                } else {
+                    duration = 45; // Normal speed for desktop
                 }
 
-                // Call initially and on resize
-                adjustMarqueeSpeed();
-                window.addEventListener('resize', adjustMarqueeSpeed);
-
-                // Add click functionality to marquee items
-                const marqueeItems = document.querySelectorAll('.footer-marquee-content');
-                marqueeItems.forEach(item => {
-                    item.addEventListener('click', () => {
-                        // Get the text content
-                        const content = item.querySelector('.footer-marquee-item').textContent;
-
-                        // Navigate to homepage sections based on content
-                        if (content.includes('Contribute')) {
-                            window.location.href = 'index.html#contribute-section';
-                        } else if (content.includes('materials')) {
-                            window.location.href = 'index.html';
-                        }
-                    });
-                });
+                // Adjust duration based on content length
+                return `${Math.max(duration, ratio * 15)}s`;
             }
+
+            // Function to apply the animation speed
+            function applySpeed() {
+                marquee.style.animationDuration = calculateOptimalSpeed();
+            }
+
+            // Reset animation to prevent glitches on window resize
+            function resetAnimation() {
+                marquee.style.animation = 'none';
+                marquee.offsetHeight; // Trigger reflow
+                marquee.style.animation = `marquee ${calculateOptimalSpeed()} linear infinite`;
+            }
+
+            // Handle visibility changes to prevent animation issues
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'visible') {
+                    resetAnimation();
+                }
+            });
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', function () {
+                setTimeout(resetAnimation, 100);
+            });
+
+            // Apply initial speed
+            applySpeed();
+
+            // Adjust on window resize
+            window.addEventListener('resize', resetAnimation);
+
+            // Add click functionality to marquee items
+            const marqueeItems = document.querySelectorAll('.footer-marquee-content');
+            marqueeItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Get the text content
+                    const content = item.querySelector('.footer-marquee-item').textContent;
+
+                    // Navigate to homepage sections based on content
+                    if (content.includes('Contribute')) {
+                        window.location.href = 'index.html#contribute-section';
+                    } else if (content.includes('materials')) {
+                        window.location.href = 'index.html';
+                    }
+                });
+            });
         }
     </script>
 </body>
