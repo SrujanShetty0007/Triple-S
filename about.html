@@ -193,6 +193,33 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-marquee-container">
+            <div class="footer-marquee">
+                <div class="footer-marquee-content">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="footer-marquee-item">Welcome to Triple S - Your #1 resource for engineering study
+                        materials</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-bell"></i>
+                    <span class="footer-marquee-item">New materials added regularly - Stay tuned for updates!</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-upload"></i>
+                    <span class="footer-marquee-item">Contribute your study materials and help fellow students</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-users"></i>
+                    <span class="footer-marquee-item">Join our growing community of students supporting each
+                        other</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-book"></i>
+                    <span class="footer-marquee-item">Access notes, model papers, and previous year question
+                        papers</span>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
@@ -287,7 +314,57 @@
                     behavior: 'smooth'
                 });
             });
+
+            // Marquee setup for footer
+            setupMarquee();
         });
+
+        // Enhanced Marquee for seamless scrolling
+        function setupMarquee() {
+            const marquee = document.querySelector('.footer-marquee');
+            if (marquee) {
+                // Clone the content
+                const clone = marquee.innerHTML;
+                // Add the cloned content to create a seamless loop
+                marquee.innerHTML = clone + clone;
+
+                // Adjust marquee speed based on screen width
+                function adjustMarqueeSpeed() {
+                    const screenWidth = window.innerWidth;
+                    let duration;
+
+                    if (screenWidth <= 480) {
+                        duration = '15s'; // Faster on mobile
+                    } else if (screenWidth <= 768) {
+                        duration = '20s'; // Medium on tablets
+                    } else {
+                        duration = '30s'; // Slower on desktop
+                    }
+
+                    marquee.style.animationDuration = duration;
+                }
+
+                // Call initially and on resize
+                adjustMarqueeSpeed();
+                window.addEventListener('resize', adjustMarqueeSpeed);
+
+                // Add click functionality to marquee items
+                const marqueeItems = document.querySelectorAll('.footer-marquee-content');
+                marqueeItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        // Get the text content
+                        const content = item.querySelector('.footer-marquee-item').textContent;
+
+                        // Navigate to homepage sections based on content
+                        if (content.includes('Contribute')) {
+                            window.location.href = 'index.html#contribute-section';
+                        } else if (content.includes('materials')) {
+                            window.location.href = 'index.html';
+                        }
+                    });
+                });
+            }
+        }
     </script>
 </body>
 

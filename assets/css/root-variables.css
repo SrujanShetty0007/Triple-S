@@ -4,7 +4,7 @@
 :root {
     --primary-color: #4361ee;
     --secondary-color: #3f37c9;
-    --accent-color: #f72585;
+    --accent-color: #b23a70;
     --light-color: #f8f9fa;
     --body-color: #f5f7fa;
     --dark-color: #212529;
@@ -14,7 +14,9 @@
     --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     --hero-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
     --animated-wave-gradient: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.15) 100%);
+    --testimonials-gradient: linear-gradient(135deg, #465fcf 0%, #3802b8 100%);
     --whatsapp-color: #25D366;
     --email-color: #EA4335;
     --nav-color: rgba(67, 97, 238, 0.1);
+    --subject-card-color: linear-gradient(135deg, #dfe0e15d 0%, #cdcdcd6a 100%);
 }

@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const semesterSections = document.querySelectorAll('.semester-section');
     const subjectCards = document.querySelectorAll('.subject-card');
     const welcomeBanner = document.querySelector('.welcome-banner');
+    const backToTopButton = document.getElementById('backToTop');
 
     // Form Elements
     const contributionForm = document.getElementById('contributionForm');
@@ -32,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeFormHandling();
     initializeSemesterFiltering();
     initializePdfLinks();
+    initializeBackToTop();
+    setupMarquee();
 
     if (window.location.search.includes('submitted=true')) {
         showThankYouMessage();
@@ -42,12 +45,44 @@ document.addEventListener('DOMContentLoaded', () => {
             if (welcomeBanner) welcomeBanner.classList.add('animated');
         }, 300);
 
-        subjectCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 100 * index);
-        });
+        // Subject Cards Animation
+        if (subjectCards.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            subjectCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+    }
+
+    function initializeBackToTop() {
+        if (backToTopButton) {
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     }
 
     function initializeFormHandling() {
@@ -227,22 +262,46 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeSemesterFiltering() {
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
+
+                // Add active class to clicked button
                 btn.classList.add('active');
 
+                // Get the semester filter value
                 const semester = btn.dataset.semester;
 
-                semesterSections.forEach(section => {
-                    if (semester === 'all') {
+                if (semester === 'all') {
+                    // Show all semester sections
+                    semesterSections.forEach(section => {
                         section.style.display = 'block';
-                    } else {
-                        if (section.id === semester) {
-                            section.style.display = 'block';
-                        } else {
+                        setTimeout(() => {
+                            section.style.opacity = '1';
+                            section.style.transform = 'translateY(0)';
+                        }, 100);
+                    });
+                } else {
+                    // Hide all sections first
+                    semesterSections.forEach(section => {
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
                             section.style.display = 'none';
-                        }
+                        }, 300);
+                    });
+
+                    // Show only the selected semester section
+                    const selectedSection = document.getElementById(semester);
+                    if (selectedSection) {
+                        setTimeout(() => {
+                            selectedSection.style.display = 'block';
+                            setTimeout(() => {
+                                selectedSection.style.opacity = '1';
+                                selectedSection.style.transform = 'translateY(0)';
+                            }, 100);
+                        }, 300);
                     }
-                });
+                }
             });
         });
     }
@@ -467,3 +526,50 @@ document.addEventListener('DOMContentLoaded', function () {
         icon.setAttribute('data-speed', speed.toString());
     });
 });
+
+// Enhanced Marquee for seamless scrolling
+function setupMarquee() {
+    const marquee = document.querySelector('.footer-marquee');
+    if (marquee) {
+        // Clone the content
+        const clone = marquee.innerHTML;
+        // Add the cloned content to create a seamless loop
+        marquee.innerHTML = clone + clone;
+
+        // Adjust marquee speed based on screen width
+        function adjustMarqueeSpeed() {
+            const screenWidth = window.innerWidth;
+            let duration;
+
+            if (screenWidth <= 480) {
+                duration = '15s'; // Faster on mobile
+            } else if (screenWidth <= 768) {
+                duration = '20s'; // Medium on tablets
+            } else {
+                duration = '30s'; // Slower on desktop
+            }
+
+            marquee.style.animationDuration = duration;
+        }
+
+        // Call initially and on resize
+        adjustMarqueeSpeed();
+        window.addEventListener('resize', adjustMarqueeSpeed);
+
+        // Add click functionality to marquee items
+        const marqueeItems = document.querySelectorAll('.footer-marquee-content');
+        marqueeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Get the text content
+                const content = item.querySelector('.footer-marquee-item').textContent;
+
+                // Smooth scroll to relevant section based on content
+                if (content.includes('Contribute')) {
+                    document.querySelector('#contribute-section')?.scrollIntoView({ behavior: 'smooth' });
+                } else if (content.includes('materials')) {
+                    document.querySelector('.semester-filter')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+}
