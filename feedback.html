@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>Feedback - Triple S - Student Study Support</title>
     <!-- Stylesheets -->
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
@@ -14,7 +14,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 </head>
 
@@ -32,7 +33,7 @@
                 </div>
             </div>
             <a href="index.html" class="back-home-link">
-                <i class="fas fa-arrow-left"></i>Home
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>Home
             </a>
         </div>
     </header>
@@ -51,158 +52,220 @@
     <!-- Main Content -->
     <main class="container">
         <!-- Feedback Section -->
-        <section class="feedback-section">
+        <section class="feedback-section" aria-labelledby="feedback-heading">
             <div class="feedback-intro">
-                <i class="fas fa-comment-dots feedback-icon"></i>
-                <h2>Your Opinion Matters</h2>
+                <i class="fas fa-comment-dots feedback-icon" aria-hidden="true"></i>
+                <h2 id="feedback-heading">Your Opinion Matters</h2>
                 <p>We value your feedback and suggestions to make Triple S better for all students. Whether you found
                     our resources helpful or have ideas for improvement, we'd love to hear from you!</p>
             </div>
 
             <div class="feedback-container">
-                <div class="feedback-form-container">
-                    <h3 class="section-title">Submit Your Feedback</h3>
-                    <form id="feedbackForm" class="feedback-form">
+                <div class="feedback-form-container" role="form">
+                    <h3 class="section-title" id="form-heading">Submit Your Feedback</h3>
+                    <form id="feedbackForm" class="feedback-form" aria-labelledby="form-heading">
+                        <!-- Form error message container -->
+                        <div class="form-error" role="alert" aria-live="assertive" style="display: none;"></div>
+
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name"><i class="fas fa-user" aria-hidden="true"></i>Full Name</label>
                             <div class="input-with-icon">
-                                <i class="fas fa-user"></i>
-                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required
+                                    autocomplete="name">
+                                <i class="fas fa-user" aria-hidden="true"></i>
                             </div>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i>Email Address</label>
                             <div class="input-with-icon">
-                                <i class="fas fa-envelope"></i>
                                 <input type="email" id="email" name="email" placeholder="Enter your email address"
-                                    required>
+                                    required autocomplete="email">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                             </div>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
-                            <label for="category">Category</label>
+                            <label for="category"><i class="fas fa-tag" aria-hidden="true"></i>Category</label>
                             <div class="input-with-icon">
-                                <i class="fas fa-tag"></i>
-                                <select id="category" name="category" required>
+                                <select id="category" name="category" required aria-describedby="category-help">
                                     <option value="">Select Category</option>
                                     <option value="general">General Feedback</option>
                                     <option value="content">Study Materials</option>
                                     <option value="suggestion">Suggestion</option>
                                     <option value="issue">Issue Report</option>
                                 </select>
+                                <i class="fas fa-tag" aria-hidden="true"></i>
                             </div>
+                            <small id="category-help" class="field-help">Select what your feedback is about</small>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
-                            <label for="feedback">Your Feedback</label>
+                            <label for="feedback"><i class="fas fa-comment-alt" aria-hidden="true"></i>Your
+                                Feedback</label>
                             <div class="textarea-with-icon">
-                                <i class="fas fa-comment-alt"></i>
                                 <textarea id="feedback" name="feedback"
-                                    placeholder="Share your thoughts, suggestions, or experiences..."
-                                    required></textarea>
+                                    placeholder="Share your thoughts, suggestions, or experiences..." required
+                                    aria-describedby="feedback-help"></textarea>
+                                <i class="fas fa-comment-alt" aria-hidden="true"></i>
                             </div>
+                            <small id="feedback-help" class="field-help">Be as detailed as possible</small>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
-                        <div class="form-group rating-group">
-                            <label>Rate Your Experience</label>
-                            <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5" required>
-                                <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star4" name="rating" value="4">
-                                <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star3" name="rating" value="3">
-                                <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star2" name="rating" value="2">
-                                <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star1" name="rating" value="1">
-                                <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+
+                        <div class="form-group emoji-rating-container">
+                            <label id="satisfaction-rating-label" class="emoji-rating-title">How satisfied are you with
+                                our service?</label>
+                            <div class="emoji-rating" role="radiogroup" aria-labelledby="satisfaction-rating-label">
+                                <label class="emoji-option" for="satisfaction-1">
+                                    <input type="radio" id="satisfaction-1" name="satisfaction" value="1" required>
+                                    <span class="emoji-icon" aria-hidden="true">😞</span>
+                                    <span class="emoji-label">Very Dissatisfied</span>
+                                    <span class="visually-hidden">Very Dissatisfied</span>
+                                </label>
+                                <label class="emoji-option" for="satisfaction-2">
+                                    <input type="radio" id="satisfaction-2" name="satisfaction" value="2">
+                                    <span class="emoji-icon" aria-hidden="true">😕</span>
+                                    <span class="emoji-label">Dissatisfied</span>
+                                    <span class="visually-hidden">Dissatisfied</span>
+                                </label>
+                                <label class="emoji-option" for="satisfaction-3">
+                                    <input type="radio" id="satisfaction-3" name="satisfaction" value="3">
+                                    <span class="emoji-icon" aria-hidden="true">😐</span>
+                                    <span class="emoji-label">Neutral</span>
+                                    <span class="visually-hidden">Neutral</span>
+                                </label>
+                                <label class="emoji-option" for="satisfaction-4">
+                                    <input type="radio" id="satisfaction-4" name="satisfaction" value="4">
+                                    <span class="emoji-icon" aria-hidden="true">🙂</span>
+                                    <span class="emoji-label">Satisfied</span>
+                                    <span class="visually-hidden">Satisfied</span>
+                                </label>
+                                <label class="emoji-option" for="satisfaction-5">
+                                    <input type="radio" id="satisfaction-5" name="satisfaction" value="5">
+                                    <span class="emoji-icon" aria-hidden="true">😄</span>
+                                    <span class="emoji-label">Very Satisfied</span>
+                                    <span class="visually-hidden">Very Satisfied</span>
+                                </label>
                             </div>
-                            <span class="rating-text">Select your rating</span>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
+
                         <div class="consent-checkbox">
                             <input type="checkbox" id="consent" name="consent" required>
                             <label for="consent">I agree to share my feedback for improvement purposes</label>
+                            <div class="form-field-feedback" aria-live="polite"></div>
                         </div>
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Submit Feedback
+                        <button type="submit" class="submit-btn" aria-label="Submit feedback form">
+                            <span class="btn-content"><i class="fas fa-paper-plane" aria-hidden="true"></i> Submit
+                                Feedback</span>
+                            <span class="btn-loading"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                                Submitting...</span>
                         </button>
                     </form>
                 </div>
 
-                <div class="contact-info">
-                    <div class="contact-header">
-                        <i class="fas fa-headset contact-icon"></i>
+                <div class="feedback-contact-info">
+                    <div class="feedback-contact-header">
+                        <i class="fas fa-headset feedback-contact-icon" aria-hidden="true"></i>
                         <h3>Get In Touch</h3>
                     </div>
                     <p>Have questions or want to connect directly? Reach out through:</p>
-                    <div class="contact-methods">
-                        <a href="mailto:triples.studies.edu@gmail.com" class="contact-method">
-                            <i class="fas fa-envelope"></i>
+                    <div class="feedback-contact-methods">
+                        <a href="mailto:triples.studies.edu@gmail.com" class="feedback-contact-method"
+                            aria-label="Email us at triples.studies.edu@gmail.com">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             <span>triples.studies.edu@gmail.com</span>
                         </a>
-                        <a href="https://wa.me/+918217358117" class="contact-method">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/+918217358117" class="feedback-contact-method"
+                            aria-label="WhatsApp us at +91 8217358117">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
                             <span>+91 8217358117</span>
                         </a>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
-                            target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
+                    <div class="feedback-social-links">
+                        <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="feedback-social-icon"
+                            title="LinkedIn" target="_blank" aria-label="Visit our LinkedIn profile">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                         </a>
-                        <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub"
-                            target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/srujanshetty0007" class="feedback-social-icon" title="GitHub"
+                            target="_blank" aria-label="Visit our GitHub profile">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon" title="Instagram"
-                            target="_blank">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/srujan_shetty_0007/" class="feedback-social-icon"
+                            title="Instagram" target="_blank" aria-label="Visit our Instagram profile">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section (Simplified) -->
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+        <!-- FAQ Section -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question">
-                        How is my feedback used? <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Your feedback is reviewed by our team to improve the Triple S platform, enhance study materials,
-                        and add new features based on student needs.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Can I suggest new study materials? <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Absolutely! We welcome suggestions for new study materials. Please provide as much detail as
-                        possible about the specific subject and materials you'd like to see.
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        How is my feedback used? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="faq-answer-1" class="faq-answer" aria-hidden="true">
+                        <p>Your feedback is reviewed by our team to improve the Triple S platform, enhance study
+                            materials,
+                            and add new features based on student needs. We take every suggestion seriously and aim to
+                            implement
+                            helpful changes as soon as possible.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        How can I contribute to Triple S? <i class="fas fa-chevron-down"></i>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                        Can I suggest new study materials? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="faq-answer-2" class="faq-answer" aria-hidden="true">
+                        <p>Absolutely! We welcome suggestions for new study materials. Please provide as much detail as
+                            possible about the specific subject and materials you'd like to see. Your input helps us
+                            prioritize
+                            which resources to add next.</p>
                     </div>
-                    <div class="faq-answer">
-                        You can contribute study materials through our dedicated contribution section on the homepage.
-                        We appreciate all contributions that help fellow students succeed.
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        How can I contribute to Triple S? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="faq-answer-3" class="faq-answer" aria-hidden="true">
+                        <p>You can contribute study materials through our dedicated contribution section on the
+                            homepage.
+                            We appreciate all contributions that help fellow students succeed. Sharing your notes,
+                            question papers,
+                            or solutions benefits the entire student community.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                        Is my feedback anonymous? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="faq-answer-4" class="faq-answer" aria-hidden="true">
+                        <p>By default, we collect your name and email to better address your feedback. However, we
+                            respect your privacy
+                            and will never share your personal information with third parties. Your feedback helps us
+                            improve our platform
+                            for everyone.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Thank You Message (Initially Hidden) -->
-        <div class="thank-you-message">
-            <i class="fas fa-check-circle"></i>
-            <h3>Thank You for Your Feedback!</h3>
-            <p>We appreciate you taking the time to share your thoughts with us.</p>
-            <p>Your input helps us improve Triple S for everyone.</p>
-            <button class="return-btn" onclick="window.location.reload()">
-                <i class="fas fa-redo"></i> Submit Another Response
-            </button>
+        <div class="thank-you-message" role="alert" aria-live="polite">
+            <div class="thank-you-content">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                <h3>Thank You for Your Feedback!</h3>
+                <p>We appreciate you taking the time to share your thoughts with us.</p>
+                <p>Your input helps us improve Triple S for everyone.</p>
+                <button class="return-btn" onclick="window.location.reload()" aria-label="Submit another response">
+                    <i class="fas fa-redo" aria-hidden="true"></i> Submit Another Response
+                </button>
+            </div>
         </div>
     </main>
 
@@ -211,83 +274,99 @@
         <div class="footer-marquee-container">
             <div class="footer-marquee">
                 <div class="footer-marquee-content">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Welcome to Triple S - Your #1 resource for engineering study
                         materials</span>
-                    <i class="fas fa-book"></i>
-                    <span class="footer-marquee-item">Notes, Model Papers, and Previous Year Papers all in one
-                        place</span>
-                    <i class="fas fa-users"></i>
-                    <span class="footer-marquee-item">Join our community of students helping each other excel</span>
-                    <i class="fas fa-lightbulb"></i>
-                    <span class="footer-marquee-item">Knowledge shared is knowledge squared</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-bell" aria-hidden="true"></i>
+                    <span class="footer-marquee-item">New materials added regularly - Stay tuned for updates!</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-upload" aria-hidden="true"></i>
+                    <span class="footer-marquee-item">Contribute your study materials and help fellow students</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span class="footer-marquee-item">Join our growing community of students supporting each
+                        other</span>
+                </div>
+                <div class="footer-marquee-content">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <span class="footer-marquee-item">Access notes, model papers, and previous year question
+                        papers</span>
                 </div>
             </div>
         </div>
 
-        <div class="footer-main container">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
-                    <img src="assets/images/logo1.png" alt="Triple S Logo">
-                </a>
-                <h3>Triple S - Student Study Support</h3>
-                <p>Your comprehensive resource for B.E. exam preparation materials.</p>
-            </div>
-
-            <div class="footer-links-section">
-                <div class="footer-links-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                    </ul>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
+                    <h3>Triple S</h3>
+                    <p>Student Study Support is dedicated to helping engineering students excel in their academic
+                        journey.</p>
                 </div>
-
-                <div class="footer-links-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html#sem1">Semester 1</a></li>
-                        <li><a href="index.html#sem2">Semester 2</a></li>
-                        <li><a href="index.html#contribute-section">Contribute</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links-column">
-                    <h3>Contact Us</h3>
-                    <div class="contact-methods">
-                        <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            Email Us
-                        </a>
-                        <a href="https://wa.me/+918217358117" class="contact-link">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                            <li><a href="index.html#contribute-section">Contribute</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#sem1">Semester 1</a></li>
+                            <li><a href="index.html#sem2">Semester 2</a></li>
+                            <li><a href="index.html#sem3">Semester 3</a></li>
+                            <li><a href="index.html#sem4">Semester 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <div class="contact-methods">
+                            <a href="https://wa.me/+918217358117" class="contact-link">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>Email</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p class="copyright">© 2023 Triple S. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 Triple S. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
-                        target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
                     <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon" title="Instagram"
-                        target="_blank">
-                        <i class="fab fa-instagram"></i>
+                        target="_blank" aria-label="Visit our Instagram profile">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
+                        target="_blank" aria-label="Visit our LinkedIn profile">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub" target="_blank"
+                        aria-label="Visit our GitHub profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
 
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>

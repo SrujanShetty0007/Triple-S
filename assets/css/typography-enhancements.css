@@ -1,0 +1,203 @@
+/* Typography Enhancements for Triple S
+   Improves typography across the site without changing colors or UI design */
+
+/* Global Typography Enhancements */
+body {
+    font-family: var(--body-font);
+    line-height: var(--body-line-height);
+    letter-spacing: var(--body-letter-spacing);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    line-height: var(--heading-line-height);
+    letter-spacing: var(--heading-letter-spacing);
+    font-weight: 700;
+}
+
+h1 {
+    font-weight: 800;
+}
+
+/* Paragraph Spacing */
+p {
+    margin-bottom: 1.5rem;
+    line-height: var(--body-line-height);
+    hyphens: none;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Header Enhancements */
+header .title-container h1 {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.tagline {
+    font-family: var(--body-font);
+    letter-spacing: 0.03em;
+}
+
+/* Hero Section Typography */
+.hero-title, .about-hero-title, .feedback-hero-title {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+.hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+/* Subject Card Typography */
+.subject-header h3 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.subject-code {
+    font-family: var(--body-font);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Material Links */
+.material-link {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: letter-spacing 0.2s ease;
+}
+
+.material-link:hover {
+    letter-spacing: 0.03em;
+}
+
+/* Section Titles */
+.semester-section h2, 
+.about-section h2, 
+.contact-section h2,
+.developer-section h2,
+.faq-section h2 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Welcome Banner */
+.welcome-banner h2 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.welcome-banner p {
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+/* Feature Cards */
+.feature-title {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.8rem;
+}
+
+.feature-description {
+    line-height: 1.7;
+}
+
+/* Developer Section */
+.developer-name {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-top: 1rem;
+}
+
+.developer-title {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.developer-bio {
+    line-height: 1.8;
+}
+
+/* Contact Section */
+.contact-title {
+    font-family: var(--heading-font);
+    font-weight: 700;
+}
+
+.contact-method span {
+    font-weight: 500;
+}
+
+/* Footer Typography */
+footer .footer-brand h3 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+}
+
+.footer-links-column h3 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .hero-title, .about-hero-title, .feedback-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title, .about-hero-title, .feedback-hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    .welcome-banner p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .semester-section h2, 
+    .about-section h2, 
+    .contact-section h2 {
+        font-size: 1.5rem;
+    }
+} 

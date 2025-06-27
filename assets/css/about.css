@@ -13,69 +13,14 @@ p {
     hyphens: none;
 }
 
-/* Prevent hyphenation in footer text */
-footer p,
-footer span,
-footer a,
-footer h1,
-footer h2,
-footer h3,
-footer h4,
-footer h5,
-footer h6,
-footer div {
-    text-align: left;
-    hyphens: none !important;
-    word-break: normal !important;
-    white-space: normal !important;
-    overflow-wrap: normal !important;
-    word-spacing: normal !important;
-}
-
-footer p {
-    text-align: left;
-    word-break: keep-all;
+/* Typography Enhancements */
+.about-section p,
+.developer-bio p,
+.feature-description p {
+    text-align: justify;
+    hyphens: none;
+    word-break: normal;
     word-wrap: normal;
-}
-
-.footer-brand p {
-    text-align: center !important;
-    hyphens: none !important;
-    word-break: normal !important;
-    white-space: normal !important;
-    overflow-wrap: normal !important;
-    word-spacing: normal !important;
-    border-left: none !important;
-    padding-left: 0 !important;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Additional override for footer-brand p to ensure no hyphenation */
-body footer .container .footer-main .footer-brand p {
-    hyphens: none !important;
-    word-break: normal !important;
-    white-space: normal !important;
-    overflow-wrap: normal !important;
-    word-spacing: normal !important;
-}
-
-/* Footer Brand Alignment */
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-logo {
-    display: block;
-    margin: 0 auto 1rem;
-}
-
-.footer-brand h3 {
-    margin-bottom: 0.8rem;
-    text-align: center;
 }
 
 /* Base Styles */
@@ -173,20 +118,14 @@ main {
     }
 
     .about-mission p {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        text-align: justify;
+        line-height: var(--body-line-height);
         padding: 0 0.5rem;
     }
 
     .about-hero-subtitle {
-        font-size: 1.1rem;
         margin-top: 1.2rem;
-        line-height: 1.6;
         padding: 0 1.5rem;
         max-width: 90%;
-        hyphens: none;
-        word-break: normal;
     }
 
     .profile-image {
@@ -252,38 +191,7 @@ main {
         text-align: center;
     }
 
-    /* Additional footer text styles for mobile */
-    footer p,
-    footer span,
-    footer a,
-    footer h3 {
-        white-space: normal !important;
-        overflow-wrap: break-word !important;
-        word-wrap: break-word !important;
-        word-break: normal !important;
-        hyphens: none !important;
-    }
-
-    .footer-brand {
-        width: 100%;
-        padding: 0 1rem;
-    }
-
-    .footer-brand h3 {
-        margin-bottom: 0.6rem;
-        font-size: 1.6rem;
-    }
-
-    .footer-logo {
-        width: 70px;
-        height: auto;
-    }
-
-    .footer-brand p {
-        padding: 0 0.5rem;
-        text-align: center !important;
-        font-size: 0.9rem;
-    }
+    /* Mobile styles for About page */
 
     /* Add profile image styles for mobile */
     .profile-image {
@@ -1625,115 +1533,4 @@ main {
     }
 }
 
-/* Enhanced Footer Marquee Styles for About Page */
-/* These styles override the default marquee styles from styles.css */
-.footer-marquee {
-    display: flex;
-    white-space: nowrap;
-    animation: marquee 45s linear infinite;
-    width: max-content;
-    /* Ensure content doesn't break to next line */
-}
-
-.footer-marquee-content {
-    display: flex;
-    align-items: center;
-    padding-right: 50px;
-    transition: transform 0.3s ease, color 0.3s ease;
-    min-width: auto;
-}
-
-.footer-marquee-content i {
-    margin-right: 10px;
-    color: rgba(255, 255, 255, 0.9);
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-size: 1rem;
-    min-width: 20px;
-    /* Prevent icon from collapsing */
-}
-
-.footer-marquee-item {
-    font-weight: 500;
-    color: white;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-/* New animation using transform: translateX(-33.33%) for smoother looping */
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-33.33%);
-        /* Use -33.33% with tripled content for smoother looping */
-    }
-}
-
-/* Add pause on hover */
-.footer-marquee-container:hover .footer-marquee {
-    animation-play-state: paused;
-}
-
-/* Make the transitions smoother */
-.footer-marquee-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    overflow: hidden;
-    padding: 10px 0;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 5;
-}
-
-/* Add hover effect for individual items */
-.footer-marquee-content:hover {
-    transform: scale(1.05);
-}
-
-.footer-marquee-content:hover .footer-marquee-item,
-.footer-marquee-content:hover i {
-    color: rgba(255, 255, 255, 1);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .footer-marquee {
-        animation-duration: 35s;
-        /* Medium speed for tablets */
-    }
-
-    .footer-marquee-content {
-        padding-right: 40px;
-    }
-
-    .footer-marquee-item {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-marquee {
-        animation-duration: 40s;
-        /* Slower on mobile for better readability */
-    }
-
-    .footer-marquee-content {
-        padding-right: 30px;
-    }
-
-    .footer-marquee-item {
-        font-size: 0.85rem;
-    }
-
-    .footer-marquee-content i {
-        font-size: 0.9rem;
-        margin-right: 8px;
-    }
-}
+/* End of About Page Styles */

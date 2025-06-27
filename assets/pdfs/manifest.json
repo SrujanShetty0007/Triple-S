@@ -284,7 +284,24 @@
       "previous-papers": []
     },
     "programming-c": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "model-paper.pdf",
+          "name": "Model Paper"
+        },
+        {
+          "filename": "model-qp-mod_4-5.pdf",
+          "name": "Model Qp Mod 4 5"
+        },
+        {
+          "filename": "POP-question-bank-MOD-1.pdf",
+          "name": "Pop Question Bank Mod 1"
+        },
+        {
+          "filename": "pop-set-2-solution-pop.pdf",
+          "name": "Pop Set 2 Solution Pop"
+        }
+      ],
       "notes": [
         {
           "filename": "m2 pop.pdf",
@@ -305,12 +322,40 @@
         {
           "filename": "POP_Module-5_Notes.pdf",
           "name": "Pop Module 5 Notes"
+        },
+        {
+          "filename": "RNS_module-1-pop.pdf",
+          "name": "Rns Module 1 Pop"
+        },
+        {
+          "filename": "RNS_module-2-pop.pdf",
+          "name": "Rns Module 2 Pop"
+        },
+        {
+          "filename": "Studocu-module-4-notes.pdf",
+          "name": "Studocu Module 4 Notes"
+        },
+        {
+          "filename": "Studocu-module-5-notes.pdf",
+          "name": "Studocu Module 5 Notes"
         }
       ],
       "previous-papers": [
         {
+          "filename": "module-1-pyq.pdf",
+          "name": "Module 1 Pyq"
+        },
+        {
+          "filename": "pop-qb-question-bank.pdf",
+          "name": "Pop Qb Question Bank"
+        },
+        {
           "filename": "Solved PYO.pdf",
           "name": "Solved Pyo"
+        },
+        {
+          "filename": "solved-previous_year_paper.pdf",
+          "name": "Solved Previous Year Paper"
         }
       ]
     },

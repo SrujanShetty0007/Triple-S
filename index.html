@@ -8,11 +8,13 @@
     <!-- Stylesheets -->
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/typography-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Fix for icon display -->
@@ -64,7 +66,7 @@
             <p class="hero-tagline">Organized. Minimal. Student-Powered.</p>
             <div class="hero-cta">
                 <a href="#sem1" class="btn btn-primary">Explore Materials</a>
-                <a href="#contribute-section" class="btn btn-secondary">Contribute Materials</a>
+                <a href="#my-contribution-section" class="btn btn-secondary">Contribute Materials</a>
             </div>
         </div>
     </section>
@@ -714,7 +716,7 @@
                         id="testimonial-indicator-5"></button>
                 </div>
             </div>
-            <div class="testimonial-action">
+            <div class="testimonial-action" id="my-contribution-section">
                 <a href="feedback.html" class="btn btn-primary feedback-action-btn">
                     <i class="fas fa-comment-dots"></i> Share Your Feedback
                 </a>
@@ -881,34 +883,37 @@
         <div class="footer-marquee-container">
             <div class="footer-marquee">
                 <div class="footer-marquee-content">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Welcome to Triple S - Your #1 resource for engineering study
                         materials</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell" aria-hidden="true"></i>
                     <span class="footer-marquee-item">New materials added regularly - Stay tuned for updates!</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-upload"></i>
+                    <i class="fas fa-upload" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Contribute your study materials and help fellow students</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Join our growing community of students supporting each
                         other</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-book" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Access notes, model papers, and previous year question
                         papers</span>
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
-                    <img src="assets/images/logo1.png" alt="Triple S Logo" class="footer-logo">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
                     <h3>Triple S</h3>
                     <p>Student Study Support is dedicated to helping engineering students excel in their academic
                         journey.</p>
@@ -917,36 +922,51 @@
                     <div class="footer-links-column">
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
                             <li><a href="feedback.html">Feedback</a></li>
-                            <li><a href="#contribute-section">Contribute</a></li>
-                            <li><a href="https://github.com/srujanshetty0007" title="GitHub" target="_blank">GitHub</a>
-                            </li>
+                            <li><a href="index.html#contribute-section">Contribute</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#sem1">Semester 1</a></li>
+                            <li><a href="index.html#sem2">Semester 2</a></li>
+                            <li><a href="index.html#sem3">Semester 3</a></li>
+                            <li><a href="index.html#sem4">Semester 4</a></li>
                         </ul>
                     </div>
                     <div class="footer-contact">
                         <h3>Contact Us</h3>
                         <div class="contact-methods">
                             <a href="https://wa.me/+918217358117" class="contact-link">
-                                <i class="fab fa-whatsapp"></i>
-                                <span style="color: #fff;">WhatsApp</span>
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
                             </a>
                             <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
-                                <i class="fas fa-envelope"></i>
-                                <span style="color: #fff;">Email</span>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>Email</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                <p class="copyright">&copy; 2023 Triple S. All rights reserved.</p>
                 <div class="social-links">
                     <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon" title="Instagram"
-                        target="_blank"><i class="fab fa-instagram"></i></a>
+                        target="_blank" aria-label="Visit our Instagram profile">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
                     <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
-                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        target="_blank" aria-label="Visit our LinkedIn profile">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub" target="_blank"
+                        aria-label="Visit our GitHub profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -954,7 +974,7 @@
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </a>
 
     <!-- JavaScript -->
