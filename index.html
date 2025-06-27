@@ -983,339 +983,350 @@
     <script src="assets/js/script.js"></script>
     <script>
         // Form handling
-        const form = document.getElementById('contributionForm');
-        const thankYouMessage = document.getElementById('thankYouMessage');
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contributionForm');
+            const thankYouMessage = document.getElementById('thankYouMessage');
 
-        // Handle file uploads
-        const fileUpload = document.getElementById('pdfUpload');
-        const uploadBtn = document.querySelector('.upload-btn');
-        const fileNameDisplay = document.getElementById('fileNameDisplay');
+            // Handle file uploads - using one-time setup to prevent duplicate listeners
+            const fileUpload = document.getElementById('pdfUpload');
+            const uploadBtn = document.querySelector('.upload-btn');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
 
-        // File selection UI
-        if (uploadBtn) {
-            uploadBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (fileUpload) fileUpload.click();
-            });
-        }
+            // Remove any existing event listeners (cleanup)
+            if (uploadBtn) {
+                const newUploadBtn = uploadBtn.cloneNode(true);
+                uploadBtn.parentNode.replaceChild(newUploadBtn, uploadBtn);
 
-        if (fileUpload) {
-            fileUpload.addEventListener('change', function () {
-                const file = this.files[0];
-                if (file) {
-                    // Check file size (max 150MB)
-                    if (file.size > 150 * 1024 * 1024) {
-                        alert('File size exceeds 150MB. Please select a smaller file.');
-                        this.value = '';
+                // Add the event listener to the new button
+                newUploadBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (fileUpload) fileUpload.click();
+                });
+            }
+
+            // Clean up file input event listeners
+            if (fileUpload) {
+                const newFileUpload = fileUpload.cloneNode(true);
+                fileUpload.parentNode.replaceChild(newFileUpload, fileUpload);
+
+                // Add the event listener to the new file input
+                newFileUpload.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (file) {
+                        // Check file size (max 150MB)
+                        if (file.size > 150 * 1024 * 1024) {
+                            alert('File size exceeds 150MB. Please select a smaller file.');
+                            this.value = '';
+                            fileNameDisplay.textContent = 'No file chosen';
+                            newUploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                            newUploadBtn.style.backgroundColor = '';
+                            return;
+                        }
+
+                        fileNameDisplay.textContent = file.name;
+                        newUploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
+                        newUploadBtn.style.backgroundColor = '#d1e7dd';
+                    } else {
+                        fileNameDisplay.textContent = 'No file chosen';
+                        newUploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                        newUploadBtn.style.backgroundColor = '';
+                    }
+                });
+            }
+
+            // Form submission handler with FormData and fetch API
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Create FormData object
+                    const formData = new FormData(form);
+
+                    // Show loading state
+                    const submitBtn = document.getElementById('submitContribution');
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                        submitBtn.disabled = true;
+                    }
+
+                    // Use regular form submission but in a way that doesn't reload the page
+                    const formAction = form.getAttribute('action');
+                    const formMethod = form.getAttribute('method');
+
+                    // Create a hidden iframe for submission
+                    const iframe = document.createElement('iframe');
+                    iframe.name = 'hidden-iframe';
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+
+                    // Set form target to the iframe
+                    form.setAttribute('target', 'hidden-iframe');
+
+                    // Submit the form
+                    form.submit();
+
+                    // Show thank you message after a short delay
+                    setTimeout(() => {
+                        // Show thank you message
+                        if (thankYouMessage) {
+                            thankYouMessage.classList.add('show');
+                            setTimeout(() => {
+                                thankYouMessage.classList.remove('show');
+                            }, 5000);
+                        }
+
+                        // Reset form
+                        form.reset();
                         fileNameDisplay.textContent = 'No file chosen';
                         uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
                         uploadBtn.style.backgroundColor = '';
-                        return;
-                    }
 
-                    fileNameDisplay.textContent = file.name;
-                    uploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
-                    uploadBtn.style.backgroundColor = '#d1e7dd';
-                } else {
-                    fileNameDisplay.textContent = 'No file chosen';
-                    uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
-                    uploadBtn.style.backgroundColor = '';
-                }
-            });
-        }
-
-        // Form submission handler with FormData and fetch API
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                // Create FormData object
-                const formData = new FormData(form);
-
-                // Show loading state
-                const submitBtn = document.getElementById('submitContribution');
-                if (submitBtn) {
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-                    submitBtn.disabled = true;
-                }
-
-                // Use regular form submission but in a way that doesn't reload the page
-                const formAction = form.getAttribute('action');
-                const formMethod = form.getAttribute('method');
-
-                // Create a hidden iframe for submission
-                const iframe = document.createElement('iframe');
-                iframe.name = 'hidden-iframe';
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-
-                // Set form target to the iframe
-                form.setAttribute('target', 'hidden-iframe');
-
-                // Submit the form
-                form.submit();
-
-                // Show thank you message after a short delay
-                setTimeout(() => {
-                    // Show thank you message
-                    if (thankYouMessage) {
-                        thankYouMessage.classList.add('show');
-                        setTimeout(() => {
-                            thankYouMessage.classList.remove('show');
-                        }, 5000);
-                    }
-
-                    // Reset form
-                    form.reset();
-                    fileNameDisplay.textContent = 'No file chosen';
-                    uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
-                    uploadBtn.style.backgroundColor = '';
-
-                    // Reset button state
-                    if (submitBtn) {
-                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
-                        submitBtn.disabled = false;
-                    }
-                }, 2000);
-            });
-        }
-
-        // Testimonials Carousel
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all the elements we need
-            const track = document.getElementById('testimonials-track');
-            const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
-            const indicators = Array.from(document.querySelectorAll('.testimonial-indicator'));
-            const prevButton = document.getElementById('testimonials-prev-button');
-            const nextButton = document.getElementById('testimonials-next-button');
-            const progressBar = document.getElementById('testimonials-progress-bar');
-
-            // Initialize variables
-            let currentIndex = 0;
-            const slideCount = slides.length;
-            let autoplayInterval;
-            let progressInterval;
-            let isPaused = false;
-            const autoplayDuration = 6000; // 6 seconds per slide
-            let isAnimating = false;
-
-            // Update carousel function
-            function updateCarousel() {
-                if (isAnimating) return;
-
-                isAnimating = true;
-                resetProgressBar();
-
-                if (track) {
-                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-
-                slides.forEach((slide, index) => {
-                    if (index === currentIndex) {
-                        slide.classList.add('active');
-                        slide.setAttribute('aria-hidden', 'false');
-                        slide.classList.add('slide-in');
-                        setTimeout(() => {
-                            slide.classList.remove('slide-in');
-                        }, 600);
-                    } else {
-                        slide.classList.remove('active');
-                        slide.setAttribute('aria-hidden', 'true');
-                    }
-                });
-
-                indicators.forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active');
-                        indicator.setAttribute('aria-selected', 'true');
-                    } else {
-                        indicator.classList.remove('active');
-                        indicator.setAttribute('aria-selected', 'false');
-                    }
-                });
-
-                setTimeout(() => {
-                    isAnimating = false;
-                }, 600);
-            }
-
-            // Navigation functions
-            function goToPrev() {
-                if (isAnimating) return;
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateCarousel();
-            }
-
-            function goToNext() {
-                if (isAnimating) return;
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateCarousel();
-            }
-
-            // Progress bar functions
-            function startProgressBar() {
-                let width = 0;
-                const increment = 100 / (autoplayDuration / 100);
-
-                if (!progressBar) return;
-
-                progressBar.style.width = '0%';
-
-                if (progressInterval) {
-                    clearInterval(progressInterval);
-                }
-
-                progressInterval = setInterval(() => {
-                    width += increment;
-                    if (width >= 100) {
-                        width = 100;
-                        clearInterval(progressInterval);
-                    }
-                    progressBar.style.width = width + '%';
-                }, 100);
-            }
-
-            function resetProgressBar() {
-                if (progressInterval) {
-                    clearInterval(progressInterval);
-                }
-
-                if (!progressBar) return;
-
-                progressBar.style.width = '0%';
-                if (!isPaused) {
-                    startProgressBar();
-                }
-            }
-
-            // Autoplay functions
-            function startAutoplay() {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                }
-
-                startProgressBar();
-                autoplayInterval = setInterval(goToNext, autoplayDuration);
-            }
-
-            function stopAutoplay() {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                }
-
-                if (progressInterval) {
-                    clearInterval(progressInterval);
-                }
-
-                if (progressBar) {
-                    progressBar.style.width = '0%';
-                }
-            }
-
-            // Event listeners
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    goToPrev();
-                    if (!isPaused) {
-                        stopAutoplay();
-                        startAutoplay();
-                    }
+                        // Reset button state
+                        if (submitBtn) {
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
+                            submitBtn.disabled = false;
+                        }
+                    }, 2000);
                 });
             }
 
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    goToNext();
-                    if (!isPaused) {
-                        stopAutoplay();
-                        startAutoplay();
+            // Testimonials Carousel
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get all the elements we need
+                const track = document.getElementById('testimonials-track');
+                const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+                const indicators = Array.from(document.querySelectorAll('.testimonial-indicator'));
+                const prevButton = document.getElementById('testimonials-prev-button');
+                const nextButton = document.getElementById('testimonials-next-button');
+                const progressBar = document.getElementById('testimonials-progress-bar');
+
+                // Initialize variables
+                let currentIndex = 0;
+                const slideCount = slides.length;
+                let autoplayInterval;
+                let progressInterval;
+                let isPaused = false;
+                const autoplayDuration = 6000; // 6 seconds per slide
+                let isAnimating = false;
+
+                // Update carousel function
+                function updateCarousel() {
+                    if (isAnimating) return;
+
+                    isAnimating = true;
+                    resetProgressBar();
+
+                    if (track) {
+                        track.style.transform = `translateX(-${currentIndex * 100}%)`;
                     }
-                });
-            }
 
-            // Indicator clicks
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    if (currentIndex === index || isAnimating) return;
-                    currentIndex = index;
-                    updateCarousel();
-                    if (!isPaused) {
-                        stopAutoplay();
-                        startAutoplay();
-                    }
-                });
-            });
+                    slides.forEach((slide, index) => {
+                        if (index === currentIndex) {
+                            slide.classList.add('active');
+                            slide.setAttribute('aria-hidden', 'false');
+                            slide.classList.add('slide-in');
+                            setTimeout(() => {
+                                slide.classList.remove('slide-in');
+                            }, 600);
+                        } else {
+                            slide.classList.remove('active');
+                            slide.setAttribute('aria-hidden', 'true');
+                        }
+                    });
 
-            // Touch events for mobile swipe
-            const testimonialContainer = document.querySelector('.testimonials-container');
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            if (testimonialContainer) {
-                testimonialContainer.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    isPaused = true;
-                    stopAutoplay();
-                }, { passive: true });
-
-                testimonialContainer.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                            indicator.setAttribute('aria-selected', 'true');
+                        } else {
+                            indicator.classList.remove('active');
+                            indicator.setAttribute('aria-selected', 'false');
+                        }
+                    });
 
                     setTimeout(() => {
+                        isAnimating = false;
+                    }, 600);
+                }
+
+                // Navigation functions
+                function goToPrev() {
+                    if (isAnimating) return;
+                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                    updateCarousel();
+                }
+
+                function goToNext() {
+                    if (isAnimating) return;
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateCarousel();
+                }
+
+                // Progress bar functions
+                function startProgressBar() {
+                    let width = 0;
+                    const increment = 100 / (autoplayDuration / 100);
+
+                    if (!progressBar) return;
+
+                    progressBar.style.width = '0%';
+
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                    }
+
+                    progressInterval = setInterval(() => {
+                        width += increment;
+                        if (width >= 100) {
+                            width = 100;
+                            clearInterval(progressInterval);
+                        }
+                        progressBar.style.width = width + '%';
+                    }, 100);
+                }
+
+                function resetProgressBar() {
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                    }
+
+                    if (!progressBar) return;
+
+                    progressBar.style.width = '0%';
+                    if (!isPaused) {
+                        startProgressBar();
+                    }
+                }
+
+                // Autoplay functions
+                function startAutoplay() {
+                    if (autoplayInterval) {
+                        clearInterval(autoplayInterval);
+                    }
+
+                    startProgressBar();
+                    autoplayInterval = setInterval(goToNext, autoplayDuration);
+                }
+
+                function stopAutoplay() {
+                    if (autoplayInterval) {
+                        clearInterval(autoplayInterval);
+                    }
+
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                    }
+
+                    if (progressBar) {
+                        progressBar.style.width = '0%';
+                    }
+                }
+
+                // Event listeners
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        goToPrev();
+                        if (!isPaused) {
+                            stopAutoplay();
+                            startAutoplay();
+                        }
+                    });
+                }
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        goToNext();
+                        if (!isPaused) {
+                            stopAutoplay();
+                            startAutoplay();
+                        }
+                    });
+                }
+
+                // Indicator clicks
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        if (currentIndex === index || isAnimating) return;
+                        currentIndex = index;
+                        updateCarousel();
+                        if (!isPaused) {
+                            stopAutoplay();
+                            startAutoplay();
+                        }
+                    });
+                });
+
+                // Touch events for mobile swipe
+                const testimonialContainer = document.querySelector('.testimonials-container');
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                if (testimonialContainer) {
+                    testimonialContainer.addEventListener('touchstart', (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                        isPaused = true;
+                        stopAutoplay();
+                    }, { passive: true });
+
+                    testimonialContainer.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        handleSwipe();
+
+                        setTimeout(() => {
+                            isPaused = false;
+                            startAutoplay();
+                        }, 1000);
+                    }, { passive: true });
+                }
+
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    const swipeDistance = touchEndX - touchStartX;
+
+                    if (swipeDistance > swipeThreshold) {
+                        goToPrev();
+                    } else if (swipeDistance < -swipeThreshold) {
+                        goToNext();
+                    }
+                }
+
+                // Pause on hover
+                if (testimonialContainer) {
+                    testimonialContainer.addEventListener('mouseenter', () => {
+                        isPaused = true;
+                        stopAutoplay();
+                    });
+
+                    testimonialContainer.addEventListener('mouseleave', () => {
                         isPaused = false;
                         startAutoplay();
-                    }, 1000);
-                }, { passive: true });
-            }
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const swipeDistance = touchEndX - touchStartX;
-
-                if (swipeDistance > swipeThreshold) {
-                    goToPrev();
-                } else if (swipeDistance < -swipeThreshold) {
-                    goToNext();
+                    });
                 }
-            }
 
-            // Pause on hover
-            if (testimonialContainer) {
-                testimonialContainer.addEventListener('mouseenter', () => {
-                    isPaused = true;
-                    stopAutoplay();
-                });
-
-                testimonialContainer.addEventListener('mouseleave', () => {
-                    isPaused = false;
-                    startAutoplay();
-                });
-            }
-
-            // Start autoplay on page load
-            startAutoplay();
-        });
-
-        // Back to Top Button
-        document.addEventListener('DOMContentLoaded', function () {
-            const backToTopButton = document.getElementById('backToTop');
-
-            // Show/hide button based on scroll position
-            window.addEventListener('scroll', function () {
-                if (window.pageYOffset > 300) { // Show after scrolling 300px
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
+                // Start autoplay on page load
+                startAutoplay();
             });
 
-            // Smooth scroll to top when clicked
-            backToTopButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            // Back to Top Button
+            document.addEventListener('DOMContentLoaded', function () {
+                const backToTopButton = document.getElementById('backToTop');
+
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function () {
+                    if (window.pageYOffset > 300) { // Show after scrolling 300px
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+
+                // Smooth scroll to top when clicked
+                backToTopButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
