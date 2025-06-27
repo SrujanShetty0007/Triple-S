@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSemesterFiltering();
     initializePdfLinks();
     initializeBackToTop();
-    setupMarquee();
 
     if (window.location.search.includes('submitted=true')) {
         showThankYouMessage();
@@ -527,104 +526,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Enhanced Marquee for seamless scrolling
-function setupMarquee() {
-    const marquee = document.querySelector('.footer-marquee');
-    if (!marquee) return;
-
-    // Save original content
-    const originalContent = marquee.innerHTML;
-
-    // Clear and properly set up the content for seamless looping
-    // Adding multiple copies ensures smooth transition even on mobile
-    marquee.innerHTML = originalContent + originalContent + originalContent + originalContent;
-
-    // Adjust marquee speed based on screen width
-    function adjustMarqueeSpeed() {
-        const screenWidth = window.innerWidth;
-        let duration;
-
-        if (screenWidth <= 480) {
-            duration = '10s'; // Faster on mobile
-        } else if (screenWidth <= 768) {
-            duration = '15s'; // Medium on tablets
-        } else {
-            duration = '25s'; // Slower on desktop
-        }
-
-        marquee.style.animationDuration = duration;
-    }
-
-    // Reset animation to prevent glitches
-    function resetAnimation() {
-        marquee.style.animation = 'none';
-        marquee.offsetHeight; // Trigger reflow
-
-        // Get current screen width
-        const screenWidth = window.innerWidth;
-        let duration;
-
-        if (screenWidth <= 480) {
-            duration = '10s';
-        } else if (screenWidth <= 768) {
-            duration = '15s';
-        } else {
-            duration = '25s';
-        }
-
-        // Apply animation with proper duration
-        marquee.style.animation = `marquee ${duration} linear infinite`;
-    }
-
-    // Call initially
-    adjustMarqueeSpeed();
-
-    // Handle visibility changes to prevent animation issues
-    document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'visible') {
-            resetAnimation();
-        }
-    });
-
-    // Handle orientation changes
-    window.addEventListener('orientationchange', function () {
-        setTimeout(resetAnimation, 100);
-    });
-
-    // Adjust on window resize
-    window.addEventListener('resize', adjustMarqueeSpeed);
-
-    // Add click functionality to marquee items
-    const marqueeItems = document.querySelectorAll('.footer-marquee-content');
-    marqueeItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Get the text content
-            const content = item.querySelector('.footer-marquee-item').textContent;
-
-            // Check if we're on the homepage
-            const isHomepage = window.location.pathname.endsWith('index.html') ||
-                window.location.pathname.endsWith('/') ||
-                window.location.pathname.split('/').pop() === '';
-
-            // Handle navigation based on current page
-            if (content.includes('Contribute')) {
-                if (isHomepage) {
-                    document.querySelector('#contribute-section')?.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    window.location.href = 'index.html#contribute-section';
-                }
-            } else if (content.includes('materials')) {
-                if (isHomepage) {
-                    document.querySelector('.semester-filter')?.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    window.location.href = 'index.html#sem1';
-                }
-            }
-        });
-    });
-}
-
-// Call setupMarquee when the DOM is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    setupMarquee();
-});
+// The marquee functionality has been moved to marquee.js for better code organization
+// and to ensure consistent behavior across all pages

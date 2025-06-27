@@ -36,7 +36,12 @@
       "previous-papers": []
     },
     "mathematics": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "upscalemedia-transformed.png",
+          "name": "Upscalemedia Transformed.png"
+        }
+      ],
       "notes": [],
       "previous-papers": []
     },
@@ -179,7 +184,24 @@
     },
     "english": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "Module_2_Student_Notes.pdf",
+          "name": "Module 2 Student Notes"
+        },
+        {
+          "filename": "Module_3_Student_Notes.pdf",
+          "name": "Module 3 Student Notes"
+        },
+        {
+          "filename": "Module_4_Student_Notes.pdf",
+          "name": "Module 4 Student Notes"
+        },
+        {
+          "filename": "Module_5_Student_Notes.pdf",
+          "name": "Module 5 Student Notes"
+        }
+      ],
       "previous-papers": []
     },
     "indian-constitution": {

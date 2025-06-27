@@ -344,6 +344,7 @@ main {
     margin-top: 2rem;
     padding: 0 1rem;
     align-items: start;
+    position: relative;
 }
 
 .feedback-form-container {
@@ -700,6 +701,25 @@ main {
     .emoji-rating {
         max-width: 100%;
         padding: 0.75rem 0.25rem;
+    }
+
+    .thank-you-message {
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+        margin: 0 auto 1.5rem;
+    }
+
+    .thank-you-message i {
+        font-size: 3.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .thank-you-message h3 {
+        font-size: 1.6rem;
+    }
+
+    .thank-you-message p {
+        font-size: 1rem;
     }
 }
 
@@ -1261,25 +1281,23 @@ main {
 
 /* Thank You Message */
 .thank-you-message {
-    background-color: white;
-    border-radius: var(--card-border-radius);
-    padding: 3rem 2rem;
+    background: linear-gradient(145deg, #e9f7ef, #d1f2e4);
+    border: none;
+    border-radius: 12px;
+    padding: 2.5rem;
     text-align: center;
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
-    margin: 3rem auto 1rem;
-    max-width: 600px;
+    margin: 0 auto 2rem;
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    display: none;
-}
-
-.thank-you-content {
     transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition: all 0.4s ease;
+    display: none;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    z-index: 100;
+    grid-column: 1 / -1;
 }
 
 .thank-you-message::before {
@@ -1287,21 +1305,21 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     height: 5px;
-    background: var(--gradient);
+    background: linear-gradient(to right, #4ade80, #22c55e);
+    border-radius: 5px 5px 0 0;
 }
 
 .thank-you-message i {
     font-size: 4rem;
-    color: var(--success-color);
+    color: #16a34a;
     margin-bottom: 1.5rem;
     display: block;
-    animation: checkmark 0.8s ease-in-out;
-    transform-origin: center;
+    animation: scaleIn 0.5s ease;
 }
 
-@keyframes checkmark {
+@keyframes scaleIn {
     0% {
         transform: scale(0);
         opacity: 0;
@@ -1317,66 +1335,84 @@ main {
     }
 }
 
-.return-btn {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.5rem;
-    background: var(--gradient);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    font-family: inherit;
-    letter-spacing: 0.02em;
-}
-
-.return-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-}
-
-.return-btn:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-.return-btn i {
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    display: inline;
-    color: white;
-}
-
 .thank-you-message h3 {
-    font-size: 2rem;
-    color: var(--dark-color);
-    margin-bottom: 1.25rem;
+    color: #166534;
+    margin-bottom: 1rem;
     font-weight: 700;
-    letter-spacing: 0.01em;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
 }
 
 .thank-you-message p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.7;
+    color: #166534;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
     text-align: center;
     max-width: 400px;
-    margin: 0 auto 0.5rem;
-    letter-spacing: 0.01em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .thank-you-message.show {
-    display: block;
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
+    display: block;
+    animation: slideIn 0.5s ease forwards;
 }
 
-.thank-you-message.show .thank-you-content {
-    transform: translateY(0);
-    opacity: 1;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness for thank you message */
+@media (max-width: 768px) {
+    .thank-you-message {
+        padding: 2rem;
+        max-width: 90%;
+    }
+
+    .thank-you-message i {
+        font-size: 3.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .thank-you-message h3 {
+        font-size: 1.6rem;
+    }
+
+    .thank-you-message p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .thank-you-message {
+        padding: 1.8rem 1.5rem;
+        max-width: 95%;
+        margin: 1rem auto;
+    }
+
+    .thank-you-message i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .thank-you-message h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .thank-you-message p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
 }
 
 /* Form error */
@@ -1667,6 +1703,25 @@ select:focus-visible {
         font-size: 1rem;
     }
 
+    .thank-you-message {
+        padding: 1.8rem 1.2rem;
+        max-width: 100%;
+        margin: 0 auto 1.2rem;
+    }
+
+    .thank-you-message i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .thank-you-message h3 {
+        font-size: 1.4rem;
+    }
+
+    .thank-you-message p {
+        font-size: 0.95rem;
+    }
+
     .feedback-intro {
         padding: 1.5rem 1rem;
         width: 100%;
@@ -1799,12 +1854,70 @@ li {
 /* Improved Button Typography */
 .submit-btn {
     font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    font-size: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Return Button Styled Like Home Page - Simplified */
 .return-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right, #4ade80, #22c55e);
+    color: white;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.25);
+    margin: 1.5rem auto 0;
+    width: auto;
+    min-width: 200px;
+    max-width: 280px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.return-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(34, 197, 94, 0.3);
+}
+
+.return-btn:active {
+    transform: translateY(0);
+}
+
+.return-btn:focus-visible {
+    outline: 2px solid #22c55e;
+    outline-offset: 3px;
+}
+
+.return-btn i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+/* Mobile responsiveness for the return button */
+@media (max-width: 576px) {
+    .return-btn {
+        padding: 0.75rem 1.2rem;
+        font-size: 0.9rem;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 400px) {
+    .return-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        min-width: 160px;
+    }
+
+    .return-btn i {
+        font-size: 0.8rem;
+    }
 }

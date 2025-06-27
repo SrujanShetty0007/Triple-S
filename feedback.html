@@ -63,7 +63,18 @@
             <div class="feedback-container">
                 <div class="feedback-form-container" role="form">
                     <h3 class="section-title" id="form-heading">Submit Your Feedback</h3>
-                    <form id="feedbackForm" class="feedback-form" aria-labelledby="form-heading">
+                    <form id="feedbackForm" class="feedback-form"
+                        action="https://formsubmit.co/triples.studies.edu@gmail.com" method="POST"
+                        aria-labelledby="form-heading">
+                        <!-- FormSubmit.co configuration -->
+                        <input type="hidden" name="_subject" value="New Triple S Feedback">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_autoresponse"
+                            value="Thank you for your feedback! We have received your submission and will take your comments into consideration.">
+                        <!-- Anti-spam honeypot field -->
+                        <input type="text" name="_honey" style="display:none">
+
                         <!-- Form error message container -->
                         <div class="form-error" role="alert" aria-live="assertive" style="display: none;"></div>
 
@@ -90,10 +101,10 @@
                             <div class="input-with-icon">
                                 <select id="category" name="category" required aria-describedby="category-help">
                                     <option value="">Select Category</option>
-                                    <option value="general">General Feedback</option>
-                                    <option value="content">Study Materials</option>
-                                    <option value="suggestion">Suggestion</option>
-                                    <option value="issue">Issue Report</option>
+                                    <option value="General Feedback">General Feedback</option>
+                                    <option value="Study Materials">Study Materials</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Issue Report">Issue Report</option>
                                 </select>
                                 <i class="fas fa-tag" aria-hidden="true"></i>
                             </div>
@@ -165,6 +176,14 @@
                     </form>
                 </div>
 
+                <!-- Thank You Message (Initially Hidden) -->
+                <div class="thank-you-message" role="alert" aria-live="polite">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <h3>Thank You for Your Feedback!</h3>
+                    <p>We appreciate you taking the time to share your thoughts with us.</p>
+                    <p>Your input helps us improve Triple S for everyone.</p>
+                </div>
+
                 <div class="feedback-contact-info">
                     <div class="feedback-contact-header">
                         <i class="fas fa-headset feedback-contact-icon" aria-hidden="true"></i>
@@ -206,15 +225,15 @@
             <h2 id="faq-heading">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-                        How is my feedback used? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        How can I contribute to Triple S? <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div id="faq-answer-1" class="faq-answer" aria-hidden="true">
-                        <p>Your feedback is reviewed by our team to improve the Triple S platform, enhance study
-                            materials,
-                            and add new features based on student needs. We take every suggestion seriously and aim to
-                            implement
-                            helpful changes as soon as possible.</p>
+                    <div id="faq-answer-3" class="faq-answer" aria-hidden="true">
+                        <p>You can contribute study materials through our dedicated contribution section on the
+                            homepage.
+                            We appreciate all contributions that help fellow students succeed. Sharing your notes,
+                            question papers,
+                            or solutions benefits the entire student community.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -228,18 +247,20 @@
                             which resources to add next.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-                        How can I contribute to Triple S? <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        How is my feedback used? <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div id="faq-answer-3" class="faq-answer" aria-hidden="true">
-                        <p>You can contribute study materials through our dedicated contribution section on the
-                            homepage.
-                            We appreciate all contributions that help fellow students succeed. Sharing your notes,
-                            question papers,
-                            or solutions benefits the entire student community.</p>
+                    <div id="faq-answer-1" class="faq-answer" aria-hidden="true">
+                        <p>Your feedback is reviewed by our team to improve the Triple S platform, enhance study
+                            materials,
+                            and add new features based on student needs. We take every suggestion seriously and aim to
+                            implement
+                            helpful changes as soon as possible.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                         Is my feedback anonymous? <i class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -254,19 +275,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Thank You Message (Initially Hidden) -->
-        <div class="thank-you-message" role="alert" aria-live="polite">
-            <div class="thank-you-content">
-                <i class="fas fa-check-circle" aria-hidden="true"></i>
-                <h3>Thank You for Your Feedback!</h3>
-                <p>We appreciate you taking the time to share your thoughts with us.</p>
-                <p>Your input helps us improve Triple S for everyone.</p>
-                <button class="return-btn" onclick="window.location.reload()" aria-label="Submit another response">
-                    <i class="fas fa-redo" aria-hidden="true"></i> Submit Another Response
-                </button>
-            </div>
-        </div>
     </main>
 
     <!-- Footer -->
@@ -369,6 +377,7 @@
     </a>
 
     <!-- JavaScript -->
+    <script src="assets/js/marquee.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/feedback.js"></script>
 </body>
