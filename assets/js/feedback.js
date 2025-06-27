@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const categorySelect = document.getElementById("category");
     const subjectField = document.querySelector("input[name='_subject']");
 
-    // Initialize FAQ components
+    // Initialize FAQ components with enhanced animations
     initFAQAccordion();
 
     // Initialize form field validation
@@ -93,13 +93,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-
-    // FAQ accordion functionality
+    // Enhanced FAQ accordion functionality
     function initFAQAccordion() {
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
+            const answerParagraph = answer.querySelector('p');
+
+            // Add initial state
+            if (answerParagraph) {
+                answerParagraph.style.opacity = '0';
+                answerParagraph.style.transform = 'translateY(10px)';
+            }
 
             question.addEventListener('click', () => {
                 const isExpanded = question.getAttribute('aria-expanded') === 'true';
@@ -108,16 +113,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 faqItems.forEach(otherItem => {
                     const otherQuestion = otherItem.querySelector('.faq-question');
                     const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherParagraph = otherAnswer.querySelector('p');
 
-                    if (otherItem !== item) {
+                    if (otherItem !== item && otherQuestion.getAttribute('aria-expanded') === 'true') {
                         otherQuestion.setAttribute('aria-expanded', 'false');
                         otherAnswer.setAttribute('aria-hidden', 'true');
+
+                        // Animate paragraph
+                        if (otherParagraph) {
+                            otherParagraph.style.opacity = '0';
+                            otherParagraph.style.transform = 'translateY(10px)';
+                        }
                     }
                 });
 
                 // Toggle current FAQ
                 question.setAttribute('aria-expanded', !isExpanded);
                 answer.setAttribute('aria-hidden', isExpanded);
+
+                // Animate paragraph
+                if (answerParagraph) {
+                    if (!isExpanded) {
+                        // Small delay to allow the container to expand first
+                        setTimeout(() => {
+                            answerParagraph.style.opacity = '1';
+                            answerParagraph.style.transform = 'translateY(0)';
+                        }, 150);
+                    } else {
+                        answerParagraph.style.opacity = '0';
+                        answerParagraph.style.transform = 'translateY(10px)';
+                    }
+                }
             });
         });
     }
