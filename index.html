@@ -814,7 +814,7 @@
 
                         <!-- File Upload -->
                         <div class="form-group file-upload">
-                            <label for="pdfUpload">Upload File (PDF, JPG, JPEG, PNG) - Max 25MB</label>
+                            <label for="pdfUpload">Upload File (PDF, JPG, JPEG, PNG) - Max 150MB</label>
                             <input type="file" id="pdfUpload" name="attachment" accept=".pdf,.jpg,.jpeg,.png" required>
                             <div class="upload-btn">
                                 <i class="fas fa-cloud-upload-alt"></i> Choose File
@@ -1003,9 +1003,9 @@
             fileUpload.addEventListener('change', function () {
                 const file = this.files[0];
                 if (file) {
-                    // Check file size (max 25MB)
-                    if (file.size > 25 * 1024 * 1024) {
-                        alert('File size exceeds 25MB. Please select a smaller file.');
+                    // Check file size (max 150MB)
+                    if (file.size > 150 * 1024 * 1024) {
+                        alert('File size exceeds 150MB. Please select a smaller file.');
                         this.value = '';
                         fileNameDisplay.textContent = 'No file chosen';
                         uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
