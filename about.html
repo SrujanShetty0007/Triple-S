@@ -8,11 +8,13 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/typography-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 </head>
 
@@ -196,34 +198,37 @@
         <div class="footer-marquee-container">
             <div class="footer-marquee">
                 <div class="footer-marquee-content">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Welcome to Triple S - Your #1 resource for engineering study
                         materials</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell" aria-hidden="true"></i>
                     <span class="footer-marquee-item">New materials added regularly - Stay tuned for updates!</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-upload"></i>
+                    <i class="fas fa-upload" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Contribute your study materials and help fellow students</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Join our growing community of students supporting each
                         other</span>
                 </div>
                 <div class="footer-marquee-content">
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-book" aria-hidden="true"></i>
                     <span class="footer-marquee-item">Access notes, model papers, and previous year question
                         papers</span>
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
-                    <img src="assets/images/logo1.png" alt="Triple S Logo" class="footer-logo">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
                     <h3>Triple S</h3>
                     <p>Student Study Support is dedicated to helping engineering students excel in their academic
                         journey.</p>
@@ -233,34 +238,50 @@
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
                             <li><a href="index.html#contribute-section">Contribute</a></li>
-                            <li><a href="https://github.com/srujanshetty0007" title="GitHub" target="_blank">GitHub</a>
-                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#sem1">Semester 1</a></li>
+                            <li><a href="index.html#sem2">Semester 2</a></li>
+                            <li><a href="index.html#sem3">Semester 3</a></li>
+                            <li><a href="index.html#sem4">Semester 4</a></li>
                         </ul>
                     </div>
                     <div class="footer-contact">
                         <h3>Contact Us</h3>
                         <div class="contact-methods">
                             <a href="https://wa.me/+918217358117" class="contact-link">
-                                <i class="fab fa-whatsapp"></i>
-                                <span style="color: #fff;">WhatsApp</span>
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
                             </a>
                             <a href="mailto:triples.studies.edu@gmail.com" class="contact-link">
-                                <i class="fas fa-envelope"></i>
-                                <span style="color: #fff;">Email</span>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>Email</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                <p class="copyright">&copy; 2023 Triple S. All rights reserved.</p>
                 <div class="social-links">
                     <a href="https://www.instagram.com/srujan_shetty_0007/" class="social-icon" title="Instagram"
-                        target="_blank"><i class="fab fa-instagram"></i></a>
+                        target="_blank" aria-label="Visit our Instagram profile">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
                     <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-icon" title="LinkedIn"
-                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        target="_blank" aria-label="Visit our LinkedIn profile">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/srujanshetty0007" class="social-icon" title="GitHub" target="_blank"
+                        aria-label="Visit our GitHub profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -268,7 +289,7 @@
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </a>
 
     <!-- JavaScript -->
@@ -314,92 +335,10 @@
                     behavior: 'smooth'
                 });
             });
-
-            // Marquee setup for footer
-            setupMarquee();
         });
-
-        // Enhanced Marquee for seamless scrolling
-        function setupMarquee() {
-            const marquee = document.querySelector('.footer-marquee');
-            if (!marquee) return;
-
-            // Save original content
-            const originalContent = marquee.innerHTML;
-
-            // Reset any previous duplications
-            marquee.innerHTML = originalContent;
-
-            // Clone the content exactly 3 times for best results with transform: translateX(-33.33%)
-            marquee.innerHTML = originalContent + originalContent + originalContent;
-
-            // Calculate optimal speed based on content length and screen width
-            function calculateOptimalSpeed() {
-                const screenWidth = window.innerWidth;
-                const contentWidth = marquee.scrollWidth / 3; // Divide by 3 since we tripled the content
-                const ratio = contentWidth / screenWidth;
-
-                // Base animation times in seconds (adjusted for mobile)
-                let duration;
-                if (screenWidth <= 480) {
-                    duration = 40; // Slower on mobile for readability
-                } else if (screenWidth <= 768) {
-                    duration = 35; // Medium speed for tablets
-                } else {
-                    duration = 45; // Normal speed for desktop
-                }
-
-                // Adjust duration based on content length
-                return `${Math.max(duration, ratio * 15)}s`;
-            }
-
-            // Function to apply the animation speed
-            function applySpeed() {
-                marquee.style.animationDuration = calculateOptimalSpeed();
-            }
-
-            // Reset animation to prevent glitches on window resize
-            function resetAnimation() {
-                marquee.style.animation = 'none';
-                marquee.offsetHeight; // Trigger reflow
-                marquee.style.animation = `marquee ${calculateOptimalSpeed()} linear infinite`;
-            }
-
-            // Handle visibility changes to prevent animation issues
-            document.addEventListener('visibilitychange', function () {
-                if (document.visibilityState === 'visible') {
-                    resetAnimation();
-                }
-            });
-
-            // Handle orientation changes
-            window.addEventListener('orientationchange', function () {
-                setTimeout(resetAnimation, 100);
-            });
-
-            // Apply initial speed
-            applySpeed();
-
-            // Adjust on window resize
-            window.addEventListener('resize', resetAnimation);
-
-            // Add click functionality to marquee items
-            const marqueeItems = document.querySelectorAll('.footer-marquee-content');
-            marqueeItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    // Get the text content
-                    const content = item.querySelector('.footer-marquee-item').textContent;
-
-                    // Navigate to homepage sections based on content
-                    if (content.includes('Contribute')) {
-                        window.location.href = 'index.html#contribute-section';
-                    } else if (content.includes('materials')) {
-                        window.location.href = 'index.html';
-                    }
-                });
-            });
-        }
     </script>
+    <!-- Import main script with marquee functionality -->
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
