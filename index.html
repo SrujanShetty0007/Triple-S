@@ -986,31 +986,20 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contributionForm');
             const thankYouMessage = document.getElementById('thankYouMessage');
-
-            // Handle file uploads - using one-time setup to prevent duplicate listeners
             const fileUpload = document.getElementById('pdfUpload');
             const uploadBtn = document.querySelector('.upload-btn');
             const fileNameDisplay = document.getElementById('fileNameDisplay');
 
-            // Remove any existing event listeners (cleanup)
-            if (uploadBtn) {
-                const newUploadBtn = uploadBtn.cloneNode(true);
-                uploadBtn.parentNode.replaceChild(newUploadBtn, uploadBtn);
-
-                // Add the eventlistener to the new button
-                newUploadBtn.addEventListener('click', function (e) {
+            // File upload handling
+            if (uploadBtn && fileUpload) {
+                uploadBtn.addEventListener('click', function (e) {
                     e.preventDefault();
-                    if (fileUpload) fileUpload.click();
+                    fileUpload.click();
                 });
             }
 
-            // Clean up file input event listeners
             if (fileUpload) {
-                const newFileUpload = fileUpload.cloneNode(true);
-                fileUpload.parentNode.replaceChild(newFileUpload, fileUpload);
-
-                // Add the event listener to the new file input
-                newFileUpload.addEventListener('change', function () {
+                fileUpload.addEventListener('change', function () {
                     const file = this.files[0];
                     if (file) {
                         // Check file size (max 150MB)
@@ -1018,29 +1007,30 @@
                             alert('File size exceeds 150MB. Please select a smaller file.');
                             this.value = '';
                             fileNameDisplay.textContent = 'No file chosen';
-                            newUploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
-                            newUploadBtn.style.backgroundColor = '';
                             return;
                         }
 
                         fileNameDisplay.textContent = file.name;
-                        newUploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
-                        newUploadBtn.style.backgroundColor = '#d1e7dd';
+                        uploadBtn.innerHTML = '<i class="fas fa-check"></i> File Selected';
+                        uploadBtn.style.backgroundColor = '#d1e7dd';
                     } else {
                         fileNameDisplay.textContent = 'No file chosen';
-                        newUploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
-                        newUploadBtn.style.backgroundColor = '';
+                        uploadBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+                        uploadBtn.style.backgroundColor = '';
                     }
                 });
             }
 
-            // Form submission handler with FormData and fetch API
+            // Form submission handler
             if (form) {
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
 
-                    // Create FormData object
-                    const formData = new FormData(form);
+                    // Validate file is selected
+                    if (fileUpload && fileUpload.files.length === 0) {
+                        alert('Please select a file to upload');
+                        return;
+                    }
 
                     // Show loading state
                     const submitBtn = document.getElementById('submitContribution');
@@ -1048,10 +1038,6 @@
                         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
                         submitBtn.disabled = true;
                     }
-
-                    // Use regular form submission but in a way that doesn't reload the page
-                    const formAction = form.getAttribute('action');
-                    const formMethod = form.getAttribute('method');
 
                     // Create a hidden iframe for submission
                     const iframe = document.createElement('iframe');
@@ -1091,25 +1077,23 @@
             }
 
             // Back to Top Button
-            document.addEventListener('DOMContentLoaded', function () {
-                const backToTopButton = document.getElementById('backToTop');
+            const backToTopButton = document.getElementById('backToTop');
 
-                // Show/hide button based on scroll position
-                window.addEventListener('scroll', function () {
-                    if (window.pageYOffset > 300) { // Show after scrolling 300px
-                        backToTopButton.classList.add('visible');
-                    } else {
-                        backToTopButton.classList.remove('visible');
-                    }
-                });
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) { // Show after scrolling 300px
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
 
-                // Smooth scroll to top when clicked
-                backToTopButton.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+            // Smooth scroll to top when clicked
+            backToTopButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
         });

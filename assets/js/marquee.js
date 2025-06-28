@@ -14,8 +14,7 @@ function setupMarquee() {
     const originalContent = marquee.innerHTML;
 
     // Clear and properly set up the content for seamless looping
-    // Adding multiple copies ensures smooth transition even on mobile
-    marquee.innerHTML = originalContent + originalContent + originalContent + originalContent;
+    marquee.innerHTML = originalContent + originalContent + originalContent;
 
     // Adjust marquee speed based on screen width
     function adjustMarqueeSpeed() {
@@ -31,8 +30,6 @@ function setupMarquee() {
         }
 
         marquee.style.animationDuration = duration;
-
-        // Make sure the animation is running
         resetAnimation();
     }
 
@@ -46,11 +43,11 @@ function setupMarquee() {
         let duration;
 
         if (screenWidth <= 480) {
-            duration = '20s'; // Slower on small mobile for better readability
+            duration = '20s';
         } else if (screenWidth <= 768) {
-            duration = '25s'; // Medium on tablets
+            duration = '25s';
         } else {
-            duration = '30s'; // Slower on desktop
+            duration = '30s';
         }
 
         // Apply animation with proper duration

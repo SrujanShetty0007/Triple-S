@@ -63,7 +63,12 @@
       "previous-papers": []
     },
     "chemistry": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "Applied Chemistry for CSE.pdf",
+          "name": "Applied Chemistry For Cse"
+        }
+      ],
       "notes": [
         {
           "filename": "BCHES102_Mod1.pdf",
@@ -78,15 +83,28 @@
       "previous-papers": []
     },
     "design-thinking": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "Innovation and Design Thinking question banks.pdf",
+          "name": "Innovation And Design Thinking Question Banks"
+        }
+      ],
       "notes": [],
       "previous-papers": []
     },
     "electrical-engineering": {
       "model-papers": [
         {
+          "filename": "Intro to electrical engg-SIMP (1) (1).pdf",
+          "name": "Intro To Electrical Engg Simp (1) (1)"
+        },
+        {
           "filename": "sample-model-paper.pdf",
           "name": "Sample Model Paper"
+        },
+        {
+          "filename": "SOLVED MQP ELE (2).pdf",
+          "name": "Solved Mqp Ele (2)"
         }
       ],
       "notes": [
@@ -142,6 +160,10 @@
         {
           "filename": "Electronics-Question-Bank.pdf",
           "name": "Electronics Question Bank"
+        },
+        {
+          "filename": "esc model paper 1 solution.pdf",
+          "name": "Esc Model Paper 1 Solution"
         },
         {
           "filename": "model-paper-1.pdf",
@@ -207,12 +229,28 @@
     "mathematics": {
       "model-papers": [
         {
+          "filename": "BMATS201(MODEL QP SOLUTIONS).pdf",
+          "name": "Bmats201(model Qp Solutions)"
+        },
+        {
           "filename": "BMATS201.pdf",
           "name": "Bmats201"
         },
         {
           "filename": "BMATS201_mqp_1_&_2_solns.pdf",
           "name": "Bmats201 Mqp 1 & 2 Solns"
+        },
+        {
+          "filename": "M2 SIMP TIE M1.pdf",
+          "name": "M2 Simp Tie M1"
+        },
+        {
+          "filename": "M2 SIMP TIE mod2.pdf",
+          "name": "M2 Simp Tie Mod2"
+        },
+        {
+          "filename": "m2- 4,5 simp.pdf",
+          "name": "M2  4,5 Simp"
         },
         {
           "filename": "model-paper.pdf",
@@ -243,6 +281,10 @@
         {
           "filename": "Module 5 - Numerical Methods -2 Notes.pdf",
           "name": "Module 5   Numerical Methods  2 Notes"
+        },
+        {
+          "filename": "Module-5 Notes M2.pdf",
+          "name": "Module 5 Notes M2"
         }
       ],
       "previous-papers": [
@@ -253,7 +295,12 @@
       ]
     },
     "mathematics-eee": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "22MATE201_MQP Scheme & Solution.pdf",
+          "name": "22mate201 Mqp Scheme & Solution"
+        }
+      ],
       "notes": [],
       "previous-papers": []
     },
@@ -262,6 +309,10 @@
         {
           "filename": "CSE_SOLVED_MODEL_QP.pdf",
           "name": "Cse Solved Model Qp"
+        },
+        {
+          "filename": "physics- cse.pdf",
+          "name": "Physics  Cse"
         }
       ],
       "notes": [
@@ -385,6 +436,10 @@
         {
           "filename": "Module_2_Important_questions_with_answer.pdf",
           "name": "Module 2 Important Questions With Answer"
+        },
+        {
+          "filename": "Python SIMP- simp qb.pdf",
+          "name": "Python Simp  Simp Qb"
         },
         {
           "filename": "python-model-questions.pdf",
