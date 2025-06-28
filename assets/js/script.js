@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const subjectCards = document.querySelectorAll('.subject-card');
     const welcomeBanner = document.querySelector('.welcome-banner');
     const backToTopButton = document.getElementById('backToTop');
+    const pageLoader = document.getElementById('page-loader');
+
+    // Hide loader when page is fully loaded
+    window.addEventListener('load', () => {
+        if (pageLoader) {
+            pageLoader.style.opacity = '0';
+            setTimeout(() => {
+                pageLoader.style.visibility = 'hidden';
+            }, 300);
+        }
+    });
 
     // Form Elements
     const contributionForm = document.getElementById('contributionForm');
