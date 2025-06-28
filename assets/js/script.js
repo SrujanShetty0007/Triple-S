@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () =>{
+
     // DOM Elements
     const filterBtns = document.querySelectorAll('.filter-btn');
     const semesterSections = document.querySelectorAll('.semester-section');

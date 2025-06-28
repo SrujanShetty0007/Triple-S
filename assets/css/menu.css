@@ -1,0 +1,125 @@
+/* Mobile Menu Styles */
+.mobile-menu-button {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.mobile-menu-button svg {
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.mobile-menu-button .line {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 0.3s, stroke-dashoffset 0.3s;
+}
+
+.mobile-menu-button .line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.mobile-menu-button.active svg {
+    transform: rotate(-45deg);
+}
+
+.mobile-menu-button.active .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: block;
+        z-index: 101;
+        margin-right: 15px;
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: var(--gradient);
+        z-index: 100;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding-top: 70px;
+    }
+
+    .nav-container.active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+}
+
+/* Larger menu button for mobile devices */
+@media (max-width: 480px) {
+    .mobile-menu-button {
+        padding: 8px;
+        margin-right: 18px;
+    }
+
+    .mobile-menu-button svg {
+        height: 35px;
+    }
+
+    .mobile-menu-button .line {
+        stroke-width: 3.5;
+    }
+}
+
+/* Even larger for very small screens */
+@media (max-width: 360px) {
+    .mobile-menu-button {
+        padding: 10px;
+        margin-right: 20px;
+    }
+
+    .mobile-menu-button svg {
+        height: 38px;
+    }
+
+    .mobile-menu-button .line {
+        stroke-width: 4;
+    }
+}

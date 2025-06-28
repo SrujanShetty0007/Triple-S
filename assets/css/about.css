@@ -51,58 +51,6 @@ main {
     /* Match the container padding from styles.css */
 }
 
-.back-home-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    transition: var(--transition);
-    background-color: rgba(255, 255, 255, 0.15);
-    margin-left: auto;
-    position: absolute;
-    right: 10px;
-    /* Match the container padding from styles.css */
-    top: 50%;
-    transform: translateY(-50%);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.back-home-link:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-50%) translateX(-5px);
-}
-
-.back-home-link:active {
-    transform: translateY(-50%) translateX(-2px);
-}
-
-.back-home-link i {
-    margin-right: 8px;
-    font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-    .back-home-link {
-        position: absolute;
-        right: 10px;
-        /* Match the container padding from styles.css */
-        top: 50%;
-        transform: translateY(-50%);
-        margin: 0;
-        padding: 0.4rem 0.8rem;
-    }
-
-    .back-home-link:hover {
-        transform: translateY(-50%) translateX(-5px);
-    }
-
-    .back-home-link:active {
-        transform: translateY(-50%) translateX(-2px);
-    }
 
     /* Header styles are inherited from styles.css */
 
@@ -139,22 +87,10 @@ main {
         font-size: 2.2rem;
         max-height: 44px;
     }
-}
+   
 
 @media (max-width: 480px) {
-    /* Header styles are inherited from styles.css */
 
-    .back-home-link {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.9rem;
-    }
-
-    .back-home-link i {
-        margin-right: 6px;
-        font-size: 0.9rem;
-    }
-
-    /* Logo and title styles are inherited from styles.css */
 
     .about-mission p {
         font-size: 1.05rem;

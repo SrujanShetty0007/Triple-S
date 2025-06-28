@@ -28,39 +28,6 @@ main {
     padding: 0;
 }
 
-/* Header Back Link Styles */
-.back-home-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: var(--button-border-radius);
-    transition: var(--transition);
-    background-color: rgba(255, 255, 255, 0.15);
-    margin-left: auto;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.back-home-link:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-50%) translateX(-5px);
-}
-
-.back-home-link:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 2px;
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-.back-home-link i {
-    margin-right: 8px;
-    font-size: 1rem;
-}
 
 /* Feedback Hero Section */
 .feedback-hero {
