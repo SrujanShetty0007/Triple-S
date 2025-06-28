@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSemesterFiltering();
     initializePdfLinks();
     initializeBackToTop();
+    initializeTestimonialsCarousel();
 
     if (window.location.search.includes('submitted=true')) {
         showThankYouMessage();
@@ -497,6 +498,225 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         container.appendChild(fileItem);
+    }
+
+    // Testimonials Carousel
+    function initializeTestimonialsCarousel() {
+        // Get all the elements we need
+        const track = document.getElementById('testimonials-track');
+        const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+        const indicators = Array.from(document.querySelectorAll('.testimonial-indicator'));
+        const prevButton = document.getElementById('testimonials-prev-button');
+        const nextButton = document.getElementById('testimonials-next-button');
+        const progressBar = document.getElementById('testimonials-progress-bar');
+
+        if (!track || !slides.length || !indicators.length) return;
+
+        // Initialize variables
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        let autoplayInterval;
+        let progressInterval;
+        let isPaused = false;
+        const autoplayDuration = 6000; // 6 seconds per slide
+        let isAnimating = false;
+
+        // Update carousel function
+        function updateCarousel() {
+            if (isAnimating) return;
+
+            isAnimating = true;
+            resetProgressBar();
+
+            if (track) {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            slides.forEach((slide, index) => {
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                    slide.setAttribute('aria-hidden', 'false');
+                    slide.classList.add('slide-in');
+                    setTimeout(() => {
+                        slide.classList.remove('slide-in');
+                    }, 600);
+                } else {
+                    slide.classList.remove('active');
+                    slide.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                    indicator.setAttribute('aria-selected', 'true');
+                } else {
+                    indicator.classList.remove('active');
+                    indicator.setAttribute('aria-selected', 'false');
+                }
+            });
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600);
+        }
+
+        // Navigation functions
+        function goToPrev() {
+            if (isAnimating) return;
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateCarousel();
+        }
+
+        function goToNext() {
+            if (isAnimating) return;
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateCarousel();
+        }
+
+        // Progress bar functions
+        function startProgressBar() {
+            let width = 0;
+            const increment = 100 / (autoplayDuration / 100);
+
+            if (!progressBar) return;
+
+            progressBar.style.width = '0%';
+
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            progressInterval = setInterval(() => {
+                width += increment;
+                if (width >= 100) {
+                    width = 100;
+                    clearInterval(progressInterval);
+                }
+                progressBar.style.width = width + '%';
+            }, 100);
+        }
+
+        function resetProgressBar() {
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            if (!progressBar) return;
+
+            progressBar.style.width = '0%';
+            if (!isPaused) {
+                startProgressBar();
+            }
+        }
+
+        // Autoplay functions
+        function startAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+
+            startProgressBar();
+            autoplayInterval = setInterval(goToNext, autoplayDuration);
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+        }
+
+        // Event listeners
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                goToPrev();
+                if (!isPaused) {
+                    stopAutoplay();
+                    startAutoplay();
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                goToNext();
+                if (!isPaused) {
+                    stopAutoplay();
+                    startAutoplay();
+                }
+            });
+        }
+
+        // Indicator clicks
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                if (currentIndex === index || isAnimating) return;
+                currentIndex = index;
+                updateCarousel();
+                if (!isPaused) {
+                    stopAutoplay();
+                    startAutoplay();
+                }
+            });
+        });
+
+        // Touch events for mobile swipe
+        const testimonialContainer = document.querySelector('.testimonials-container');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (testimonialContainer) {
+            testimonialContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                isPaused = true;
+                stopAutoplay();
+            }, { passive: true });
+
+            testimonialContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+
+                setTimeout(() => {
+                    isPaused = false;
+                    startAutoplay();
+                }, 1000);
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+
+            if (swipeDistance > swipeThreshold) {
+                goToPrev();
+            } else if (swipeDistance < -swipeThreshold) {
+                goToNext();
+            }
+        }
+
+        // Pause on hover
+        if (testimonialContainer) {
+            testimonialContainer.addEventListener('mouseenter', () => {
+                isPaused = true;
+                stopAutoplay();
+            });
+
+            testimonialContainer.addEventListener('mouseleave', () => {
+                isPaused = false;
+                startAutoplay();
+            });
+        }
+
+        // Start autoplay on page load
+        startAutoplay();
     }
 });
 
