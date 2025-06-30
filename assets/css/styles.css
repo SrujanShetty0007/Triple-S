@@ -3636,3 +3636,58 @@ footer .contact-link span {
         font-size: 0.85rem;
     }
 }
+
+/* For small mobile screens between 310px and 400px */
+@media (max-width: 400px) and (min-width: 310px) {
+    .container {
+        width: 96%;
+        padding: 0 5px;
+    }
+
+    header .container {
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .logo-container {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
+    .title-container {
+        min-width: 0;
+    }
+
+    .title-container h1 {
+        font-size: 1.5rem;
+        white-space: nowrap;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+}
+
+/* Specific fix for very narrow screens under 320px */
+@media (max-width: 320px) {
+    .container {
+        width: 98%;
+        padding: 0 2px;
+    }
+
+    header .container {
+        padding: 3px;
+    }
+
+    .logo-container {
+        flex-shrink: 1;
+    }
+
+    .title-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .tagline {
+        font-size: 0.7rem;
+    }
+}
