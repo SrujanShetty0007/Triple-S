@@ -1,7 +1,3 @@
-/**
- * Enhanced Marquee for seamless scrolling across all pages
- * This script ensures the footer marquee works consistently on all devices and pages
- */
 document.addEventListener('DOMContentLoaded', function () {
     setupMarquee();
 });
