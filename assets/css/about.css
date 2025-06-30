@@ -52,49 +52,49 @@ main {
 }
 
 
-    /* Header styles are inherited from styles.css */
+/* Header styles are inherited from styles.css */
 
-    .logo-container {
-        max-width: 75%;
-        padding-left: 10px;
-        /* Maintain consistent padding */
-    }
+.logo-container {
+    max-width: 75%;
+    padding-left: 10px;
+    /* Maintain consistent padding */
+}
 
-    .contact-card {
-        margin: 1.5rem auto;
-        max-width: 95%;
-    }
+.contact-card {
+    margin: 1.5rem auto;
+    max-width: 95%;
+}
 
-    .about-mission p {
-        line-height: var(--body-line-height);
-        padding: 0 0.5rem;
-    }
+.about-mission p {
+    line-height: var(--body-line-height);
+    padding: 0 0.5rem;
+}
 
-    .about-hero-subtitle {
-        margin-top: 1.2rem;
-        padding: 0 1.5rem;
-        max-width: 90%;
-    }
+.about-hero-subtitle {
+    margin-top: 1.2rem;
+    padding: 0 1.5rem;
+    max-width: 90%;
+}
 
-    .profile-image {
-        width: 160px;
-        height: 160px;
-        border: 6px solid white;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-    }
+.profile-image {
+    width: 160px;
+    height: 160px;
+    border: 6px solid white;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
 
-    .feature-icon {
-        font-size: 2.2rem;
-        max-height: 44px;
-    }
-   
+.feature-icon {
+    font-size: 2.2rem;
+    max-height: 44px;
+}
+
 
 @media (max-width: 480px) {
 
 
     .about-mission p {
-        font-size: 1.05rem;
-        line-height: 1.7;
+        font-size: 1rem;
+        line-height: 1.6;
         text-align: left;
         padding: 0;
     }
@@ -126,30 +126,216 @@ main {
         word-break: normal;
         text-align: center;
     }
+}
 
-    /* Mobile styles for About page */
+/* For small mobile screens between 310px and 400px */
+@media (max-width: 400px) and (min-width: 310px) {
+    .about-hero-title {
+        font-size: 1.8rem;
+    }
 
-    /* Add profile image styles for mobile */
+    .about-hero-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding: 0 0.8rem;
+    }
+
+    .about-mission p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .developer-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .developer-name {
+        font-size: 1.5rem;
+    }
+
+    .developer-bio {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .developer-title {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .contact-title {
+        font-size: 1.4rem;
+    }
+
+    .contact-card>p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
     .profile-image {
-        width: 150px;
-        height: 150px;
-        border: 6px solid white;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        width: 140px;
+        height: 140px;
     }
 
-    .profile-header {
-        margin-bottom: 2.5rem;
-    }
-
-    .profile-image:hover {
-        transform: scale(1.08);
+    .feature-card {
+        padding: 1.2rem 0.8rem;
+        min-height: 220px;
     }
 
     .feature-icon {
-        font-size: 2rem;
-        max-height: 40px;
-        margin-bottom: 0.8rem;
+        font-size: 1.8rem;
+        max-height: 36px;
     }
+
+    .contact-method-about {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .contact-method-about i {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+        margin-right: 0.7rem;
+    }
+
+    .contact-text {
+        font-size: 0.85rem;
+    }
+
+    .social-link-about {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .contribute-cta {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Specific fix for very narrow screens under 320px */
+@media (max-width: 320px) {
+    .about-hero-title {
+        font-size: 1.6rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        padding: 0 0.6rem;
+    }
+
+    .about-mission p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .about-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .developer-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .feature-title {
+        font-size: 1rem;
+    }
+
+    .feature-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .developer-name {
+        font-size: 1.3rem;
+    }
+
+    .developer-bio {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .feature-card {
+        padding: 1rem 0.6rem;
+        min-height: 200px;
+    }
+
+    .feature-icon {
+        font-size: 1.6rem;
+        max-height: 32px;
+        margin-bottom: 0.6rem;
+    }
+
+    .contact-method-about {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .contact-method-about i {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+        margin-right: 0.6rem;
+    }
+
+    .contact-text {
+        font-size: 0.8rem;
+    }
+
+    .social-link-about {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .contribute-cta {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+        width: 90%;
+    }
+}
+
+/* Mobile styles for About page */
+
+/* Add profile image styles for mobile */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border: 6px solid white;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header {
+    margin-bottom: 2.5rem;
+}
+
+.profile-image:hover {
+    transform: scale(1.08);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    max-height: 40px;
+    margin-bottom: 0.8rem;
 }
 
 @media (max-width: 360px) {
@@ -472,6 +658,13 @@ main {
     text-align: justify;
     letter-spacing: 0.01em;
     word-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .about-mission p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+    }
 }
 
 .mission-icon {

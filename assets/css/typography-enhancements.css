@@ -12,7 +12,12 @@ body {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--heading-font);
     line-height: var(--heading-line-height);
     letter-spacing: var(--heading-letter-spacing);
@@ -47,7 +52,9 @@ header .title-container h1 {
 }
 
 /* Hero Section Typography */
-.hero-title, .about-hero-title, .feedback-hero-title {
+.hero-title,
+.about-hero-title,
+.feedback-hero-title {
     font-family: var(--heading-font);
     font-weight: 800;
     letter-spacing: 0.02em;
@@ -55,7 +62,9 @@ header .title-container h1 {
     line-height: 1.2;
 }
 
-.hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+.hero-subtitle,
+.about-hero-subtitle,
+.feedback-hero-subtitle {
     font-weight: 400;
     line-height: 1.6;
     letter-spacing: 0.01em;
@@ -86,8 +95,8 @@ header .title-container h1 {
 }
 
 /* Section Titles */
-.semester-section h2, 
-.about-section h2, 
+.semester-section h2,
+.about-section h2,
 .contact-section h2,
 .developer-section h2,
 .faq-section h2 {
@@ -170,34 +179,68 @@ footer .footer-brand h3 {
 
 /* Responsive Typography */
 @media (max-width: 768px) {
-    .hero-title, .about-hero-title, .feedback-hero-title {
+
+    .hero-title,
+    .about-hero-title,
+    .feedback-hero-title {
         font-size: 2.5rem;
     }
-    
-    .hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+
+    .hero-subtitle,
+    .about-hero-subtitle,
+    .feedback-hero-subtitle {
         font-size: 1.1rem;
         line-height: 1.5;
+    }
+
+    .about-mission p {
+        font-size: 1.15rem;
+        line-height: 1.8;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title, .about-hero-title, .feedback-hero-title {
+
+    .hero-title,
+    .about-hero-title,
+    .feedback-hero-title {
         font-size: 2rem;
     }
-    
-    .hero-subtitle, .about-hero-subtitle, .feedback-hero-subtitle {
+
+    .hero-subtitle,
+    .about-hero-subtitle,
+    .feedback-hero-subtitle {
         font-size: 1rem;
         line-height: 1.4;
     }
-    
+
     .welcome-banner p {
         font-size: 1rem;
         line-height: 1.6;
     }
-    
-    .semester-section h2, 
-    .about-section h2, 
+
+    .semester-section h2,
+    .about-section h2,
     .contact-section h2 {
         font-size: 1.5rem;
     }
-} 
+
+    .about-mission p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 400px) {
+    .about-mission p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 320px) {
+    .about-mission p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+}
