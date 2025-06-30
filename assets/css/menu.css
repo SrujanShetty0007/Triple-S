@@ -96,11 +96,11 @@
 @media (max-width: 480px) {
     .mobile-menu-button {
         padding: 8px;
-        margin-right: 18px;
+        margin-right: 12px;
     }
 
     .mobile-menu-button svg {
-        height: 35px;
+        height: 32px;
     }
 
     .mobile-menu-button .line {
@@ -108,18 +108,54 @@
     }
 }
 
-/* Even larger for very small screens */
-@media (max-width: 360px) {
+/* Adjustments for small mobile devices */
+@media (max-width: 400px) {
     .mobile-menu-button {
-        padding: 10px;
-        margin-right: 20px;
+        padding: 6px;
+        margin-right: 8px;
     }
 
     .mobile-menu-button svg {
-        height: 38px;
+        height: 28px;
     }
 
     .mobile-menu-button .line {
-        stroke-width: 4;
+        stroke-width: 3;
+    }
+
+    .nav-container {
+        width: 100%;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 360px) {
+    .mobile-menu-button {
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .mobile-menu-button svg {
+        height: 26px;
+    }
+
+    .mobile-menu-button .line {
+        stroke-width: 2.8;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 320px) {
+    .mobile-menu-button {
+        padding: 4px;
+        margin-right: 4px;
+    }
+
+    .mobile-menu-button svg {
+        height: 24px;
+    }
+
+    .mobile-menu-button .line {
+        stroke-width: 2.5;
     }
 }
