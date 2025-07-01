@@ -1,5 +1,4 @@
-/* Import root variables */
-@import url(root-variables.css);
+/* Feedback page styles */
 
 /* Enhanced Typography */
 * {
@@ -25,9 +24,14 @@ body {
     letter-spacing: 0.01em;
 }
 
+/* Header styles are inherited from styles.css */
+
+/* Mobile menu button and header styles are inherited from menu.css and styles.css */
+
 main {
     min-height: calc(100vh - 400px);
-    padding: 0;
+    padding-top: 100px;
+    /* Header height + some extra padding */
 }
 
 

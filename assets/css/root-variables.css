@@ -4,9 +4,9 @@
 :root {
     --primary-color: #4361ee;
     --secondary-color: #3a0ca3;
-    --accent-color: #c12fea;
+    --accent-color: #d72fea;
     --light-color: #f8f9fa;
-    --body-color: #f5f7fa;
+    --body-color: #FBFEFD;
     --dark-color: #212529;
     --shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);

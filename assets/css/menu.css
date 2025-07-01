@@ -1,4 +1,95 @@
-/* Mobile Menu Styles */
+/* Header and Navigation Styles */
+header {
+    background: var(--gradient);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Logo Styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    padding-left: 10px;
+}
+
+.logo {
+    display: flex;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+    position: relative;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    padding: 5px;
+    background-color: var(--gradient);
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.19);
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: 1.2;
+    font-family: var(--heading-font);
+}
+
+.tagline {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
     cursor: pointer;
@@ -35,30 +126,12 @@
     stroke-dashoffset: -32.42;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: rgba(255, 255, 255, 0.8);
-}
-
 /* Responsive Navigation */
 @media (max-width: 768px) {
+    .logo-container {
+        justify-content: center;
+    }
+
     .mobile-menu-button {
         display: block;
         z-index: 101;
@@ -90,9 +163,25 @@
     .nav-links li {
         margin: 15px 0;
     }
+
+    header .container {
+        padding: 0 20px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .title-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
 }
 
-/* Larger menu button for mobile devices */
+/* Tablet and smaller screens */
 @media (max-width: 480px) {
     .mobile-menu-button {
         padding: 8px;
@@ -105,6 +194,19 @@
 
     .mobile-menu-button .line {
         stroke-width: 3.5;
+    }
+
+    .logo img {
+        width: 70px;
+        height: auto;
+    }
+
+    .title-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .tagline {
+        font-size: 0.75rem;
     }
 }
 
@@ -125,12 +227,17 @@
         stroke-width: 3;
     }
 
-    /* Ensure the header container has proper spacing */
     header .container {
-        padding: 0 5px;
+        padding: 0 10px;
+        justify-content: space-between;
     }
 
-    /* Adjust logo size for very small screens */
+    .logo-container {
+        gap: 10px;
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
     .logo {
         margin-right: 10px;
     }
@@ -139,9 +246,13 @@
         width: 40px;
     }
 
-    /* Adjust title size */
+    .title-container {
+        min-width: 0;
+    }
+
     .title-container h1 {
         font-size: 1.5rem;
+        white-space: nowrap;
     }
 
     .tagline {
@@ -149,7 +260,7 @@
     }
 }
 
-/* Even larger for very small screens */
+/* Very small screens */
 @media (max-width: 360px) {
     .mobile-menu-button {
         padding: 10px;
@@ -163,6 +274,18 @@
     .mobile-menu-button .line {
         stroke-width: 4;
     }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .title-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .tagline {
+        font-size: 0.7rem;
+    }
 }
 
 /* Specific fix for very narrow screens under 320px */
@@ -174,6 +297,14 @@
 
     .mobile-menu-button svg {
         height: 24px;
+    }
+
+    header .container {
+        padding: 3px;
+    }
+
+    .logo-container {
+        flex-shrink: 1;
     }
 
     .logo img {

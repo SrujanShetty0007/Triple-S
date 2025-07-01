@@ -42,23 +42,7 @@ main {
     padding: 0;
 }
 
-/* Header Styles - Only adding what's different from styles.css */
-/* The base header styles are inherited from styles.css */
-
-/* Ensure logo has consistent left padding */
-.logo-container {
-    padding-left: 10px;
-    /* Match the container padding from styles.css */
-}
-
-
-/* Header styles are inherited from styles.css */
-
-.logo-container {
-    max-width: 75%;
-    padding-left: 10px;
-    /* Maintain consistent padding */
-}
+/* All header styles are now in menu.css */
 
 .contact-card {
     margin: 1.5rem auto;
