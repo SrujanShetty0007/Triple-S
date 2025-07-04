@@ -287,12 +287,7 @@
           "name": "Module 5 Notes M2"
         }
       ],
-      "previous-papers": [
-        {
-          "filename": "II-SEM-CS-AI-ML-MODEL-QP-1-SOLUTION-BMATS201.pdf",
-          "name": "Ii Sem Cs Ai Ml Model Qp 1 Solution Bmats201"
-        }
-      ]
+      "previous-papers": []
     },
     "mathematics-eee": {
       "model-papers": [
@@ -481,6 +476,10 @@
         }
       ],
       "previous-papers": [
+        {
+          "filename": "II-SEM-CS-AI-ML-MODEL-QP-1-SOLUTION-BMATS201.pdf",
+          "name": "Ii Sem Cs Ai Ml Model Qp 1 Solution Bmats201"
+        },
         {
           "filename": "SolutionsetB_merged.pdf",
           "name": "Solutionsetb Merged"
