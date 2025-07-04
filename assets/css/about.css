@@ -633,15 +633,15 @@ main {
 
 .about-mission p {
     font-size: 1.25rem;
-    line-height: 1.9;
+    line-height: 1.6;
     max-width: 850px;
     margin: 0 auto 1.5rem;
     color: #444;
     position: relative;
     z-index: 1;
     text-align: justify;
-    letter-spacing: 0.01em;
-    word-spacing: 0.05em;
+    letter-spacing: normal;
+    word-spacing: normal;
 }
 
 @media (max-width: 768px) {
