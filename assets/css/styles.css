@@ -3284,3 +3284,350 @@ footer .contact-link span {
         padding: 0 2px;
     }
 }
+
+/* Enhanced Desktop Optimizations for Home Page */
+@media (min-width: 1200px) {
+
+    /* Improve container width for better desktop experience */
+    .container {
+        max-width: 1400px;
+        width: 90%;
+        padding: 0 1.5rem;
+    }
+
+    /* Enhanced hero section */
+    .hero-section {
+        min-height: 700px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-background {
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        padding: 3rem;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.35rem;
+        letter-spacing: 3px;
+        padding: 12px 24px;
+        margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+        gap: 2rem;
+    }
+
+    .btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
+    .vtu-logo-bg {
+        width: 550px;
+        height: 450px;
+        top: 30%;
+        left: 40%;
+    }
+
+    /* Enhanced semester sections */
+    .semester-section {
+        margin-bottom: 3.5rem;
+        padding: 0.5rem;
+        position: relative;
+    }
+
+    .semester-section h2 {
+        font-size: 1.8rem;
+        padding-bottom: 0.8rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.02em;
+    }
+
+    /* Enhanced subject cards layout */
+    .subjects-container {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.8rem;
+        margin: 2rem 0;
+    }
+
+    .subject-card {
+        transition: all 0.35s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .subject-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .subject-header {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .subject-header h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .subject-code {
+        font-size: 0.85rem;
+        padding: 3px 10px;
+    }
+
+    .subject-content {
+        padding: 1.5rem;
+    }
+
+    .material-link {
+        padding: 1rem 1.2rem;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+    }
+
+    .material-link:hover {
+        transform: translateX(8px);
+    }
+
+    .material-link i {
+        font-size: 1.2rem;
+    }
+
+    /* Enhanced welcome banner */
+    .welcome-banner {
+        padding: 2.5rem;
+        margin: 2rem 0;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-banner h2 {
+        font-size: 2.4rem;
+    }
+
+    .welcome-banner p {
+        font-size: 1.2rem;
+        max-width: 900px;
+        margin-top: 1.8rem;
+    }
+
+    .btn-about {
+        padding: 1rem 3.5rem;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+
+    /* Enhanced semester filter */
+    .semester-filter {
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+        margin: 2.5rem 0;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    /* Enhanced testimonials section */
+    .testimonials-section {
+        margin: 4rem 0;
+        padding: 2rem 0;
+    }
+
+    .testimonials-section .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .testimonials-container {
+        max-width: 1000px;
+        height: 450px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .testimonial-slide {
+        padding: 3rem;
+    }
+
+    .testimonial-image {
+        width: 100px;
+        height: 100px;
+        border-width: 5px;
+        margin-bottom: 1.2rem;
+    }
+
+    .testimonial-name {
+        font-size: 1.4rem;
+    }
+
+    .testimonial-info {
+        font-size: 1rem;
+        margin: 1.2rem 0;
+    }
+
+    .testimonial-quote-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+        font-size: 1.15rem;
+        max-width: 80%;
+        line-height: 1.7;
+    }
+
+    .testimonials-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .testimonial-action {
+        margin: 3rem auto 2rem;
+    }
+
+    .feedback-action-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    /* Enhanced contribution section */
+    .contact-section {
+        margin: 4rem 0 6rem;
+    }
+
+    .upload-container {
+        gap: 3.5rem;
+        padding: 3.5rem;
+        max-width: 1400px;
+        margin: 3.5rem auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .upload-illustration {
+        margin: 2.5rem auto 3.5rem;
+        max-width: 450px;
+    }
+
+    .upload-vector {
+        max-width: 100%;
+    }
+
+    .contact-section h2 {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-section>p {
+        font-size: 1.2rem;
+        max-width: 900px;
+        margin-bottom: 3rem;
+    }
+
+    .form-group label {
+        font-size: 1.05rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 1rem 1.2rem;
+        font-size: 1.05rem;
+    }
+
+    .upload-btn {
+        padding: 1.2rem 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .submit-btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-header {
+        padding: 2rem;
+    }
+
+    .contact-icon {
+        font-size: 3rem;
+    }
+
+    .contact-info h3 {
+        font-size: 2rem;
+    }
+
+    .contact-info>p {
+        font-size: 1.1rem;
+    }
+
+    .contact-method {
+        padding: 1rem 1.5rem;
+    }
+
+    .contact-method i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .contact-method span {
+        font-size: 1.05rem;
+    }
+
+    /* Enhanced footer */
+    .footer-main {
+        gap: 4rem;
+        padding: 4rem 0 3rem;
+    }
+
+    .footer-brand {
+        max-width: 400px;
+    }
+
+    .footer-links-section {
+        gap: 4rem;
+    }
+}
+
+/* Extra large desktop enhancements */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .subjects-container {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+
+    .welcome-banner {
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .upload-container {
+        max-width: 1600px;
+    }
+}

@@ -171,8 +171,7 @@ header .container {
     .nav-links {
         flex-direction: column;
         gap: 20px;
-        top: -260px;
-        /* Adjust this value to move the menu up */
+        top: -230px;
         position: relative;
         align-items: center;
         justify-content: center;
