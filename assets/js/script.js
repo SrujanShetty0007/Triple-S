@@ -1,14 +1,10 @@
-document.addEventListener('DOMContentLoaded', () =>{
-
-    // DOM Elements
+document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const semesterSections = document.querySelectorAll('.semester-section');
     const subjectCards = document.querySelectorAll('.subject-card');
     const welcomeBanner = document.querySelector('.welcome-banner');
     const backToTopButton = document.getElementById('backToTop');
     const pageLoader = document.getElementById('page-loader');
-
-    // Hide loader when page is fully loaded
     window.addEventListener('load', () => {
         if (pageLoader) {
             pageLoader.style.opacity = '0';
@@ -18,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     });
 
-    // Form Elements
     const contributionForm = document.getElementById('contributionForm');
     const fileUpload = document.getElementById('pdfUpload');
     const fileNameDisplay = document.getElementById('fileNameDisplay');
@@ -31,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     const thankYouMessage = document.getElementById('thankYouMessage');
     const shareEmailBtn = document.querySelector('.share-btn.email-btn');
     const shareWhatsappBtn = document.querySelector('.share-btn.whatsapp-btn');
-
-    // Contact info
     const adminWhatsapp = '8217358117';
     const adminEmail = 'srujanshetty0007@gmail.com';
 
@@ -40,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         window.pdfScanner.clearCache();
     }
 
-    // Initialize all functionality
+
     initializeAnimations();
     initializeFormHandling();
     initializeSemesterFiltering();
@@ -57,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             if (welcomeBanner) welcomeBanner.classList.add('animated');
         }, 300);
 
-        // Subject Cards Animation
+
         if (subjectCards.length > 0) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -274,17 +267,14 @@ document.addEventListener('DOMContentLoaded', () =>{
     function initializeSemesterFiltering() {
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-
-                // Add active class to clicked button
                 btn.classList.add('active');
 
-                // Get the semester filter value
+
                 const semester = btn.dataset.semester;
 
                 if (semester === 'all') {
-                    // Show all semester sections
+
                     semesterSections.forEach(section => {
                         section.style.display = 'block';
                         setTimeout(() => {
@@ -293,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                         }, 100);
                     });
                 } else {
-                    // Hide all sections first
+
                     semesterSections.forEach(section => {
                         section.style.opacity = '0';
                         section.style.transform = 'translateY(20px)';
@@ -302,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                         }, 300);
                     });
 
-                    // Show only the selected semester section
+
                     const selectedSection = document.getElementById(semester);
                     if (selectedSection) {
                         setTimeout(() => {
@@ -512,9 +502,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         container.appendChild(fileItem);
     }
 
-    // Testimonials Carousel
     function initializeTestimonialsCarousel() {
-        // Get all the elements we need
         const track = document.getElementById('testimonials-track');
         const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
         const indicators = Array.from(document.querySelectorAll('.testimonial-indicator'));
@@ -524,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         if (!track || !slides.length || !indicators.length) return;
 
-        // Initialize variables
+
         let currentIndex = 0;
         const slideCount = slides.length;
         let autoplayInterval;
@@ -533,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         const autoplayDuration = 6000; // 6 seconds per slide
         let isAnimating = false;
 
-        // Update carousel function
+
         function updateCarousel() {
             if (isAnimating) return;
 
@@ -573,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             }, 600);
         }
 
-        // Navigation functions
+
         function goToPrev() {
             if (isAnimating) return;
             currentIndex = (currentIndex - 1 + slideCount) % slideCount;
@@ -586,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             updateCarousel();
         }
 
-        // Progress bar functions
+
         function startProgressBar() {
             let width = 0;
             const increment = 100 / (autoplayDuration / 100);
@@ -622,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
         }
 
-        // Autoplay functions
+
         function startAutoplay() {
             if (autoplayInterval) {
                 clearInterval(autoplayInterval);
@@ -646,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
         }
 
-        // Event listeners
+
         if (prevButton) {
             prevButton.addEventListener('click', () => {
                 goToPrev();
@@ -667,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             });
         }
 
-        // Indicator clicks
+
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 if (currentIndex === index || isAnimating) return;
@@ -680,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             });
         });
 
-        // Touch events for mobile swipe
+
         const testimonialContainer = document.querySelector('.testimonials-container');
         let touchStartX = 0;
         let touchEndX = 0;
@@ -714,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
         }
 
-        // Pause on hover
+
         if (testimonialContainer) {
             testimonialContainer.addEventListener('mouseenter', () => {
                 isPaused = true;
@@ -727,12 +715,12 @@ document.addEventListener('DOMContentLoaded', () =>{
             });
         }
 
-        // Start autoplay on page load
+
         startAutoplay();
     }
 });
 
-// Hero Section Animation
+
 document.addEventListener('DOMContentLoaded', function () {
     const heroSection = document.querySelector('.hero-section');
     const icons = document.querySelectorAll('.floating-icons .icon');
@@ -758,5 +746,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// The marquee functionality has been moved to marquee.js for better code organization
-// and to ensure consistent behavior across all pages
+

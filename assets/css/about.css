@@ -1,6 +1,5 @@
 @import url(root-variables.css);
 
-/* Enhanced Typography */
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -13,7 +12,6 @@ p {
     hyphens: none;
 }
 
-/* Typography Enhancements */
 .about-section p,
 .developer-bio p,
 .feature-description p {
@@ -23,7 +21,6 @@ p {
     word-wrap: normal;
 }
 
-/* Base Styles */
 body {
     background-color: #f8f9fc;
     background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h40v40H0V0zm2 2v36h36V2H2zm8 8h2v2h-2v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zM6 6h2v2H6V6zm8 0h2v2h-2V6zm8 0h2v2h-2V6zm8 0h2v2h-2V6zM6 14h2v2H6v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zM6 22h2v2H6v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zM6 30h2v2H6v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2zm8 0h2v2h-2v-2z" fill="%234361ee" fill-opacity="0.03"/></svg>');
@@ -41,8 +38,6 @@ main {
     min-height: calc(100vh - 400px);
     padding: 0;
 }
-
-/* All header styles are now in menu.css */
 
 .contact-card {
     margin: 1.5rem auto;
