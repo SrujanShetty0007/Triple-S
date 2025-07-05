@@ -425,6 +425,10 @@
     "python-programming": {
       "model-papers": [
         {
+          "filename": "22-python.pdf",
+          "name": "22 Python"
+        },
+        {
           "filename": "Module_1_Important_questions_with_answers.pdf",
           "name": "Module 1 Important Questions With Answers"
         },
@@ -477,8 +481,36 @@
       ],
       "previous-papers": [
         {
+          "filename": "22-python.pdf",
+          "name": "22 Python"
+        },
+        {
+          "filename": "BPLCK205B_Last_Year_QP.pdf",
+          "name": "Bplck205b Last Year Qp"
+        },
+        {
           "filename": "II-SEM-CS-AI-ML-MODEL-QP-1-SOLUTION-BMATS201.pdf",
           "name": "Ii Sem Cs Ai Ml Model Qp 1 Solution Bmats201"
+        },
+        {
+          "filename": "Introduction_to_Python_Programming_Dec_Jan_2023-24.pdf",
+          "name": "Introduction To Python Programming Dec Jan 2023 24"
+        },
+        {
+          "filename": "Introduction_to_Python_Programming_Dec_Jan_2023.pdf",
+          "name": "Introduction To Python Programming Dec Jan 2023"
+        },
+        {
+          "filename": "Introduction_to_Python_Programming_Jan-Feb-2023.pdf",
+          "name": "Introduction To Python Programming Jan Feb 2023"
+        },
+        {
+          "filename": "Introduction_to_Python_Programming_Jun_July2023.pdf",
+          "name": "Introduction To Python Programming Jun July2023"
+        },
+        {
+          "filename": "Python_Programming_Dec_Jan_2023-24.pdf",
+          "name": "Python Programming Dec Jan 2023 24"
         },
         {
           "filename": "SolutionsetB_merged.pdf",
@@ -487,6 +519,10 @@
         {
           "filename": "Solved PYO.pdf",
           "name": "Solved Pyo"
+        },
+        {
+          "filename": "VTU_Question_Paper_of_BPLCK105B_Jan-Feb-2023.pdf",
+          "name": "Vtu Question Paper Of Bplck105b Jan Feb 2023"
         }
       ]
     }
