@@ -37,7 +37,12 @@
     },
     "mathematics": {
       "model-papers": [],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "Lab_Program-python.pdf",
+          "name": "Lab Program Python"
+        }
+      ],
       "previous-papers": []
     },
     "physics": {
