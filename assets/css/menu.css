@@ -79,9 +79,10 @@ header .container {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     padding: 5px 0;
     position: relative;
+    overflow: hidden;
 }
 
 .nav-links a:after {
@@ -90,13 +91,16 @@ header .container {
     width: 0;
     height: 2px;
     bottom: 0;
-    left: 0;
+    left: 50%;
     background-color: white;
-    transition: width 0.3s ease;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
 }
 
 .nav-links a:hover:after {
     width: 100%;
+    opacity: 1;
 }
 
 /* Simple Mobile Menu Button */
@@ -167,7 +171,8 @@ header .container {
     .nav-links {
         flex-direction: column;
         gap: 20px;
-        top: -260px; /* Adjust this value to move the menu up */
+        top: -260px;
+        /* Adjust this value to move the menu up */
         position: relative;
         align-items: center;
         justify-content: center;
