@@ -3886,58 +3886,71 @@ footer .contact-link span {
 /* Responsive styles for PDF viewer */
 @media (max-width: 480px) {
     .pdf-file-item {
-        padding: 8px;
-        gap: 0.5rem;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         width: 100%;
         box-sizing: border-box;
         max-width: 100%;
+        gap: 8px;
+    }
+
+    .pdf-file-info {
+        display: flex;
+        align-items: center;
+        width: 100%;
     }
 
     .pdf-file-name {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         white-space: normal;
         overflow-wrap: break-word;
         word-break: break-word;
         line-height: 1.3;
-        max-width: calc(100% - 90px);
+        max-width: calc(100% - 30px);
     }
 
     .pdf-file-actions {
         display: flex;
         flex-direction: row;
-        margin-top: 0;
-        gap: 0.5rem;
-        flex-shrink: 0;
-        width: auto;
+        margin-top: 5px;
+        gap: 8px;
+        width: 100%;
+        justify-content: flex-start;
     }
 
+    .pdf-view-btn,
     .pdf-download-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.7rem;
-        white-space: nowrap;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        flex: 0 0 auto;
     }
 }
 
 @media (max-width: 360px) {
     .pdf-file-item {
-        padding: 6px;
-        gap: 0.3rem;
+        padding: 8px;
+        gap: 6px;
     }
 
     .pdf-file-name {
-        font-size: 0.75rem;
-        max-width: calc(100% - 80px);
+        font-size: 0.8rem;
+        max-width: calc(100% - 25px);
     }
 
+    .pdf-file-actions {
+        gap: 6px;
+    }
+
+    .pdf-view-btn,
     .pdf-download-btn {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.65rem;
+        padding: 5px 10px;
+        font-size: 0.75rem;
     }
 
     .pdf-file-info i {
         font-size: 1.3rem;
+        margin-right: 8px;
     }
 }

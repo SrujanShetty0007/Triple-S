@@ -501,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="pdf-file-name">${fileName}</span>
             </div>
             <div class="pdf-file-actions">
-                ${fileExtension === 'pdf' && !isMobile ?
+                ${fileExtension === 'pdf' ?
                 `<button class="pdf-view-btn" data-file="${filePath}">
                         <i class="fas fa-eye"></i> View
                     </button>` : ''
@@ -514,13 +514,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.appendChild(fileItem);
 
-        // Add event listener for the view button if this is a PDF and not on mobile
-        if (fileExtension === 'pdf' && !isMobile) {
+        // Add event listener for the view button if this is a PDF
+        if (fileExtension === 'pdf') {
             const viewBtn = fileItem.querySelector('.pdf-view-btn');
             if (viewBtn) {
-                viewBtn.addEventListener('click', function () {
-                    showPdfViewer(filePath, fileName);
-                });
+                if (isMobile) {
+                    viewBtn.addEventListener('click', function () {
+                        window.location.href = `mobile-pdf-viewer/pdf_viewer.html?pdf=${encodeURIComponent(filePath)}`;
+                    });
+                } else {
+                    viewBtn.addEventListener('click', function () {
+                        showPdfViewer(filePath, fileName);
+                    });
+                }
             }
         }
     }
