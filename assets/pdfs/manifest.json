@@ -238,12 +238,36 @@
     "indian-constitution": {
       "model-papers": [
         {
+          "filename": "BICOK107-207-module-4-mcq.pdf",
+          "name": "Bicok107 207 Module 4 Mcq"
+        },
+        {
+          "filename": "BICOK107-207-module-5-mcq.pdf",
+          "name": "Bicok107 207 Module 5 Mcq"
+        },
+        {
           "filename": "IC-1st year solved questions.pdf",
           "name": "Ic 1st Year Solved Questions"
+        },
+        {
+          "filename": "MODULE_1_IC.pdf",
+          "name": "Module 1 Ic"
+        },
+        {
+          "filename": "MODULE_2.pdf",
+          "name": "Module 2"
+        },
+        {
+          "filename": "MODULE_3_IC.pdf",
+          "name": "Module 3 Ic"
         }
       ],
       "notes": [],
       "previous-papers": [
+        {
+          "filename": "BICOK107-207-regular-pape.pdf",
+          "name": "Bicok107 207 Regular Pape"
+        },
         {
           "filename": "Indian Constitution Previous year paper.pdf",
           "name": "Indian Constitution Previous Year Paper"

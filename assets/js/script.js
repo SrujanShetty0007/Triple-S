@@ -493,6 +493,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="pdf-file-name">${fileName}</span>
             </div>
             <div class="pdf-file-actions">
+                ${fileExtension === 'pdf' ?
+                `<button class="pdf-view-btn" data-file="${filePath}">
+                        <i class="fas fa-eye"></i> View
+                    </button>` : ''
+            }
                 <a href="${filePath}?download=true" class="pdf-download-btn" download="${fileName}">
                     <i class="fas fa-download"></i> Download
                 </a>
@@ -500,6 +505,68 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         container.appendChild(fileItem);
+
+        // Add event listener for the view button if this is a PDF
+        if (fileExtension === 'pdf') {
+            const viewBtn = fileItem.querySelector('.pdf-view-btn');
+            if (viewBtn) {
+                viewBtn.addEventListener('click', function () {
+                    showPdfViewer(filePath, fileName);
+                });
+            }
+        }
+    }
+
+    // Function to show PDF viewer modal
+    function showPdfViewer(pdfPath, fileName) {
+        // Check if viewer modal already exists, if not create it
+        let viewerModal = document.getElementById('pdf-viewer-modal');
+
+        if (!viewerModal) {
+            viewerModal = document.createElement('div');
+            viewerModal.id = 'pdf-viewer-modal';
+            viewerModal.className = 'pdf-viewer-modal';
+
+            viewerModal.innerHTML = `
+                <div class="pdf-viewer-content">
+                    <div class="pdf-viewer-header">
+                        <h3 id="pdf-viewer-title"></h3>
+                        <span class="pdf-viewer-close">&times;</span>
+                    </div>
+                    <div class="pdf-viewer-body">
+                        <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(viewerModal);
+
+            // Add close button event listener
+            const closeBtn = viewerModal.querySelector('.pdf-viewer-close');
+            closeBtn.addEventListener('click', function () {
+                viewerModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside content
+            viewerModal.addEventListener('click', function (e) {
+                if (e.target === viewerModal) {
+                    viewerModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Update modal content
+        const viewerTitle = viewerModal.querySelector('#pdf-viewer-title');
+        const pdfIframe = viewerModal.querySelector('#pdf-iframe');
+
+        viewerTitle.textContent = fileName;
+        pdfIframe.src = pdfPath;
+
+        // Show modal
+        viewerModal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
     function initializeTestimonialsCarousel() {
