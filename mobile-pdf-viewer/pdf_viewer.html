@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Mobile PDF viewer" />
-    <title>Mobile PDF Viewer</title>
+    <meta name="description"
+        content="PDF viewer for Triple S study materials, optimized for reading engineering notes, model papers, and previous year question papers." />
+    <meta name="keywords"
+        content="PDF viewer, document reader, engineering study materials, Triple S, student study support" />
+    <meta name="author" content="Srujan S Shetty">
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:title" content="Triple S - PDF Viewer">
+    <meta property="og:description" content="PDF viewer for engineering study materials and academic resources.">
+    <meta property="og:type" content="website">
+    <title>Triple S - PDF Viewer</title>
     <link rel="stylesheet" href="./pdf_viewer.css">
 </head>
 
@@ -74,7 +82,7 @@
                 currentPage = 1;
                 totalPages = pdf.numPages;
                 totalPagesEl.textContent = totalPages;
-                document.title = `${fileName} - Mobile PDF Viewer`;
+                document.title = `${fileName} - PDF Viewer`;
 
                 downloadBtn.onclick = () => {
                     const a = document.createElement('a');
