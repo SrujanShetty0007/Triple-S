@@ -523,9 +523,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         window.location.href = `mobile-pdf-viewer/pdf_viewer.html?pdf=${encodeURIComponent(filePath)}`;
                     });
                 } else {
-                    viewBtn.addEventListener('click', function () {
-                        showPdfViewer(filePath, fileName);
-                    });
+                viewBtn.addEventListener('click', function () {
+                    showPdfViewer(filePath, fileName);
+                });
                 }
             }
         }

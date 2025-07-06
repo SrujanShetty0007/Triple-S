@@ -14,6 +14,13 @@
     <meta property="og:description" content="PDF viewer for engineering study materials and academic resources.">
     <meta property="og:type" content="website">
     <title>Triple S - PDF Viewer</title>
+    <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./pdf_viewer.css">
 </head>
 
@@ -104,7 +111,7 @@
             ctx.fillStyle = "#f0f0f0";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "#666";
-            ctx.font = "20px Arial";
+            ctx.font = "20px Arial, sans-serif";
             ctx.fillText("Loading page...", canvas.width / 2 - 70, canvas.height / 2);
             currentPDF.getPage(num).then((page) => {
                 const viewport = page.getViewport({ scale: 1.0 });
