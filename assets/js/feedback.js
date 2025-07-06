@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Enhanced FAQ accordion functionality
+    // Simple FAQ accordion functionality
     function initFAQAccordion() {
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Add initial state
             if (answerParagraph) {
                 answerParagraph.style.opacity = '0';
-                answerParagraph.style.transform = 'translateY(10px)';
             }
 
             question.addEventListener('click', () => {
@@ -119,10 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         otherQuestion.setAttribute('aria-expanded', 'false');
                         otherAnswer.setAttribute('aria-hidden', 'true');
 
-                        // Animate paragraph
+                        // Hide paragraph
                         if (otherParagraph) {
                             otherParagraph.style.opacity = '0';
-                            otherParagraph.style.transform = 'translateY(10px)';
                         }
                     }
                 });
@@ -131,17 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 question.setAttribute('aria-expanded', !isExpanded);
                 answer.setAttribute('aria-hidden', isExpanded);
 
-                // Animate paragraph
+                // Show/hide paragraph
                 if (answerParagraph) {
                     if (!isExpanded) {
                         // Small delay to allow the container to expand first
                         setTimeout(() => {
                             answerParagraph.style.opacity = '1';
-                            answerParagraph.style.transform = 'translateY(0)';
-                        }, 150);
+                        }, 100);
                     } else {
                         answerParagraph.style.opacity = '0';
-                        answerParagraph.style.transform = 'translateY(10px)';
                     }
                 }
             });
