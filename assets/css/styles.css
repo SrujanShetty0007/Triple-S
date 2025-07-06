@@ -125,20 +125,6 @@ html {
     word-spacing: 0.05em;
 }
 
-.hero-tagline {
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    opacity: 0.9;
-    animation: fadeInUp 1s ease-out 0.6s both;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px 18px;
-    border-radius: 50px;
-    display: inline-block;
-}
-
 .hero-cta {
     display: flex;
     justify-content: center;
@@ -248,10 +234,6 @@ html {
         font-size: 1.5rem;
     }
 
-    .hero-tagline {
-        font-size: 1.1rem;
-    }
-
     .hero-cta {
         flex-direction: column;
         gap: 1rem;
@@ -293,13 +275,6 @@ html {
 
     .hero-subtitle {
         font-size: 1.2rem;
-    }
-
-    .hero-tagline {
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        margin-bottom: 2rem;
-        padding: 8px 15px;
     }
 
     .vtu-logo-bg {
@@ -2482,8 +2457,8 @@ footer {
 }
 
 .testimonials-container {
-    width: 100%;
-    max-width: 1000px;
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -3327,13 +3302,6 @@ footer .contact-link span {
         margin-bottom: 2rem;
     }
 
-    .hero-tagline {
-        font-size: 1.35rem;
-        letter-spacing: 3px;
-        padding: 12px 24px;
-        margin-bottom: 3rem;
-    }
-
     .hero-cta {
         gap: 2rem;
     }
@@ -3462,7 +3430,7 @@ footer .contact-link span {
     }
 
     .testimonials-container {
-        max-width: 1200px;
+        max-width: 850px;
         min-height: 450px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         padding-bottom: 50px;
@@ -3633,10 +3601,56 @@ footer .contact-link span {
     }
 
     .testimonials-container {
-        max-width: 1400px;
+        max-width: 900px;
     }
 
     .upload-container {
         max-width: 1600px;
+    }
+}
+
+/* Mobile styles for testimonials */
+@media (max-width: 768px) {
+    .testimonials-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 10px;
+        min-height: 380px;
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding: 0 15px;
+    }
+
+    .testimonial-slide {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 10px;
+        min-height: 350px;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .testimonials-button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .testimonial-slide {
+        padding: 1.2rem 0.8rem;
     }
 }

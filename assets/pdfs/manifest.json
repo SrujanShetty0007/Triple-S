@@ -75,7 +75,12 @@
           "name": "Bches102 Mod1"
         }
       ],
-      "previous-papers": []
+      "previous-papers": [
+        {
+          "filename": "CHEMISTRY(BCHES102_202) FOR CSE, IES, AI&ML, CYBER SECURITY BRANCHES.pdf",
+          "name": "Chemistry(bches102 202) For Cse, Ies, Ai&ml, Cyber Security Branches"
+        }
+      ]
     },
     "chemistry-eee": {
       "model-papers": [],
@@ -231,9 +236,19 @@
       "previous-papers": []
     },
     "indian-constitution": {
-      "model-papers": [],
+      "model-papers": [
+        {
+          "filename": "IC-1st year solved questions.pdf",
+          "name": "Ic 1st Year Solved Questions"
+        }
+      ],
       "notes": [],
-      "previous-papers": []
+      "previous-papers": [
+        {
+          "filename": "Indian Constitution Previous year paper.pdf",
+          "name": "Indian Constitution Previous Year Paper"
+        }
+      ]
     },
     "mathematics": {
       "model-papers": [
@@ -440,6 +455,10 @@
         {
           "filename": "Module_2_Important_questions_with_answer.pdf",
           "name": "Module 2 Important Questions With Answer"
+        },
+        {
+          "filename": "Python Model paper.jpg",
+          "name": "Python Model Paper.jpg"
         },
         {
           "filename": "Python SIMP- simp qb.pdf",
