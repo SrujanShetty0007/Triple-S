@@ -1658,6 +1658,12 @@ footer {
     flex-shrink: 0;
 }
 
+/* Add specific styling for image file icons */
+.pdf-file-info i.fa-file-image {
+    color: #4361ee;
+    /* Blue color matching the site's primary color */
+}
+
 .pdf-file-name {
     font-weight: 500;
     font-size: 0.95rem;
@@ -2238,6 +2244,10 @@ footer {
 
     .pdf-file-info i {
         font-size: 1.3rem;
+    }
+
+    .pdf-file-info i.fa-file-image {
+        color: #4361ee;
     }
 
     .semester-filter {
