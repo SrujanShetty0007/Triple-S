@@ -33,12 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
         window.pdfScanner.clearCache();
     }
 
-
+    // Initialize animations
     initializeAnimations();
-    initializeFormHandling();
-    initializeSemesterFiltering();
-    initializePdfLinks();
+
+    // Initialize back-to-top button
     initializeBackToTop();
+
+    // Initialize form handling
+    initializeFormHandling();
+
+    // Initialize semester filtering
+    initializeSemesterFiltering();
+
+    // Initialize PDF links
+    initializePdfLinks();
+
+    // Initialize testimonials carousel
     initializeTestimonialsCarousel();
 
     if (window.location.search.includes('submitted=true')) {
@@ -49,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (welcomeBanner) welcomeBanner.classList.add('animated');
         }, 300);
-
 
         if (subjectCards.length > 0) {
             const observer = new IntersectionObserver((entries) => {
@@ -270,11 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-
                 const semester = btn.dataset.semester;
 
                 if (semester === 'all') {
-
                     semesterSections.forEach(section => {
                         section.style.display = 'block';
                         setTimeout(() => {
@@ -283,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, 100);
                     });
                 } else {
-
                     semesterSections.forEach(section => {
                         section.style.opacity = '0';
                         section.style.transform = 'translateY(20px)';
@@ -291,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             section.style.display = 'none';
                         }, 300);
                     });
-
 
                     const selectedSection = document.getElementById(semester);
                     if (selectedSection) {
@@ -474,6 +479,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayPdfFile(container, fileName, filePath) {
         const viewPath = `${filePath}?t=${Date.now()}`;
 
+        // Check if on mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
         const fileItem = document.createElement('div');
         fileItem.classList.add('pdf-file-item');
 
@@ -493,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="pdf-file-name">${fileName}</span>
             </div>
             <div class="pdf-file-actions">
-                ${fileExtension === 'pdf' ?
+                ${fileExtension === 'pdf' && !isMobile ?
                 `<button class="pdf-view-btn" data-file="${filePath}">
                         <i class="fas fa-eye"></i> View
                     </button>` : ''
@@ -506,8 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.appendChild(fileItem);
 
-        // Add event listener for the view button if this is a PDF
-        if (fileExtension === 'pdf') {
+        // Add event listener for the view button if this is a PDF and not on mobile
+        if (fileExtension === 'pdf' && !isMobile) {
             const viewBtn = fileItem.querySelector('.pdf-view-btn');
             if (viewBtn) {
                 viewBtn.addEventListener('click', function () {
@@ -534,6 +542,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="pdf-viewer-close">&times;</span>
                     </div>
                     <div class="pdf-viewer-body">
+                        <div id="pdf-loading" class="pdf-loading">
+                            <div class="pdf-loading-spinner"></div>
+                            <p>Loading PDF...</p>
+                        </div>
                         <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
                     </div>
                 </div>
@@ -560,8 +572,32 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update modal content
         const viewerTitle = viewerModal.querySelector('#pdf-viewer-title');
         const pdfIframe = viewerModal.querySelector('#pdf-iframe');
+        const pdfLoading = viewerModal.querySelector('#pdf-loading');
 
         viewerTitle.textContent = fileName;
+
+        // Show loading indicator
+        if (pdfLoading) {
+            pdfLoading.style.display = 'flex';
+        }
+
+        // Set iframe src and add load event listener
+        pdfIframe.onload = function () {
+            // Hide loading indicator
+            if (pdfLoading) {
+                pdfLoading.style.display = 'none';
+            }
+        };
+
+        // Handle iframe load errors
+        pdfIframe.onerror = function () {
+            // Hide loading indicator
+            if (pdfLoading) {
+                pdfLoading.style.display = 'none';
+            }
+        };
+
+        // Set iframe src after setting up event handlers
         pdfIframe.src = pdfPath;
 
         // Show modal
@@ -579,7 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!track || !slides.length || !indicators.length) return;
 
-
         let currentIndex = 0;
         const slideCount = slides.length;
         let autoplayInterval;
@@ -587,7 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let isPaused = false;
         const autoplayDuration = 6000; // 6 seconds per slide
         let isAnimating = false;
-
 
         function updateCarousel() {
             if (isAnimating) return;
@@ -628,7 +662,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 600);
         }
 
-
         function goToPrev() {
             if (isAnimating) return;
             currentIndex = (currentIndex - 1 + slideCount) % slideCount;
@@ -640,7 +673,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = (currentIndex + 1) % slideCount;
             updateCarousel();
         }
-
 
         function startProgressBar() {
             let width = 0;
@@ -677,7 +709,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-
         function startAutoplay() {
             if (autoplayInterval) {
                 clearInterval(autoplayInterval);
@@ -701,7 +732,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-
         if (prevButton) {
             prevButton.addEventListener('click', () => {
                 goToPrev();
@@ -722,7 +752,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 if (currentIndex === index || isAnimating) return;
@@ -734,7 +763,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
 
         const testimonialContainer = document.querySelector('.testimonials-container');
         let touchStartX = 0;
@@ -769,7 +797,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-
         if (testimonialContainer) {
             testimonialContainer.addEventListener('mouseenter', () => {
                 isPaused = true;
@@ -782,11 +809,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-
         startAutoplay();
     }
 });
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const heroSection = document.querySelector('.hero-section');
