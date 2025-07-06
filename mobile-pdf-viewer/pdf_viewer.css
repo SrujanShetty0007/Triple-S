@@ -1,0 +1,119 @@
+@import url(../assets/css/root-variables.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.back-btn {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    background: var(--email-color);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+}
+
+.viewer-container {
+    padding: 0.8rem;
+    background: var(--body-color);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Header with download button and page info */
+.viewer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+#download-btn {
+    padding: 0.8rem;
+    background-color: #38b000;
+    color: var(--light-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    font-size: 1rem;
+}
+
+#page-info {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* PDF canvas */
+canvas {
+    border: 1px solid #ddd;
+    width: 100%;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    image-rendering: high-quality;
+    touch-action: pan-y;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+}
+
+.nav-buttons button {
+    padding: 0.8rem;
+    border: none;
+    background: var(--gradient);
+    color: var(--light-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.nav-buttons button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+#loading-indicator {
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.error {
+    color: #e63946;
+    padding: 0.8rem;
+    background-color: #ffeeee;
+    border-radius: 5px;
+    margin: 0.8rem 0;
+}
