@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Form submission handler with enhanced UX
+    // Form submission handler with improved speed
     if (feedbackForm) {
         feedbackForm.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -46,50 +46,61 @@ document.addEventListener("DOMContentLoaded", function () {
             submitBtn.classList.add("loading");
             submitBtn.disabled = true;
 
-            // Collect form data
-            const formData = new FormData(feedbackForm);
+            // Create a hidden iframe for submission
+            const iframe = document.createElement('iframe');
+            iframe.name = 'hidden-feedback-iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
 
-            // Get the form action URL
-            const formAction = feedbackForm.getAttribute('action');
+            // Set form target to the iframe
+            feedbackForm.setAttribute('target', 'hidden-feedback-iframe');
 
-            // Send the form data using fetch API instead of regular form submission
-            fetch(formAction, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors' // Required for FormSubmit.co
-            })
-                .then(response => {
-                    // Hide the form container immediately
-                    feedbackForm.style.display = 'none';
+            // Submit the form directly
+            feedbackForm.submit();
 
-                    // Show thank you message immediately
-                    thankYouMessage.classList.add("show");
-
-                    // Scroll to the thank you message to ensure it's visible
-                    thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Reset form
-                    feedbackForm.reset();
-
-                    // Automatically hide thank you message after 5 seconds
+            // Add a backup timeout to reset button if submission takes too long
+            setTimeout(() => {
+                if (submitBtn && submitBtn.disabled) {
                     setTimeout(() => {
-                        // Hide thank you message
-                        thankYouMessage.classList.remove("show");
+                        if (submitBtn.disabled) {
+                            submitBtn.innerHTML = '<span class="btn-content"><i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Feedback</span>';
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove("loading");
+                        }
+                    }, 15000);
+                }
+            }, 5000);
 
-                        // Show the form again
-                        feedbackForm.style.display = 'flex';
+            // Show thank you message after a short delay
+            setTimeout(() => {
+                // Show thank you message without hiding the form
+                if (thankYouMessage) {
+                    thankYouMessage.classList.add('show');
+
+                    // Position the thank you message properly
+                    thankYouMessage.style.position = 'fixed';
+                    thankYouMessage.style.top = '50%';
+                    thankYouMessage.style.left = '50%';
+                    thankYouMessage.style.transform = 'translate(-50%, -50%)';
+                    thankYouMessage.style.zIndex = '1000';
+
+                    setTimeout(() => {
+                        thankYouMessage.classList.remove('show');
+                        thankYouMessage.style.position = '';
+                        thankYouMessage.style.top = '';
+                        thankYouMessage.style.left = '';
+                        thankYouMessage.style.transform = '';
+                        thankYouMessage.style.zIndex = '';
+
+                        // Reset form
+                        feedbackForm.reset();
 
                         // Reset button state
                         submitBtn.classList.remove("loading");
                         submitBtn.disabled = false;
-                    }, 5000);
-                })
-                .catch(error => {
-                    console.error('Error submitting form:', error);
-                    submitBtn.classList.remove("loading");
-                    submitBtn.disabled = false;
-                    alert('There was an error submitting your feedback. Please try again.');
-                });
+                    }, 3000);
+                }
+            }, 1000);
         });
     }
 

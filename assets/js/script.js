@@ -123,20 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSubjectFiltering();
 
         if (contributionForm) {
-            contributionForm.addEventListener('submit', function (e) {
-                // If validation fails, prevent submission
-                if (!validateForm()) {
-                    e.preventDefault();
-                    return false;
-                }
-
-                // Show thank you message immediately after form submission
-                if (thankYouMessage) {
-                    setTimeout(() => {
-                        showThankYouMessage();
-                    }, 500); // Reduced from several seconds to 500ms
-                }
-
+            contributionForm.addEventListener('submit', function () {
                 this.method = "POST";
 
                 setTimeout(() => {
@@ -146,9 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Contribution';
                                 submitBtn.disabled = false;
                             }
-                        }, 10000); // Reduced from 20000
+                        }, 20000);
                     }
-                }, 5000); // Reduced from 10000
+                }, 10000);
             });
         }
 
@@ -329,11 +316,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showThankYouMessage() {
         if (!thankYouMessage) return;
 
-        // Immediately hide form and show thank you message
-        if (contributionForm) contributionForm.style.display = 'none';
         thankYouMessage.classList.add('show');
 
-        // Reset form in the background
+        if (contributionForm) contributionForm.style.display = 'none';
+
         if (contributionForm) contributionForm.reset();
         if (fileNameDisplay) fileNameDisplay.textContent = 'No file chosen';
         if (uploadBtn) {
@@ -341,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
             uploadBtn.style.backgroundColor = '';
         }
 
-        // Auto-hide the thank you message after 5 seconds
         setTimeout(() => {
             if (thankYouMessage) thankYouMessage.classList.remove('show');
             if (contributionForm) contributionForm.style.display = 'block';
