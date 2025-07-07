@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 mode: 'no-cors' // Required for FormSubmit.co
             })
                 .then(response => {
-                    // Hide the form container
+                    // Hide the form container immediately
                     feedbackForm.style.display = 'none';
 
-                    // Show thank you message
+                    // Show thank you message immediately
                     thankYouMessage.classList.add("show");
 
                     // Scroll to the thank you message to ensure it's visible
