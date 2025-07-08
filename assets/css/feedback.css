@@ -1321,38 +1321,27 @@ main {
 
 /* Thank You Message */
 .thank-you-message {
-    background: linear-gradient(145deg, #e9f7ef, #d1f2e4);
+    background: linear-gradient(to right, #02801b, #04be29);
     border: none;
     border-radius: 12px;
     padding: 2.5rem;
     text-align: center;
     margin: 0 auto;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(20px);
     transition: all 0.4s ease;
     display: none;
     position: relative;
     max-width: 400px;
     width: 90%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     z-index: 1000;
 }
 
-.thank-you-message::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(to right, #4ade80, #22c55e);
-    border-radius: 5px 5px 0 0;
-}
 
 .thank-you-message i {
     font-size: 4rem;
-    color: #16a34a;
+    color: var(--light-color);
     margin-bottom: 1.5rem;
     display: block;
     animation: scaleIn 0.5s ease;
@@ -1375,14 +1364,14 @@ main {
 }
 
 .thank-you-message h3 {
-    color: #166534;
+    color: var(--light-color);
     margin-bottom: 1rem;
     font-weight: 700;
     font-size: 1.8rem;
 }
 
 .thank-you-message p {
-    color: #166534;
+    color: var(--light-color);
     font-size: 1.05rem;
     margin-bottom: 0.5rem;
     text-align: center;
@@ -1398,17 +1387,6 @@ main {
     animation: popIn 0.5s ease forwards;
 }
 
-/* Add backdrop when thank you message is shown */
-.thank-you-message.show::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
 
 @keyframes popIn {
     0% {

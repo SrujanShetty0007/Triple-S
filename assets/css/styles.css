@@ -640,7 +640,7 @@ html {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.495);
+    border: 1px solid rgba(0, 0, 0, 0.142);
     opacity: 0;
     transform: translateY(20px);
     width: 100%;
