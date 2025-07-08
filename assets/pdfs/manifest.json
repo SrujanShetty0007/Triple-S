@@ -583,7 +583,42 @@
     }
   },
   "sem4": {
-    "operating-systems": {
+    "algorithms": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "algorithms-lab": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "biology": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "database-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "discrete-mathematics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "human-values": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "microcontrollers": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mongodb-lab": {
       "model-papers": [],
       "notes": [],
       "previous-papers": []
