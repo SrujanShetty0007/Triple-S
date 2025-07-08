@@ -6,7 +6,7 @@ body.menu-open {
 header {
     background: var(--gradient);
     color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(143, 143, 143, 0.936);
     padding: 0.8rem 0;
     box-shadow: var(--shadow);
     position: sticky;

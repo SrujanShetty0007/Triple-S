@@ -34,7 +34,7 @@ html {
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: 600px;
+    min-height: 570px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,7 +226,7 @@ html {
 }
 
 .vtu-logo-bg {
-    width: 350px;
+    width: 300px;
     background-image: url('../images/VTU-Logo.webp');
     background-size: contain;
     background-repeat: no-repeat;
@@ -237,6 +237,7 @@ html {
     top: 30%;
     left: 30%;
     transform: translate(-50%, -50%);
+    height: 230px;
 }
 
 .hero-content {
@@ -244,23 +245,23 @@ html {
     color: white;
     z-index: 1;
     padding: 2rem;
-    max-width: 800px;
-
+    max-width: 700px;
     animation: fadeIn 1s ease-out;
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
     letter-spacing: 0.02em;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 1s ease-out;
     color: #fff;
+    max-width: 90%;
 }
 
 .hero-subtitle {
-    font-size: 1.85rem;
+    font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     opacity: 0.95;
@@ -269,6 +270,9 @@ html {
     line-height: 1.5;
     letter-spacing: 0.01em;
     word-spacing: 0.05em;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-cta {
@@ -502,7 +506,7 @@ html {
     align-items: center;
     position: relative;
     overflow: hidden;
-    border-left: 5px solid var(--accent-color);
+    border-left: 4px solid var(--primary-color);
 }
 
 .welcome-banner::before {
@@ -570,7 +574,7 @@ html {
     margin: 2rem 0;
     padding: 0.5rem;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 3px;
     box-shadow: var(--shadow);
     position: relative;
 }
@@ -3063,7 +3067,7 @@ html {
 
     /* Enhanced hero section */
     .hero-section {
-        min-height: 700px;
+        min-height: 600px;
         border-bottom-left-radius: 40px;
         border-bottom-right-radius: 40px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -3075,18 +3079,18 @@ html {
     }
 
     .hero-content {
-        max-width: 900px;
-        padding: 3rem;
+        max-width: 800px;
+        padding: 2.5rem;
     }
 
     .hero-title {
-        font-size: 5rem;
+        font-size: 3.8rem;
         margin-bottom: 1.5rem;
         text-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     .hero-subtitle {
-        font-size: 2rem;
+        font-size: 1.7rem;
         margin-bottom: 2rem;
     }
 
@@ -3100,8 +3104,8 @@ html {
     }
 
     .vtu-logo-bg {
-        width: 550px;
-        height: 450px;
+        width: 350px;
+        height: 270px;
     }
 
     /* Enhanced semester sections */
@@ -3380,6 +3384,14 @@ html {
 
     .upload-container {
         max-width: 1600px;
+    }
+
+    .hero-section {
+        max-height: 700px;
+    }
+
+    .hero-content {
+        max-width: 850px;
     }
 }
 
