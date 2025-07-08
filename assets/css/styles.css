@@ -1217,30 +1217,14 @@ footer {
     font-size: 0.95rem;
 }
 
-.footer-links a:hover {
-    color: var(--primary-color);
-}
 
 /* Contact Methods in Footer */
 .footer-contact .contact-methods {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.8rem;
-    margin: 0;
-    padding: 0;
-}
-
-.contact-link {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0;
-}
-
-.contact-link:hover {
-    color: var(--primary-color);
 }
 
 .contact-link i {
@@ -1257,13 +1241,6 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.contact-link:hover i {
-    background-color: var(--secondary-color);
-}
-
-.contact-link span {
-    font-size: 0.95rem;
-}
 
 /* Footer Bottom Section */
 .footer-bottom {
