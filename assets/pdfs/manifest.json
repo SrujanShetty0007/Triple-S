@@ -210,6 +210,10 @@
         {
           "filename": "BESCK.pdf",
           "name": "Besck"
+        },
+        {
+          "filename": "ESC-2023-PYQ.pdf",
+          "name": "Esc 2023 Pyq"
         }
       ]
     },
@@ -348,7 +352,28 @@
           "name": "22mate201 Mqp Scheme & Solution"
         }
       ],
-      "notes": [],
+      "notes": [
+        {
+          "filename": "Integral Calculus Notes.pdf",
+          "name": "Integral Calculus Notes"
+        },
+        {
+          "filename": "Module 2 - Vector Calculus Notes.pdf",
+          "name": "Module 2   Vector Calculus Notes"
+        },
+        {
+          "filename": "Module 3 - Laplace Transforms Notes.pdf",
+          "name": "Module 3   Laplace Transforms Notes"
+        },
+        {
+          "filename": "Module 4 - Numerical Methods -1 Notes.pdf",
+          "name": "Module 4   Numerical Methods  1 Notes"
+        },
+        {
+          "filename": "Module 5 - Numerical Methods -2 Notes.pdf",
+          "name": "Module 5   Numerical Methods  2 Notes"
+        }
+      ],
       "previous-papers": []
     },
     "physics": {
