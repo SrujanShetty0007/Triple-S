@@ -1,25 +1,30 @@
-# Triple S - Student Study Support
+# Triple S - Student Study Support 📚
 
-A comprehensive educational resource platform for students to access, share, and contribute study materials organized by semester and subject. Triple S aims to simplify exam preparation by providing a centralized repository of notes, model papers, and previous year question papers.
+A comprehensive educational resource platform designed for engineering students to access, share, and contribute study materials organized by semester and subject. Triple S simplifies exam preparation by providing a centralized repository of notes, model papers, and previous year question papers.
 
-![Triple S Logo](assets/images/logo1.png)
+<div align="center">
+  <img src="assets/images/logo1.png" alt="Triple S Logo" width="200">
+  <p><em>Empowering Students with Knowledge</em></p>
+</div>
 
 ## 📑 Table of Contents
 
-- [Features](#features)
-- [Getting Started](#getting-started)
+- [Features](#-features)
+- [Demo](#-demo)
+- [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
+- [Usage](#-usage)
   - [Adding New Study Materials](#adding-new-study-materials)
   - [File Naming Conventions](#file-naming-conventions)
   - [Updating the Website](#updating-the-website)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [Troubleshooting](#troubleshooting)
-- [Technology Stack](#technology-stack)
-- [License](#license)
-- [Contact](#contact)
+- [Project Structure](#-project-structure)
+- [How It Works](#-how-it-works)
+- [Contributing](#-contributing)
+- [Troubleshooting](#-troubleshooting)
+- [Technology Stack](#-technology-stack)
+- [License](#-license)
+- [Contact](#-contact)
 
 ## ✨ Features
 
@@ -31,6 +36,12 @@ A comprehensive educational resource platform for students to access, share, and
 - **Testimonials Section**: Showcases student feedback and experiences.
 - **Semester Filtering**: Easily filter content by semester.
 - **Static Site Architecture**: Fully compatible with GitHub Pages hosting (no server-side code required).
+- **Automatic Manifest Generation**: Script to automatically update the PDF manifest file.
+- **Cache Management**: Intelligent caching system for improved performance.
+
+## 🌐 Demo
+
+Visit the live website: [Triple S - Student Study Support](https://srujanshetty0007.github.io/Triple-S/)
 
 ## 🚀 Getting Started
 
@@ -39,6 +50,7 @@ A comprehensive educational resource platform for students to access, share, and
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - Basic knowledge of file management
 - Git (optional, for cloning the repository)
+- Node.js (for running the manifest update script)
 
 ### Installation
 
@@ -104,10 +116,16 @@ If you've made changes to the code or structure:
 Triple-S/
 ├── assets/
 │   ├── css/             # Stylesheet files
+│   │   ├── styles.css   # Main stylesheet
+│   │   ├── menu.css     # Navigation menu styles
+│   │   └── ...          # Other CSS files
 │   ├── images/          # Images and icons
 │   ├── js/              # JavaScript files
+│   │   ├── script.js    # Main functionality
+│   │   ├── auto-pdf-scanner.js  # PDF scanning logic
+│   │   └── ...          # Other JS files
 │   └── pdfs/            # PDF study materials
-│       ├── manifest.json
+│       ├── manifest.json # Auto-generated manifest of all PDFs
 │       ├── sem1/
 │       │   ├── [subject]/
 │       │   │   ├── notes/
@@ -115,12 +133,36 @@ Triple-S/
 │       │   │   └── previous-papers/
 │       └── [other-semesters]/
 ├── mobile-pdf-viewer/   # Mobile-friendly PDF viewer
+│   ├── pdf_viewer.html
+│   └── pdf_viewer.css
 ├── index.html           # Home page
 ├── about.html           # About page
 ├── feedback.html        # Feedback page
 ├── update_manifest.js   # Script to update PDF manifest
+├── update-website.bat   # Windows batch file to run update script
 └── README.md            # Project documentation
 ```
+
+## 🔧 How It Works
+
+1. **PDF Management**:
+   - PDFs are stored in a structured folder hierarchy by semester, subject, and type
+   - The `update_manifest.js` script scans this structure and generates a `manifest.json` file
+   - This manifest is used by the frontend to display available PDFs without hardcoding
+
+2. **Frontend Display**:
+   - The website loads the manifest.json file on startup
+   - JavaScript dynamically creates links to PDFs based on the manifest
+   - When a user clicks on a category, available PDFs are displayed in a modal
+
+3. **PDF Viewing**:
+   - Desktop: PDFs open in a new tab or the browser's built-in PDF viewer
+   - Mobile: PDFs open in the custom mobile-friendly PDF viewer
+
+4. **Contribution System**:
+   - Users can upload PDFs through the contribution form
+   - Uploads are sent to the administrator for review
+   - Approved materials are added to the repository and automatically appear on the site
 
 ## 🤝 Contributing
 
@@ -140,6 +182,7 @@ If your PDFs don't appear on the website:
 3. Verify that the files have a `.pdf` extension
 4. Check the console for JavaScript errors
 5. Try clearing your browser cache or opening in a private/incognito window
+6. Verify that the manifest.json file has been updated correctly
 
 ## 💻 Technology Stack
 
@@ -147,7 +190,9 @@ If your PDFs don't appear on the website:
 - **PDF Processing**: Node.js for manifest generation
 - **PDF Viewing**: pdf.js for in-browser PDF rendering
 - **Hosting**: Compatible with GitHub Pages
-- **External Libraries**: Font Awesome for icons
+- **External Libraries**: 
+  - Font Awesome for icons
+  - Intersection Observer API for animations
 
 ## 📜 License
 
@@ -161,6 +206,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">
-  Triple S - Empowering Students with Knowledge
-</p> 
+<div align="center">
+  <p>Made with ❤️ for engineering students</p>
+</div> 
