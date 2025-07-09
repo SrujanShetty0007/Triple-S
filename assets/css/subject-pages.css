@@ -751,7 +751,7 @@
 
 /* Chemistry */
 .chemistry-hero {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    background: linear-gradient(135deg, #29773E 0%, #093009 100%);
 }
 
 .chemistry-hero::after {
@@ -783,7 +783,7 @@
 .stream-header.chem-header,
 .pdf-modal-header.chem-modal-header,
 .pdf-viewer-header.chem-viewer-header {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    background: linear-gradient(135deg, #10b981 0%, #0D3E10 100%);
 }
 
 .pdf-file-info i.chem-file-icon {
