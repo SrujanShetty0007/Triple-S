@@ -343,7 +343,20 @@
           "name": "Module 5 Notes M2"
         }
       ],
-      "previous-papers": []
+      "previous-papers": [
+        {
+          "filename": "Jan-2024.pdf",
+          "name": "Jan 2024"
+        },
+        {
+          "filename": "July-2023.pdf",
+          "name": "July 2023"
+        },
+        {
+          "filename": "July-2024.pdf",
+          "name": "July 2024"
+        }
+      ]
     },
     "mathematics-eee": {
       "model-papers": [
