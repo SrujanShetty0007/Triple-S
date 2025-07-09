@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/menu.css">
-    <link rel="stylesheet" href="assets/css/mathematics.css">
+    <link rel="stylesheet" href="assets/css/subject-pages.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,7 +74,8 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="mathematics.html">Mathematics</a></li>
-                    <li><a href="index.html#testimonials-section">Testimonials</a></li>
+                    <li><a href="physics.html">Physics</a></li>
+                    <li><a href="chemistry.html">Chemistry</a></li>
                     <li><a href="index.html#my-contribution-section">Contribute</a></li>
                 </ul>
             </div>
@@ -82,7 +83,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="mathematics-hero">
+    <section class="subject-hero mathematics-hero">
         <div class="math-element">π</div>
         <div class="math-element">∑</div>
         <div class="math-element">∞</div>
@@ -95,10 +96,11 @@
 
     <!-- Stream Sections -->
     <section class="container">
+        <h2 style="text-align: center; font-size: 2rem; font-weight: 600; margin-bottom: 2rem;">2022 Scheme</h2>
         <div class="streams-container">
             <!-- CSE Stream -->
-            <div class="stream-card">
-                <div class="stream-header">
+            <div class="stream-card math-card">
+                <div class="stream-header math-header">
                     <h2>CSE Stream</h2>
                 </div>
                 <div class="stream-content">
@@ -106,7 +108,7 @@
                         <a href="#" class="math-btn">
                             <span>Mathematics-1</span>
                         </a>
-                        <a href="#" class="math-btn">
+                        <a href="assets/pdfs/sem2/mathematics" class="math-btn" id="math2-cse-btn">
                             <span>Mathematics-2</span>
                         </a>
                         <a href="#" class="math-btn">
@@ -120,8 +122,8 @@
             </div>
 
             <!-- EEE Stream -->
-            <div class="stream-card">
-                <div class="stream-header">
+            <div class="stream-card math-card">
+                <div class="stream-header math-header">
                     <h2>EEE Stream</h2>
                 </div>
                 <div class="stream-content">
@@ -143,8 +145,8 @@
             </div>
 
             <!-- ME Stream -->
-            <div class="stream-card">
-                <div class="stream-header">
+            <div class="stream-card math-card">
+                <div class="stream-header math-header">
                     <h2>ME Stream</h2>
                 </div>
                 <div class="stream-content">
@@ -166,8 +168,8 @@
             </div>
 
             <!-- Civil Stream -->
-            <div class="stream-card">
-                <div class="stream-header">
+            <div class="stream-card math-card">
+                <div class="stream-header math-header">
                     <h2>CE Stream</h2>
                 </div>
                 <div class="stream-content">
@@ -190,7 +192,41 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- PDF Modal -->
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header math-modal-header">
+                <h3>PDF Resources</h3>
+                <p>Mathematics Materials</p>
+                <button class="pdf-close-btn">&times;</button>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="pdf-list">
+                    <div class="pdf-files-container" id="pdf-files-container">
+                        <div class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading files...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-viewer-modal" class="pdf-viewer-modal">
+        <div class="pdf-viewer-content">
+            <div class="pdf-viewer-header math-viewer-header">
+                <h3>PDF Viewer</h3>
+                <span class="pdf-viewer-close">&times;</span>
+            </div>
+            <div class="pdf-viewer-body">
+                <div class="pdf-loading">
+                    <div class="pdf-loading-spinner math-loading-spinner"></div>
+                    <p>Loading PDF...</p>
+                </div>
+                <iframe id="pdf-iframe" src="about:blank" title="PDF Viewer"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -268,7 +304,7 @@
     <!-- JavaScript -->
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/auto-pdf-scanner.js"></script>
-    <script src="assets/js/mathematics.js"></script>
+    <script src="assets/js/subject-pages.js"></script>
 </body>
 
 </html>

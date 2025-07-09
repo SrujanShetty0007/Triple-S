@@ -70,7 +70,7 @@
 
         function getPDFFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('pdf');
+            return urlParams.get('file') || urlParams.get('pdf');
         }
         function viewPDF(pdfPath) {
             // Show error if no PDF specified
@@ -81,6 +81,11 @@
 
             const pathParts = pdfPath.split('/');
             const fileName = pathParts[pathParts.length - 1];
+
+            // Get title from URL parameter if available
+            const urlParams = new URLSearchParams(window.location.search);
+            const titleParam = urlParams.get('title');
+            const displayTitle = titleParam || fileName;
 
             const url = `../${pdfPath}`;
 
@@ -98,7 +103,7 @@
                 currentPage = 1;
                 totalPages = pdf.numPages;
                 totalPagesEl.textContent = totalPages;
-                document.title = `${fileName} - PDF Viewer`;
+                document.title = `${displayTitle} - PDF Viewer`;
 
                 downloadBtn.onclick = () => {
                     const a = document.createElement('a');
