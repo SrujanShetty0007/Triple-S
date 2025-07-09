@@ -141,6 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (shareEmailBtn) {
             shareEmailBtn.addEventListener('click', () => {
+                if (!studentNameInput.value.trim()) {
+                    showCustomAlert('Form Incomplete', 'Please fill the form to send an email.');
+                    studentNameInput.focus();
+                    return;
+                }
+
                 if (!validateForm()) return;
 
                 const studentName = studentNameInput.value;
@@ -161,6 +167,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (shareWhatsappBtn) {
             shareWhatsappBtn.addEventListener('click', () => {
+                if (!studentNameInput.value.trim()) {
+                    showCustomAlert('Form Incomplete', 'Please fill the form to send a WhatsApp message.');
+                    studentNameInput.focus();
+                    return;
+                }
+
                 if (!validateForm()) return;
 
                 const studentName = studentNameInput.value;
@@ -177,6 +189,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             });
         }
+    }
+
+    // Custom alert function
+    function showCustomAlert(title, message) {
+        // Remove any existing alerts
+        const existingAlert = document.querySelector('.custom-alert');
+        if (existingAlert) document.body.removeChild(existingAlert);
+
+        // Create alert element
+        const alertContainer = document.createElement('div');
+        alertContainer.className = 'custom-alert';
+
+        alertContainer.innerHTML = `
+            <div class="custom-alert-content">
+                <div class="custom-alert-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${title}</span>
+                </div>
+                <div class="custom-alert-body">
+                    <p>${message}</p>
+                </div>
+                <div class="custom-alert-footer">
+                    <button class="custom-alert-button">OK</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(alertContainer);
+        setTimeout(() => alertContainer.classList.add('show'), 10);
+
+        // Add event listeners
+        const closeAlert = () => {
+            alertContainer.classList.remove('show');
+            setTimeout(() => document.body.removeChild(alertContainer), 300);
+        };
+
+        alertContainer.querySelector('.custom-alert-button').addEventListener('click', closeAlert);
+        alertContainer.addEventListener('click', (e) => {
+            if (e.target === alertContainer) closeAlert();
+        });
     }
 
     function setupSubjectFiltering() {
@@ -223,45 +275,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateForm() {
-        if (!studentNameInput.value.trim()) {
-            alert('Please enter your name');
-            return false;
+        // Check required fields
+        const requiredFields = [
+            { field: studentNameInput, message: 'name' },
+            { field: semesterSelect, message: 'semester' },
+            { field: subjectSelect, message: 'subject' },
+            { field: materialTypeSelect, message: 'material type' }
+        ];
+
+        for (const item of requiredFields) {
+            if (!item.field.value.trim()) {
+                showCustomAlert('Form Incomplete', `Please select a ${item.message}.`);
+                item.field.focus();
+                return false;
+            }
         }
 
-        if (!semesterSelect.value) {
-            alert('Please select a semester');
-            return false;
-        }
-
-        if (!subjectSelect.value) {
-            alert('Please select a subject');
-            return false;
-        }
-
-        if (!materialTypeSelect.value) {
-            alert('Please select a material type');
-            return false;
-        }
-
+        // Check file upload
         if (!fileUpload.files[0]) {
-            alert('Please upload a file');
+            showCustomAlert('Missing File', 'Please upload a file.');
             return false;
         }
 
         const file = fileUpload.files[0];
         const fileName = file.name.toLowerCase();
         const validExtensions = ['.pdf', '.jpg', '.jpeg', '.png'];
-
         const isValidExtension = validExtensions.some(ext => fileName.endsWith(ext));
 
         if (!isValidExtension) {
-            alert('Please upload a valid PDF, JPG, JPEG, or PNG file');
+            showCustomAlert('Invalid File', 'Please upload a PDF, JPG, JPEG, or PNG file.');
             return false;
         }
 
         const maxSize = 20 * 1024 * 1024;
         if (file.size > maxSize) {
-            alert('File size must be less than 20MB. Your file is ' + (file.size / (1024 * 1024)).toFixed(2) + 'MB');
+            showCustomAlert('File Too Large', `File must be under 20MB (current: ${(file.size / (1024 * 1024)).toFixed(2)}MB)`);
             return false;
         }
 

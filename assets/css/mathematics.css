@@ -1,0 +1,378 @@
+/* Mathematics Page Styles */
+
+.mathematics-hero {
+    position: relative;
+    background: var(--hero-gradient);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.mathematics-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Mathematical symbols background */
+.mathematics-hero::after {
+    content: '∫ ∑ ∞ π √ ∂ ∇ ∆ ∏ ∀ ∃ ∈ ∉ ∋ ∌ ∩ ∪ ⊂ ⊃ ⊆ ⊇';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-family: 'Times New Roman', serif;
+    opacity: 0.08;
+    letter-spacing: 20px;
+    z-index: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transform: rotate(-5deg);
+}
+
+.mathematics-hero h1 {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mathematics-hero h1::after {
+    content: '∫ f(x) dx';
+    position: absolute;
+    font-size: 1rem;
+    top: -15px;
+    right: -40px;
+    opacity: 0.7;
+    transform: rotate(15deg);
+    font-family: 'Times New Roman', serif;
+}
+
+.mathematics-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Floating Math Elements */
+.math-element {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: 'Times New Roman', serif;
+    z-index: 1;
+    animation: float 8s ease-in-out infinite;
+}
+
+.math-element:nth-child(1) {
+    content: 'π';
+    top: 20%;
+    left: 10%;
+    font-size: 40px;
+    animation-delay: 0s;
+}
+
+.math-element:nth-child(2) {
+    content: '∑';
+    top: 30%;
+    right: 15%;
+    font-size: 60px;
+    animation-delay: 1s;
+}
+
+.math-element:nth-child(3) {
+    content: '∞';
+    bottom: 25%;
+    left: 20%;
+    font-size: 50px;
+    animation-delay: 2s;
+}
+
+.math-element:nth-child(4) {
+    content: '√';
+    bottom: 15%;
+    right: 10%;
+    font-size: 45px;
+    animation-delay: 3s;
+}
+
+/* Stream Containers */
+.streams-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.stream-card {
+    background: white;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.stream-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.stream-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stream-card:hover::before {
+    opacity: 1;
+}
+
+.stream-header {
+    background: var(--gradient);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stream-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.stream-header h2 {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.stream-content {
+    padding: 20px;
+}
+
+/* Math Course Buttons */
+.math-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.math-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f3f8;
+    color: var(--dark-color);
+    padding: 15px;
+    border-radius: var(--button-border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.math-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Custom Alert Styles */
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-alert.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-alert-content {
+    background-color: white;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.custom-alert.show .custom-alert-content {
+    transform: scale(1);
+}
+
+.custom-alert-header {
+    padding: 15px;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-alert-header i {
+    font-size: 1.5rem;
+}
+
+.custom-alert-header span {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.custom-alert-body {
+    padding: 20px;
+}
+
+.custom-alert-body p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+.custom-alert-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #eee;
+}
+
+.custom-alert-button {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.custom-alert-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .mathematics-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .mathematics-hero p {
+        font-size: 1rem;
+    }
+
+    .streams-container {
+        grid-template-columns: 1fr;
+    }
+
+    .mathematics-hero::after {
+        font-size: 60px;
+    }
+
+    .custom-alert-content {
+        max-width: 90%;
+    }
+
+    .custom-alert-header i {
+        font-size: 1.3rem;
+    }
+
+    .custom-alert-header span {
+        font-size: 1.1rem;
+    }
+
+    .custom-alert-body p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mathematics-hero h1 {
+        font-size: 2rem;
+    }
+
+    .mathematics-hero {
+        padding: 60px 0;
+    }
+
+    .math-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .mathematics-hero::after {
+        font-size: 40px;
+        letter-spacing: 10px;
+    }
+
+    .custom-alert-content {
+        width: 95%;
+    }
+
+    .custom-alert-header {
+        padding: 12px;
+    }
+
+    .custom-alert-body {
+        padding: 15px;
+    }
+
+    .custom-alert-footer {
+        padding: 12px;
+    }
+}

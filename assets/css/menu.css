@@ -195,7 +195,7 @@ header .container {
     .nav-links {
         flex-direction: column;
         gap: 20px;
-        top: -160px;
+        top: -140px;
         position: relative;
         align-items: center;
         justify-content: center;
