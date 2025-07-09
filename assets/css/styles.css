@@ -3037,7 +3037,56 @@ html {
     transform: rotate(10deg);
 }
 
+/* Main Subjects Container Styles */
+.main-subjects-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 2rem 0 1.5rem 0;
+    flex-wrap: wrap;
+}
 
+.main-subjects-container a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid #e0e0e0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: background 0.15s, color 0.15s, border 0.15s;
+}
+
+.main-subjects-container a.btn-maths {
+    border-color: #3b82f6;
+    color: #2563eb;
+}
+
+.main-subjects-container a.btn-phy {
+    border-color: #10b981;
+    color: #047857;
+}
+
+.main-subjects-container a.btn-chem {
+    border-color: #f59e42;
+    color: #b45309;
+}
+
+.main-subjects-container a:hover,
+.main-subjects-container a:focus {
+    background: #f5f5f5;
+    border-color: #bbb;
+    outline: none;
+}
+
+.main-subjects-container i {
+    font-size: 1.3em;
+    margin-right: 0.3em;
+}
 
 /* For small mobile screens between 310px and 400px */
 @media (max-width: 400px) and (min-width: 310px) {
@@ -3603,7 +3652,11 @@ html {
 
 }
 
-@media (max-width: 360px) {}
+@media (max-width: 360px) {
+    .pdf-loading p {
+        font-size: 0.85rem;
+    }
+}
 
 .pdf-loading p {
     font-size: 1rem;
