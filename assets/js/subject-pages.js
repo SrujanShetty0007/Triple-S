@@ -312,12 +312,50 @@ function displayPdfFile(container, fileName, filePath) {
     // Download button
     const downloadBtn = document.createElement('a');
     downloadBtn.className = `pdf-download-btn ${subjectClass ? subjectClass + '-download-btn' : ''}`;
-    downloadBtn.href = filePath;
-    downloadBtn.download = '';
+    downloadBtn.href = 'javascript:void(0);';
     downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download';
     downloadBtn.setAttribute('aria-label', `Download ${fileName}`);
-    fileActions.appendChild(downloadBtn);
+    downloadBtn.setAttribute('data-file', filePath);
+    downloadBtn.setAttribute('data-filename', fileName);
 
+    // Add event listener for watermarked download
+    if (window.pdfWatermarker) {
+        downloadBtn.addEventListener('click', async function (e) {
+            e.preventDefault();
+            try {
+                // Get file path and name from data attributes
+                const filePath = this.getAttribute('data-file');
+                const fileName = this.getAttribute('data-filename');
+
+                // Watermark the PDF
+                const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
+
+                // Create download link for the watermarked PDF
+                const downloadUrl = URL.createObjectURL(watermarkedPdf);
+                const tempLink = document.createElement('a');
+                tempLink.href = downloadUrl;
+                tempLink.download = fileName;
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+
+                // Clean up
+                setTimeout(() => {
+                    URL.revokeObjectURL(downloadUrl);
+                }, 100);
+            } catch (error) {
+                console.error('Error downloading watermarked PDF:', error);
+                // Fallback to direct download if watermarking fails
+                window.location.href = filePath + '?download=true';
+            }
+        });
+    } else {
+        // Fallback if watermarker not available
+        downloadBtn.href = filePath + '?download=true';
+        downloadBtn.download = fileName;
+    }
+
+    fileActions.appendChild(downloadBtn);
     fileItem.appendChild(fileActions);
     container.appendChild(fileItem);
 }

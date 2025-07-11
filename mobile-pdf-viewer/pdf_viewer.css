@@ -78,6 +78,13 @@ canvas {
     touch-action: pan-y;
 }
 
+/* PDF canvas container */
+.canvas-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
 /* Navigation buttons */
 .nav-buttons {
     margin-top: 1rem;

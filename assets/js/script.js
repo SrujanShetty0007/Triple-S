@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <i class="fas fa-eye"></i> View
                     </button>` : ''
             }
-                <a href="${filePath}?download=true" class="pdf-download-btn" download="${fileName}">
+                <a href="javascript:void(0);" class="pdf-download-btn" data-file="${filePath}" data-filename="${fileName}">
                     <i class="fas fa-download"></i> Download
                 </a>
             </div>
@@ -575,6 +575,51 @@ document.addEventListener('DOMContentLoaded', () => {
                         showPdfViewer(filePath, fileName);
                     });
                 }
+            }
+
+            // Add event listener for the download button
+            const downloadBtn = fileItem.querySelector('.pdf-download-btn');
+            if (downloadBtn && window.pdfWatermarker) {
+                downloadBtn.addEventListener('click', async function (e) {
+                    e.preventDefault();
+                    try {
+                        // Get file path and name from data attributes
+                        const filePath = this.getAttribute('data-file');
+                        const fileName = this.getAttribute('data-filename');
+
+                        // Watermark the PDF
+                        const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
+
+                        // Create download link for the watermarked PDF
+                        const downloadUrl = URL.createObjectURL(watermarkedPdf);
+                        const tempLink = document.createElement('a');
+                        tempLink.href = downloadUrl;
+                        tempLink.download = fileName;
+                        document.body.appendChild(tempLink);
+                        tempLink.click();
+                        document.body.removeChild(tempLink);
+
+                        // Clean up
+                        setTimeout(() => {
+                            URL.revokeObjectURL(downloadUrl);
+                        }, 100);
+                    } catch (error) {
+                        console.error('Error downloading watermarked PDF:', error);
+                        // Fallback to direct download if watermarking fails
+                        window.location.href = filePath + '?download=true';
+                    }
+                });
+            } else if (downloadBtn) {
+                // Fallback if watermarker not available
+                downloadBtn.href = filePath + '?download=true';
+                downloadBtn.download = fileName;
+            }
+        } else {
+            // For non-PDF files, use direct download
+            const downloadBtn = fileItem.querySelector('.pdf-download-btn');
+            if (downloadBtn) {
+                downloadBtn.href = filePath + '?download=true';
+                downloadBtn.download = fileName;
             }
         }
     }

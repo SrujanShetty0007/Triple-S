@@ -31,6 +31,11 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./pdf_viewer.css">
+
+    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="../assets/js/pdf-watermarker.js"></script>
 </head>
 
 <body>
@@ -42,7 +47,9 @@
             <span id="page-info">Page <span id="current-page">1</span> / <span id="total-pages">1</span></span>
         </div>
 
-        <canvas id="pdf-canvas"></canvas>
+        <div class="canvas-container">
+            <canvas id="pdf-canvas"></canvas>
+        </div>
 
         <div class="nav-buttons">
             <button id="prev-page">Previous Page</button>
@@ -50,7 +57,6 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
 
@@ -67,6 +73,7 @@
         let currentPDF = null;
         let currentPage = 1;
         let totalPages = 0;
+        let currentPdfUrl = '';
 
         function getPDFFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -88,8 +95,10 @@
             const displayTitle = titleParam || fileName;
 
             const url = `../${pdfPath}`;
+            currentPdfUrl = url;
 
             canvas.style.display = "none";
+
             const loadingIndicator = document.createElement("div");
             loadingIndicator.id = "loading-indicator";
             loadingIndicator.textContent = "Loading PDF...";
@@ -99,18 +108,50 @@
                 const indicator = document.getElementById("loading-indicator");
                 if (indicator) indicator.remove();
                 canvas.style.display = "block";
+
                 currentPDF = pdf;
                 currentPage = 1;
                 totalPages = pdf.numPages;
                 totalPagesEl.textContent = totalPages;
                 document.title = `${displayTitle} - PDF Viewer`;
 
-                downloadBtn.onclick = () => {
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = fileName;
-                    a.target = '_blank';
-                    a.click();
+                downloadBtn.onclick = async () => {
+                    try {
+                        // Check if watermarker is available
+                        if (window.pdfWatermarker) {
+                            // Watermark the PDF
+                            const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(url);
+
+                            // Create download link
+                            const downloadUrl = URL.createObjectURL(watermarkedPdf);
+                            const tempLink = document.createElement('a');
+                            tempLink.href = downloadUrl;
+                            tempLink.download = fileName;
+                            document.body.appendChild(tempLink);
+                            tempLink.click();
+                            document.body.removeChild(tempLink);
+
+                            // Clean up
+                            setTimeout(() => {
+                                URL.revokeObjectURL(downloadUrl);
+                            }, 100);
+                        } else {
+                            // Fallback to direct download
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = fileName;
+                            a.target = '_blank';
+                            a.click();
+                        }
+                    } catch (error) {
+                        console.error('Error downloading watermarked PDF:', error);
+                        // Fallback to direct download if watermarking fails
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = fileName;
+                        a.target = '_blank';
+                        a.click();
+                    }
                 };
                 renderPage(currentPage);
                 updateButtonStates();
