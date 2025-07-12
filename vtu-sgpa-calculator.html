@@ -23,6 +23,19 @@
 </head>
 
 <body>
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <div class="custom-alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="custom-alert-message" id="customAlertMessage">
+                Alert message goes here
+            </div>
+            <button class="custom-alert-button" onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="header">
             <h1>SGPA Calculator</h1>
@@ -37,7 +50,8 @@
                 <p>Choose your academic scheme to continue</p>
                 <div class="scheme-buttons">
                     <button class="scheme-btn btn-gradient" onclick="selectScheme('2022')">2022 Scheme</button>
-                    <button class="scheme-btn" onclick="selectScheme('2019')">2019 Scheme</button>
+                    <button class="scheme-btn" onclick="selectScheme('2021')">2021 Scheme</button>
+                    <button class="scheme-btn" onclick="selectScheme('2018')">2018 Scheme</button>
                 </div>
             </div>
 
@@ -46,13 +60,36 @@
                 <h2>Select Cycle</h2>
                 <p>Choose your first-year cycle</p>
                 <div class="cycle-toggle">
-                    <button class="cycle-btn active" onclick="selectCycle('physics')">Physics Cycle</button>
+                    <button class="cycle-btn" onclick="selectCycle('physics')">Physics Cycle</button>
                     <button class="cycle-btn" onclick="selectCycle('chemistry')">Chemistry Cycle</button>
+                </div>
+            </div>
+
+            <!-- Branch Selection Section -->
+            <div class="branch-selector" id="branchSelector">
+                <h2>Choose Branch:</h2>
+                <div class="branch-buttons">
+                    <button class="branch-btn" onclick="selectBranch('civil')">Civil Engineering Stream
+                        (CV/EV/TR/CC)</button>
+                    <button class="branch-btn" onclick="selectBranch('cse')">CSE Stream Scheme (CSE/ISC/BT)</button>
+                    <button class="branch-btn" onclick="selectBranch('electrical')">Electrical Engg Science Streams
+                        (EEE/ECE/ETC/BM/IE/ML)</button>
+                    <button class="branch-btn" onclick="selectBranch('mechanical')">Mechanical Engineering Streams (
+                        AE/AS/AU/ME/IP/IM/CH/SX/TX)</button>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="back-btn" onclick="backToCycle()"><i class="fas fa-arrow-left"></i> Back to Cycle
+                        Selection</button>
                 </div>
             </div>
 
             <!-- Calculator Content -->
             <div id="calculatorContent">
+                <div class="navigation-buttons calculator-nav">
+                    <button class="back-btn" onclick="backToBranch()"><i class="fas fa-arrow-left"></i> Back to Branch
+                        Selection</button>
+                </div>
+
                 <div class="grade-mapping">
                     <h3><i class="fas fa-chart-bar"></i> Grade Point Mapping</h3>
                     <div class="grade-table">
@@ -137,16 +174,6 @@
                     <div class="performance-indicator" id="performanceIndicator"></div>
                 </div>
             </div>
-
-            <!-- 2019 Scheme Message -->
-            <div id="scheme2019Message">
-                <div class="coming-soon-message">
-                    <i class="fas fa-clock"></i>
-                    <h2>Coming Soon</h2>
-                    <p>The SGPA calculator for 2019 scheme is currently under development.</p>
-                    <button class="back-btn" onclick="resetSelection()">Go Back</button>
-                </div>
-            </div>
         </div>
 
         <div class="footer">
@@ -156,31 +183,108 @@
 
     <script>
         const subjects = {
-            physics: [
-                { name: 'Mathematics', code: 'BMATSx01', credits: 4 },
-                { name: 'Applied Physics', code: 'BPHYSx02', credits: 4 },
-                { name: 'Programming in C', code: 'BPOPSx03', credits: 3 },
-                { name: 'Engineering Science', code: 'BESCKx04x', credits: 3 },
-                { name: 'Emerging Tech or Programming Language', code: 'BETCKx05 / BPLCKx05x', credits: 3 },
-                { name: 'Communicative English', code: 'BENGKx06 / BPWSKx06', credits: 1 },
-                { name: 'Kannada / Constitution', code: 'BKSKKx07 / BKBKKx07 / BICOKx07', credits: 1 },
-                { name: 'Innovation/Design/Health', code: 'BIDTKx58 / BSFHKx58', credits: 1 }
-            ],
-            chemistry: [
-                { name: 'Mathematics', code: 'BMATSx01', credits: 4 },
-                { name: 'Applied Chemistry', code: 'BCHESx02', credits: 4 },
-                { name: 'Engineering Drawing', code: 'BCEDKx03', credits: 3 },
-                { name: 'Engineering Science', code: 'BESCKx04x', credits: 3 },
-                { name: 'Emerging Tech or Programming Language', code: 'BETCKx05 / BPLCKx05x', credits: 3 },
-                { name: 'Communicative English', code: 'BENGKx06 / BPWSKx06', credits: 1 },
-                { name: 'Kannada / Constitution', code: 'BKSKKx07 / BKBKKx07 / BICOKx07', credits: 1 },
-                { name: 'Innovation/Design/Health', code: 'BIDTKx58 / BSFHKx58', credits: 1 }
-            ]
+            physics: {
+                cse: [
+                    { name: 'Mathematics', code: 'BMATS101', credits: 4 },
+                    { name: 'Applied Physics', code: 'BPHYS102', credits: 4 },
+                    { name: 'Programming in C', code: 'BPOPS103', credits: 3 },
+                    { name: 'Engineering Science', code: 'BESCK104C', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205B', credits: 3 },
+                    { name: 'Communicative English', code: 'BENGK106', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK107', credits: 1 },
+                    { name: 'Design Thinking', code: 'BIDTK158', credits: 1 }
+                ],
+                civil: [
+                    { name: 'Mathematics', code: 'BMATS101', credits: 4 },
+                    { name: 'Applied Physics', code: 'BPHYS102', credits: 4 },
+                    { name: 'Programming in C', code: 'BPOPS103', credits: 3 },
+                    { name: 'Engineering Science', code: 'BESCK104A', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205A', credits: 3 },
+                    { name: 'Communicative English', code: 'BENGK106', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK107', credits: 1 },
+                    { name: 'Design Thinking', code: 'BIDTK158', credits: 1 }
+                ],
+                electrical: [
+                    { name: 'Mathematics', code: 'BMATS101', credits: 4 },
+                    { name: 'Applied Physics', code: 'BPHYS102', credits: 4 },
+                    { name: 'Programming in C', code: 'BPOPS103', credits: 3 },
+                    { name: 'Engineering Science', code: 'BESCK104B', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205B', credits: 3 },
+                    { name: 'Communicative English', code: 'BENGK106', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK107', credits: 1 },
+                    { name: 'Health & Wellness', code: 'BSFHK158', credits: 1 }
+                ],
+                mechanical: [
+                    { name: 'Mathematics', code: 'BMATS101', credits: 4 },
+                    { name: 'Applied Physics', code: 'BPHYS102', credits: 4 },
+                    { name: 'Programming in C', code: 'BPOPS103', credits: 3 },
+                    { name: 'Engineering Science', code: 'BESCK104A', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205A', credits: 3 },
+                    { name: 'Communicative English', code: 'BENGK106', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK107', credits: 1 },
+                    { name: 'Health & Wellness', code: 'BSFHK158', credits: 1 }
+                ]
+            },
+            chemistry: {
+                cse: [
+                    { name: 'Mathematics', code: 'BMATS201', credits: 4 },
+                    { name: 'Applied Chemistry', code: 'BCHES202', credits: 4 },
+                    { name: 'Computer Aided Engineering Drawing', code: 'BCADK203', credits: 3 },
+                    { name: 'Electrical Engineering', code: 'BESCK204C', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205B', credits: 3 },
+                    { name: 'Professional Writing Skills', code: 'BPWSK206', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK207', credits: 1 },
+                    { name: 'Design Thinking', code: 'BIDTK258', credits: 1 }
+                ],
+                civil: [
+                    { name: 'Mathematics', code: 'BMATS201', credits: 4 },
+                    { name: 'Applied Chemistry', code: 'BCHES202', credits: 4 },
+                    { name: 'Computer Aided Engineering Drawing', code: 'BCADK203', credits: 3 },
+                    { name: 'Electrical Engineering', code: 'BESCK204A', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205A', credits: 3 },
+                    { name: 'Professional Writing Skills', code: 'BPWSK206', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK207', credits: 1 },
+                    { name: 'Design Thinking', code: 'BIDTK258', credits: 1 }
+                ],
+                electrical: [
+                    { name: 'Mathematics', code: 'BMATS201', credits: 4 },
+                    { name: 'Applied Chemistry', code: 'BCHES202', credits: 4 },
+                    { name: 'Computer Aided Engineering Drawing', code: 'BCADK203', credits: 3 },
+                    { name: 'Electrical Engineering', code: 'BESCK204B', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205B', credits: 3 },
+                    { name: 'Professional Writing Skills', code: 'BPWSK206', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK207', credits: 1 },
+                    { name: 'Health & Wellness', code: 'BSFHK258', credits: 1 }
+                ],
+                mechanical: [
+                    { name: 'Mathematics', code: 'BMATS201', credits: 4 },
+                    { name: 'Applied Chemistry', code: 'BCHES202', credits: 4 },
+                    { name: 'Computer Aided Engineering Drawing', code: 'BCADK203', credits: 3 },
+                    { name: 'Electrical Engineering', code: 'BESCK204A', credits: 3 },
+                    { name: 'Python Programming', code: 'BPLCK205A', credits: 3 },
+                    { name: 'Professional Writing Skills', code: 'BPWSK206', credits: 1 },
+                    { name: 'Indian Constitution', code: 'BICOK207', credits: 1 },
+                    { name: 'Health & Wellness', code: 'BSFHK258', credits: 1 }
+                ]
+            }
         };
 
-        let currentCycle = 'physics';
+        let currentCycle = '';
         let currentScheme = '';
+        let currentBranch = '';
 
+        // Custom alert functions
+        function showCustomAlert(message) {
+            document.getElementById('customAlertMessage').textContent = message;
+            document.getElementById('customAlert').classList.add('show');
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').classList.remove('show');
+        }
+
+        // Flow: Scheme Selection -> Cycle Selection -> Branch Selection -> Calculator
+        // Each step hides the previous screen and shows the next one
         function selectScheme(scheme) {
             currentScheme = scheme;
 
@@ -190,9 +294,11 @@
             if (scheme === '2022') {
                 // Show cycle selector for 2022 scheme
                 document.getElementById('cycleSelector').style.display = 'block';
-            } else {
-                // Show coming soon message for 2019 scheme
-                document.getElementById('scheme2019Message').style.display = 'block';
+            } else if (scheme === '2021' || scheme === '2018') {
+                // Show alert for 2021 and 2018 schemes
+                showCustomAlert(`The SGPA calculator for ${scheme} scheme is currently under development. Please check back later.`);
+                // Go back to scheme selection
+                resetSelection();
             }
         }
 
@@ -200,13 +306,35 @@
             // Reset to scheme selection
             document.getElementById('schemeSelector').style.display = 'block';
             document.getElementById('cycleSelector').style.display = 'none';
+            document.getElementById('branchSelector').style.display = 'none';
             document.getElementById('calculatorContent').style.display = 'none';
-            document.getElementById('scheme2019Message').style.display = 'none';
 
             // Reset any results
             document.getElementById('resultSection').classList.remove('show');
             document.getElementById('summarySection').classList.remove('show');
             document.getElementById('warning').classList.remove('show');
+
+            // Reset active states
+            document.querySelectorAll('.cycle-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.branch-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Reset current selections
+            currentCycle = '';
+            currentBranch = '';
+        }
+
+        function backToCycle() {
+            // Hide branch selector
+            document.getElementById('branchSelector').style.display = 'none';
+
+            // Show cycle selector
+            document.getElementById('cycleSelector').style.display = 'block';
+
+            // Reset branch selection
+            currentBranch = '';
+
+            // Reset branch button active states
+            document.querySelectorAll('.branch-btn').forEach(btn => btn.classList.remove('active'));
         }
 
         function selectCycle(cycle) {
@@ -217,10 +345,46 @@
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
+            // Hide calculator content
+            document.getElementById('calculatorContent').style.display = 'none';
+
+            // Show branch selector
+            document.getElementById('branchSelector').style.display = 'block';
+
+            // Hide result and warning
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('summarySection').classList.remove('show');
+            document.getElementById('warning').classList.remove('show');
+        }
+
+        function selectBranch(branch) {
+            currentBranch = branch;
+
+            // Update button styles
+            const buttons = document.querySelectorAll('.branch-btn');
+            buttons.forEach(btn => {
+                // Remove active class from all buttons
+                btn.classList.remove('active');
+
+                // Add active class to the clicked button
+                if (btn.textContent.toLowerCase().includes(branch)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show alert for all branches except CSE
+            if (branch !== 'cse') {
+                showCustomAlert(`The SGPA calculator for ${branch.toUpperCase()} branch is currently under development. Please check back later.`);
+                return;
+            }
+
+            // Hide branch selector
+            document.getElementById('branchSelector').style.display = 'none';
+
             // Show calculator content
             document.getElementById('calculatorContent').style.display = 'block';
 
-            // Render subjects for selected cycle
+            // Render subjects for selected cycle and branch
             renderSubjects();
 
             // Hide result and warning
@@ -229,9 +393,24 @@
             document.getElementById('warning').classList.remove('show');
         }
 
+        function backToBranch() {
+            // Hide calculator content
+            document.getElementById('calculatorContent').style.display = 'none';
+
+            // Show branch selector
+            document.getElementById('branchSelector').style.display = 'block';
+        }
+
         function renderSubjects() {
             const grid = document.getElementById('subjectsGrid');
-            const currentSubjects = subjects[currentCycle];
+
+            // Check if cycle and branch are selected
+            if (!currentCycle || !currentBranch) {
+                grid.innerHTML = '<div class="error-message">Please select both a cycle and branch to continue.</div>';
+                return;
+            }
+
+            const currentSubjects = subjects[currentCycle][currentBranch];
 
             grid.innerHTML = '';
 
@@ -295,7 +474,13 @@
         }
 
         function calculateSGPA() {
-            const currentSubjects = subjects[currentCycle];
+            // Check if cycle and branch are selected
+            if (!currentCycle || !currentBranch) {
+                showCustomAlert("Please select both a cycle and branch before calculating SGPA.");
+                return;
+            }
+
+            const currentSubjects = subjects[currentCycle][currentBranch];
             const warning = document.getElementById('warning');
             let totalCredits = 0;
             let totalWeightedGradePoints = 0;
@@ -414,9 +599,6 @@
 
             document.getElementById('summarySection').classList.add('show');
         }
-
-        // Initial render of subjects for the default cycle (physics)
-        renderSubjects();
     </script>
 </body>
 
