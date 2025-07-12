@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPTSX512J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Triple S - VTU Results, CGPA/SGPA Calculator and other VTU resources for engineering students.">
+    <meta name="keywords"
+        content="VTU results, CGPA calculator, SGPA calculator, VTU resources, engineering education, Triple S">
+    <meta name="author" content="Srujan S Shetty">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Triple S - VTU Results & Calculator">
+    <meta property="og:description"
+        content="Access VTU results, CGPA/SGPA calculator and other VTU resources for engineering students.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://triple-s.netlify.app/vtu.html">
+    <meta property="og:image" content="assets/images/logo1.png">
+    <title>Triple S - VTU Results & Calculator | Coming Soon</title>
+    <!-- Stylesheets -->
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/typography-enhancements.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234361ee' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        .coming-soon-section {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-icon {
+            font-size: 5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .vtu-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+        }
+
+        .coming-soon-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-family: var(--heading-font);
+        }
+
+        .coming-soon-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .notification-form {
+            max-width: 500px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            position: relative;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--button-border-radius) 0 0 var(--button-border-radius);
+            font-family: var(--body-font);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .notify-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
+            font-family: var(--body-font);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .notify-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon-title {
+                font-size: 2rem;
+            }
+
+            .coming-soon-subtitle {
+                font-size: 1rem;
+            }
+
+            .features-list {
+                gap: 1rem;
+            }
+
+            .feature-item {
+                width: calc(50% - 1rem);
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon-icon {
+                font-size: 4rem;
+            }
+
+            .coming-soon-title {
+                font-size: 1.8rem;
+            }
+
+            .features-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .vtu-logo {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo">
+                </div>
+                <div class="title-container">
+                    <h1>Triple S</h1>
+                    <p class="tagline">Student Study Support</p>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <!-- Navigation Container -->
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="mathematics.html">Mathematics</a></li>
+                    <li><a href="physics.html">Physics</a></li>
+                    <li><a href="chemistry.html">Chemistry</a></li>
+                    <li><a href="vtu.html">VTU</a></li>
+                    <li><a href="index.html#my-contribution-section">Contribute</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="coming-soon-section">
+            <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo">
+            <i class="fas fa-tools coming-soon-icon"></i>
+            <h1 class="coming-soon-title">Coming Soon</h1>
+            <p class="coming-soon-subtitle">We're working hard to bring you the best VTU resources, results checker, and
+                CGPA/SGPA calculator. Stay tuned!</p>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-search"></i>
+                    <h3>Results Checker</h3>
+                    <p>Quick access to your VTU exam results</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calculator"></i>
+                    <h3>CGPA Calculator</h3>
+                    <p>Calculate your cumulative grade point average</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>SGPA Calculator</h3>
+                    <p>Calculate your semester grade point average</p>
+                </div>
+            </div>
+
+            <div class="notification-form">
+                <p>Get notified when VTU tools are ready:</p>
+                <form id="notifyForm" action="https://formsubmit.co/triples.studies.edu@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="VTU Tools Notification Request">
+                    <input type="hidden" name="_next" value="https://triple-s.netlify.app/vtu.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-group">
+                        <input type="email" id="notifyEmail" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="notify-btn">Notify Me</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
+                    <h3>Triple S</h3>
+                    <p>Empowering students with knowledge and resources for academic excellence.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/+918217358117" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:triples.studies.edu@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/srujanshetty0007" class="social-link" target="_blank"
+                            aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-link" target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                            <li><a href="mathematics.html">Mathematics</a></li>
+                            <li><a href="physics.html">Physics</a></li>
+                            <li><a href="chemistry.html">Chemistry</a></li>
+                            <li><a href="vtu.html">VTU</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#sem1">Semester 1</a></li>
+                            <li><a href="index.html#sem2">Semester 2</a></li>
+                            <li><a href="index.html#sem3">Semester 3</a></li>
+                            <li><a href="index.html#sem4">Semester 4</a></li>
+                            <li><a href="index.html#sem5">Semester 5+</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:triples.studies.edu@gmail.com">Contact Us</a></li>
+                            <li><a href="index.html#my-contribution-section">Share Materials</a></li>
+                            <li><a href="feedback.html">Report Issues</a></li>
+                            <li><a href="feedback.html#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                    <p class="made-with">Made with <i class="fas fa-heart"></i> for students</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/menu.js"></script>
+    <script>
+        // Page loader
+        window.addEventListener('load', function () {
+            document.getElementById('page-loader').style.display = 'none';
+        });
+
+        // Back to Top Button
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopButton = document.getElementById('backToTop');
+
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) { // Show after scrolling 300px
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            // Smooth scroll to top when clicked
+            backToTopButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
