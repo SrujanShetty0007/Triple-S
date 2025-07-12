@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPTSX512J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VTU SGPA Calculator - Calculate your semester grade point average easily">
+    <meta name="keywords" content="VTU, SGPA, calculator, grade point, semester, engineering">
+    <title>VTU SGPA Calculator | Triple S</title>
+    <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/vtu-sgpa-calculator.css">
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SGPA Calculator</h1>
+            <p>Visvesvaraya Technological University</p>
+            <a href="vtu.html" class="back-to-vtu"><i class="fas fa-arrow-left"></i> Back to VTU Page</a>
+        </div>
+
+        <div class="main-content">
+            <!-- Scheme Selection Section -->
+            <div class="scheme-selector" id="schemeSelector">
+                <h2>Select Scheme</h2>
+                <p>Choose your academic scheme to continue</p>
+                <div class="scheme-buttons">
+                    <button class="scheme-btn btn-gradient" onclick="selectScheme('2022')">2022 Scheme</button>
+                    <button class="scheme-btn" onclick="selectScheme('2019')">2019 Scheme</button>
+                </div>
+            </div>
+
+            <!-- Cycle Selection Section -->
+            <div class="cycle-selector" id="cycleSelector">
+                <h2>Select Cycle</h2>
+                <p>Choose your first-year cycle</p>
+                <div class="cycle-toggle">
+                    <button class="cycle-btn active" onclick="selectCycle('physics')">Physics Cycle</button>
+                    <button class="cycle-btn" onclick="selectCycle('chemistry')">Chemistry Cycle</button>
+                </div>
+            </div>
+
+            <!-- Calculator Content -->
+            <div id="calculatorContent">
+                <div class="grade-mapping">
+                    <h3><i class="fas fa-chart-bar"></i> Grade Point Mapping</h3>
+                    <div class="grade-table">
+                        <div class="grade-item">
+                            <div class="marks-range">90-100</div>
+                            <div class="grade-point">→ 10</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">80-89</div>
+                            <div class="grade-point">→ 9</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">70-79</div>
+                            <div class="grade-point">→ 8</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">60-69</div>
+                            <div class="grade-point">→ 7</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">50-59</div>
+                            <div class="grade-point">→ 6</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">45-49</div>
+                            <div class="grade-point">→ 5</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">40-44</div>
+                            <div class="grade-point">→ 4</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="marks-range">&lt; 40</div>
+                            <div class="grade-point">→ 0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning" id="warning">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Warning:</strong> Please enter valid marks
+                    (0-100) for all subjects before calculating SGPA.
+                </div>
+
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Subjects will be populated here -->
+                </div>
+
+                <div class="calculate-section">
+                    <button class="calculate-btn" onclick="calculateSGPA()"><i class="fas fa-calculator"></i>
+                        Calculate SGPA</button>
+                </div>
+
+                <div class="summary-section" id="summarySection">
+                    <h3><i class="fas fa-clipboard-list"></i> Detailed Calculation</h3>
+                    <div class="scroll-hint visible-mobile">
+                        <i class="fas fa-hand-point-right"></i> Swipe horizontally to see all columns
+                    </div>
+                    <div class="table-container">
+                        <table class="summary-table" aria-label="SGPA Calculation Details">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Marks</th>
+                                    <th scope="col">Grade Points</th>
+                                    <th scope="col">Credits</th>
+                                    <th scope="col">Grade Points × Credits</th>
+                                </tr>
+                            </thead>
+                            <tbody id="summaryTableBody">
+                                <!-- Summary rows will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="summary-stats" id="summaryStats">
+                        <!-- Summary statistics will be populated here -->
+                    </div>
+                </div>
+
+                <div class="result-section" id="resultSection">
+                    <div class="sgpa-value" id="sgpaValue">0.00</div>
+                    <div class="sgpa-label">Your SGPA</div>
+                    <div class="performance-indicator" id="performanceIndicator"></div>
+                </div>
+            </div>
+
+            <!-- 2019 Scheme Message -->
+            <div id="scheme2019Message">
+                <div class="coming-soon-message">
+                    <i class="fas fa-clock"></i>
+                    <h2>Coming Soon</h2>
+                    <p>The SGPA calculator for 2019 scheme is currently under development.</p>
+                    <button class="back-btn" onclick="resetSelection()">Go Back</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Triple S | <a href="vtu.html">VTU Resources</a> | <a href="index.html">Home</a></p>
+        </div>
+    </div>
+
+    <script>
+        const subjects = {
+            physics: [
+                { name: 'Mathematics', code: 'BMATSx01', credits: 4 },
+                { name: 'Applied Physics', code: 'BPHYSx02', credits: 4 },
+                { name: 'Programming in C', code: 'BPOPSx03', credits: 3 },
+                { name: 'Engineering Science', code: 'BESCKx04x', credits: 3 },
+                { name: 'Emerging Tech or Programming Language', code: 'BETCKx05 / BPLCKx05x', credits: 3 },
+                { name: 'Communicative English', code: 'BENGKx06 / BPWSKx06', credits: 1 },
+                { name: 'Kannada / Constitution', code: 'BKSKKx07 / BKBKKx07 / BICOKx07', credits: 1 },
+                { name: 'Innovation/Design/Health', code: 'BIDTKx58 / BSFHKx58', credits: 1 }
+            ],
+            chemistry: [
+                { name: 'Mathematics', code: 'BMATSx01', credits: 4 },
+                { name: 'Applied Chemistry', code: 'BCHESx02', credits: 4 },
+                { name: 'Engineering Drawing', code: 'BCEDKx03', credits: 3 },
+                { name: 'Engineering Science', code: 'BESCKx04x', credits: 3 },
+                { name: 'Emerging Tech or Programming Language', code: 'BETCKx05 / BPLCKx05x', credits: 3 },
+                { name: 'Communicative English', code: 'BENGKx06 / BPWSKx06', credits: 1 },
+                { name: 'Kannada / Constitution', code: 'BKSKKx07 / BKBKKx07 / BICOKx07', credits: 1 },
+                { name: 'Innovation/Design/Health', code: 'BIDTKx58 / BSFHKx58', credits: 1 }
+            ]
+        };
+
+        let currentCycle = 'physics';
+        let currentScheme = '';
+
+        function selectScheme(scheme) {
+            currentScheme = scheme;
+
+            // Hide scheme selector
+            document.getElementById('schemeSelector').style.display = 'none';
+
+            if (scheme === '2022') {
+                // Show cycle selector for 2022 scheme
+                document.getElementById('cycleSelector').style.display = 'block';
+            } else {
+                // Show coming soon message for 2019 scheme
+                document.getElementById('scheme2019Message').style.display = 'block';
+            }
+        }
+
+        function resetSelection() {
+            // Reset to scheme selection
+            document.getElementById('schemeSelector').style.display = 'block';
+            document.getElementById('cycleSelector').style.display = 'none';
+            document.getElementById('calculatorContent').style.display = 'none';
+            document.getElementById('scheme2019Message').style.display = 'none';
+
+            // Reset any results
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('summarySection').classList.remove('show');
+            document.getElementById('warning').classList.remove('show');
+        }
+
+        function selectCycle(cycle) {
+            currentCycle = cycle;
+
+            // Update button styles
+            const buttons = document.querySelectorAll('.cycle-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show calculator content
+            document.getElementById('calculatorContent').style.display = 'block';
+
+            // Render subjects for selected cycle
+            renderSubjects();
+
+            // Hide result and warning
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('summarySection').classList.remove('show');
+            document.getElementById('warning').classList.remove('show');
+        }
+
+        function renderSubjects() {
+            const grid = document.getElementById('subjectsGrid');
+            const currentSubjects = subjects[currentCycle];
+
+            grid.innerHTML = '';
+
+            currentSubjects.forEach((subject, index) => {
+                const card = document.createElement('div');
+                card.className = 'subject-card';
+                card.innerHTML = `
+                <div class="subject-info">
+                    <div class="subject-name">${subject.name}</div>
+                    <div class="subject-details">
+                        <div class="subject-code">${subject.code}</div>
+                        <div class="subject-credits">${subject.credits} Credits</div>
+                    </div>
+                </div>
+                <div class="marks-input-container">
+                    <input type="number" class="marks-input" id="marks-${index}" 
+                           placeholder="Enter marks (0-100)" min="0" max="100" 
+                           onkeyup="updateGradePreview(${index})" onchange="updateGradePreview(${index})">
+                    <div class="grade-preview" id="grade-preview-${index}"></div>
+                </div>
+            `;
+                grid.appendChild(card);
+            });
+        }
+
+        function marksToGradePoints(marks) {
+            if (marks >= 90) return 10;
+            if (marks >= 80) return 9;
+            if (marks >= 70) return 8;
+            if (marks >= 60) return 7;
+            if (marks >= 50) return 6;
+            if (marks >= 45) return 5;
+            if (marks >= 40) return 4;
+            return 0;
+        }
+
+        function updateGradePreview(index) {
+            const marksInput = document.getElementById(`marks-${index}`);
+            const gradePreview = document.getElementById(`grade-preview-${index}`);
+            const marks = parseFloat(marksInput.value);
+
+            if (isNaN(marks) || marks < 0 || marks > 100) {
+                gradePreview.classList.remove('show');
+                marksInput.classList.add('error');
+                return;
+            }
+
+            marksInput.classList.remove('error');
+            const gradePoints = marksToGradePoints(marks);
+            gradePreview.textContent = `GP: ${gradePoints}`;
+            gradePreview.classList.add('show');
+        }
+
+        function getPerformanceLevel(sgpa) {
+            if (sgpa >= 9.5) return "🏆 Outstanding Performance";
+            if (sgpa >= 8.5) return "🌟 Excellent Performance";
+            if (sgpa >= 7.5) return "👍 Very Good Performance";
+            if (sgpa >= 6.5) return "✅ Good Performance";
+            if (sgpa >= 5.0) return "📈 Average Performance";
+            return "📚 Needs Improvement";
+        }
+
+        function calculateSGPA() {
+            const currentSubjects = subjects[currentCycle];
+            const warning = document.getElementById('warning');
+            let totalCredits = 0;
+            let totalWeightedGradePoints = 0;
+            let allMarksValid = true;
+
+            // Hide warning initially
+            warning.classList.remove('show');
+
+            const calculationDetails = [];
+
+            currentSubjects.forEach((subject, index) => {
+                const marksInput = document.getElementById(`marks-${index}`);
+                const marks = parseFloat(marksInput.value);
+
+                if (isNaN(marks) || marks < 0 || marks > 100) {
+                    allMarksValid = false;
+                    marksInput.classList.add('error');
+                    return;
+                }
+
+                marksInput.classList.remove('error');
+                const gradePoints = marksToGradePoints(marks);
+                const credits = subject.credits;
+                const weightedGradePoints = gradePoints * credits;
+
+                totalCredits += credits;
+                totalWeightedGradePoints += weightedGradePoints;
+
+                calculationDetails.push({
+                    subject: subject.name,
+                    marks: marks,
+                    gradePoints: gradePoints,
+                    credits: credits,
+                    weightedGradePoints: weightedGradePoints
+                });
+            });
+
+            if (!allMarksValid) {
+                warning.classList.add('show');
+                return;
+            }
+
+            const sgpa = (totalWeightedGradePoints / totalCredits).toFixed(2);
+
+            // Show detailed calculation
+            showCalculationSummary(calculationDetails, totalCredits, totalWeightedGradePoints, sgpa);
+
+            // Show result
+            document.getElementById('sgpaValue').textContent = sgpa;
+            document.getElementById('performanceIndicator').textContent = getPerformanceLevel(parseFloat(sgpa));
+            document.getElementById('resultSection').classList.add('show');
+
+            // Scroll to result
+            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showCalculationSummary(details, totalCredits, totalWeightedGradePoints, sgpa) {
+            const tableBody = document.getElementById('summaryTableBody');
+            const summaryStats = document.getElementById('summaryStats');
+
+            // Clear previous content
+            tableBody.innerHTML = '';
+
+            // Add rows for each subject
+            details.forEach(detail => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${detail.subject}</td>
+                <td>${detail.marks}</td>
+                <td>${detail.gradePoints}</td>
+                <td>${detail.credits}</td>
+                <td>${detail.weightedGradePoints}</td>
+            `;
+                tableBody.appendChild(row);
+            });
+
+            // Add total row
+            const totalRow = document.createElement('tr');
+            totalRow.style.backgroundColor = 'var(--light-color)';
+            totalRow.style.fontWeight = 'bold';
+            totalRow.innerHTML = `
+            <td><strong>TOTAL</strong></td>
+            <td>-</td>
+            <td>-</td>
+            <td><strong>${totalCredits}</strong></td>
+            <td><strong>${totalWeightedGradePoints}</strong></td>
+        `;
+            tableBody.appendChild(totalRow);
+
+            // Update summary statistics
+            const averageMarks = (details.reduce((sum, detail) => sum + detail.marks, 0) / details.length).toFixed(1);
+            const averageGradePoints = (details.reduce((sum, detail) => sum + detail.gradePoints, 0) / details.length).toFixed(1);
+
+            summaryStats.innerHTML = `
+            <div class="stat-item">
+                <div class="stat-value">${totalCredits}</div>
+                <div class="stat-label">Total Credits</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">${totalWeightedGradePoints}</div>
+                <div class="stat-label">Weighted Grade Points</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">${averageMarks}</div>
+                <div class="stat-label">Average Marks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">${averageGradePoints}</div>
+                <div class="stat-label">Average Grade Points</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">${sgpa}</div>
+                <div class="stat-label">Final SGPA</div>
+            </div>
+        `;
+
+            document.getElementById('summarySection').classList.add('show');
+        }
+
+        // Initial render of subjects for the default cycle (physics)
+        renderSubjects();
+    </script>
+</body>
+
+</html>
