@@ -58,11 +58,17 @@
 
             <!-- Cycle Selection Section -->
             <div class="cycle-selector" id="cycleSelector">
-                <h2>Select Cycle</h2>
-                <p>Choose your first-year cycle</p>
-                <div class="cycle-toggle">
+                <h2>Select Semester</h2>
+                <p>Choose your semester</p>
+                <div class="semester-grid">
                     <button class="cycle-btn" onclick="selectCycle('physics')">Physics Cycle</button>
                     <button class="cycle-btn" onclick="selectCycle('chemistry')">Chemistry Cycle</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(3)">3rd Semester</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(4)">4th Semester</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(5)">5th Semester</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(6)">6th Semester</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(7)">7th Semester</button>
+                    <button class="cycle-btn" onclick="showSemesterAlert(8)">8th Semester</button>
                 </div>
             </div>
 
@@ -209,7 +215,8 @@
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/srujan-shetty0007/" aria-label="LinkedIn"><i
                             class="fab fa-linkedin"></i></a>
-                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
                     <a href="https://www.instagram.com/srujan_shetty_0007/" aria-label="Instagram"><i
                             class="fab fa-instagram"></i></a>
 
@@ -383,6 +390,12 @@
 
             // Hide download button
             document.getElementById('downloadReportBtn').style.display = 'none';
+
+            // Scroll to cycle selector
+            document.getElementById('cycleSelector').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
 
         function selectCycle(cycle) {
@@ -391,19 +404,50 @@
             // Update button styles
             const buttons = document.querySelectorAll('.cycle-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
 
-            // Hide calculator content
-            document.getElementById('calculatorContent').style.display = 'none';
+            // Only add active class to the physics or chemistry buttons
+            if (cycle === 'physics' || cycle === 'chemistry') {
+                event.target.classList.add('active');
 
-            // Show branch selector
-            document.getElementById('branchSelector').style.display = 'block';
+                // Hide calculator content
+                document.getElementById('calculatorContent').style.display = 'none';
 
-            // Hide result and warning
-            document.getElementById('resultSection').classList.remove('show');
-            document.getElementById('summarySection').classList.remove('show');
-            document.getElementById('warning').classList.remove('show');
-            document.getElementById('downloadReportBtn').style.display = 'none';
+                // Show branch selector
+                document.getElementById('branchSelector').style.display = 'block';
+
+                // Add scroll indicator for mobile
+                const scrollIndicator = document.createElement('div');
+                scrollIndicator.className = 'scroll-indicator';
+                scrollIndicator.innerHTML = '<i class="fas fa-arrow-down"></i>';
+                document.querySelector('.main-content').appendChild(scrollIndicator);
+
+                // Hide result and warning
+                document.getElementById('resultSection').classList.remove('show');
+                document.getElementById('summarySection').classList.remove('show');
+                document.getElementById('warning').classList.remove('show');
+                document.getElementById('downloadReportBtn').style.display = 'none';
+
+                // Scroll to branch selector after a short delay to ensure it's visible
+                setTimeout(() => {
+                    document.getElementById('branchSelector').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Remove scroll indicator after scrolling
+                    setTimeout(() => {
+                        if (document.querySelector('.scroll-indicator')) {
+                            document.querySelector('.scroll-indicator').remove();
+                        }
+                    }, 1000);
+                }, 100);
+            }
+        }
+
+        function showSemesterAlert(semester) {
+            showCustomAlert(`The SGPA calculator for Semester ${semester} is currently under development. Please check back later.`);
+            // Reset any active states on buttons
+            document.querySelectorAll('.cycle-btn').forEach(btn => btn.classList.remove('active'));
         }
 
         function selectBranch(branch) {
@@ -441,6 +485,14 @@
             document.getElementById('summarySection').classList.remove('show');
             document.getElementById('warning').classList.remove('show');
             document.getElementById('downloadReportBtn').style.display = 'none';
+
+            // Scroll to calculator content
+            setTimeout(() => {
+                document.getElementById('calculatorContent').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
         }
 
         function backToBranch() {
@@ -452,6 +504,12 @@
 
             // Hide download button
             document.getElementById('downloadReportBtn').style.display = 'none';
+
+            // Scroll to branch selector
+            document.getElementById('branchSelector').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
 
         function renderSubjects() {
@@ -573,6 +631,12 @@
 
             if (!allMarksValid) {
                 warning.classList.add('show');
+
+                // Scroll to warning
+                warning.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
                 return;
             }
 
@@ -586,8 +650,13 @@
             document.getElementById('performanceIndicator').textContent = getPerformanceLevel(parseFloat(sgpa));
             document.getElementById('resultSection').classList.add('show');
 
-            // Scroll to result
-            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+            // Scroll to result with a slight delay to ensure elements are rendered
+            setTimeout(() => {
+                document.getElementById('resultSection').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 200);
         }
 
         function showCalculationSummary(details, totalCredits, totalWeightedGradePoints, sgpa) {
