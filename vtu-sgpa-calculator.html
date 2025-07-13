@@ -650,11 +650,11 @@
             document.getElementById('performanceIndicator').textContent = getPerformanceLevel(parseFloat(sgpa));
             document.getElementById('resultSection').classList.add('show');
 
-            // Scroll to result with a slight delay to ensure elements are rendered
+            // Scroll to summary section with a slight delay to ensure elements are rendered
             setTimeout(() => {
-                document.getElementById('resultSection').scrollIntoView({
+                document.getElementById('summarySection').scrollIntoView({
                     behavior: 'smooth',
-                    block: 'center'
+                    block: 'start'
                 });
             }, 200);
         }

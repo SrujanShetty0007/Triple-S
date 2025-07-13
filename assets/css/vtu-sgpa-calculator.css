@@ -567,12 +567,19 @@ body {
 }
 
 .summary-section {
-    background: var(--light-color);
+    background: #f9f9f9;
     border-radius: var(--card-border-radius);
     padding: 20px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    box-shadow: var(--shadow);
     display: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.summary-section.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
 }
 
 .summary-section h3 {
@@ -791,6 +798,18 @@ body {
     font-size: 1.2rem;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes bounce-vertical {
 
     0%,
@@ -833,8 +852,9 @@ body {
 /* Download Section */
 .download-section {
     text-align: center;
-    padding: 10px 0 30px;
+    padding: 15px 0 30px;
     background: white;
+    margin-top: 20px;
 }
 
 /* Download Report Button Styles */
