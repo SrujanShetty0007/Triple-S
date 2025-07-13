@@ -25,6 +25,61 @@
 </head>
 
 <body>
+
+    <!-- Creative Navbar Header -->
+    <nav class="sgpa-navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-logo">
+                        <span class="brand-text">Triple S</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <span>About</span>
+                </a>
+                <a href="feedback.html" class="nav-link">
+                    <span>Feedback</span>
+                </a>
+                <a href="mathematics.html" class="nav-link">
+                    <span>Mathematics</span>
+                </a>
+                <a href="physics.html" class="nav-link">
+                    <span>Physics</span>
+                </a>
+                <a href="chemistry.html" class="nav-link">
+                    <span>Chemistry</span>
+                </a>
+                <a href="vtu.html" class="nav-link">
+                    <span>VTU Tools</span>
+                </a>
+                <a href="index.html" class="nav-link">
+                    <span>Contribute</span>
+                </a>
+
+            </div>
+
+            <div class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Animated Background Elements -->
+        <div class="navbar-bg-elements">
+            <div class="bg-circle bg-circle-1"></div>
+            <div class="bg-circle bg-circle-2"></div>
+            <div class="bg-circle bg-circle-3"></div>
+        </div>
+    </nav>
+
     <div id="customAlert" class="custom-alert">
         <div class="custom-alert-content">
             <div class="custom-alert-icon">
@@ -190,6 +245,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+        // Mobile Navbar Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.querySelector('.navbar-menu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function () {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a nav link
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (event) {
+                    if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
         const defaultCredits = {
             '2022': [20, 20, 21, 19, 22, 18, 24, 16],
             '2021': [20, 20, 24, 24, 24, 24, 20, 18],
