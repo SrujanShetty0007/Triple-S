@@ -84,14 +84,6 @@
             border-radius: 50%;
         }
 
-        .coming-soon-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 1rem;
-            font-family: var(--heading-font);
-        }
-
         .coming-soon-subtitle {
             font-size: 1.2rem;
             color: #666;
@@ -219,11 +211,63 @@
             background: var(--secondary-color);
         }
 
-        @media (max-width: 768px) {
-            .coming-soon-title {
-                font-size: 2rem;
-            }
+        .vtu-link {
+            margin: 2rem 0;
+            text-align: center;
+        }
 
+        .vtu-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vtu-link a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .vtu-link a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .vtu-link a:hover::before {
+            left: 100%;
+        }
+
+        .vtu-link i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .vtu-link a:hover i {
+            transform: translateX(3px);
+        }
+
+        .vtu-link p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
             .coming-soon-subtitle {
                 font-size: 1rem;
             }
@@ -236,15 +280,16 @@
                 width: calc(50% - 1rem);
                 padding: 1rem;
             }
+
+            .vtu-logo {
+                margin-top: -10px;
+                width: 180px;
+            }
         }
 
         @media (max-width: 480px) {
             .coming-soon-icon {
                 font-size: 4rem;
-            }
-
-            .coming-soon-title {
-                font-size: 1.8rem;
             }
 
             .features-list {
@@ -258,7 +303,8 @@
             }
 
             .vtu-logo {
-                width: 150px;
+                margin-top: -10px;
+                width: 180px;
             }
         }
     </style>
@@ -313,7 +359,6 @@
         <section class="coming-soon-section">
             <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo">
             <i class="fas fa-tools coming-soon-icon"></i>
-            <h1 class="coming-soon-title">Coming Soon</h1>
             <p class="coming-soon-subtitle">We're working hard to bring you the best VTU resources, results checker, and
                 CGPA/SGPA calculator. Stay tuned!</p>
 
@@ -340,6 +385,13 @@
                     <p>Quick access to your VTU exam results</p>
                 </div>
 
+            </div>
+
+            <div class="vtu-link">
+                <a href="https://vtu.ac.in/" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    <p>Visit VTU Official Website</p>
+                </a>
             </div>
 
             <div class="notification-form">

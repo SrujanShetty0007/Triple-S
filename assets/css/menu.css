@@ -32,9 +32,6 @@ header .container {
     cursor: pointer;
 }
 
-.logo-container:hover {
-    transform: scale(1.05);
-}
 
 .logo {
     display: flex;
