@@ -123,6 +123,10 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: var(--dark-color);
+            display: block;
+            cursor: pointer;
         }
 
         .feature-item.active {
@@ -141,7 +145,7 @@
             transform: rotate(45deg);
             font-weight: 600;
         }
-        
+
         .soon-badge {
             position: absolute;
             top: 25px;
@@ -315,30 +319,26 @@
 
             <div class="features-list">
 
-                <a href="vtu-sgpa-calculator.html">
-                    <div class="feature-item active">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>SGPA Calculator</h3>
-                        <p>Calculate your semester grade point average</p>
-                        <span class="available-badge">Available Now</span>
+                <a href="vtu-sgpa-calculator.html" class="feature-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>SGPA Calculator</h3>
+                    <p>Calculate your semester grade point average</p>
+                    <span class="available-badge">Available Now</span>
                 </a>
-            </div>
 
-            <a href="vtu-cgpa-calculator.html">
-                <div class="feature-item active">
+                <a href="vtu-cgpa-calculator.html" class="feature-item active">
                     <i class="fas fa-calculator"></i>
                     <h3>CGPA Calculator</h3>
                     <span class="available-badge">Available Now</span>
                     <p>Calculate your cumulative grade point average</p>
-            </a>
-            </div>
+                </a>
 
-            <div class="feature-item"> 
-                <i class="fas fa-search"></i>
-                <h3>Results Checker</h3>
-                <span class="soon-badge">Coming Soon</span>
-                <p>Quick access to your VTU exam results</p>
-            </div>
+                <div class="feature-item">
+                    <i class="fas fa-search"></i>
+                    <h3>Results Checker</h3>
+                    <span class="soon-badge">Coming Soon</span>
+                    <p>Quick access to your VTU exam results</p>
+                </div>
 
             </div>
 

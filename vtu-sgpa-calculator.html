@@ -747,214 +747,235 @@
                 doc.setLineWidth(0.5);
                 doc.rect(10, 10, 190, 277, 'S');
 
-                // Add header with website, title and date
-                doc.setFillColor(250, 250, 250);
-                doc.rect(10, 10, 190, 40, 'F');
+                generatePDFContent(doc);
+            }, 100);
+        }
 
-                doc.setDrawColor(230, 230, 230);
-                doc.line(10, 50, 200, 50);
+        function generatePDFContent(doc) {
 
-                // Website URL (left)
-                doc.setFontSize(10);
-                doc.setTextColor(100, 100, 100);
-                doc.text('https://triple-s.netlify.app/', 25, 25, { align: 'center' });
+            // Add header with website, title and date
+            doc.setFillColor(250, 250, 250);
+            doc.rect(10, 10, 190, 40, 'F');
 
-                // Title (center)
-                doc.setFontSize(22);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(40, 40, 40);
-                doc.text('VTU SGPA\nReport', 105, 28, { align: 'center' });
+            doc.setDrawColor(230, 230, 230);
+            doc.line(10, 50, 200, 50);
 
-                // Date (right)
-                const now = new Date();
-                const formattedDate = now.toLocaleDateString();
-                const formattedTime = now.toLocaleTimeString();
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text(`${formattedDate}\n${formattedTime}`, 175, 25, { align: 'center' });
+            // Website URL (left)
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text('https://triple-s.netlify.app/', 25, 25, { align: 'center' });
 
-                // Add SGPA in large font (centered)
-                doc.setFillColor(250, 250, 250);
-                doc.rect(10, 60, 190, 40, 'F');
-                doc.setDrawColor(230, 230, 230);
-                doc.line(10, 100, 200, 100);
+            // Title (center)
+            doc.setFontSize(22);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(40, 40, 40);
+            doc.text('VTU SGPA\nReport', 105, 28, { align: 'center' });
 
-                const sgpa = document.getElementById('sgpaValue').textContent;
-                doc.setFontSize(60);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(40, 40, 40);
-                doc.text(sgpa, 105, 85, { align: 'center' });
+            // Date (right)
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString();
+            const formattedTime = now.toLocaleTimeString();
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(100, 100, 100);
+            doc.text(`${formattedDate}\n${formattedTime}`, 175, 25, { align: 'center' });
 
-                // Add "sgpa" label below the number
-                doc.setFontSize(16);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text('sgpa', 145, 85);
+            // Add SGPA in large font (centered)
+            doc.setFillColor(250, 250, 250);
+            doc.rect(10, 60, 190, 40, 'F');
+            doc.setDrawColor(230, 230, 230);
+            doc.line(10, 100, 200, 100);
 
-                // Add explanation text
-                doc.setFontSize(11);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(80, 80, 80);
-                doc.text('Below calculations are used to derive your Semester Grade Point\nAverage (SGPA).', 20, 115);
+            const sgpa = document.getElementById('sgpaValue').textContent;
+            doc.setFontSize(60);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(40, 40, 40);
+            doc.text(sgpa, 105, 85, { align: 'center' });
 
-                // Create table for subject details
-                const currentSubjects = subjects[currentCycle][currentBranch];
-                let yPosition = 130;
+            // Add "sgpa" label below the number
+            doc.setFontSize(16);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(100, 100, 100);
+            doc.text('sgpa', 145, 85);
 
-                // Define column widths and positions for better alignment
-                const colWidths = [60, 25, 25, 25, 45];
-                const colPositions = [];
-                let currentPos = 20;
+            // Add explanation text
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(80, 80, 80);
+            doc.text('Below calculations are used to derive your Semester Grade Point\nAverage (SGPA).', 20, 115);
 
-                // Calculate column positions based on widths
-                colWidths.forEach(width => {
-                    colPositions.push(currentPos);
-                    currentPos += width;
-                });
+            // Create table for subject details
+            const currentSubjects = subjects[currentCycle][currentBranch];
+            let yPosition = 130;
 
-                const rowHeight = 12; // Increased row height for better spacing
+            // Define column widths and positions for better alignment
+            const colWidths = [60, 25, 25, 25, 45];
+            const colPositions = [];
+            let currentPos = 20;
 
-                // Add table border
-                const tableWidth = 180;
-                const tableStartY = yPosition - 6;
-                let tableEndY;
+            // Calculate column positions based on widths
+            colWidths.forEach(width => {
+                colPositions.push(currentPos);
+                currentPos += width;
+            });
 
-                // Draw table outer border
-                doc.setDrawColor(220, 220, 220);
-                doc.setLineWidth(0.5);
+            const rowHeight = 12; // Increased row height for better spacing
 
-                // Table headers - with background
-                doc.setFillColor(248, 248, 248);
-                doc.rect(10, tableStartY, tableWidth, rowHeight, 'F');
+            // Add table border
+            const tableWidth = 180;
+            const tableStartY = yPosition - 6;
+            let tableEndY;
 
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(10);
-                doc.setTextColor(60, 60, 60);
+            // Draw complete table with proper borders
+            doc.setDrawColor(220, 220, 220);
+            doc.setLineWidth(0.5);
 
-                // Column headers with proper alignment
-                doc.text('subject_code', colPositions[0], yPosition);
-                doc.text('marks', colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
-                doc.text('grade', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
-                doc.text('credits', colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
-                doc.text('grade_x_credit', colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
+            // Table headers - with background
+            doc.setFillColor(248, 248, 248);
+            doc.rect(10, tableStartY, tableWidth, rowHeight, 'F');
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10);
+            doc.setTextColor(60, 60, 60);
+
+            // Column headers with proper alignment
+            doc.text('subject_code', colPositions[0], yPosition);
+            doc.text('marks', colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+            doc.text('grade', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+            doc.text('credits', colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+            doc.text('grade_x_credit', colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
+
+            yPosition += rowHeight;
+
+            // Table rows
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.setTextColor(70, 70, 70);
+            let totalCredits = 0;
+            let totalWeightedGradePoints = 0;
+
+            currentSubjects.forEach((subject, index) => {
+                const marksInput = document.getElementById(`marks-${index}`);
+                const marks = parseFloat(marksInput.value);
+                const gradePoints = marksToGradePoints(marks);
+                const credits = subject.credits;
+                const weightedGradePoints = gradePoints * credits;
+
+                totalCredits += credits;
+                totalWeightedGradePoints += weightedGradePoints;
+
+                // Draw row background (alternating)
+                if (index % 2 === 1) {
+                    doc.setFillColor(252, 252, 252);
+                    doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
+                }
+
+                // Text alignment: left for subject code, center for numeric values
+                doc.text(subject.code, colPositions[0], yPosition);
+                doc.text(marks.toString(), colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+                doc.text(gradePoints.toString(), colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                doc.text(credits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+                doc.text(weightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
 
                 yPosition += rowHeight;
+            });
 
-                // Draw header bottom border
-                doc.setDrawColor(220, 220, 220);
-                doc.line(10, yPosition - 2, 190, yPosition - 2);
+            // Total row with background
+            doc.setFillColor(248, 248, 248);
+            doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
 
-                // Table rows
-                doc.setFont('helvetica', 'normal');
-                doc.setFontSize(10);
-                doc.setTextColor(70, 70, 70);
-                let totalCredits = 0;
-                let totalWeightedGradePoints = 0;
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(60, 60, 60);
+            doc.text('total:', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+            doc.text(totalCredits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+            doc.text(totalWeightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
 
-                currentSubjects.forEach((subject, index) => {
-                    const marksInput = document.getElementById(`marks-${index}`);
-                    const marks = parseFloat(marksInput.value);
-                    const gradePoints = marksToGradePoints(marks);
-                    const credits = subject.credits;
-                    const weightedGradePoints = gradePoints * credits;
+            // Calculate final table dimensions
+            tableEndY = yPosition + 2;
 
-                    totalCredits += credits;
-                    totalWeightedGradePoints += weightedGradePoints;
+            // Draw complete table borders with proper alignment
+            // Outer border
+            doc.setDrawColor(220, 220, 220);
+            doc.setLineWidth(0.5);
+            doc.rect(10, tableStartY, tableWidth, tableEndY - tableStartY, 'S');
 
-                    // Draw row background (alternating)
-                    if (index % 2 === 1) {
-                        doc.setFillColor(252, 252, 252);
-                        doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
-                    }
+            // Horizontal lines for each row
+            doc.setDrawColor(220, 220, 220);
+            doc.line(10, tableStartY + rowHeight, 190, tableStartY + rowHeight); // Header bottom
 
-                    // Text alignment: left for subject code, center for numeric values
-                    doc.text(subject.code, colPositions[0], yPosition);
-                    doc.text(marks.toString(), colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
-                    doc.text(gradePoints.toString(), colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
-                    doc.text(credits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
-                    doc.text(weightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
-
-                    // Draw row bottom border (lighter for regular rows)
-                    doc.setDrawColor(240, 240, 240);
-                    doc.line(10, yPosition + 2, 190, yPosition + 2);
-
-                    yPosition += rowHeight;
-                });
-
-                // Total row with background
-                doc.setFillColor(248, 248, 248);
-                doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
-
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(60, 60, 60);
-                doc.text('total:', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
-                doc.text(totalCredits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
-                doc.text(totalWeightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
-
-                // Draw total row border (darker)
-                doc.setDrawColor(220, 220, 220);
-                doc.line(10, yPosition + 2, 190, yPosition + 2);
-
-                // Draw table outer border
-                tableEndY = yPosition + 2;
-                doc.setDrawColor(220, 220, 220);
-                doc.line(10, tableStartY, 10, tableEndY); // Left border
-                doc.line(190, tableStartY, 190, tableEndY); // Right border
-
-                // Draw vertical lines for columns
+            // Draw horizontal lines for data rows
+            currentSubjects.forEach((subject, index) => {
+                const rowY = tableStartY + rowHeight + (index + 1) * rowHeight;
                 doc.setDrawColor(240, 240, 240);
-                colPositions.forEach((pos, index) => {
-                    if (index > 0) { // Skip the first position
-                        doc.line(pos - 5, tableStartY, pos - 5, tableEndY);
-                    }
-                });
+                doc.line(10, rowY, 190, rowY);
+            });
 
-                yPosition += 20;
+            // Total row bottom border (darker)
+            doc.setDrawColor(220, 220, 220);
+            doc.line(10, tableEndY, 190, tableEndY);
 
-                // SGPA Formula section
-                doc.setDrawColor(230, 230, 230);
-                doc.line(10, yPosition - 10, 200, yPosition - 10);
+            // Vertical column separators
+            doc.setDrawColor(240, 240, 240);
+            colPositions.forEach((pos, index) => {
+                if (index > 0) { // Skip the first position
+                    doc.line(pos - 5, tableStartY, pos - 5, tableEndY);
+                }
+            });
 
-                doc.setFontSize(14);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(60, 60, 60);
-                doc.text('SGPA Formula', 20, yPosition);
+            yPosition += 20;
 
-                yPosition += 15;
+            // SGPA Formula section
+            doc.setDrawColor(230, 230, 230);
+            doc.line(10, yPosition - 10, 200, yPosition - 10);
 
-                doc.setFontSize(11);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(70, 70, 70);
-                doc.text(`∑ [Course Credits X Grade Points]  =  ${totalWeightedGradePoints}  =  ${sgpa}`, 20, yPosition);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(60, 60, 60);
+            doc.text('SGPA Formula', 20, yPosition);
 
-                yPosition += 10;
-                doc.text(`∑ [Course Credits]                      ${totalCredits}`, 20, yPosition);
+            yPosition += 15;
 
-                yPosition += 20;
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(70, 70, 70);
+            doc.text(`∑ [Course Credits X Grade Points]  =  ${totalWeightedGradePoints}  =  ${sgpa}`, 20, yPosition);
 
-                // Final explanation
-                doc.setDrawColor(230, 230, 230);
-                doc.line(10, yPosition - 10, 200, yPosition - 10);
+            yPosition += 10;
+            doc.text(`∑ [Course Credits]                      ${totalCredits}`, 20, yPosition);
 
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(80, 80, 80);
-                const finalText = 'These calculations ensure the accuracy of your SGPA. ' +
-                    'Feel confident in your SGPA! You can use this data to provide proof ' +
-                    'to others that your SGPA is correct. If anyone questions the ' +
-                    'accuracy, feel free to share these calculations. Transparency is key, ' +
-                    'and your academic achievements are backed by solid calculations.';
+            yPosition += 20;
 
-                const splitText = doc.splitTextToSize(finalText, 170);
-                doc.text(splitText, 20, yPosition);
+            // Final explanation
+            doc.setDrawColor(230, 230, 230);
+            doc.line(10, yPosition - 10, 200, yPosition - 10);
 
-                // Save the PDF
-                doc.save(`VTU_SGPA_Report-TripleS.pdf`);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(80, 80, 80);
+            const finalText = 'These calculations ensure the accuracy of your SGPA. ' +
+                'Feel confident in your SGPA! You can use this data to provide proof ' +
+                'to others that your SGPA is correct. If anyone questions the ' +
+                'accuracy, feel free to share these calculations. Transparency is key, ' +
+                'and your academic achievements are backed by solid calculations.';
 
-                // Close the loading alert
-                closeCustomAlert();
-            }, 100);
+            const splitText = doc.splitTextToSize(finalText, 170);
+            doc.text(splitText, 20, yPosition);
+
+            // Add grey transparent text watermark 'TRIPLE-S' diagonally ON TOP
+            doc.saveGraphicsState && doc.saveGraphicsState();
+            if (doc.setGState) {
+                doc.setGState(new doc.GState({ opacity: 0.12 }));
+            }
+            doc.setFontSize(70);
+            doc.setTextColor(180, 180, 180);
+            doc.text('TRIPLE-S', 40, 180, { angle: -30, opacity: 0.12 });
+            if (doc.restoreGraphicsState) doc.restoreGraphicsState();
+
+            // Save the PDF
+            doc.save(`VTU_SGPA_Report-TripleS.pdf`);
+
+            // Close the loading alert
+            closeCustomAlert();
         }
     </script>
 </body>
