@@ -620,7 +620,7 @@
 /* Subject-specific styles */
 /* Mathematics */
 .mathematics-hero {
-    background: linear-gradient(135deg, #f08469 0%, #c64b1b 100%);
+    background: linear-gradient(135deg, #ea481f 0%, #982c01 100%);
 }
 
 .mathematics-hero::after {
@@ -661,7 +661,7 @@
 
 .stream-card.math-card::before,
 .stream-header.math-header {
-    background: linear-gradient(135deg, #f08469 0%, #c64b1b 100%);
+    background: linear-gradient(135deg, #ea481f 0%, #942b01 100%);
 }
 
 .pdf-modal-header.math-modal-header {

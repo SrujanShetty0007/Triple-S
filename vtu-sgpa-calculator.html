@@ -18,6 +18,7 @@
     <title>VTU SGPA Calculator | Triple S</title>
     <link rel="stylesheet" href="assets/css/root-variables.css">
     <link rel="stylesheet" href="assets/css/vtu-sgpa-calculator.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -176,11 +177,54 @@
             </div>
         </div>
 
-        <div class="footer">
-            <p>© 2025 Triple S | <a href="vtu.html">VTU Resources</a> | <a href="index.html">Home</a></p>
+        <div class="download-section">
+            <button id="downloadReportBtn" class="download-report-btn" onclick="downloadReport()">
+                <i class="fas fa-download"></i> Download Report
+            </button>
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Triple S</h3>
+                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources for
+                    engineering students, helping them excel in their studies.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vtu.html">VTU Resources</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> triples.studies.edu@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/srujan_shetty_0007/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Triple-S. All Rights Reserved</p>
+            <p>Designed with <i class="fas fa-heart"></i> for VTU Students</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         const subjects = {
             physics: {
@@ -313,6 +357,7 @@
             document.getElementById('resultSection').classList.remove('show');
             document.getElementById('summarySection').classList.remove('show');
             document.getElementById('warning').classList.remove('show');
+            document.getElementById('downloadReportBtn').style.display = 'none';
 
             // Reset active states
             document.querySelectorAll('.cycle-btn').forEach(btn => btn.classList.remove('active'));
@@ -335,6 +380,9 @@
 
             // Reset branch button active states
             document.querySelectorAll('.branch-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Hide download button
+            document.getElementById('downloadReportBtn').style.display = 'none';
         }
 
         function selectCycle(cycle) {
@@ -355,6 +403,7 @@
             document.getElementById('resultSection').classList.remove('show');
             document.getElementById('summarySection').classList.remove('show');
             document.getElementById('warning').classList.remove('show');
+            document.getElementById('downloadReportBtn').style.display = 'none';
         }
 
         function selectBranch(branch) {
@@ -391,6 +440,7 @@
             document.getElementById('resultSection').classList.remove('show');
             document.getElementById('summarySection').classList.remove('show');
             document.getElementById('warning').classList.remove('show');
+            document.getElementById('downloadReportBtn').style.display = 'none';
         }
 
         function backToBranch() {
@@ -399,6 +449,9 @@
 
             // Show branch selector
             document.getElementById('branchSelector').style.display = 'block';
+
+            // Hide download button
+            document.getElementById('downloadReportBtn').style.display = 'none';
         }
 
         function renderSubjects() {
@@ -598,6 +651,241 @@
         `;
 
             document.getElementById('summarySection').classList.add('show');
+
+            // Show the download button with animation
+            const downloadBtn = document.getElementById('downloadReportBtn');
+            downloadBtn.style.display = 'block';
+            setTimeout(() => {
+                downloadBtn.style.opacity = '1';
+            }, 100);
+        }
+
+        function downloadReport() {
+            // Show loading indicator
+            showCustomAlert("Generating your report. Please wait...");
+
+            // Use setTimeout to allow the alert to be displayed before processing
+            setTimeout(() => {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+
+                // Set background color for header
+                doc.setFillColor(255, 255, 255);
+                doc.rect(0, 0, 210, 297, 'F');
+
+                // Add border
+                doc.setDrawColor(230, 230, 230);
+                doc.setLineWidth(0.5);
+                doc.rect(10, 10, 190, 277, 'S');
+
+                // Add header with website, title and date
+                doc.setFillColor(250, 250, 250);
+                doc.rect(10, 10, 190, 40, 'F');
+
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, 50, 200, 50);
+
+                // Website URL (left)
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text('https://triple-s.netlify.app/', 25, 25, { align: 'center' });
+
+                // Title (center)
+                doc.setFontSize(22);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(40, 40, 40);
+                doc.text('VTU SGPA\nReport', 105, 28, { align: 'center' });
+
+                // Date (right)
+                const now = new Date();
+                const formattedDate = now.toLocaleDateString();
+                const formattedTime = now.toLocaleTimeString();
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text(`${formattedDate}\n${formattedTime}`, 175, 25, { align: 'center' });
+
+                // Add SGPA in large font (centered)
+                doc.setFillColor(250, 250, 250);
+                doc.rect(10, 60, 190, 40, 'F');
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, 100, 200, 100);
+
+                const sgpa = document.getElementById('sgpaValue').textContent;
+                doc.setFontSize(60);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(40, 40, 40);
+                doc.text(sgpa, 105, 85, { align: 'center' });
+
+                // Add "sgpa" label below the number
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('sgpa', 145, 85);
+
+                // Add explanation text
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(80, 80, 80);
+                doc.text('Below calculations are used to derive your Semester Grade Point\nAverage (SGPA).', 20, 115);
+
+                // Create table for subject details
+                const currentSubjects = subjects[currentCycle][currentBranch];
+                let yPosition = 130;
+
+                // Define column widths and positions for better alignment
+                const colWidths = [60, 25, 25, 25, 45];
+                const colPositions = [];
+                let currentPos = 20;
+
+                // Calculate column positions based on widths
+                colWidths.forEach(width => {
+                    colPositions.push(currentPos);
+                    currentPos += width;
+                });
+
+                const rowHeight = 12; // Increased row height for better spacing
+
+                // Add table border
+                const tableWidth = 180;
+                const tableStartY = yPosition - 6;
+                let tableEndY;
+
+                // Draw table outer border
+                doc.setDrawColor(220, 220, 220);
+                doc.setLineWidth(0.5);
+
+                // Table headers - with background
+                doc.setFillColor(248, 248, 248);
+                doc.rect(10, tableStartY, tableWidth, rowHeight, 'F');
+
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(10);
+                doc.setTextColor(60, 60, 60);
+
+                // Column headers with proper alignment
+                doc.text('subject_code', colPositions[0], yPosition);
+                doc.text('marks', colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+                doc.text('grade', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                doc.text('credits', colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+                doc.text('grade_x_credit', colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
+
+                yPosition += rowHeight;
+
+                // Draw header bottom border
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, yPosition - 2, 190, yPosition - 2);
+
+                // Table rows
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+                doc.setTextColor(70, 70, 70);
+                let totalCredits = 0;
+                let totalWeightedGradePoints = 0;
+
+                currentSubjects.forEach((subject, index) => {
+                    const marksInput = document.getElementById(`marks-${index}`);
+                    const marks = parseFloat(marksInput.value);
+                    const gradePoints = marksToGradePoints(marks);
+                    const credits = subject.credits;
+                    const weightedGradePoints = gradePoints * credits;
+
+                    totalCredits += credits;
+                    totalWeightedGradePoints += weightedGradePoints;
+
+                    // Draw row background (alternating)
+                    if (index % 2 === 1) {
+                        doc.setFillColor(252, 252, 252);
+                        doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
+                    }
+
+                    // Text alignment: left for subject code, center for numeric values
+                    doc.text(subject.code, colPositions[0], yPosition);
+                    doc.text(marks.toString(), colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+                    doc.text(gradePoints.toString(), colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                    doc.text(credits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+                    doc.text(weightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
+
+                    // Draw row bottom border (lighter for regular rows)
+                    doc.setDrawColor(240, 240, 240);
+                    doc.line(10, yPosition + 2, 190, yPosition + 2);
+
+                    yPosition += rowHeight;
+                });
+
+                // Total row with background
+                doc.setFillColor(248, 248, 248);
+                doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
+
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(60, 60, 60);
+                doc.text('total:', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                doc.text(totalCredits.toString(), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+                doc.text(totalWeightedGradePoints.toString(), colPositions[4] + colWidths[4] / 2, yPosition, { align: 'center' });
+
+                // Draw total row border (darker)
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, yPosition + 2, 190, yPosition + 2);
+
+                // Draw table outer border
+                tableEndY = yPosition + 2;
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, tableStartY, 10, tableEndY); // Left border
+                doc.line(190, tableStartY, 190, tableEndY); // Right border
+
+                // Draw vertical lines for columns
+                doc.setDrawColor(240, 240, 240);
+                colPositions.forEach((pos, index) => {
+                    if (index > 0) { // Skip the first position
+                        doc.line(pos - 5, tableStartY, pos - 5, tableEndY);
+                    }
+                });
+
+                yPosition += 20;
+
+                // SGPA Formula section
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, yPosition - 10, 200, yPosition - 10);
+
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(60, 60, 60);
+                doc.text('SGPA Formula', 20, yPosition);
+
+                yPosition += 15;
+
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(70, 70, 70);
+                doc.text(`∑ [Course Credits X Grade Points]  =  ${totalWeightedGradePoints}  =  ${sgpa}`, 20, yPosition);
+
+                yPosition += 10;
+                doc.text(`∑ [Course Credits]                      ${totalCredits}`, 20, yPosition);
+
+                yPosition += 20;
+
+                // Final explanation
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, yPosition - 10, 200, yPosition - 10);
+
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(80, 80, 80);
+                const finalText = 'These calculations ensure the accuracy of your SGPA. ' +
+                    'Feel confident in your SGPA! You can use this data to provide proof ' +
+                    'to others that your SGPA is correct. If anyone questions the ' +
+                    'accuracy, feel free to share these calculations. Transparency is key, ' +
+                    'and your academic achievements are backed by solid calculations.';
+
+                const splitText = doc.splitTextToSize(finalText, 170);
+                doc.text(splitText, 20, yPosition);
+
+                // Save the PDF
+                doc.save(`VTU_SGPA_Report-TripleS.pdf`);
+
+                // Close the loading alert
+                closeCustomAlert();
+            }, 100);
         }
     </script>
 </body>
