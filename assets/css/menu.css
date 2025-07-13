@@ -26,6 +26,14 @@ header .container {
     display: flex;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
 }
 
 .logo {

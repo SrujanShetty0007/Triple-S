@@ -1,0 +1,267 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.cgpa-form-container {
+    margin: 20px 0;
+    padding: 0 15px;
+}
+
+.cgpa-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.form-header {
+    display: flex;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 19px 10px;
+}
+
+.form-col {
+    padding: 0 19px;
+    text-align: center;
+}
+
+.semester-col {
+    flex: 2;
+    text-align: left;
+}
+
+.credits-col,
+.sgpa-col {
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.form-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.form-row:hover {
+    background-color: #f0f4ff;
+}
+
+.sgpa-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--button-border-radius);
+    font-size: 1rem;
+    transition: all 0.25s ease;
+}
+
+.sgpa-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+}
+
+.sgpa-input.error {
+    border-color: var(--error-color);
+    background-color: #fdf2f2;
+}
+
+.calculation-steps {
+    line-height: 1.6;
+}
+
+.calculation-steps p {
+    margin: 8px 0;
+}
+
+.formula-section {
+    margin-top: 30px;
+    display: none;
+}
+
+.formula-section.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.formula-display {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: var(--button-border-radius);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-top: 15px;
+}
+
+.cgpa-container {
+    margin-bottom: 10px;
+}
+
+.percentage-container,
+.division-container {
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .cgpa-form-container {
+        padding: 0 10px;
+        margin: 15px 0;
+    }
+
+    .form-header {
+        padding: 15px 0;
+        font-size: 0.9rem;
+    }
+
+    .form-row {
+        padding: 15px 0;
+        font-size: 0.9rem;
+    }
+
+    .form-col {
+        padding: 0 10px;
+    }
+
+    .semester-col {
+        flex: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .credits-col {
+        flex: 0.8;
+        font-size: 0.85rem;
+    }
+
+    .sgpa-col {
+        flex: 1.2;
+    }
+
+    .sgpa-input {
+        padding: 12px 8px;
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    .calculation-steps p {
+        font-size: 0.9rem;
+        margin: 10px 0;
+    }
+
+    .formula-display {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cgpa-form-container {
+        padding: 0 5px;
+        margin: 10px 0;
+    }
+
+    .form-header {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+
+    .form-row {
+        padding: 12px 0;
+        font-size: 0.85rem;
+    }
+
+    .form-col {
+        padding: 0 15px;
+    }
+
+    .semester-col {
+        flex: 1.2;
+        font-size: 0.8rem;
+    }
+
+    .credits-col {
+        flex: 0.7;
+        font-size: 0.8rem;
+    }
+
+    .sgpa-col {
+        flex: 1.3;
+    }
+
+    .sgpa-input {
+        padding: 10px 6px;
+        font-size: 0.95rem;
+        min-height: 40px;
+    }
+
+    .calculation-steps p {
+        font-size: 0.85rem;
+        margin: 8px 0;
+    }
+
+    .formula-display {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .cgpa-form-container {
+        padding: 0 2px;
+    }
+
+    .form-header {
+        padding: 10px 0;
+        font-size: 0.8rem;
+    }
+
+    .form-row {
+        padding: 10px 0;
+        font-size: 0.8rem;
+    }
+
+    .form-col {
+        padding: 0 5px;
+    }
+
+    .semester-col {
+        flex: 1.1;
+        font-size: 0.75rem;
+    }
+
+    .credits-col {
+        flex: 0.6;
+        font-size: 0.75rem;
+    }
+
+    .sgpa-col {
+        flex: 1.4;
+    }
+
+    .sgpa-input {
+        padding: 8px 4px;
+        font-size: 0.9rem;
+        min-height: 36px;
+    }
+
+    .calculation-steps p {
+        font-size: 0.8rem;
+        margin: 6px 0;
+    }
+
+    .formula-display {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}

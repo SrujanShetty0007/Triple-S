@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <!-- Custom Alert Modal -->
+
     <div id="customAlert" class="custom-alert">
         <div class="custom-alert-content">
             <div class="custom-alert-icon">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="main-content">
-            <!-- Scheme Selection Section -->
+
             <div class="scheme-selector" id="schemeSelector">
                 <h2>Select Scheme</h2>
                 <p>Choose your academic scheme to continue</p>
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <!-- Cycle Selection Section -->
+
             <div class="cycle-selector" id="cycleSelector">
                 <h2>Select Semester</h2>
                 <p>Choose your semester</p>
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <!-- Branch Selection Section -->
+
             <div class="branch-selector" id="branchSelector">
                 <h2>Choose Branch:</h2>
                 <div class="branch-buttons">
@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <!-- Calculator Content -->
+
             <div id="calculatorContent">
                 <div class="navigation-buttons calculator-nav">
                     <button class="back-btn" onclick="backToBranch()"><i class="fas fa-arrow-left"></i> Back to Branch
@@ -166,12 +166,12 @@
                                 </tr>
                             </thead>
                             <tbody id="summaryTableBody">
-                                <!-- Summary rows will be populated here -->
+
                             </tbody>
                         </table>
                     </div>
                     <div class="summary-stats" id="summaryStats">
-                        <!-- Summary statistics will be populated here -->
+
                     </div>
                 </div>
 
@@ -190,7 +190,7 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-section about">
@@ -324,7 +324,7 @@
         let currentScheme = '';
         let currentBranch = '';
 
-        // Custom alert functions
+
         function showCustomAlert(message) {
             document.getElementById('customAlertMessage').textContent = message;
             document.getElementById('customAlert').classList.add('show');

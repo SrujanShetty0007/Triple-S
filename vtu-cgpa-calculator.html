@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPTSX512J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VTU CGPA Calculator - Calculate your cumulative grade point average easily">
+    <meta name="keywords" content="VTU, CGPA, calculator, grade point, cumulative, engineering">
+    <title>VTU CGPA Calculator | Triple S</title>
+    <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/vtu-sgpa-calculator.css">
+    <link rel="stylesheet" href="assets/css/vtu-cgpa-calculator.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <div class="custom-alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="custom-alert-message" id="customAlertMessage">
+                Alert message goes here
+            </div>
+            <button class="custom-alert-button" onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>CGPA Calculator</h1>
+            <p>Visvesvaraya Technological University</p>
+            <a href="vtu.html" class="back-to-vtu"><i class="fas fa-arrow-left"></i> Back to VTU Page</a>
+        </div>
+
+        <div class="main-content">
+            <div class="scheme-selector" id="schemeSelector">
+                <h2>Select Scheme</h2>
+                <p>Choose your academic scheme to continue</p>
+                <div class="scheme-buttons">
+                    <button class="scheme-btn btn-gradient" onclick="selectScheme('2022')">2022 Scheme</button>
+                    <button class="scheme-btn" onclick="selectScheme('2021')">2021 Scheme</button>
+                    <button class="scheme-btn" onclick="selectScheme('2018')">2018 Scheme</button>
+                </div>
+            </div>
+
+            <div id="calculatorContent">
+                <div class="calculator-intro">
+                    <h2>Enter Your Semester SGPAs</h2>
+                    <p>Fill in the SGPA for each semester you have completed. Leave future semesters blank.</p>
+                </div>
+
+                <div class="warning" id="warning">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Warning:</strong> Please enter valid SGPA values
+                    (0-10) for at least one semester.
+                </div>
+
+                <div class="grade-mapping">
+                    <h3><i class="fas fa-info-circle"></i> How to calculate CGPA?</h3>
+                    <div class="calculation-steps">
+                        <p><strong>Step 1:</strong> Get SGPA for each semester</p>
+                        <p><strong>Step 2:</strong> Multiply each semester's SGPA with its credits</p>
+                        <p><strong>Step 3:</strong> Calculate the total of all (SGPA × Credits)</p>
+                        <p><strong>Step 4:</strong> Calculate the total credits of all semesters</p>
+                        <p><strong>Step 5:</strong> Divide the total sum by total credits</p>
+                        <p><strong>Formula:</strong> CGPA = ∑(SGPA × Credits) / ∑Credits</p>
+                    </div>
+                </div>
+
+                <div class="cgpa-form-container">
+                    <form id="cgpaForm" class="cgpa-form">
+                        <div class="form-header">
+                            <div class="form-col semester-col">Semester</div>
+                            <div class="form-col credits-col">Credits</div>
+                            <div class="form-col sgpa-col">SGPA</div>
+                        </div>
+                        <div id="semesterInputs">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="calculate-section">
+                    <button class="calculate-btn" onclick="calculateCGPA()"><i class="fas fa-calculator"></i>
+                        Calculate CGPA</button>
+                </div>
+
+                <div class="summary-section" id="summarySection">
+                    <h3><i class="fas fa-clipboard-list"></i> Detailed Calculation</h3>
+                    <div class="scroll-hint visible-mobile">
+                        <i class="fas fa-hand-point-right"></i> Swipe horizontally to see all columns
+                    </div>
+                    <div class="table-container">
+                        <table class="summary-table" aria-label="CGPA Calculation Details">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Semester</th>
+                                    <th scope="col">SGPA</th>
+                                    <th scope="col">Credits</th>
+                                    <th scope="col">SGPA × Credits</th>
+                                </tr>
+                            </thead>
+                            <tbody id="summaryTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="summary-stats" id="summaryStats">
+                    </div>
+                </div>
+
+                <div class="result-section" id="resultSection">
+                    <div class="cgpa-container">
+                        <div class="sgpa-value" id="cgpaValue">0.00</div>
+                        <div class="sgpa-label">Your CGPA</div>
+                    </div>
+                    <div class="percentage-container">
+                        <div class="performance-indicator" id="percentageValue">0.00%</div>
+                    </div>
+                    <div class="division-container">
+                        <div class="performance-indicator" id="divisionValue">-</div>
+                    </div>
+                </div>
+
+                <div class="formula-section" id="formulaSection">
+                    <div class="grade-mapping">
+                        <h3><i class="fas fa-chart-bar"></i> Your CGPA Calculation</h3>
+                        <div class="formula-display" id="formulaDisplay">
+                            CGPA = ∑(SGPA × Credits) / ∑Credits
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <button id="downloadReportBtn" class="download-report-btn" onclick="downloadReport()">
+                <i class="fas fa-download"></i> Download Report
+            </button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Triple S</h3>
+                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources for
+                    engineering students, helping them excel in their studies.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vtu.html">VTU Resources</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> triples.studies.edu@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/srujan_shetty_0007/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Triple-S. All Rights Reserved</p>
+            <p>Designed with <i class="fas fa-heart"></i> for VTU Students</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const defaultCredits = {
+            '2022': [20, 20, 21, 19, 22, 18, 24, 16],
+            '2021': [20, 20, 24, 24, 24, 24, 20, 18],
+            '2018': [20, 20, 24, 24, 24, 24, 20, 18]
+        };
+        let currentScheme = '';
+
+        function showCustomAlert(message) {
+            document.getElementById('customAlertMessage').textContent = message;
+            document.getElementById('customAlert').classList.add('show');
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').classList.remove('show');
+        }
+
+        function selectScheme(scheme) {
+            currentScheme = scheme;
+            document.getElementById('schemeSelector').style.display = 'none';
+
+            if (scheme === '2022') {
+                document.getElementById('calculatorContent').style.display = 'block';
+                renderSemesterInputs(scheme);
+            } else if (scheme === '2021' || scheme === '2018') {
+                showCustomAlert(`The CGPA calculator for ${scheme} scheme is currently under development. Please check back later.`);
+                resetSelection();
+            }
+        }
+
+        function resetSelection() {
+            document.getElementById('schemeSelector').style.display = 'block';
+            document.getElementById('calculatorContent').style.display = 'none';
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('summarySection').classList.remove('show');
+            document.getElementById('warning').classList.remove('show');
+            document.getElementById('formulaSection').classList.remove('show');
+            document.getElementById('downloadReportBtn').style.display = 'none';
+            currentScheme = '';
+        }
+
+        function renderSemesterInputs(scheme) {
+            const inputsContainer = document.getElementById('semesterInputs');
+            inputsContainer.innerHTML = '';
+            const credits = defaultCredits[scheme];
+
+            for (let i = 0; i < 8; i++) {
+                const semesterRow = document.createElement('div');
+                semesterRow.className = 'form-row';
+                semesterRow.innerHTML = `
+                    <div class="form-col semester-col">Semester ${i + 1}</div>
+                    <div class="form-col credits-col">${credits[i]}</div>
+                    <div class="form-col sgpa-col">
+                        <input type="number" id="sgpa-${i}" class="sgpa-input" placeholder="Enter SGPA" min="0" max="10" step="0.01">
+                    </div>
+                `;
+                inputsContainer.appendChild(semesterRow);
+            }
+
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('summarySection').classList.remove('show');
+            document.getElementById('formulaSection').classList.remove('show');
+            document.getElementById('warning').classList.remove('show');
+            document.getElementById('downloadReportBtn').style.display = 'none';
+        }
+
+        function getDivision(cgpa) {
+            if (cgpa >= 7.75) return "First Class with Distinction";
+            if (cgpa >= 6.75) return "First Class";
+            if (cgpa >= 5.50) return "Second Class";
+            return "Pass Class";
+        }
+
+        function calculateCGPA() {
+            const warning = document.getElementById('warning');
+            warning.classList.remove('show');
+
+            let totalCredits = 0;
+            let totalWeightedSGPA = 0;
+            let atLeastOneSemester = false;
+            const calculationDetails = [];
+            const credits = defaultCredits[currentScheme];
+
+            for (let i = 0; i < 8; i++) {
+                const sgpaInput = document.getElementById(`sgpa-${i}`);
+                const sgpa = parseFloat(sgpaInput.value);
+                const semCredits = credits[i];
+
+                if (isNaN(sgpa)) continue;
+
+                if (sgpa < 0 || sgpa > 10) {
+                    sgpaInput.classList.add('error');
+                    warning.classList.add('show');
+                    return;
+                }
+
+                sgpaInput.classList.remove('error');
+
+                atLeastOneSemester = true;
+                totalCredits += semCredits;
+                totalWeightedSGPA += sgpa * semCredits;
+
+                calculationDetails.push({
+                    semester: i + 1,
+                    sgpa: sgpa,
+                    credits: semCredits,
+                    weightedSGPA: sgpa * semCredits
+                });
+            }
+
+            if (!atLeastOneSemester) {
+                warning.classList.add('show');
+                return;
+            }
+
+            const cgpa = (totalWeightedSGPA / totalCredits).toFixed(2);
+            const percentage = (cgpa * 10).toFixed(2);
+            const division = getDivision(parseFloat(cgpa));
+
+            showCalculationSummary(calculationDetails, totalCredits, totalWeightedSGPA, cgpa);
+
+            document.getElementById('cgpaValue').textContent = cgpa;
+            document.getElementById('percentageValue').textContent = `${percentage}%`;
+            document.getElementById('divisionValue').textContent = division;
+            document.getElementById('resultSection').classList.add('show');
+
+            document.getElementById('formulaDisplay').innerHTML = `
+                CGPA = ${totalWeightedSGPA.toFixed(2)} / ${totalCredits} = ${cgpa}
+            `;
+            document.getElementById('formulaSection').classList.add('show');
+
+            document.getElementById('downloadReportBtn').style.display = 'block';
+
+            setTimeout(() => {
+                document.getElementById('summarySection').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 200);
+        }
+
+        function showCalculationSummary(details, totalCredits, totalWeightedSGPA, cgpa) {
+            const tableBody = document.getElementById('summaryTableBody');
+            const summaryStats = document.getElementById('summaryStats');
+
+            tableBody.innerHTML = '';
+
+            details.forEach(detail => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>Semester ${detail.semester}</td>
+                    <td>${detail.sgpa}</td>
+                    <td>${detail.credits}</td>
+                    <td>${detail.weightedSGPA.toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            const totalRow = document.createElement('tr');
+            totalRow.style.backgroundColor = 'var(--light-color)';
+            totalRow.style.fontWeight = 'bold';
+            totalRow.innerHTML = `
+                <td><strong>TOTAL</strong></td>
+                <td>-</td>
+                <td><strong>${totalCredits}</strong></td>
+                <td><strong>${totalWeightedSGPA.toFixed(2)}</strong></td>
+            `;
+            tableBody.appendChild(totalRow);
+
+            summaryStats.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${totalCredits}</div>
+                    <div class="stat-label">Total Credits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${totalWeightedSGPA.toFixed(2)}</div>
+                    <div class="stat-label">Weighted SGPA Sum</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${cgpa}</div>
+                    <div class="stat-label">Final CGPA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${(parseFloat(cgpa) * 10).toFixed(2)}%</div>
+                    <div class="stat-label">Percentage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${getDivision(parseFloat(cgpa))}</div>
+                    <div class="stat-label">Division</div>
+                </div>
+            `;
+
+            document.getElementById('summarySection').classList.add('show');
+        }
+
+        function downloadReport() {
+            showCustomAlert("Generating your report. Please wait...");
+
+            setTimeout(() => {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+
+                doc.setFillColor(255, 255, 255);
+                doc.rect(0, 0, 210, 297, 'F');
+
+                doc.setDrawColor(230, 230, 230);
+                doc.setLineWidth(0.5);
+                doc.rect(10, 10, 190, 277, 'S');
+
+                doc.setFillColor(250, 250, 250);
+                doc.rect(10, 10, 190, 40, 'F');
+
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, 50, 200, 50);
+
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text('https://triple-s.netlify.app/', 25, 25, { align: 'center' });
+
+                doc.setFontSize(22);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(40, 40, 40);
+                doc.text('VTU CGPA\nReport', 105, 28, { align: 'center' });
+
+                const now = new Date();
+                const formattedDate = now.toLocaleDateString();
+                const formattedTime = now.toLocaleTimeString();
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text(`${formattedDate}\n${formattedTime}`, 175, 25, { align: 'center' });
+
+                doc.setFillColor(250, 250, 250);
+                doc.rect(10, 60, 190, 40, 'F');
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, 100, 200, 100);
+
+                const cgpa = document.getElementById('cgpaValue').textContent;
+                doc.setFontSize(60);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(40, 40, 40);
+                doc.text(cgpa, 105, 85, { align: 'center' });
+
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('cgpa', 145, 85);
+
+                const percentage = document.getElementById('percentageValue').textContent;
+                const division = document.getElementById('divisionValue').textContent;
+
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(60, 60, 60);
+                doc.text(`Percentage: ${percentage}`, 20, 115);
+                doc.text(`Division: ${division}`, 20, 130);
+
+                let yPosition = 150;
+
+                const colWidths = [40, 30, 30, 60];
+                const colPositions = [];
+                let currentPos = 20;
+
+                colWidths.forEach(width => {
+                    colPositions.push(currentPos);
+                    currentPos += width;
+                });
+
+                const rowHeight = 12;
+
+                const tableWidth = 180;
+                const tableStartY = yPosition - 6;
+                let tableEndY;
+
+                doc.setDrawColor(220, 220, 220);
+                doc.setLineWidth(0.5);
+
+                doc.setFillColor(248, 248, 248);
+                doc.rect(10, tableStartY, tableWidth, rowHeight, 'F');
+
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(10);
+                doc.setTextColor(60, 60, 60);
+
+                doc.text('Semester', colPositions[0], yPosition);
+                doc.text('SGPA', colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+                doc.text('Credits', colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                doc.text('SGPA × Credits', colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+
+                yPosition += rowHeight;
+
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, yPosition - 2, 190, yPosition - 2);
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+                doc.setTextColor(70, 70, 70);
+                let totalCredits = 0;
+                let totalWeightedSGPA = 0;
+                const credits = defaultCredits[currentScheme];
+
+                for (let i = 0; i < 8; i++) {
+                    const sgpaInput = document.getElementById(`sgpa-${i}`);
+                    const sgpa = parseFloat(sgpaInput.value);
+                    const semCredits = credits[i];
+
+                    if (isNaN(sgpa)) continue;
+
+                    totalCredits += semCredits;
+                    totalWeightedSGPA += sgpa * semCredits;
+
+                    if (i % 2 === 1) {
+                        doc.setFillColor(252, 252, 252);
+                        doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
+                    }
+
+                    doc.text(`Semester ${i + 1}`, colPositions[0], yPosition);
+                    doc.text(sgpa.toString(), colPositions[1] + colWidths[1] / 2, yPosition, { align: 'center' });
+                    doc.text(semCredits.toString(), colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                    doc.text((sgpa * semCredits).toFixed(2), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+
+                    doc.setDrawColor(240, 240, 240);
+                    doc.line(10, yPosition + 2, 190, yPosition + 2);
+
+                    yPosition += rowHeight;
+                }
+
+                doc.setFillColor(248, 248, 248);
+                doc.rect(10, yPosition - 6, tableWidth, rowHeight, 'F');
+
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(60, 60, 60);
+                doc.text('TOTAL:', colPositions[0], yPosition);
+                doc.text(totalCredits.toString(), colPositions[2] + colWidths[2] / 2, yPosition, { align: 'center' });
+                doc.text(totalWeightedSGPA.toFixed(2), colPositions[3] + colWidths[3] / 2, yPosition, { align: 'center' });
+
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, yPosition + 2, 190, yPosition + 2);
+
+                tableEndY = yPosition + 2;
+                doc.setDrawColor(220, 220, 220);
+                doc.line(10, tableStartY, 10, tableEndY);
+                doc.line(190, tableStartY, 190, tableEndY);
+
+                doc.setDrawColor(240, 240, 240);
+                colPositions.forEach((pos, index) => {
+                    if (index > 0) {
+                        doc.line(pos - 5, tableStartY, pos - 5, tableEndY);
+                    }
+                });
+
+                yPosition += 20;
+
+                doc.setDrawColor(230, 230, 230);
+                doc.line(10, yPosition - 10, 200, yPosition - 10);
+
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(60, 60, 60);
+                doc.text('CGPA Formula', 20, yPosition);
+
+                yPosition += 15;
+
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(70, 70, 70);
+                doc.text(`∑ [SGPA × Credits]  =  ${totalWeightedSGPA.toFixed(2)}  =  ${cgpa}`, 20, yPosition);
+
+                yPosition += 10;
+                doc.text(`∑ [Credits]               ${totalCredits}`, 20, yPosition);
+
+                doc.save(`VTU_CGPA_Report-TripleS.pdf`);
+
+                closeCustomAlert();
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>

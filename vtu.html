@@ -82,7 +82,6 @@
             height: auto;
             margin-bottom: 1.5rem;
             border-radius: 50%;
-            box-shadow: var(--shadow);
         }
 
         .coming-soon-title {
@@ -142,6 +141,19 @@
             transform: rotate(45deg);
             font-weight: 600;
         }
+        
+        .soon-badge {
+            position: absolute;
+            top: 25px;
+            right: -47px;
+            background: rgb(255, 77, 0);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 50px;
+            transform: rotate(45deg);
+            font-weight: 600;
+        }
+
 
         .feature-item i {
             font-size: 2rem;
@@ -257,7 +269,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo-container">
+            <a href="index.html" class="logo-container">
                 <div class="logo">
                     <img src="assets/images/logo1.png" alt="Triple S Logo">
                 </div>
@@ -265,7 +277,7 @@
                     <h1>Triple S</h1>
                     <p class="tagline">Student Study Support</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu">
@@ -301,29 +313,32 @@
             <p class="coming-soon-subtitle">We're working hard to bring you the best VTU resources, results checker, and
                 CGPA/SGPA calculator. Stay tuned!</p>
 
-            <p style="color: red;">Note: The SGPA calculator is currently in beta testing phase.
-                Please report any issues or feedback to <a href="mailto:triples.studies.edu@gmail.com">triples.studies.edu@gmail.com</a> or <a href="feedback.html">Feedback</a> Page</p>
             <div class="features-list">
-                <div class="feature-item active">
-                    <a href="vtu-sgpa-calculator.html">
+
+                <a href="vtu-sgpa-calculator.html">
+                    <div class="feature-item active">
                         <i class="fas fa-chart-line"></i>
                         <h3>SGPA Calculator</h3>
                         <p>Calculate your semester grade point average</p>
                         <span class="available-badge">Available Now</span>
-                    </a>
-                </div>
+                </a>
+            </div>
 
-                <div class="feature-item">
+            <a href="vtu-cgpa-calculator.html">
+                <div class="feature-item active">
                     <i class="fas fa-calculator"></i>
                     <h3>CGPA Calculator</h3>
+                    <span class="available-badge">Available Now</span>
                     <p>Calculate your cumulative grade point average</p>
-                </div>
+            </a>
+            </div>
 
-                <div class="feature-item">
-                    <i class="fas fa-search"></i>
-                    <h3>Results Checker</h3>
-                    <p>Quick access to your VTU exam results</p>
-                </div>
+            <div class="feature-item"> 
+                <i class="fas fa-search"></i>
+                <h3>Results Checker</h3>
+                <span class="soon-badge">Coming Soon</span>
+                <p>Quick access to your VTU exam results</p>
+            </div>
 
             </div>
 

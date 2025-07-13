@@ -1,4 +1,3 @@
-/* Custom Alert Styles */
 .custom-alert {
     position: fixed;
     top: 0;
@@ -74,11 +73,19 @@
     box-sizing: border-box;
 }
 
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--body-font);
     background: var(--body-color);
     min-height: 100vh;
-    padding: 15px;
+    padding: 0;
     line-height: var(--body-line-height);
     letter-spacing: var(--body-letter-spacing);
     color: var(--dark-color);
@@ -88,7 +95,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     background: white;
-    border-radius: var(--card-border-radius);
     box-shadow: var(--shadow);
     overflow: hidden;
 }
@@ -187,7 +193,7 @@ body {
     box-shadow: var(--shadow-hover);
 }
 
-/* Branch Selector Styles */
+
 .branch-selector {
     display: none;
     text-align: center;
@@ -1064,11 +1070,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding: 10px;
-    }
-
-    .container {
-        border-radius: 10px;
+        padding: 0;
     }
 
     .header {
