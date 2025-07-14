@@ -12,6 +12,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/user-dropdown.css">
     <style>
         * {
             margin: 0;
@@ -381,14 +383,48 @@
     </div>
 
     <div class="auth-required" id="auth-content">
-        <header class="header">
-            <h1>Triple-S Dashboard</h1>
-            <div class="user-info">
-                <div class="user-avatar" id="user-avatar"></div>
-                <span class="user-name" id="user-name">User</span>
-                <button class="logout-btn" id="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <a href="index.html" class="logo-container">
+                    <div class="logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </div>
+                    <div class="title-container">
+                        <h1>Triple S</h1>
+                        <p class="tagline">Student Study Support</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Menu Controls -->
+                <div class="mobile-controls">
+                    <div id="mobile-auth-link"></div>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Navigation Container -->
+                <div class="nav-container" id="navContainer">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="mathematics.html">Mathematics</a></li>
+                        <li><a href="physics.html">Physics</a></li>
+                        <li><a href="chemistry.html">Chemistry</a></li>
+                        <li><a href="vtu.html">VTU</a></li>
+                        <li><a href="vtu-sgpa-calculator.html">SGPA Calculator</a></li>
+                        <li><a href="vtu-cgpa-calculator.html">CGPA Calculator</a></li>
+                        <li><a href="#my-contribution-section">Contribute</a></li>
+                        <li id="auth-link"><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
             </div>
         </header>
 
@@ -494,9 +530,8 @@
         // DOM elements
         const loadingElement = document.getElementById('loading');
         const authContent = document.getElementById('auth-content');
-        const userAvatar = document.getElementById('user-avatar');
-        const userName = document.getElementById('user-name');
-        const logoutBtn = document.getElementById('logout-btn');
+        const authLink = document.getElementById('auth-link');
+        const mobileAuthLink = document.getElementById('mobile-auth-link');
 
         // Check authentication state
         onAuthStateChanged(auth, (user) => {
@@ -504,38 +539,86 @@
                 // User is signed in
                 console.log("User is signed in:", user);
 
-                // Update UI with user info
-                if (user.displayName) {
-                    userName.textContent = user.displayName;
-                    userAvatar.textContent = user.displayName.charAt(0).toUpperCase();
-                } else if (user.email) {
-                    userName.textContent = user.email.split('@')[0];
-                    userAvatar.textContent = user.email.charAt(0).toUpperCase();
-                }
+                // Create user icon with dropdown
+                let displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
+                let userInitial = displayName.charAt(0).toUpperCase();
+
+                // Create user menu HTML
+                const userMenuHTML = `
+                    <div class="user-menu-container">
+                        <div class="user-avatar-nav" title="${displayName}">
+                            ${userInitial}
+                        </div>
+                        <div class="user-dropdown">
+                            <div class="user-dropdown-header">
+                                <div class="user-dropdown-name">${displayName}</div>
+                                <div class="user-dropdown-email">${user.email || ''}</div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html" class="user-dropdown-item">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                            <a href="#" id="logout-btn" class="user-dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // Update auth link to show user icon with dropdown
+                authLink.innerHTML = userMenuHTML;
+                mobileAuthLink.innerHTML = userMenuHTML; // Also update mobile link
 
                 // Show authenticated content
                 loadingElement.style.display = 'none';
                 authContent.style.display = 'block';
+
+                // Add logout functionality
+                setTimeout(() => {
+                    // Add click event for user avatar to toggle dropdown
+                    const userAvatars = document.querySelectorAll('.user-avatar-nav');
+                    const userDropdowns = document.querySelectorAll('.user-dropdown');
+
+                    userAvatars.forEach((avatar, index) => {
+                        avatar.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            userDropdowns[index].classList.toggle('show');
+                        });
+                    });
+
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', (e) => {
+                        userDropdowns.forEach((dropdown, index) => {
+                            if (!dropdown.contains(e.target) && !userAvatars[index].contains(e.target)) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('#logout-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            signOut(auth).then(() => {
+                                // Sign-out successful
+                                console.log("User signed out");
+                                window.location.reload();
+                            }).catch((error) => {
+                                // An error happened
+                                console.error("Sign out error:", error);
+                                alert("Failed to sign out. Please try again.");
+                            });
+                        });
+                    });
+                }, 100);
             } else {
                 // User is not signed in, redirect to login
                 console.log("No user is signed in, redirecting to login");
                 window.location.href = "login.html";
             }
         });
-
-        // Handle logout
-        logoutBtn.addEventListener('click', () => {
-            signOut(auth).then(() => {
-                // Sign-out successful
-                console.log("User signed out");
-                window.location.href = "login.html";
-            }).catch((error) => {
-                // An error happened
-                console.error("Sign out error:", error);
-                alert("Failed to sign out. Please try again.");
-            });
-        });
     </script>
+
+    <script src="assets/js/menu.js"></script>
 </body>
 
 </html>
