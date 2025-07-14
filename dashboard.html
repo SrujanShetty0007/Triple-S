@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Triple-S</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a82fb;
+            --secondary: #fc5c7d;
+            --accent: #43e97b;
+            --bg: #f7f7fa;
+            --card-bg: #fff;
+            --input-bg: #f0f0f3;
+            --border: #e0e0e0;
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --radius: 1.5rem;
+            --transition: 0.3s cubic-bezier(.4, 0, .2, 1);
+            --heading-font: 'Montserrat', 'Poppins', Arial, sans-serif;
+            --body-font: 'Montserrat', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: var(--body-font);
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            font-family: var(--heading-font);
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: 0.04em;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.25rem;
+            box-shadow: 0 3px 10px rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            letter-spacing: -0.5px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            color: white;
+            font-family: var(--body-font);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .welcome-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .welcome-card h2 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .welcome-card p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.18);
+        }
+
+        .card h3 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .auth-required {
+            display: none;
+        }
+
+        .auth-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--primary);
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .welcome-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-loading" id="loading">
+        <span class="loader"></span>
+        <p>Loading...</p>
+    </div>
+
+    <div class="auth-required" id="auth-content">
+        <header class="header">
+            <h1>Triple-S Dashboard</h1>
+            <div class="user-info">
+                <div class="user-avatar" id="user-avatar"></div>
+                <span class="user-name" id="user-name">User</span>
+                <button class="logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="welcome-card">
+                <h2>Welcome to Triple-S</h2>
+                <p>You have successfully logged in to your account. This is your personalized dashboard where you can
+                    manage your Triple-S experience.</p>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <h3>Your Profile</h3>
+                    <p>Manage your personal information, preferences, and account settings.</p>
+                </div>
+                <div class="card">
+                    <h3>Activity</h3>
+                    <p>Track your recent activities and interactions within the platform.</p>
+                </div>
+                <div class="card">
+                    <h3>Settings</h3>
+                    <p>Customize your experience and configure notification preferences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK imports -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHZcDv3pXIU9J3CASXi3sM-V7mZsMuqBM",
+            authDomain: "triple-s-bd006.firebaseapp.com",
+            projectId: "triple-s-bd006",
+            storageBucket: "triple-s-bd006.firebasestorage.app",
+            messagingSenderId: "933483210420",
+            appId: "1:933483210420:web:66fde1b5571ef1741299e1",
+            measurementId: "G-TPHZ0H6L5J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // DOM elements
+        const loadingElement = document.getElementById('loading');
+        const authContent = document.getElementById('auth-content');
+        const userAvatar = document.getElementById('user-avatar');
+        const userName = document.getElementById('user-name');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in:", user);
+
+                // Update UI with user info
+                if (user.displayName) {
+                    userName.textContent = user.displayName;
+                    userAvatar.textContent = user.displayName.charAt(0).toUpperCase();
+                } else if (user.email) {
+                    userName.textContent = user.email.split('@')[0];
+                    userAvatar.textContent = user.email.charAt(0).toUpperCase();
+                }
+
+                // Show authenticated content
+                loadingElement.style.display = 'none';
+                authContent.style.display = 'block';
+            } else {
+                // User is not signed in, redirect to login
+                console.log("No user is signed in, redirecting to login");
+                window.location.href = "login.html";
+            }
+        });
+
+        // Handle logout
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth).then(() => {
+                // Sign-out successful
+                console.log("User signed out");
+                window.location.href = "login.html";
+            }).catch((error) => {
+                // An error happened
+                console.error("Sign out error:", error);
+                alert("Failed to sign out. Please try again.");
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+.user-menu-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-avatar-nav {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.5px;
+}
+
+.user-avatar-nav:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    width: 320px;
+    height: 250px;
+    background: rgba(19, 19, 19, 0.98);
+    border-radius: 2px;
+    box-shadow: var(--shadow-hover);
+    padding: 0;
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: var(--transition);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(67, 97, 238, 0.2);
+    font-family: var(--body-font);
+}
+
+.user-dropdown.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: rgba(19, 19, 19, 0.98);
+    transform: rotate(45deg);
+    border-left: 1px solid rgba(67, 97, 238, 0.2);
+    border-top: 1px solid rgba(67, 97, 238, 0.2);
+    z-index: -1;
+}
+
+.user-dropdown-header {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 1.6rem 1.2rem;
+    background: var(--header-gradient);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-dropdown-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient);
+}
+
+.user-dropdown-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+    letter-spacing: var(--heading-letter-spacing);
+    font-family: var(--heading-font);
+}
+
+.user-dropdown-email {
+    font-size: 0.9rem;
+    color: #fff;
+    word-break: break-all;
+    opacity: 0.9;
+    font-weight: 500;
+    letter-spacing: var(--body-letter-spacing);
+}
+
+.user-dropdown-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0;
+}
+
+.user-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 8px;
+    padding: 1rem 1.6rem;
+    color: #fff;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: var(--body-letter-spacing);
+}
+
+.user-dropdown-item:hover {
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    transform: translateX(3px);
+}
+
+.user-dropdown-item i {
+    margin-right: 0.9rem;
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+    width: 20px;
+    text-align: center;
+}
+
+.user-dropdown-item:hover i {
+    color: var(--accent-color);
+}
+
+.user-dropdown-item:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.user-dropdown-item:last-child i {
+    color: var(--error-color);
+}
+
+.user-dropdown-item:last-child:hover i {
+    color: var(--warning-color);
+}
+
+.user-dropdown-item:active {
+    background: rgba(67, 97, 238, 0.15);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .user-dropdown {
+        right: -50px;
+        width: 280px;
+    }
+
+    .user-dropdown::before {
+        right: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-dropdown {
+        right: -80px;
+        width: 260px;
+    }
+
+    .user-dropdown::before {
+        right: 90px;
+    }
+
+    .user-avatar-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+    }
+
+    .user-dropdown-item {
+        padding: 0.9rem 1.3rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,23 +1,25 @@
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
+# Firebase
+.firebase/
+.firebaserc
+firebase.json
+firebase-debug.log
 
-# Editor directories and files
-.idea/
+# IDE and editor files
 .vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.idea/
+*.swp
+*.swo
 
-# System Files
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Temporary files
-*.tmp
-*.temp 
+# Build and deployment files
+node_modules/
+dist/
+build/ 

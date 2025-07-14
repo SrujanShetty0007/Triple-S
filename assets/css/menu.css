@@ -21,6 +21,13 @@ header .container {
     padding: 0 15px;
 }
 
+/* Mobile Controls */
+.mobile-controls {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Logo Styles */
 .logo-container {
     display: flex;
@@ -179,6 +186,42 @@ header .container {
         display: block;
     }
 
+    .mobile-controls {
+        display: flex;
+    }
+
+    /* Hide desktop auth link */
+    #auth-link {
+        display: none;
+    }
+
+    /* Mobile user avatar styling */
+    #mobile-auth-link .user-menu-container {
+        position: relative;
+    }
+
+    #mobile-auth-link .user-avatar-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    #mobile-auth-link .user-dropdown {
+        top: calc(100% + 15px);
+        right: -100px;
+    }
+
+    #mobile-auth-link .user-dropdown::before {
+        right: 110px;
+    }
+
+    #mobile-auth-link a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
     .nav-container {
         position: fixed;
         top: 0;
@@ -259,14 +302,18 @@ header .container {
         transition-delay: 1s;
     }
 
+    .nav-container.active .nav-links li:nth-child(11) {
+        transition-delay: 1.1s;
+    }
+
     .nav-links a {
         font-size: 1.1rem;
-        display: inline-block;
-        transition: transform 0.3s ease, color 0.3s ease;
+        display: block;
+        padding: 5px 15px;
     }
 
     .nav-links a:hover {
-        transform: translateX(5px);
+        color: #fff;
     }
 
     .logo img {
@@ -282,7 +329,6 @@ header .container {
     }
 }
 
-/* Mobile screens */
 @media (max-width: 480px) {
     .logo img {
         width: 45px;
@@ -295,9 +341,14 @@ header .container {
     .tagline {
         font-size: 0.75rem;
     }
+
+    #mobile-auth-link .user-avatar-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
 }
 
-/* Small mobile screens */
 @media (max-width: 360px) {
     .logo-container {
         gap: 10px;
@@ -316,7 +367,13 @@ header .container {
     }
 
     .hamburger {
-        width: 20px;
-        height: 16px;
+        width: 22px;
+        height: 18px;
+    }
+
+    #mobile-auth-link .user-avatar-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
     }
 }
