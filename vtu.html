@@ -40,6 +40,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- AOS Animate On Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
     <style>
         body {
@@ -71,24 +73,11 @@
             overflow: hidden;
         }
 
-        .coming-soon-icon {
-            font-size: 5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
         .vtu-logo {
             width: 120px;
             height: auto;
             margin-bottom: 1.5rem;
             border-radius: 50%;
-        }
-
-        .coming-soon-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
         }
 
         .features-list {
@@ -138,19 +127,6 @@
             font-weight: 600;
         }
 
-        .soon-badge {
-            position: absolute;
-            top: 25px;
-            right: -47px;
-            background: rgb(255, 77, 0);
-            color: white;
-            font-size: 0.7rem;
-            padding: 4px 50px;
-            transform: rotate(45deg);
-            font-weight: 600;
-        }
-
-
         .feature-item i {
             font-size: 2rem;
             color: var(--primary-color);
@@ -168,56 +144,17 @@
             color: #666;
         }
 
-        .notification-form {
-            max-width: 500px;
-            width: 100%;
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            position: relative;
-            display: flex;
-            margin-bottom: 1rem;
-        }
-
-        .form-group input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--button-border-radius) 0 0 var(--button-border-radius);
-            font-family: var(--body-font);
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus {
-            border-color: var(--primary-color);
-        }
-
-        .notify-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
-            font-family: var(--body-font);
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .notify-btn:hover {
-            background: var(--secondary-color);
-        }
-
         .vtu-link {
             margin: 2rem 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .vtu-link a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.8rem 1.5rem;
@@ -230,6 +167,8 @@
             box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
             position: relative;
             overflow: hidden;
+            min-width: 220px;
+            justify-content: center;
         }
 
         .vtu-link a::before {
@@ -267,10 +206,22 @@
             font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .coming-soon-subtitle {
-                font-size: 1rem;
+        @media (max-width: 600px) {
+            .vtu-link {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
             }
+
+            .vtu-link a {
+                min-width: 0;
+                width: 100%;
+                max-width: 350px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
 
             .features-list {
                 gap: 1rem;
@@ -305,6 +256,135 @@
             .vtu-logo {
                 margin-top: -10px;
                 width: 180px;
+            }
+        }
+
+        /* About University Section */
+        .about-university-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(67, 97, 238, 0.07);
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            margin: 2.5rem auto 2rem auto;
+            max-width: 900px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .about-university-title {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .about-university-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .about-university-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            font-family: var(--body-font);
+            font-size: 1.08rem;
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.04);
+        }
+
+        .about-university-table th,
+        .about-university-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #e6e6e6;
+            text-align: left;
+        }
+
+        .about-university-table th {
+            background: var(--light-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            width: 220px;
+            font-family: var(--heading-font);
+            font-size: 1.05rem;
+        }
+
+        .about-university-table td {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .about-university-table tr:last-child th,
+        .about-university-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vtu-official-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .vtu-official-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline wavy;
+        }
+
+        @media (max-width: 700px) {
+            .about-university-container {
+                padding: 1.2rem 0.5rem 1rem 0.5rem;
+            }
+
+            .about-university-title {
+                font-size: 1.3rem;
+            }
+
+            .about-university-table th,
+            .about-university-table td {
+                padding: 0.7rem 0.7rem;
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-university-container {
+                padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+            }
+
+            .about-university-title {
+                font-size: 1.1rem;
+            }
+
+            .about-university-table th,
+            .about-university-table td {
+                padding: 0.5rem 0.4rem;
+                font-size: 0.93rem;
+            }
+        }
+
+        .vtu-feature-highlight {
+            background: var(--light-color);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(67, 97, 238, 0.06);
+            padding: 1.2rem 1.5rem;
+            margin: 0 auto 2rem auto;
+            max-width: 700px;
+            font-size: 1.13rem;
+            color: var(--dark-color);
+            font-family: var(--body-font);
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 600px) {
+            .vtu-feature-highlight {
+                padding: 0.8rem 0.5rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -348,6 +428,8 @@
                     <li><a href="physics.html">Physics</a></li>
                     <li><a href="chemistry.html">Chemistry</a></li>
                     <li><a href="vtu.html">VTU</a></li>
+                    <li><a href="vtu-sgpa-calculator.html">SGPA Calculator</a></li>
+                    <li><a href="vtu-cgpa-calculator.html">CGPA Calculator</a></li>
                     <li><a href="index.html#my-contribution-section">Contribute</a></li>
                 </ul>
             </div>
@@ -357,12 +439,16 @@
     <!-- Main Content -->
     <main class="container">
         <section class="coming-soon-section">
-            <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo">
-            <i class="fas fa-tools coming-soon-icon"></i>
-            <p class="coming-soon-subtitle">We're working hard to bring you the best VTU resources, results checker, and
-                CGPA/SGPA calculator. Stay tuned!</p>
+            <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo" data-aos="fade-down"
+                data-aos-duration="900">
 
-            <div class="features-list">
+            <div class="vtu-feature-highlight" data-aos="fade-left" data-aos-duration="900">
+                Check your VTU results instantly and calculate your SGPA and CGPA with ease. Fast, reliable, and
+                designed for VTU
+                students.
+            </div>
+
+            <div class="features-list" data-aos="fade-up" data-aos-duration="900">
 
                 <a href="vtu-sgpa-calculator.html" class="feature-item active">
                     <i class="fas fa-chart-line"></i>
@@ -378,34 +464,58 @@
                     <p>Calculate your cumulative grade point average</p>
                 </a>
 
-                <div class="feature-item">
+
+                <a href="https://results.vtu.ac.in/" class="feature-item active">
                     <i class="fas fa-search"></i>
                     <h3>Results Checker</h3>
-                    <span class="soon-badge">Coming Soon</span>
+                    <span class="available-badge">Available Now</span>
                     <p>Quick access to your VTU exam results</p>
-                </div>
+                </a>
 
             </div>
 
-            <div class="vtu-link">
-                <a href="https://vtu.ac.in/" target="_blank">
+            <div class="vtu-link" data-aos="fade-left" data-aos-duration="900">
+                <a href="https://vtu.ac.in/model-question-paper-b-e-b-tech-b-arch/" target="_blank">
                     <i class="fas fa-external-link-alt"></i>
-                    <p>Visit VTU Official Website</p>
+                    <p>Visit VTU Model Question Papers</p>
                 </a>
             </div>
+        </section>
 
-            <div class="notification-form">
-                <p>Get notified when VTU tools are ready:</p>
-                <form id="notifyForm" action="https://formsubmit.co/triples.studies.edu@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="VTU Tools Notification Request">
-                    <input type="hidden" name="_next" value="https://triple-s.netlify.app/vtu.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <div class="form-group">
-                        <input type="email" id="notifyEmail" name="email" placeholder="Your email address" required>
-                        <button type="submit" class="notify-btn">Notify Me</button>
-                    </div>
-                </form>
+        <div class="vtu-feature-highlight" data-aos="fade-up" data-aos-duration="900">
+            The official VTU website provides students and faculty with access to results, notifications, academic
+            resources, and important updates from Visvesvaraya Technological University.
+        </div>
+
+        <!-- About University Section -->
+        <section class="about-university-container" data-aos="fade-up" data-aos-duration="900">
+            <h2 class="about-university-title">About University</h2>
+            <div class="about-university-table-wrapper">
+                <table class="about-university-table">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>Visvesvaraya Technological University (VTU)</td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td>Belagavi, Karnataka, India</td>
+                        </tr>
+                        <tr>
+                            <th>Established</th>
+                            <td>1 April 1998</td>
+                        </tr>
+                        <tr>
+                            <th>Website</th>
+                            <td><a href="https://vtu.ac.in/" class="vtu-official-link" target="_blank"
+                                    rel="noopener">VTU Official Website</a></td>
+                        </tr>
+                        <tr>
+                            <th>Academic programmes</th>
+                            <td>B.E/B.Tech, B.Arch, M.Tech, M.Arch, BSc, MSc, MCA, PhD</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
@@ -515,6 +625,10 @@
                 });
             });
         });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
     </script>
 </body>
 

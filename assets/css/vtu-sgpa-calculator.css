@@ -1,3 +1,54 @@
+/* Modern font enhancements for creative look */
+
+body {
+    font-family: var(--body-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sgpa-navbar,
+.navbar-menu,
+.nav-link {
+    font-family: var(--body-font);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.brand-text {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header h1,
+.header p,
+h1,
+h2,
+h3,
+.footer-section h3 {
+    font-family: var(--heading-font);
+    letter-spacing: 0.03em;
+    font-weight: 700;
+}
+
+.scheme-btn,
+.calculate-btn,
+.stat-value,
+.sgpa-value,
+.sgpa-label,
+.performance-indicator,
+.summary-table th {
+    font-family: var(--heading-font);
+    letter-spacing: 0.02em;
+    font-weight: 600;
+}
+
 .custom-alert {
     position: fixed;
     top: 0;
@@ -83,7 +134,7 @@
 }
 
 .navbar-container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;

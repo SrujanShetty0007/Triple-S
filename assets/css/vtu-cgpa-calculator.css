@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+.grade-mapping {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 .cgpa-form-container {
     margin: 20px 0;
     padding: 0 15px;

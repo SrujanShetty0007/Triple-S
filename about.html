@@ -40,6 +40,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- AOS Animate On Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 
 <body>
@@ -80,6 +82,8 @@
                     <li><a href="physics.html">Physics</a></li>
                     <li><a href="chemistry.html">Chemistry</a></li>
                     <li><a href="vtu.html">VTU</a></li>
+                    <li><a href="vtu-sgpa-calculator.html">SGPA Calculator</a></li>
+                    <li><a href="vtu-cgpa-calculator.html">CGPA Calculator</a></li>
                     <li><a href="index.html#my-contribution-section">Contribute</a></li>
                 </ul>
             </div>
@@ -98,7 +102,7 @@
     </section>
 
     <!-- Main Content -->
-    <main class="container">
+    <main class="container" data-aos="fade-up" data-aos-duration="900">
         <!-- About Section -->
         <section class="about-section">
             <div class="about-mission">
@@ -117,47 +121,47 @@
                 <div class="feature-card">
                     <i class="fas fa-book-open feature-icon"></i>
                     <h3 class="feature-title">Comprehensive Notes</h3>
-                    <p class="feature-description">Access well-organized study notes for each subject, broken down by
+                    <p class="feature-description" data-aos="fade-left" data-aos-duration="900">Access well-organized study notes for each subject, broken down by
                         module to help you understand complex concepts easily.</p>
                 </div>
 
                 <div class="feature-card">
                     <i class="fas fa-file-alt feature-icon"></i>
                     <h3 class="feature-title">Model Question Papers</h3>
-                    <p class="feature-description">Practice with carefully crafted model question papers designed to
+                    <p class="feature-description" data-aos="fade-right" data-aos-duration="900">Practice with carefully crafted model question papers designed to
                         help you prepare for your exams effectively.</p>
                 </div>
 
                 <div class="feature-card">
                     <i class="fas fa-history feature-icon"></i>
                     <h3 class="feature-title">Previous Year Papers</h3>
-                    <p class="feature-description">Get access to a collection of previous year question papers to
+                    <p class="feature-description" data-aos="fade-left" data-aos-duration="900">Get access to a collection of previous year question papers to
                         understand exam patterns and important topics.</p>
                 </div>
 
                 <div class="feature-card">
                     <i class="fas fa-users feature-icon"></i>
                     <h3 class="feature-title">Community Driven</h3>
-                    <p class="feature-description">Our platform thrives on student contributions, creating a
+                    <p class="feature-description" data-aos="fade-right" data-aos-duration="900">Our platform thrives on student contributions, creating a
                         collaborative environment for knowledge sharing.</p>
                 </div>
 
                 <div class="feature-card">
                     <img src="assets/images/responsive-design.png" alt="Responsive Design" class="feature-icon">
                     <h3 class="feature-title">Device Friendly</h3>
-                    <p class="feature-description">Access all materials on any device with our responsive design that
+                    <p class="feature-description" data-aos="fade-left" data-aos-duration="900">Access all materials on any device with our responsive design that
                         works seamlessly on smartphones, tablets, and desktops.</p>
                 </div>
 
                 <div class="feature-card">
                     <i class="fas fa-graduation-cap feature-icon"></i>
                     <h3 class="feature-title">Semester Organized</h3>
-                    <p class="feature-description">All materials are neatly organized by semester and subject, making it
+                    <p class="feature-description" data-aos="fade-right" data-aos-duration="900">All materials are neatly organized by semester and subject, making it
                         easy to find what you need when you need it.</p>
                 </div>
             </div>
 
-            <div class="about-card">
+            <div class="about-card" data-aos="fade-up" data-aos-duration="900">
                 <h2>Our Story</h2>
                 <p><b>Triple S</b> started as a simple project by <b>Srujan S Shetty</b>, an engineering student at
                     <b>Moodlakatte Institute of Technology</b> who recognized the
@@ -180,7 +184,7 @@
             <h2>Meet the Administrator</h2>
             <div class="developer-profile">
                 <div class="profile-header">
-                    <img src="assets/images/admin.jpg" alt="Srujan Shetty" class="profile-image">
+                    <img src="assets/images/admin.jpg" alt="Srujan Shetty" class="profile-image" data-aos="flip-left" data-aos-duration="900">
                     <div class="profile-badge">Admin</div>
                 </div>
                 <h3 class="developer-name">Srujan S Shetty</h3>
@@ -377,6 +381,10 @@
     </script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
 </body>
 
 </html>

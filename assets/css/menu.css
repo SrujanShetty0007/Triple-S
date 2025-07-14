@@ -200,7 +200,7 @@ header .container {
     .nav-links {
         flex-direction: column;
         gap: 20px;
-        top: -100px;
+        top: -20px;
         position: relative;
         align-items: center;
         justify-content: center;
@@ -249,6 +249,14 @@ header .container {
 
     .nav-container.active .nav-links li:nth-child(8) {
         transition-delay: 0.8s;
+    }
+
+    .nav-container.active .nav-links li:nth-child(9) {
+        transition-delay: 0.9s;
+    }
+
+    .nav-container.active .nav-links li:nth-child(10) {
+        transition-delay: 1s;
     }
 
     .nav-links a {
