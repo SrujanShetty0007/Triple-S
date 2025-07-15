@@ -7,23 +7,11 @@
     <title>Login | Triple-S</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/root-variables.css">
     <style>
-        :root {
-            --primary: #6a82fb;
-            --secondary: #fc5c7d;
-            --accent: #43e97b;
-            --bg: #f7f7fa;
-            --card-bg: #fff;
-            --input-bg: #f0f0f3;
-            --border: #e0e0e0;
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --radius: 1.5rem;
-            --transition: 0.3s cubic-bezier(.4, 0, .2, 1);
-            --heading-font: 'Montserrat', 'Poppins', Arial, sans-serif;
-            --body-font: 'Montserrat', Arial, sans-serif;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -34,12 +22,15 @@
             min-height: 100vh;
             margin: 0;
             font-family: var(--body-font);
-            background: linear-gradient(120deg, var(--primary), var(--secondary), var(--accent));
+            background: var(--gradient);
             background-size: 200% 200%;
             animation: gradientMove 8s ease-in-out infinite;
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: var(--body-line-height);
+            letter-spacing: var(--body-letter-spacing);
+            color: var(--dark-color);
         }
 
         @keyframes gradientMove {
@@ -57,51 +48,56 @@
         }
 
         .container {
-            background: var(--card-bg);
-            border-radius: 6px;
+            background: var(--light-color);
+            border-radius: var(--card-border-radius);
             box-shadow: var(--shadow);
-            padding: 2.5rem 2rem 2rem 2rem;
+            padding: 1.8rem 2rem;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             margin: 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
             z-index: 1;
+            transition: var(--transition);
+        }
+
+        .container:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .tabs {
             display: flex;
             width: 100%;
-            margin-bottom: 2rem;
-            border-radius: 2rem;
-            background: var(--input-bg);
+            margin-bottom: 1.2rem;
+            border-radius: var(--button-border-radius);
+            background: rgba(0, 0, 0, 0.04);
             overflow: hidden;
             font-family: var(--heading-font);
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
         .tab {
             flex: 1;
             text-align: center;
-            padding: 1rem 0.5rem;
+            padding: 0.7rem 0.5rem;
             cursor: pointer;
             font-weight: 600;
-            color: #888;
+            color: #555;
             background: none;
             border: none;
             outline: none;
-            transition: color var(--transition), background var(--transition);
+            transition: var(--transition);
             font-family: var(--heading-font);
-            font-size: 1.1rem;
-            letter-spacing: 0.02em;
+            font-size: 1rem;
+            letter-spacing: var(--heading-letter-spacing);
         }
 
         .tab.active {
-            color: var(--primary);
-            background: #eaf0ff;
+            color: var(--primary-color);
+            background: rgba(67, 97, 238, 0.1);
             font-weight: 700;
         }
 
@@ -109,7 +105,7 @@
             width: 100%;
             display: none;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 0.9rem;
             animation: fadeIn 0.5s;
             font-family: var(--body-font);
         }
@@ -133,11 +129,11 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 0.3rem;
+            gap: 0.2rem;
         }
 
         label {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #444;
             font-weight: 500;
         }
@@ -145,51 +141,62 @@
         input[type="text"],
         input[type="email"],
         input[type="password"] {
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 0.8rem;
-            background: var(--input-bg);
-            font-size: 1.08rem;
-            transition: border var(--transition);
+            padding: 0.7rem 0.9rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--button-border-radius);
+            background: rgba(0, 0, 0, 0.02);
+            font-size: 0.95rem;
+            transition: var(--transition);
             font-family: var(--body-font);
-            font-weight: 500;
+            font-weight: 400;
+            letter-spacing: var(--body-letter-spacing);
         }
 
         input:focus {
-            border-color: var(--primary);
+            border-color: var(--primary-color);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
         }
 
         .btn {
-            padding: 0.9rem 1rem;
+            padding: 0.7rem 1rem;
             border: none;
-            border-radius: 0.8rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: #fff;
-            font-size: 1.18rem;
-            font-weight: 700;
+            border-radius: var(--button-border-radius);
+            background: var(--gradient);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(106, 130, 251, 0.08);
-            transition: background var(--transition), transform var(--transition);
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.2);
+            transition: var(--transition);
             font-family: var(--heading-font);
-            letter-spacing: 0.03em;
+            letter-spacing: var(--heading-letter-spacing);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
         }
 
         /* Social auth styles */
         .social-auth {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.7rem;
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 0.7rem;
         }
 
         .social-divider {
             display: flex;
             align-items: center;
-            margin: 0.5rem 0;
+            margin: 0.4rem 0;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .social-divider:before,
@@ -197,7 +204,7 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: var(--border);
+            background: rgba(0, 0, 0, 0.1);
             margin: 0 10px;
         }
 
@@ -205,80 +212,69 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 0.8rem;
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--button-border-radius);
             background: white;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: background var(--transition), transform var(--transition);
+            transition: var(--transition);
             gap: 10px;
             color: #333;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .social-btn:hover {
             background: #f5f5f5;
             transform: translateY(-2px);
-        }
-
-        .social-btn img {
-            width: 24px;
-            height: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .switch-link {
-            color: var(--primary);
+            color: var(--primary-color);
             cursor: pointer;
             text-decoration: underline;
-            font-size: 1.01rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-top: 0.5rem;
+            margin-top: 0.6rem;
             display: inline-block;
             font-family: var(--body-font);
+            transition: var(--transition);
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: var(--heading-font);
-            font-weight: 800;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.5rem;
+        .switch-link:hover {
+            color: var(--secondary-color);
         }
 
         .login-title {
             font-family: var(--heading-font);
-            font-size: 2.1rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--primary-color);
             text-align: center;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.04em;
-            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: var(--heading-letter-spacing);
+            line-height: var(--heading-line-height);
         }
 
         .input-group label {
-            font-size: 1.05rem;
+            font-size: 0.85rem;
             color: #333;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-            margin-bottom: 0.2rem;
-            font-family: var(--heading-font);
+            font-weight: 500;
+            letter-spacing: var(--body-letter-spacing);
+            margin-bottom: 0.1rem;
         }
 
         .loader {
             display: none;
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
-            margin-left: 10px;
+            margin-left: 8px;
         }
 
         @keyframes spin {
@@ -294,30 +290,49 @@
         }
 
         .error-message {
-            color: #e74c3c;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
             text-align: center;
             display: none;
+            font-weight: 500;
         }
 
         @media (max-width: 600px) {
             .container {
-                padding: 1.5rem 0.7rem 1.2rem 0.7rem;
-                max-width: 98vw;
+                padding: 1.5rem 1.2rem;
+                max-width: 92%;
+                margin: 0.5rem;
             }
 
             .tabs {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
             }
 
             .btn {
-                font-size: 1.05rem;
-                padding: 0.7rem 0.5rem;
+                font-size: 0.95rem;
+                padding: 0.65rem 0.5rem;
             }
 
             .login-title {
                 font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .form {
+                gap: 0.7rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                padding: 0.65rem 0.8rem;
+            }
+
+            .social-btn {
+                padding: 0.55rem 0.8rem;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -332,7 +347,8 @@
         </div>
         <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 0.9rem;">
             Login is optional. You can continue using Triple-S without signing in.
-            <a href="index.html" style="color: #6a82fb; text-decoration: none; font-weight: 600;">Return to Home</a>
+            <a href="index.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Return to
+                Home</a>
         </p>
         <!-- Sign In Form -->
         <form class="form active" id="signInForm" autocomplete="on">
@@ -433,8 +449,8 @@
     <!-- Firebase SDK imports -->
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
         import {
             getAuth,
             createUserWithEmailAndPassword,
@@ -445,7 +461,7 @@
             GoogleAuthProvider,
             GithubAuthProvider,
             signInWithPopup
-        } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -574,15 +590,7 @@
 
         // Google Authentication
         const googleProvider = new GoogleAuthProvider();
-
-        // Add scopes for Google Auth (email and profile are the basic ones needed)
         googleProvider.addScope('email');
-        googleProvider.addScope('profile');
-
-        // Show the account selection prompt every time
-        googleProvider.setCustomParameters({
-            prompt: 'select_account'
-        });
 
         // Google Sign In
         document.getElementById('googleLogin').addEventListener('click', () => {
@@ -595,29 +603,11 @@
                 })
                 .catch((error) => {
                     console.error("Google sign in error:", error.code, error.message);
-
-                    // Detailed error handling for Google authentication
-                    let errorMsg = "Google sign in failed. Please try again.";
-
-                    if (error.code === 'auth/popup-blocked') {
-                        errorMsg = "Sign-in popup was blocked by your browser. Please allow popups for this site.";
-                    } else if (error.code === 'auth/popup-closed-by-user') {
-                        errorMsg = "Sign-in popup was closed before completing authentication.";
-                    } else if (error.code === 'auth/cancelled-popup-request') {
-                        errorMsg = "Sign-in popup request was cancelled.";
-                    } else if (error.code === 'auth/account-exists-with-different-credential') {
-                        errorMsg = "An account already exists with the same email address but different sign-in credentials.";
-                    } else if (error.code === 'auth/unauthorized-domain') {
-                        errorMsg = "This domain is not authorized for OAuth operations. Please add it to your Firebase console.";
-                    } else if (error.code === 'auth/operation-not-allowed') {
-                        errorMsg = "Google authentication has not been enabled in Firebase console.";
-                    }
-
-                    showError('signin', errorMsg);
+                    showError('signin', "Google sign in failed. Please try again.");
                 });
         });
 
-        // Google Sign Up (same configuration as Sign In)
+        // Google Sign Up
         document.getElementById('googleSignup').addEventListener('click', () => {
             showLoader('signup');
 
@@ -628,39 +618,13 @@
                 })
                 .catch((error) => {
                     console.error("Google sign up error:", error.code, error.message);
-
-                    // Detailed error handling for Google authentication
-                    let errorMsg = "Google sign up failed. Please try again.";
-
-                    if (error.code === 'auth/popup-blocked') {
-                        errorMsg = "Sign-up popup was blocked by your browser. Please allow popups for this site.";
-                    } else if (error.code === 'auth/popup-closed-by-user') {
-                        errorMsg = "Sign-up popup was closed before completing authentication.";
-                    } else if (error.code === 'auth/cancelled-popup-request') {
-                        errorMsg = "Sign-up popup request was cancelled.";
-                    } else if (error.code === 'auth/account-exists-with-different-credential') {
-                        errorMsg = "An account already exists with the same email address but different sign-up credentials.";
-                    } else if (error.code === 'auth/unauthorized-domain') {
-                        errorMsg = "This domain is not authorized for OAuth operations. Please add it to your Firebase console.";
-                    } else if (error.code === 'auth/operation-not-allowed') {
-                        errorMsg = "Google authentication has not been enabled in Firebase console.";
-                    }
-
-                    showError('signup', errorMsg);
+                    showError('signup', "Google sign up failed. Please try again.");
                 });
         });
 
         // GitHub Authentication
         const githubProvider = new GithubAuthProvider();
-
-        // Add scopes for GitHub Auth (common scopes for basic authentication)
         githubProvider.addScope('user:email');
-        githubProvider.addScope('read:user');
-
-        // Show the account selection prompt every time
-        githubProvider.setCustomParameters({
-            'allow_signup': 'true'
-        });
 
         // GitHub Sign In
         document.getElementById('githubLogin').addEventListener('click', () => {
@@ -673,25 +637,7 @@
                 })
                 .catch((error) => {
                     console.error("GitHub sign in error:", error.code, error.message);
-
-                    // Detailed error handling for GitHub authentication
-                    let errorMsg = "GitHub sign in failed. Please try again.";
-
-                    if (error.code === 'auth/popup-blocked') {
-                        errorMsg = "Sign-in popup was blocked by your browser. Please allow popups for this site.";
-                    } else if (error.code === 'auth/popup-closed-by-user') {
-                        errorMsg = "Sign-in popup was closed before completing authentication.";
-                    } else if (error.code === 'auth/cancelled-popup-request') {
-                        errorMsg = "Sign-in popup request was cancelled.";
-                    } else if (error.code === 'auth/account-exists-with-different-credential') {
-                        errorMsg = "An account already exists with the same email address but different sign-in credentials.";
-                    } else if (error.code === 'auth/unauthorized-domain') {
-                        errorMsg = "This domain is not authorized for OAuth operations. Please add it to your Firebase console.";
-                    } else if (error.code === 'auth/operation-not-allowed') {
-                        errorMsg = "GitHub authentication has not been enabled in Firebase console.";
-                    }
-
-                    showError('signin', errorMsg);
+                    showError('signin', "GitHub sign in failed. Please try again.");
                 });
         });
 
@@ -706,25 +652,7 @@
                 })
                 .catch((error) => {
                     console.error("GitHub sign up error:", error.code, error.message);
-
-                    // Detailed error handling for GitHub authentication
-                    let errorMsg = "GitHub sign up failed. Please try again.";
-
-                    if (error.code === 'auth/popup-blocked') {
-                        errorMsg = "Sign-up popup was blocked by your browser. Please allow popups for this site.";
-                    } else if (error.code === 'auth/popup-closed-by-user') {
-                        errorMsg = "Sign-up popup was closed before completing authentication.";
-                    } else if (error.code === 'auth/cancelled-popup-request') {
-                        errorMsg = "Sign-up popup request was cancelled.";
-                    } else if (error.code === 'auth/account-exists-with-different-credential') {
-                        errorMsg = "An account already exists with the same email address but different sign-up credentials.";
-                    } else if (error.code === 'auth/unauthorized-domain') {
-                        errorMsg = "This domain is not authorized for OAuth operations. Please add it to your Firebase console.";
-                    } else if (error.code === 'auth/operation-not-allowed') {
-                        errorMsg = "GitHub authentication has not been enabled in Firebase console.";
-                    }
-
-                    showError('signup', errorMsg);
+                    showError('signup', "GitHub sign up failed. Please try again.");
                 });
         });
 
