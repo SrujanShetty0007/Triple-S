@@ -912,6 +912,224 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Subject search functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const subjectSearch = document.getElementById('subjectSearch');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
+
+    // Define all subjects from the page
+    const subjects = [
+        // Semester 1 subjects
+        { name: "Mathematics-I for CSE Stream", code: "BMATS101" },
+        { name: "Applied Chemistry for CSE Stream", code: "BCHES102" },
+        { name: "Computer-Aided Engineering Drawing", code: "BCADK103" },
+        { name: "Introduction to Electronics Communication", code: "BESCK104C" },
+        { name: "Introduction to Embedded System", code: "BETCK105J" },
+        { name: "Communicative English", code: "BENGK106" },
+        { name: "Samskrutika Kannada", code: "BKSK107" },
+        { name: "Balake Kannada", code: "BKBKK107" },
+        { name: "Scientific Foundations of Health", code: "BSFHK158" },
+
+        // Semester 2 subjects
+        { name: "Mathematics-II for CSE Stream", code: "BMATS201" },
+        { name: "Mathematics-II for EEE Stream", code: "BMATE201" },
+        { name: "Applied Physics for CSE Stream", code: "BPHYS202" },
+        { name: "Applied Chemistry for CSE Stream", code: "BCHES202" },
+        { name: "Applied Chemistry for EEE Stream", code: "BCHEE202" },
+        { name: "Principles of Programming using C", code: "BPOPS203" },
+        { name: "Computer Aided Engineering Drawing", code: "BCEDK203" },
+        { name: "Introduction to Electrical Engineering", code: "BESCK204B" },
+        { name: "Introduction to Electronics and Engineering", code: "BESCK204C" },
+        { name: "Introduction to Python Programming", code: "BPLCK205B" },
+        { name: "Professional Writing Skills in English", code: "BPWSK206" },
+        { name: "Indian Constitution", code: "BICOK207" },
+        { name: "Innovation and Design Thinking", code: "BIDTK258" },
+
+        // Semester 3 subjects
+        { name: "Data Structures and Algorithms", code: "BCS301" },
+
+        // Semester 4 subjects
+        { name: "Analysis & Design of Algorithms", code: "BCS401" },
+        { name: "Microcontrollers", code: "BCS402" },
+        { name: "Database Management Systems", code: "BCS403" },
+        { name: "Analysis & Design of Algorithms Lab", code: "BCSL404" },
+        { name: "Discrete Mathematical Structures", code: "BCS405A" },
+        { name: "MongoDB Lab", code: "BDSL456B" },
+        { name: "Biology For Engineers", code: "BBOK407" },
+        { name: "Universal Human Values", code: "BUHK408" },
+        { name: "Operating Systems", code: "BCS401" },
+
+        // Semester 5+ subjects
+        { name: "Database Management Systems", code: "BCS501" },
+        { name: "Web Technologies", code: "BCS601" },
+        { name: "Machine Learning", code: "BCS701" },
+        { name: "Cloud Computing", code: "BCS801" }
+    ];
+
+    // Function to search subjects
+    function searchSubjects(query) {
+        query = query.toLowerCase().trim();
+        if (!query) return [];
+
+        return subjects.filter(subject =>
+            subject.name.toLowerCase().includes(query) ||
+            subject.code.toLowerCase().includes(query)
+        );
+    }
+
+    // Function to display search results
+    function displaySearchResults(results) {
+        searchResults.innerHTML = '';
+
+        if (results.length === 0) {
+            searchResults.innerHTML = '<div class="no-results">No subjects found matching your search</div>';
+            searchResults.classList.add('active');
+            return;
+        }
+
+        // Group subjects by semester
+        const semesterGroups = {};
+
+        results.forEach(subject => {
+            // Extract semester from subject code (assuming format like "BMATS201" where 2 is semester)
+            let semester = "";
+            const codeMatch = subject.code.match(/\d/);
+            if (codeMatch) {
+                const semNumber = codeMatch[0];
+                semester = `Semester ${semNumber}`;
+            }
+
+            if (!semesterGroups[semester]) {
+                semesterGroups[semester] = [];
+            }
+            semesterGroups[semester].push(subject);
+        });
+
+        // Get search query for highlighting
+        const query = subjectSearch.value.toLowerCase().trim();
+
+        // Create DOM elements for each group
+        Object.keys(semesterGroups).sort().forEach(semester => {
+            const semesterSubjects = semesterGroups[semester];
+
+            if (semesterSubjects.length > 0) {
+                // Add semester header
+                if (semester) {
+                    const semesterHeader = document.createElement('div');
+                    semesterHeader.className = 'search-result-semester';
+                    semesterHeader.textContent = semester;
+                    searchResults.appendChild(semesterHeader);
+                }
+
+                // Add subjects
+                semesterSubjects.forEach(subject => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+
+                    // Highlight matching text if there's a query
+                    let displayName = subject.name;
+                    let displayCode = subject.code;
+
+                    if (query) {
+                        // Highlight in name
+                        const nameRegex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                        displayName = displayName.replace(nameRegex, '<span class="highlight">$1</span>');
+
+                        // Highlight in code
+                        const codeRegex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                        displayCode = displayCode.replace(codeRegex, '<span class="highlight">$1</span>');
+                    }
+
+                    resultItem.innerHTML = `
+                        <div class="result-title">${displayName}</div>
+                        <div class="result-code">${displayCode}</div>
+                    `;
+
+                    // Scroll to subject card when clicked
+                    resultItem.addEventListener('click', () => {
+                        // Find the subject card with this subject
+                        const subjectCards = document.querySelectorAll('.subject-card');
+                        let targetCard = null;
+
+                        subjectCards.forEach(card => {
+                            const subjectName = card.querySelector('h3').textContent;
+                            const subjectCode = card.querySelector('.subject-code').textContent;
+
+                            if (subjectName === subject.name && subjectCode === subject.code) {
+                                targetCard = card;
+                            }
+                        });
+
+                        if (targetCard) {
+                            // Highlight the card temporarily
+                            targetCard.style.boxShadow = '0 0 0 3px var(--primary-color)';
+                            setTimeout(() => {
+                                targetCard.style.boxShadow = '';
+                            }, 2000);
+
+                            // Scroll to the card
+                            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                            // Hide search results
+                            searchResults.classList.remove('active');
+                        }
+                    });
+
+                    searchResults.appendChild(resultItem);
+                });
+            }
+        });
+
+        searchResults.classList.add('active');
+    }
+
+    // Search on input
+    if (subjectSearch) {
+        subjectSearch.addEventListener('input', () => {
+            const query = subjectSearch.value;
+            if (query.length >= 2) {
+                const results = searchSubjects(query);
+                displaySearchResults(results);
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+    }
+
+    // Search on button click
+    if (searchButton) {
+        searchButton.addEventListener('click', () => {
+            const query = subjectSearch.value;
+            if (query.length >= 2) {
+                const results = searchSubjects(query);
+                displaySearchResults(results);
+            }
+        });
+    }
+
+    // Hide search results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (searchResults && !searchResults.contains(e.target) && e.target !== subjectSearch && e.target !== searchButton) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    // Search on Enter key
+    if (subjectSearch) {
+        subjectSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = subjectSearch.value;
+                if (query.length >= 2) {
+                    const results = searchSubjects(query);
+                    displaySearchResults(results);
+                }
+                e.preventDefault();
+            }
+        });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const heroSection = document.querySelector('.hero-section');
     const icons = document.querySelectorAll('.floating-icons .icon');

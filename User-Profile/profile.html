@@ -131,10 +131,25 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h2>My Profile</h2>
-                    <p>Manage your account information</p>
+                    <p>Your account information</p>
                 </div>
 
-                <div class="profile-content">
+                <!-- View Mode - Initially visible -->
+                <div class="profile-content" id="view-profile-section">
+                    <div class="profile-view-mode">
+                        <div class="profile-picture-view">
+                            <img id="profile-image-view" src="../assets/images/user.png" alt="Profile Picture">
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="display-name-view">User Name</h3>
+                            <p id="email-view" class="email-display">user@example.com</p>
+                            <button id="edit-profile-btn" class="primary-btn">Edit Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Mode - Initially hidden -->
+                <div class="profile-content" id="edit-profile-section" style="display: none;">
                     <div class="profile-picture-section">
                         <div class="profile-picture-container">
                             <img id="profile-image" src="../assets/images/user.png" alt="Profile Picture">
@@ -165,10 +180,14 @@
 
                         <div class="button-group">
                             <button id="save-profile-btn" class="primary-btn">Save Changes</button>
-                            <button id="logout-btn" class="outline-btn">Logout</button>
+                            <button id="cancel-edit-btn" class="outline-btn">Cancel</button>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="profile-actions">
+                <button id="logout-btn" class="outline-btn">Logout</button>
             </div>
         </div>
 

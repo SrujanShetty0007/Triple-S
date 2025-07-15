@@ -35,6 +35,7 @@ body::before {
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: var(--transition);
+    margin-bottom: 1.5rem;
 }
 
 .profile-card:hover {
@@ -62,12 +63,51 @@ body::before {
 
 .profile-content {
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 }
 
-/* Profile Picture */
+/* View Mode Styles */
+.profile-view-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.profile-picture-view {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.profile-picture-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.email-display {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Edit Mode Styles */
 .profile-picture-section {
     display: flex;
     flex-direction: column;
@@ -83,10 +123,6 @@ body::before {
     overflow: hidden;
     border: 4px solid var(--primary-color);
     transition: var(--transition);
-}
-
-.profile-picture-container:hover .profile-picture-overlay {
-    opacity: 1;
 }
 
 .profile-picture-container img {
@@ -110,6 +146,10 @@ body::before {
     cursor: pointer;
 }
 
+.profile-picture-container:hover .profile-picture-overlay {
+    opacity: 1;
+}
+
 .profile-picture-overlay i {
     color: white;
     font-size: 2rem;
@@ -120,6 +160,7 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .form-group {
@@ -159,6 +200,11 @@ body::before {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: center;
 }
 
 .primary-btn,
@@ -244,7 +290,7 @@ body::before {
 
 /* Responsive design */
 @media (min-width: 768px) {
-    .profile-content {
+    .profile-content#edit-profile-section {
         flex-direction: row;
         align-items: flex-start;
     }
@@ -255,5 +301,6 @@ body::before {
 
     .profile-details {
         flex: 1;
+        margin-top: 0;
     }
 }
