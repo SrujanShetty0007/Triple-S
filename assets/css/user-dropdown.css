@@ -1,7 +1,7 @@
 .user-menu-container {
     position: relative;
     cursor: pointer;
-    z-index: 1000;
+
 }
 
 .user-avatar-nav {
@@ -140,27 +140,6 @@
     letter-spacing: var(--heading-letter-spacing);
     font-family: var(--heading-font);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.user-dropdown-email {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
-    word-break: break-all;
-    font-weight: 500;
-    letter-spacing: var(--body-letter-spacing);
-    display: flex;
-    align-items: center;
-}
-
-.user-dropdown-email::before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
 .user-dropdown-divider {

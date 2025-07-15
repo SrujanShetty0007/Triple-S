@@ -435,7 +435,7 @@
                     manage your Triple-S experience and access all your study materials.</p>
             </div>
 
-            <div class="stats-row">
+            <!-- <div class="stats-row">
                 <div class="stat-card">
                     <div class="stat-icon">
                         <i class="fas fa-file-pdf"></i>
@@ -457,14 +457,14 @@
                     <div class="stat-value">Null</div>
                     <div class="stat-label">Hours Studied</div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="content">
-                <div class="card">
+                <div class="card" data-aos="fade-up" data-aos-duration="900">
                     <i class="fas fa-user card-icon"></i>
                     <h3>Your Profile</h3>
                     <p>Manage your personal information, preferences, and account settings.</p>
-                    <a href="#" class="card-action">Manage Profile</a>
+                    <a href="User-Profile/profile.html" class="card-action">Manage Profile</a>
                 </div>
                 <div class="card">
                     <i class="fas fa-history card-icon"></i>
@@ -473,16 +473,10 @@
                     <a href="#" class="card-action">View Activity</a>
                 </div>
                 <div class="card">
-                    <i class="fas fa-cog card-icon"></i>
-                    <h3>Settings</h3>
-                    <p>Customize your experience and configure notification preferences.</p>
-                    <a href="#" class="card-action">Configure</a>
-                </div>
-                <div class="card">
                     <i class="fas fa-graduation-cap card-icon"></i>
                     <h3>Study Materials</h3>
                     <p>Access all your study materials, notes, and resources in one place.</p>
-                    <a href="#" class="card-action">Browse Materials</a>
+                    <a href="index.html#explore-material" class="card-action">Browse Materials</a>
                 </div>
                 <div class="card">
                     <i class="fas fa-calendar-alt card-icon"></i>
@@ -495,6 +489,12 @@
                     <h3>Progress</h3>
                     <p>Track your learning progress and performance analytics.</p>
                     <a href="#" class="card-action">View Progress</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cog card-icon"></i>
+                    <h3>Settings</h3>
+                    <p>Customize your experience and configure notification preferences.</p>
+                    <a href="#" class="card-action">Configure</a>
                 </div>
             </div>
         </div>
@@ -552,11 +552,13 @@
                         <div class="user-dropdown">
                             <div class="user-dropdown-header">
                                 <div class="user-dropdown-name">${displayName}</div>
-                                <div class="user-dropdown-email">${user.email || ''}</div>
                             </div>
                             <div class="user-dropdown-divider"></div>
                             <a href="dashboard.html" class="user-dropdown-item">
                                 <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                            <a href="profile.html" class="user-dropdown-item">
+                                <i class="fas fa-user"></i> Profile
                             </a>
                             <a href="#" id="logout-btn" class="user-dropdown-item">
                                 <i class="fas fa-sign-out-alt"></i> Logout

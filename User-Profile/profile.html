@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPTSX512J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Triple S - VTU Results, CGPA/SGPA Calculator and other VTU resources for engineering students.">
+    <meta name="keywords"
+        content="VTU results, CGPA calculator, SGPA calculator, VTU resources, engineering education, Triple S">
+    <meta name="author" content="Srujan S Shetty">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Triple S - VTU Results & Calculator">
+    <meta property="og:description"
+        content="Access VTU results, CGPA/SGPA calculator and other VTU resources for engineering students.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://triple-s.netlify.app/vtu.html">
+    <meta property="og:image" content="assets/images/logo1.png">
+    <title>Triple S - VTU Results & Calculator | Coming Soon</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/menu.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/root-variables.css">
+    <link rel="stylesheet" href="../assets/css/typography-enhancements.css">
+    <title>Triple S - User Profile</title>
+    <link rel="stylesheet" href="../User-Profile/profile.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase modules and initialize app
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+        import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHZcDv3pXIU9J3CASXi3sM-V7mZsMuqBM",
+            authDomain: "triple-s-bd006.firebaseapp.com",
+            projectId: "triple-s-bd006",
+            storageBucket: "triple-s-bd006.firebasestorage.app",
+            messagingSenderId: "933483210420",
+            appId: "1:933483210420:web:66fde1b5571ef1741299e1",
+            measurementId: "G-TPHZ0H6L5J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Make services available globally
+        window.firebaseApp = app;
+        window.firebaseAuth = getAuth(app);
+        window.firebaseDb = getFirestore(app);
+        window.firebaseStorage = getStorage(app);
+    </script>
+    <!-- Profile JavaScript -->
+    <script type="module" src="../User-Profile/profile.js" defer></script>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo-container">
+                <div class="logo">
+                    <img src="../assets/images/logo1.png" alt="Triple S Logo">
+                </div>
+                <div class="title-container">
+                    <h1>Triple S</h1>
+                    <p class="tagline">Student Study Support</p>
+                </div>
+            </a>
+
+            <!-- Mobile Menu Controls -->
+            <div class="mobile-controls">
+                <div id="mobile-auth-link"></div>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Navigation Container -->
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../feedback.html">Feedback</a></li>
+                    <li><a href="../mathematics.html">Mathematics</a></li>
+                    <li><a href="../physics.html">Physics</a></li>
+                    <li><a href="../chemistry.html">Chemistry</a></li>
+                    <li><a href="../vtu.html">VTU</a></li>
+                    <li><a href="../vtu-sgpa-calculator.html">SGPA Calculator</a></li>
+                    <li><a href="../vtu-cgpa-calculator.html">CGPA Calculator</a></li>
+                    <li><a href="../index.html#my-contribution-section">Contribute</a></li>
+                    <li id="auth-link"><a href="../login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container profile-container">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h2>My Profile</h2>
+                    <p>Manage your account information</p>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-picture-section">
+                        <div class="profile-picture-container">
+                            <img id="profile-image" src="../assets/images/user.png" alt="Profile Picture">
+                            <div class="profile-picture-overlay">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <input type="file" id="profile-picture-input" accept="image/*" hidden>
+                        <button id="change-picture-btn" class="secondary-btn">Change Picture</button>
+                    </div>
+
+                    <div class="profile-details">
+                        <div class="form-group">
+                            <label for="display-name">Display Name</label>
+                            <input type="text" id="display-name" placeholder="Your display name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email address" class="form-control"
+                                disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" class="form-control">
+                        </div>
+
+                        <div class="button-group">
+                            <button id="save-profile-btn" class="primary-btn">Save Changes</button>
+                            <button id="logout-btn" class="outline-btn">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert notification -->
+        <div id="notification" class="notification">
+            <div class="notification-content">
+                <i id="notification-icon" class="fas"></i>
+                <p id="notification-message"></p>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="../assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
+                    <h3>Triple S</h3>
+                    <p>Empowering students with knowledge and resources for academic excellence.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/+918217358117" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:triples.studies.edu@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/srujanshetty0007" class="social-link" target="_blank"
+                            aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-link" target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../about.html">About Us</a></li>
+                            <li><a href="../feedback.html">Feedback</a></li>
+                            <li><a href="../mathematics.html">Mathematics</a></li>
+                            <li><a href="../physics.html">Physics</a></li>
+                            <li><a href="../chemistry.html">Chemistry</a></li>
+                            <li><a href="../vtu.html">VTU</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html#sem1">Semester 1</a></li>
+                            <li><a href="../index.html#sem2">Semester 2</a></li>
+                            <li><a href="../index.html#sem3">Semester 3</a></li>
+                            <li><a href="../index.html#sem4">Semester 4</a></li>
+                            <li><a href="../index.html#sem5">Semester 5+</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:triples.studies.edu@gmail.com">Contact Us</a></li>
+                            <li><a href="../index.html#my-contribution-section">Share Materials</a></li>
+                            <li><a href="../feedback.html">Report Issues</a></li>
+                            <li><a href="../feedback.html#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                    <p class="made-with">Made with <i class="fas fa-heart"></i> for students</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/menu.js"></script>
+</body>
+
+</html>

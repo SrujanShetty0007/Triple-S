@@ -6,7 +6,6 @@ A simple authentication system for Triple-S using Firebase Authentication.
 
 - Email/Password authentication
 - Google authentication
-- GitHub authentication
 - Persistent sessions
 - Responsive design
 - User dashboard
@@ -38,7 +37,7 @@ This project uses Firebase for authentication. The Firebase configuration is alr
 
 1. Create a new Firebase project at [firebase.google.com](https://firebase.google.com/)
 2. Enable Authentication in your Firebase project
-3. Add Email/Password, Google, and GitHub as authentication providers
+3. Add Email/Password and Google as authentication providers
 4. Replace the Firebase configuration in `login.html` and `index.html` with your own:
 
 ```javascript
