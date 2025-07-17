@@ -404,12 +404,16 @@
     "physics": {
       "model-papers": [
         {
-          "filename": "CSE_SOLVED_MODEL_QP.pdf",
-          "name": "Cse Solved Model Qp"
-        },
-        {
           "filename": "physics- cse.pdf",
           "name": "Physics  Cse"
+        },
+        {
+          "filename": "Physics_Solved_Model_QP-1.pdf",
+          "name": "Physics Solved Model Qp 1"
+        },
+        {
+          "filename": "Physics_Solved_Model_QP-2.pdf",
+          "name": "Physics Solved Model Qp 2"
         }
       ],
       "notes": [
