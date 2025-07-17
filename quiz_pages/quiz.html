@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple-S Quiz Hub</title>
+    <link rel="stylesheet" href="../assets/css/root-variables.css">
+    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+</head>
+
+<body>
+    <!-- Creative Navbar Header-->
+    <nav class="sgpa-navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="../index.html" class="brand-link">
+                    <div class="brand-logo">
+                        <span class="brand-text">Triple S</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <a href="../index.html" class="nav-link">
+                    <span>Home</span>
+                </a>
+                <a href="../about.html" class="nav-link">
+                    <span>About</span>
+                </a>
+                <a href="../feedback.html" class="nav-link">
+                    <span>Feedback</span>
+                </a>
+                <a href="../mathematics.html" class="nav-link">
+                    <span>Mathematics</span>
+                </a>
+                <a href="../physics.html" class="nav-link">
+                    <span>Physics</span>
+                </a>
+                <a href="../chemistry.html" class="nav-link">
+                    <span>Chemistry</span>
+                </a>
+                <a href="../vtu.html" class="nav-link">
+                    <span>VTU Tools</span>
+                </a>
+                <a href="quiz.html" class="nav-link active">
+                    <span>Quizzes</span>
+                </a>
+                <a href="../index.html#my-contribution-section" class="nav-link">
+                    <span>Contribute</span>
+                </a>
+            </div>
+
+            <div class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Animated Background Elements -->
+        <div class="navbar-bg-elements">
+            <div class="bg-circle bg-circle-1"></div>
+            <div class="bg-circle bg-circle-2"></div>
+            <div class="bg-circle bg-circle-3"></div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-bg">
+                <div class="floating-shape shape1"></div>
+                <div class="floating-shape shape2"></div>
+                <div class="floating-shape shape3"></div>
+                <div class="floating-shape shape4"></div>
+                <div class="floating-shape shape5"></div>
+                <div class="floating-shape shape6"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Knowledge <span class="highlight">Challenge</span></h1>
+                        <h2>Test Your Skills & Learn</h2>
+                        <p>Challenge yourself with our interactive quizzes across various subjects.
+                            Track your progress, earn points, and master new concepts.</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-brain"></i>
+                                <span>6 Subjects</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>60+ Questions</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-award"></i>
+                                <span>Earn Badges</span>
+                            </div>
+                        </div>
+                        <div class="hero-cta">
+                            <a href="#quiz-subjects" class="btn btn-primary">Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="quiz-illustration">
+                            <div class="quiz-icon-wrapper">
+                                <i class="fas fa-lightbulb quiz-icon"></i>
+                            </div>
+                            <div class="quiz-icon-wrapper">
+                                <i class="fas fa-code quiz-icon"></i>
+                            </div>
+                            <div class="quiz-icon-wrapper">
+                                <i class="fas fa-calculator quiz-icon"></i>
+                            </div>
+                            <div class="quiz-icon-wrapper">
+                                <i class="fas fa-atom quiz-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-subjects" class="quiz-subjects">
+            <div class="section-header">
+                <h2>Choose Your Challenge</h2>
+                <p>Select a subject below to start your quiz journey</p>
+            </div>
+            <div class="container">
+                <div class="subjects-grid">
+                    <a href="c-programming.html" class="subject-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>C Programming</h3>
+                            <p>Test your C programming skills</p>
+                            <span class="card-badge">10 Questions</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="python.html" class="subject-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                            <p>Challenge yourself with Python concepts</p>
+                            <span class="card-badge">10 Questions</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="java.html" class="subject-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h3>Java</h3>
+                            <p>Explore Java programming questions</p>
+                            <span class="card-badge">Coming Soon</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="mathematics.html" class="subject-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fas fa-square-root-alt"></i>
+                            </div>
+                            <h3>Mathematics</h3>
+                            <p>Solve mathematical problems</p>
+                            <span class="card-badge">Coming Soon</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="physics.html" class="subject-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <h3>Physics</h3>
+                            <p>Test your understanding of physics</p>
+                            <span class="card-badge">Coming Soon</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="chemistry.html" class="subject-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="card-content">
+                            <div class="icon-container">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Chemistry</h3>
+                            <p>Explore chemistry concepts</p>
+                            <span class="card-badge">Coming Soon</span>
+                            <div class="card-action">
+                                <span>Start Quiz</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Triple S</h3>
+                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources for
+                    engineering students, helping them excel in their studies.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../vtu.html">VTU Resources</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> triples.studies.edu@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/srujan_shetty_0007/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Triple-S. All Rights Reserved</p>
+            <p>Designed with <i class="fas fa-heart"></i> for Students</p>
+        </div>
+    </footer>
+
+    <script src="quiz.js"></script>
+    <script>
+        // Mobile Navbar Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.querySelector('.navbar-menu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function () {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a nav link
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (event) {
+                    if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+
+</html>

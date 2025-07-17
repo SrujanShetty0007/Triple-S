@@ -83,7 +83,8 @@
             <div class="mobile-controls">
                 <div id="mobile-auth-link"></div>
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu">
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="navContainer">
                     <div class="hamburger">
                         <span></span>
                         <span></span>
@@ -93,21 +94,20 @@
             </div>
 
             <!-- Navigation Container -->
-            <div class="nav-container" id="navContainer">
+            <nav class="nav-container" id="navContainer" aria-label="Main navigation">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="mathematics.html">Mathematics</a></li>
                     <li><a href="physics.html">Physics</a></li>
                     <li><a href="chemistry.html">Chemistry</a></li>
                     <li><a href="vtu.html">VTU</a></li>
-                    <li><a href="vtu-sgpa-calculator.html">SGPA Calculator</a></li>
-                    <li><a href="vtu-cgpa-calculator.html">CGPA Calculator</a></li>
+                    <li><a href="quiz_pages/quiz.html">Quizzes</a></li>
                     <li><a href="#my-contribution-section">Contribute</a></li>
                     <li id="auth-link"><a href="login.html">Login</a></li>
                 </ul>
-            </div>
+            </nav>
         </div>
     </header>
 
@@ -152,8 +152,6 @@
                 <h2>Welcome to Triple S</h2>
                 <p>The ultimate open source portal for B.E. exam preparation materials. Here you can find all the notes,
                     model papers and previous year papers for your exams.</p>
-                
-                
             </div>
             <div class="about-button-container" id="explore-material">
                 <a href="about.html" class="btn btn-about">
@@ -162,7 +160,7 @@
             </div>
         </div>
 
-        
+
         <div class="main-subjects-container">
             <a href="mathematics.html" class="btn btn-maths">
                 <i class="fas fa-calculator"></i> Mathematics
@@ -173,6 +171,19 @@
             <a href="chemistry.html" class="btn btn-chem">
                 <i class="fas fa-flask"></i> Chemistry
             </a>
+            <a href="quiz_pages/quiz.html" class="btn btn-quiz">
+                <i class="fas fa-question-circle"></i> Quizzes
+            </a>
+        </div>
+
+        <!-- Quiz Feature Highlight -->
+        <div class="feature-highlight">
+            <div class="highlight-content">
+                <h2><i class="fas fa-star"></i> New Feature: Interactive Quizzes</h2>
+                <p>Test your knowledge with our new interactive quizzes. Challenge yourself with questions on
+                    programming, mathematics, physics, and more!</p>
+                <a href="quiz_pages/quiz.html" class="btn btn-primary">Try Quizzes Now</a>
+            </div>
         </div>
 
         <!-- Search Bar -->
@@ -186,7 +197,7 @@
             </div>
             <div id="searchResults" class="search-results"></div>
         </div>
-        
+
         <!-- Semester Filter Buttons -->
         <div class="semester-filter">
             <button class="filter-btn active" data-semester="all">All</button>

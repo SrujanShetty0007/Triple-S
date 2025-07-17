@@ -4083,3 +4083,81 @@ html {
         padding: 0 15px;
     }
 }
+
+/* Quiz Button */
+.main-subjects-container a.btn-quiz {
+    background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+}
+
+/* Feature Highlight */
+.feature-highlight {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--primary-color);
+}
+
+.feature-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(76, 201, 240, 0.1) 100%);
+    border-radius: 0 0 0 100%;
+    z-index: 0;
+}
+
+.highlight-content {
+    position: relative;
+    z-index: 1;
+}
+
+.feature-highlight h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feature-highlight h2 i {
+    color: var(--primary-color);
+}
+
+.feature-highlight p {
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .feature-highlight {
+        padding: 1.5rem;
+    }
+
+    .feature-highlight h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-highlight {
+        padding: 1.2rem;
+    }
+
+    .feature-highlight h2 {
+        font-size: 1.3rem;
+    }
+
+    .feature-highlight p {
+        font-size: 0.9rem;
+    }
+}
