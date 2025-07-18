@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 reviewItem.appendChild(reviewOptions);
                 const reviewExplanation = document.createElement('div');
                 reviewExplanation.classList.add('review-explanation');
-                reviewExplanation.innerHTML = `<strong>Concept:</strong> ${question.concept}`;
+                reviewExplanation.innerHTML = `<strong>Explanation:</strong> ${question.explanation}`;
                 reviewItem.appendChild(reviewExplanation);
                 reviewContainer.appendChild(reviewItem);
             });

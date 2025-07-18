@@ -3,60 +3,60 @@
     "question": "Which of the following is not a valid Java access modifier?",
     "options": ["public", "private", "friendly", "protected"],
     "answer": 2,
-    "concept": "Access Modifiers"
+    "explanation": "'friendly' is not a valid Java access modifier. Java uses public, private, protected, and default (no keyword)."
   },
   {
     "question": "What is the default value of a local variable in Java?",
     "options": ["null", "0", "Depends on the data type", "No default value"],
     "answer": 3,
-    "concept": "Variables"
+    "explanation": "Local variables in Java do not have a default value and must be initialized before use."
   },
   {
     "question": "Which keyword is used to inherit a class in Java?",
     "options": ["this", "super", "extends", "implements"],
     "answer": 2,
-    "concept": "Inheritance"
+    "explanation": "The 'extends' keyword is used to inherit a class in Java."
   },
   {
     "question": "Which of the following is not a Java primitive type?",
     "options": ["int", "float", "String", "char"],
     "answer": 2,
-    "concept": "Data Types"
+    "explanation": "'String' is a class, not a primitive type. Java primitive types include int, float, char, etc."
   },
   {
     "question": "What is the size of an int variable in Java?",
     "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on the system"],
     "answer": 1,
-    "concept": "Data Types"
+    "explanation": "An int in Java is always 4 bytes (32 bits), regardless of the platform."
   },
   {
     "question": "Which method is the entry point of a Java program?",
     "options": ["start()", "main()", "run()", "init()"],
     "answer": 1,
-    "concept": "Main Method"
+    "explanation": "The main() method is the entry point for every Java application."
   },
   {
     "question": "Which of the following is used to handle exceptions in Java?",
     "options": ["try-catch", "if-else", "for loop", "switch"],
     "answer": 0,
-    "concept": "Exception Handling"
+    "explanation": "try-catch blocks are used for exception handling in Java."
   },
   {
     "question": "Which interface must be implemented by a class to support sorting of its objects?",
     "options": ["Serializable", "Comparable", "Comparator", "Cloneable"],
     "answer": 1,
-    "concept": "Interfaces"
+    "explanation": "The Comparable interface allows objects to be sorted using compareTo()."
   },
   {
     "question": "Which collection class allows you to grow or shrink its size and provides indexed access to its elements, but whose methods are not synchronized?",
     "options": ["java.util.HashSet", "java.util.LinkedList", "java.util.List", "java.util.ArrayList"],
     "answer": 3,
-    "concept": "Collections"
+    "explanation": "ArrayList provides resizable-array and indexed access, but is not synchronized."
   },
   {
     "question": "Which of the following is not a feature of Java?",
     "options": ["Object-oriented", "Use of pointers", "Platform independent", "Automatic garbage collection"],
     "answer": 1,
-    "concept": "Java Features"
+    "explanation": "Java does not support explicit pointer manipulation like C/C++."
   }
 ] 
