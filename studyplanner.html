@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner - Personalized Exam Preparation</title>
+    <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="stylesheet" href="assets/css/studyplanner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Creative Navbar Header-->
+    <nav class="sgpa-navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-logo">
+                        <span class="brand-text">Triple S</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <span>About</span>
+                </a>
+                <a href="feedback.html" class="nav-link">
+                    <span>Feedback</span>
+                </a>
+                <a href="mathematics.html" class="nav-link">
+                    <span>Mathematics</span>
+                </a>
+                <a href="physics.html" class="nav-link">
+                    <span>Physics</span>
+                </a>
+                <a href="chemistry.html" class="nav-link">
+                    <span>Chemistry</span>
+                </a>
+                <a href="vtu.html" class="nav-link">
+                    <span>VTU Tools</span>
+                </a>
+                <a href="quiz_pages/quiz.html" class="nav-link">
+                    <span>Quizzes</span>
+                </a>
+                <a href="studyplanner.html" class="nav-link active">
+                    <span>Study Planner</span>
+                </a>
+                <a href="index.html#my-contribution-section" class="nav-link">
+                    <span>Contribute</span>
+                </a>
+            </div>
+
+            <div class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Animated Background Elements -->
+        <div class="navbar-bg-elements">
+            <div class="bg-circle bg-circle-1"></div>
+            <div class="bg-circle bg-circle-2"></div>
+            <div class="bg-circle bg-circle-3"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calendar-check"></i> Study Planner</h1>
+            <p>Create a personalized study schedule for exam success</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="daysLeft">
+                        <i class="fas fa-calendar-alt"></i>
+                        Days Until Exam
+                    </label>
+                    <input type="number" id="daysLeft" min="1" max="365" placeholder="e.g., 30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subjects">
+                        <i class="fas fa-book"></i>
+                        Subjects
+                    </label>
+                    <input type="text" id="subjects" placeholder="e.g., Mathematics, Physics, Chemistry" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hoursPerDay">
+                        <i class="fas fa-clock"></i>
+                        Hours Available Per Day
+                    </label>
+                    <input type="number" id="hoursPerDay" min="1" max="24" placeholder="e.g., 4" required>
+                </div>
+
+                <button id="generateBtn" class="generate-btn" disabled>
+                    <i class="fas fa-magic"></i>
+                    Generate Study Plan
+                </button>
+            </div>
+
+            <div class="output-section" id="outputSection" style="display: none;">
+                <div class="output-header">
+                    <h2><i class="fas fa-list-check"></i> Your Study Plan</h2>
+                    <button id="copyBtn" class="copy-btn">
+                        <i class="fas fa-copy"></i>
+                        Copy Plan
+                    </button>
+                </div>
+                <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Creating your study plan...</p>
+                </div>
+                <div class="study-plan" id="studyPlan"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Tips container will be inserted here by JavaScript -->
+    <div id="tips-container-placeholder"></div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Triple S</h3>
+                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources for
+                    engineering students, helping them excel in their studies.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vtu.html">VTU Resources</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> triples.studies.edu@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/srujan-shetty0007/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="mailto:triples.studies.edu@gmail.com" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/srujan_shetty_0007/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Triple-S. All Rights Reserved</p>
+            <p>Designed with <i class="fas fa-heart"></i> for Students</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/studyplanner.js"></script>
+    <script>
+        // Page Loader
+        document.addEventListener('DOMContentLoaded', function () {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        // Mobile Navbar Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.querySelector('.navbar-menu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function () {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a nav link
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (event) {
+                    if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+
+</html>

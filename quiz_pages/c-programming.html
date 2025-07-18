@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C Programming Quiz | Triple-S Quiz Hub</title>
     <link rel="stylesheet" href="../assets/css/root-variables.css">
+    <link rel="stylesheet" href="../assets/css/loader.css">
     <link rel="stylesheet" href="quiz.css">
     <link rel="stylesheet" href="c-programming.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +16,11 @@
 </head>
 
 <body>
+    <!-- Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Creative Navbar Header -->
     <nav class="sgpa-navbar">
         <div class="navbar-container">
@@ -221,6 +227,16 @@
 
     <script src="c-programming.js"></script>
     <script>
+        // Page Loader
+        document.addEventListener('DOMContentLoaded', function () {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        });
+
         // Mobile Navbar Toggle Functionality
         document.addEventListener('DOMContentLoaded', function () {
             const navbarToggle = document.getElementById('navbarToggle');
