@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Which of the following is not a valid Java access modifier?",
+    "options": ["public", "private", "friendly", "protected"],
+    "answer": 2,
+    "concept": "Access Modifiers"
+  },
+  {
+    "question": "What is the default value of a local variable in Java?",
+    "options": ["null", "0", "Depends on the data type", "No default value"],
+    "answer": 3,
+    "concept": "Variables"
+  },
+  {
+    "question": "Which keyword is used to inherit a class in Java?",
+    "options": ["this", "super", "extends", "implements"],
+    "answer": 2,
+    "concept": "Inheritance"
+  },
+  {
+    "question": "Which of the following is not a Java primitive type?",
+    "options": ["int", "float", "String", "char"],
+    "answer": 2,
+    "concept": "Data Types"
+  },
+  {
+    "question": "What is the size of an int variable in Java?",
+    "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on the system"],
+    "answer": 1,
+    "concept": "Data Types"
+  },
+  {
+    "question": "Which method is the entry point of a Java program?",
+    "options": ["start()", "main()", "run()", "init()"],
+    "answer": 1,
+    "concept": "Main Method"
+  },
+  {
+    "question": "Which of the following is used to handle exceptions in Java?",
+    "options": ["try-catch", "if-else", "for loop", "switch"],
+    "answer": 0,
+    "concept": "Exception Handling"
+  },
+  {
+    "question": "Which interface must be implemented by a class to support sorting of its objects?",
+    "options": ["Serializable", "Comparable", "Comparator", "Cloneable"],
+    "answer": 1,
+    "concept": "Interfaces"
+  },
+  {
+    "question": "Which collection class allows you to grow or shrink its size and provides indexed access to its elements, but whose methods are not synchronized?",
+    "options": ["java.util.HashSet", "java.util.LinkedList", "java.util.List", "java.util.ArrayList"],
+    "answer": 3,
+    "concept": "Collections"
+  },
+  {
+    "question": "Which of the following is not a feature of Java?",
+    "options": ["Object-oriented", "Use of pointers", "Platform independent", "Automatic garbage collection"],
+    "answer": 1,
+    "concept": "Java Features"
+  }
+] 
