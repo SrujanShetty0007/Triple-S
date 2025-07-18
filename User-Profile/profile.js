@@ -33,23 +33,21 @@ let userData = {};
 
 // Initialize application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Hide loader
     if (loader) {
         setTimeout(() => {
             loader.style.display = 'none';
         }, 500);
     }
-
-    // Initialize Firebase services
     initializeApp();
 });
 
-// Initialize Firebase services from window object
+// Initialize Firebase services
 function initializeApp() {
-    // Check if Firebase is initialized
     if (!window.firebaseAuth || !window.firebaseDb || !window.firebaseStorage) {
         console.error('Firebase not initialized properly');
         showNotification('Error initializing application', 'error');
+        displayNameView.textContent = 'Error loading profile';
+        emailView.textContent = 'Please refresh the page';
         return;
     }
 
@@ -57,10 +55,7 @@ function initializeApp() {
     db = window.firebaseDb;
     storage = window.firebaseStorage;
 
-    // Initialize auth state listener
     onAuthStateChanged(auth, handleAuthStateChanged);
-
-    // Set up event listeners
     setupEventListeners();
 }
 
@@ -70,63 +65,51 @@ async function handleAuthStateChanged(user) {
         currentUser = user;
 
         try {
-            // Load user data from Firestore
             const userDoc = await getDoc(doc(db, "users", user.uid));
 
             if (userDoc.exists()) {
                 userData = userDoc.data();
-
-                // Update view mode
-                displayNameView.textContent = userData.displayName || user.displayName || 'User';
-                emailView.textContent = userData.email || user.email || '';
-
-                if (userData.profilePictureURL) {
-                    profileImageView.src = userData.profilePictureURL;
-                    profileImage.src = userData.profilePictureURL;
-                } else if (user.photoURL) {
-                    profileImageView.src = user.photoURL;
-                    profileImage.src = user.photoURL;
-                }
-
-                // Update edit mode fields
-                displayNameInput.value = userData.displayName || user.displayName || '';
-                emailInput.value = userData.email || user.email || '';
-                dobInput.value = userData.dateOfBirth || '';
+                updateProfileDisplay(user, userData);
             } else {
-                // User document doesn't exist yet
-                displayNameView.textContent = user.displayName || 'User';
-                emailView.textContent = user.email || '';
-                displayNameInput.value = user.displayName || '';
-                emailInput.value = user.email || '';
-
-                if (user.photoURL) {
-                    profileImageView.src = user.photoURL;
-                    profileImage.src = user.photoURL;
-                }
+                updateProfileDisplay(user, {});
             }
         } catch (error) {
             console.error('Error loading profile:', error);
             showNotification('Error loading profile data', 'error');
+            updateProfileDisplay(user, {});
         }
     } else {
-        // Redirect to login page if not logged in
         window.location.href = '../login.html';
     }
 }
 
-// Set up all event listeners
+// Update profile display with user data
+function updateProfileDisplay(user, userData) {
+    // Update view mode
+    displayNameView.textContent = userData.displayName || user.displayName || 'User';
+    emailView.textContent = user.email || userData.email || 'No email available';
+
+    // Update profile picture
+    if (userData.profilePictureURL) {
+        profileImageView.src = userData.profilePictureURL;
+        profileImage.src = userData.profilePictureURL;
+    } else if (user.photoURL) {
+        profileImageView.src = user.photoURL;
+        profileImage.src = user.photoURL;
+    }
+
+    // Update edit mode fields
+    displayNameInput.value = userData.displayName || user.displayName || '';
+    emailInput.value = user.email || userData.email || '';
+    dobInput.value = userData.dateOfBirth || '';
+}
+
+// Set up event listeners
 function setupEventListeners() {
-    // Toggle between view and edit modes
     editProfileBtn.addEventListener('click', showEditMode);
     cancelEditBtn.addEventListener('click', showViewMode);
-
-    // Profile picture change
     setupProfilePictureListeners();
-
-    // Save profile changes
     saveProfileBtn.addEventListener('click', saveProfile);
-
-    // Logout
     logoutBtn.addEventListener('click', handleLogout);
 }
 
@@ -138,7 +121,6 @@ function showEditMode() {
 
 // Toggle to view mode
 function showViewMode() {
-    // Reset any unsaved changes
     if (userData.profilePictureURL) {
         profileImage.src = userData.profilePictureURL;
     } else if (currentUser.photoURL) {
@@ -150,7 +132,6 @@ function showViewMode() {
     displayNameInput.value = userData.displayName || currentUser.displayName || '';
     dobInput.value = userData.dateOfBirth || '';
 
-    // Clear file input
     profilePictureFile = null;
     if (profilePictureInput) profilePictureInput.value = '';
 
@@ -174,13 +155,11 @@ function setupProfilePictureListeners() {
         profilePictureInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
-                // Validate file type
                 if (!file.type.match('image.*')) {
                     showNotification('Please select an image file', 'error');
                     return;
                 }
 
-                // Validate file size (max 2MB)
                 if (file.size > 2 * 1024 * 1024) {
                     showNotification('Image size should be less than 2MB', 'error');
                     return;
@@ -204,21 +183,17 @@ async function saveProfile() {
         return;
     }
 
-    // Basic validation
     if (!displayNameInput.value.trim()) {
         showNotification('Please enter a display name', 'error');
         return;
     }
 
-    // Show saving state
     saveProfileBtn.disabled = true;
     saveProfileBtn.textContent = 'Saving...';
 
     try {
-        // Create user document if it doesn't exist
         const userRef = doc(db, "users", currentUser.uid);
 
-        // Prepare data for updates
         let profileUpdateData = {
             displayName: displayNameInput.value.trim()
         };
@@ -230,7 +205,6 @@ async function saveProfile() {
             lastUpdated: new Date().toISOString()
         };
 
-        // Upload profile picture if changed
         if (profilePictureFile) {
             try {
                 const fileExtension = profilePictureFile.name.split('.').pop();
@@ -241,35 +215,23 @@ async function saveProfile() {
 
                 profileUpdateData.photoURL = downloadURL;
                 firestoreData.profilePictureURL = downloadURL;
-
-                // Update view mode image
                 profileImageView.src = downloadURL;
             } catch (uploadError) {
                 console.error('Error uploading image:', uploadError);
                 showNotification('Failed to upload profile picture', 'error');
-                // Continue with other updates even if image upload fails
             }
         }
 
-        // Update Firebase Auth profile
         await updateProfile(currentUser, profileUpdateData);
-
-        // Update Firestore document
         await setDoc(userRef, firestoreData, { merge: true });
 
-        // Update local data
         userData = { ...userData, ...firestoreData };
-
-        // Update view mode
         displayNameView.textContent = firestoreData.displayName;
+        emailView.textContent = currentUser.email || firestoreData.email || 'No email available';
 
-        // Show success message
         showNotification('Profile updated successfully!', 'success');
-
-        // Switch back to view mode
         showViewMode();
 
-        // Reset the file input
         profilePictureFile = null;
         if (profilePictureInput) profilePictureInput.value = '';
     } catch (error) {
@@ -291,19 +253,13 @@ async function handleLogout() {
         showNotification('Error signing out', 'error');
     }
 }
+
 // Show notification
 function showNotification(message, type = 'success') {
     notificationMessage.textContent = message;
-
-    if (type === 'success') {
-        notificationIcon.className = 'fas fa-check-circle';
-    } else {
-        notificationIcon.className = 'fas fa-exclamation-circle';
-    }
-
+    notificationIcon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
     notification.classList.add('show');
 
-    // Hide notification after 3 seconds
     setTimeout(() => {
         notification.classList.remove('show');
     }, 3000);

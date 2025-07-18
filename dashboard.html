@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/root-variables.css">
     <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="stylesheet" href="assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <style>
         * {
             margin: 0;
@@ -33,94 +34,7 @@
             line-height: var(--body-line-height);
         }
 
-        .header {
-            background: var(--header-gradient);
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
 
-        .header h1 {
-            font-family: var(--heading-font);
-            font-weight: 800;
-            font-size: 1.8rem;
-            letter-spacing: var(--heading-letter-spacing);
-            position: relative;
-        }
-
-        .header h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            box-shadow: 0 3px 10px rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            letter-spacing: -0.5px;
-            transition: var(--transition);
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.1);
-        }
-
-        .user-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 0.01em;
-        }
-
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: var(--button-border-radius);
-            color: white;
-            font-family: var(--body-font);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
-            margin-left: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
 
         .container {
             flex: 1;
@@ -128,6 +42,11 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+        }
+
+        /* Dashboard specific styles */
+        .dashboard-container {
+            padding-top: 1rem;
         }
 
         .welcome-card {
@@ -315,31 +234,15 @@
             }
         }
 
-        .footer {
-            background: var(--light-color);
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #eee;
-            margin-top: 2rem;
-        }
+
 
         @media (max-width: 768px) {
-            .header {
-                padding: 1.2rem;
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .header h1::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
             .container {
                 padding: 1.5rem 1rem;
+            }
+
+            .dashboard-container {
+                padding-top: 0.5rem;
             }
 
             .welcome-card {
@@ -356,15 +259,6 @@
         }
 
         @media (max-width: 480px) {
-            .user-info {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .logout-btn {
-                margin-left: 0;
-            }
-
             .stats-row {
                 grid-template-columns: 1fr;
             }
@@ -373,10 +267,7 @@
 </head>
 
 <body>
-    <div
-        style="background: var(--warning-color, #f39c12); color: #fff; text-align: center; padding: 0.75rem 1rem; font-size: 1.05rem; font-family: var(--body-font); letter-spacing: 0.01em;">
-        🚧 <b>Work in Progress:</b> This dashboard is not yet complete. Features and data are being actively developed.
-    </div>
+    
     <div class="auth-loading" id="loading">
         <span class="loader"></span>
         <p>Loading...</p>
@@ -420,14 +311,21 @@
                         <li><a href="chemistry.html">Chemistry</a></li>
                         <li><a href="vtu.html">VTU</a></li>
                         <li><a href="quiz_pages/quiz.html">Quizzes</a></li>
-                        <li><a href="#my-contribution-section">Contribute</a></li>
+                        <li><a href="vtu-sgpa-calculator.html">SGPA Calculator</a></li>
+                        <li><a href="vtu-cgpa-calculator.html">CGPA Calculator</a></li>
+                        <li><a href="index.html#my-contribution-section">Contribute</a></li>
                         <li id="auth-link"><a href="login.html">Login</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
-        <div class="container">
+        <div
+            style="background: var(--warning-color, #f39c12); color: #fff; text-align: center; padding: 0.75rem 1rem; font-size: 1.05rem; font-family: var(--body-font); letter-spacing: 0.01em;">
+            🚧 <b>Work in Progress:</b> This dashboard is not yet complete. Features and data are being actively developed.
+        </div>
+
+        <div class="container dashboard-container">
             <div class="welcome-card">
                 <h2>Welcome to Triple-S</h2>
                 <p>You have successfully logged in to your account. This is your personalized dashboard where you can
@@ -498,8 +396,74 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <p>&copy; 2024 Triple-S. All rights reserved.</p>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <img src="assets/images/logo1.png" alt="Triple S Logo">
+                        </a>
+                        <h3>Triple S</h3>
+                        <p>Empowering students with knowledge and resources for academic excellence.</p>
+                        <div class="footer-social">
+                            <a href="https://wa.me/+918217358117" class="social-link" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="mailto:triples.studies.edu@gmail.com" class="social-link" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://github.com/srujanshetty0007" class="social-link" target="_blank"
+                                aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-link" target="_blank"
+                                aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-links-section">
+                        <div class="footer-links-column">
+                            <h3>Quick Links</h3>
+                            <ul class="footer-links">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="feedback.html">Feedback</a></li>
+                                <li><a href="mathematics.html">Mathematics</a></li>
+                                <li><a href="physics.html">Physics</a></li>
+                                <li><a href="chemistry.html">Chemistry</a></li>
+                                <li><a href="vtu.html">VTU</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-links-column">
+                            <h3>Resources</h3>
+                            <ul class="footer-links">
+                                <li><a href="index.html#sem1">Semester 1</a></li>
+                                <li><a href="index.html#sem2">Semester 2</a></li>
+                                <li><a href="index.html#sem3">Semester 3</a></li>
+                                <li><a href="index.html#sem4">Semester 4</a></li>
+                                <li><a href="index.html#sem5">Semester 5+</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-links-column">
+                            <h3>Support</h3>
+                            <ul class="footer-links">
+                                <li><a href="mailto:triples.studies.edu@gmail.com">Contact Us</a></li>
+                                <li><a href="index.html#my-contribution-section">Share Materials</a></li>
+                                <li><a href="feedback.html">Report Issues</a></li>
+                                <li><a href="feedback.html#faq">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-info">
+                        <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                        <p class="made-with">Made with <i class="fas fa-heart"></i> for students</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
