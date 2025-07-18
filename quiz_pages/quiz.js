@@ -7,22 +7,107 @@ document.addEventListener('DOMContentLoaded', () => {
         hero.style.opacity = '1';
     }, 100);
 
-    // Add hover effect to subject cards
+    // Enhanced subject card animations
     const subjectCards = document.querySelectorAll('.subject-card');
-    subjectCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const icon = card.querySelector('i');
-            icon.style.transition = 'transform 0.3s ease';
-        });
 
-        card.addEventListener('mouseleave', () => {
-            const icon = card.querySelector('i');
-            icon.style.transform = 'scale(1)';
-        });
+    // Add staggered animation to cards
+    subjectCards.forEach((card, index) => {
+        // Add slight delay for each card
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100 + (index * 50));
+
     });
 
-    // Mobile menu toggle functionality can be added here if needed
+    // Add animation for coming soon badges
+    const comingSoonBadges = document.querySelectorAll('.card-badge');
+    comingSoonBadges.forEach(badge => {
+        if (badge.textContent.includes('Coming Soon')) {
+            badge.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
+            badge.style.color = 'white';
+
+            // Get the parent card element
+            const card = badge.closest('.subject-card');
+
+            // Prevent default navigation for coming soon cards
+            card.addEventListener('click', function (e) {
+                e.preventDefault();
+                showComingSoonAlert();
+            });
+        }
+    });
+
+    // Coming Soon Alert Functionality
+    const alertOverlay = document.getElementById('alertOverlay');
+    const comingSoonAlert = document.getElementById('comingSoonAlert');
+    const alertCloseButton = document.getElementById('alertCloseButton');
+
+    // Function to show the alert
+    function showComingSoonAlert() {
+        alertOverlay.classList.add('show');
+        comingSoonAlert.classList.add('show');
+
+        // Add a subtle animation to the icon
+        const alertIcon = comingSoonAlert.querySelector('.alert-icon i');
+        alertIcon.style.animation = 'pulse 2s infinite';
+    }
+
+    // Function to hide the alert
+    function hideComingSoonAlert() {
+        alertOverlay.classList.remove('show');
+        comingSoonAlert.classList.remove('show');
+    }
+
+    // Event listeners for closing the alert
+    if (alertCloseButton) {
+        alertCloseButton.addEventListener('click', hideComingSoonAlert);
+    }
+
+    if (alertOverlay) {
+        alertOverlay.addEventListener('click', hideComingSoonAlert);
+    }
+
+    // Close alert with escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && alertOverlay.classList.contains('show')) {
+            hideComingSoonAlert();
+        }
+    });
+
+    // Detect mobile devices and adjust animations accordingly
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+        // Simplify animations on mobile for better performance
+        document.querySelectorAll('.floating-shape').forEach(shape => {
+            shape.style.animationDuration = '15s';
+        });
+    }
+
+    // Initialize cards with initial state for animations
+    subjectCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
 
     // Log that the quiz hub is ready
     console.log('Quiz Hub initialized successfully!');
 });
+
+// Add pulse animation for the alert icon
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+`);

@@ -389,14 +389,62 @@ body {
 }
 
 /* Optimize for mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
-        margin: 70px auto;
+        margin: 80px auto 30px;
         padding: 0 15px;
     }
 
     .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .header p {
+        font-size: 0.95rem;
+    }
+
+    .input-section,
+    .output-header,
+    .study-plan {
+        padding: 25px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .generate-btn,
+    .copy-btn {
+        padding: 10px 0;
+        font-size: 0.95rem;
+    }
+
+    .study-plan h2 {
+        font-size: 1.2rem;
+    }
+
+    .study-plan h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 70px auto 20px;
+        padding: 0 12px;
+    }
+
+    .header h1 {
         font-size: 1.6rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
     }
 
     .input-section,
@@ -427,6 +475,67 @@ body {
     .footer-section {
         margin-bottom: 25px;
         padding: 0;
+    }
+
+    .tips-container {
+        padding: 20px 15px;
+    }
+
+    .tips-container h3 {
+        font-size: 1rem;
+    }
+
+    .tips-container li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        margin: 65px auto 15px;
+        padding: 0 10px;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .input-section,
+    .output-header,
+    .study-plan {
+        padding: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .generate-btn,
+    .copy-btn {
+        padding: 8px 0;
+        font-size: 0.9rem;
+    }
+
+    .study-plan h2 {
+        font-size: 1.1rem;
+    }
+
+    .study-plan h3 {
+        font-size: 0.95rem;
+        padding-left: 8px;
+    }
+
+    .study-plan p {
+        font-size: 0.85rem;
     }
 }
 

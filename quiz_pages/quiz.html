@@ -12,12 +12,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+    <meta name="theme-color" content="#4361ee">
+    <meta name="description" content="Test your knowledge with interactive quizzes from Triple-S">
 </head>
 
 <body>
     <!-- Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader"></div>
+    </div>
+    
+    <!-- Coming Soon Alert -->
+    <div class="alert-overlay" id="alertOverlay"></div>
+    <div class="coming-soon-alert" id="comingSoonAlert">
+        <div class="alert-icon">
+            <i class="fas fa-clock"></i>
+        </div>
+        <h3 class="alert-title">Coming Soon!</h3>
+        <p class="alert-message">We're working hard to bring you this quiz. Please check back later for updates!</p>
+        <button class="alert-button" id="alertCloseButton">Got it</button>
     </div>
 
     <!-- Creative Navbar Header-->
@@ -55,6 +68,9 @@
                 </a>
                 <a href="quiz.html" class="nav-link active">
                     <span>Quizzes</span>
+                </a>
+                <a href="../studyplanner.html" class="nav-link">
+                    <span>Study Planner</span>
                 </a>
                 <a href="../index.html#my-contribution-section" class="nav-link">
                     <span>Contribute</span>
@@ -168,7 +184,7 @@
                         </div>
                     </a>
 
-                    <a href="java.html" class="subject-card" data-aos="fade-up" data-aos-delay="800">
+                    <a href="java.html" class="subject-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="card-content">
                             <div class="icon-container">
                                 <i class="fab fa-java"></i>
@@ -183,10 +199,10 @@
                         </div>
                     </a>
 
-                    <a href="problem-solving.html" class="subject-card" data-aos="fade-up" data-aos-delay="300">
+                    <a href="problem-solving.html" class="subject-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="card-content">
                             <div class="icon-container">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-puzzle-piece"></i>
                             </div>
                             <h3>Problem Solving</h3>
                             <p>Master algorithmic thinking</p>
@@ -198,7 +214,7 @@
                         </div>
                     </a>
 
-                    <a href="cpp.html" class="subject-card" data-aos="fade-up" data-aos-delay="400">
+                    <a href="cpp.html" class="subject-card" data-aos="fade-up" data-aos-delay="500">
                         <div class="card-content">
                             <div class="icon-container">
                                 <i class="fas fa-cogs"></i>
@@ -213,10 +229,10 @@
                         </div>
                     </a>
 
-                    <a href="dsa.html" class="subject-card" data-aos="fade-up" data-aos-delay="500">
+                    <a href="dsa.html" class="subject-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="card-content">
                             <div class="icon-container">
-                                <i class="fas fa-sitemap"></i>
+                                <i class="fas fa-network-wired"></i>
                             </div>
                             <h3>Data Structures</h3>
                             <p>Learn data structures and algorithms</p>
@@ -228,7 +244,7 @@
                         </div>
                     </a>
 
-                    <a href="sql.html" class="subject-card" data-aos="fade-up" data-aos-delay="600">
+                    <a href="sql.html" class="subject-card" data-aos="fade-up" data-aos-delay="700">
                         <div class="card-content">
                             <div class="icon-container">
                                 <i class="fas fa-database"></i>
@@ -243,7 +259,7 @@
                         </div>
                     </a>
 
-                    <a href="react.html" class="subject-card" data-aos="fade-up" data-aos-delay="700">
+                    <a href="react.html" class="subject-card" data-aos="fade-up" data-aos-delay="800">
                         <div class="card-content">
                             <div class="icon-container">
                                 <i class="fab fa-react"></i>
@@ -261,7 +277,7 @@
                     <a href="mathematics.html" class="subject-card" data-aos="fade-up" data-aos-delay="900">
                         <div class="card-content">
                             <div class="icon-container">
-                                <i class="fas fa-square-root-alt"></i>
+                                <i class="fas fa-calculator"></i>
                             </div>
                             <h3>Mathematics</h3>
                             <p>Solve mathematical problems</p>
@@ -306,7 +322,7 @@
                     <a href="all-subjects.html" class="subject-card" data-aos="fade-up" data-aos-delay="1200">
                         <div class="card-content">
                             <div class="icon-container">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
                             <h3>ALL Subjects</h3>
                             <p>Mixed questions from all subjects</p>
@@ -400,6 +416,15 @@
                     }
                 });
             }
+
+            // Adjust animation delays on mobile
+            if (window.innerWidth < 768) {
+                document.querySelectorAll('[data-aos-delay]').forEach(element => {
+                    // Reduce delay on mobile for better UX
+                    const currentDelay = parseInt(element.getAttribute('data-aos-delay'));
+                    element.setAttribute('data-aos-delay', Math.min(currentDelay, 100));
+                });
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -407,7 +432,8 @@
     <script>
         AOS.init({
             duration: 800,
-            once: true
+            once: true,
+            disable: window.innerWidth < 768 ? 'phone' : false
         });
     </script>
 </body>
