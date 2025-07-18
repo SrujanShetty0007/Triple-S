@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Planner - Personalized Exam Preparation</title>
+    <title>AI Study Planner - Smart Exam Preparation</title>
     <link rel="stylesheet" href="assets/css/root-variables.css">
     <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/studyplanner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
@@ -22,7 +22,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Creative Navbar Header-->
+    <!-- Modern Navbar -->
     <nav class="sgpa-navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
@@ -83,12 +83,21 @@
 
     <div class="container">
         <header class="header">
-            <h1><i class="fas fa-calendar-check"></i> Study Planner</h1>
-            <p>Create a personalized study schedule for exam success</p>
+            <div class="ai-badge">
+                <i class="fas fa-robot"></i> AI-Powered
+            </div>
+            <h1><i class="fas fa-brain"></i> Smart Study Planner</h1>
+            <p>Create a personalized, AI-optimized study schedule for exam success</p>
         </header>
 
         <main class="main-content">
             <div class="input-section">
+                <div class="ai-info-banner">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Our AI analyzes your inputs to create a personalized study plan optimized for your learning style
+                        and time constraints.</p>
+                </div>
+
                 <div class="form-group">
                     <label for="daysLeft">
                         <i class="fas fa-calendar-alt"></i>
@@ -113,38 +122,112 @@
                     <input type="number" id="hoursPerDay" min="1" max="24" placeholder="e.g., 4" required>
                 </div>
 
+                <div class="form-group">
+                    <label for="learningStyle">
+                        <i class="fas fa-user-graduate"></i>
+                        Learning Style (Optional)
+                    </label>
+                    <select id="learningStyle">
+                        <option value="">Select your learning style</option>
+                        <option value="visual">Visual</option>
+                        <option value="auditory">Auditory</option>
+                        <option value="reading">Reading/Writing</option>
+                        <option value="kinesthetic">Kinesthetic</option>
+                    </select>
+                </div>
+
                 <button id="generateBtn" class="generate-btn" disabled>
-                    <i class="fas fa-magic"></i>
-                    Generate Study Plan
+                    <i class="fas fa-robot"></i>
+                    Generate AI Study Plan
                 </button>
             </div>
 
             <div class="output-section" id="outputSection" style="display: none;">
                 <div class="output-header">
-                    <h2><i class="fas fa-list-check"></i> Your Study Plan</h2>
-                    <button id="copyBtn" class="copy-btn">
-                        <i class="fas fa-copy"></i>
-                        Copy Plan
-                    </button>
+                    <h2><i class="fas fa-check-circle"></i> Your AI-Optimized Study Plan</h2>
+                    <div class="output-actions">
+                        <button id="copyBtn" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
                 </div>
                 <div class="loading-spinner" id="loadingSpinner" style="display: none;">
                     <div class="spinner"></div>
-                    <p>Creating your study plan...</p>
+                    <p>AI is creating your personalized study plan...</p>
                 </div>
                 <div class="study-plan" id="studyPlan"></div>
             </div>
         </main>
+
+        <section class="ai-features">
+            <h2>Why Use Our AI Study Planner?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Smart Time Allocation</h3>
+                    <p>AI optimizes study time based on subject complexity and your available hours</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Spaced Repetition</h3>
+                    <p>Scientifically proven review intervals to maximize retention</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-cog"></i>
+                    <h3>Personalized Approach</h3>
+                    <p>Adapts to your learning style and study preferences</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Actionable Tasks</h3>
+                    <p>Clear, specific study activities rather than vague guidelines</p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Tips container will be inserted here by JavaScript -->
-    <div id="tips-container-placeholder"></div>
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Students Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>The AI study planner helped me organize my exam preparation perfectly. I improved my grades
+                        significantly!</p>
+                    <div class="student-info">
+                        <p class="student-name">Priya M.</p>
+                        <p class="student-detail">CSE Student</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>I was struggling with time management until I found this tool. The AI-generated schedule was
+                        exactly what I needed.</p>
+                    <div class="student-info">
+                        <p class="student-name">Rahul K.</p>
+                        <p class="student-detail">ECE Student</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>This is the best study planning tool I've used. The AI recommendations were spot on for my
+                        learning style.</p>
+                    <div class="student-info">
+                        <p class="student-name">Aisha S.</p>
+                        <p class="student-detail">Mechanical Engineering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-section about">
                 <h3>About Triple S</h3>
-                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources for
-                    engineering students, helping them excel in their studies.</p>
+                <p>Triple S (Student Study Support) is dedicated to providing comprehensive academic resources and
+                    AI-powered tools for engineering students, helping them excel in their studies.</p>
             </div>
 
             <div class="footer-section links">
@@ -222,14 +305,6 @@
                     }
                 });
             }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true
         });
     </script>
 </body>

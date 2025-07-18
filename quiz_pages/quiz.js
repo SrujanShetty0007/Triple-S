@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add animation for coming soon badges
     const comingSoonBadges = document.querySelectorAll('.card-badge');
     comingSoonBadges.forEach(badge => {
+        if (badge.textContent.includes('10 Questions')) {
+            badge.style.background = 'linear-gradient(to right,rgb(5, 179, 141),rgb(12, 221, 228))';
+            badge.style.color = 'white';
+        }
         if (badge.textContent.includes('Coming Soon')) {
             badge.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
             badge.style.color = 'white';

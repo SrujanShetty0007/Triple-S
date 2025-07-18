@@ -82,10 +82,27 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="mathematics.html">Mathematics</a></li>
-                    <li><a href="physics.html">Physics</a></li>
-                    <li><a href="chemistry.html">Chemistry</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Subjects
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="mathematics.html">Mathematics</a>
+                            <a href="physics.html">Physics</a>
+                            <a href="chemistry.html">Chemistry</a>
+                        </div>
+                    </li>
                     <li><a href="vtu.html">VTU</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Tools
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="vtu-sgpa-calculator.html">SGPA Calculator</a>
+                            <a href="vtu-cgpa-calculator.html">CGPA Calculator</a>
+                            <a href="vtu.html">VTU Results</a>
+                        </div>
+                    </li>
                     <li><a href="quiz_pages/quiz.html">Quizzes</a></li>
                     <li><a href="studyplanner.html">Study Planner</a></li>
                     <li><a href="index.html#my-contribution-section">Contribute</a></li>
@@ -423,6 +440,7 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/feedback.js"></script>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/dropdown.js"></script>
     <script>
         // Hide loader when page is fully loaded
         window.addEventListener('load', () => {

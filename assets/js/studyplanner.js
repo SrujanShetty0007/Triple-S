@@ -1,4 +1,4 @@
-// Study Planner JavaScript
+// AI Study Planner - Core Logic
 class StudyPlanner {
     constructor() {
         this.initializeElements();
@@ -10,6 +10,7 @@ class StudyPlanner {
         this.daysLeftInput = document.getElementById('daysLeft');
         this.subjectsInput = document.getElementById('subjects');
         this.hoursPerDayInput = document.getElementById('hoursPerDay');
+        this.learningStyleSelect = document.getElementById('learningStyle');
         this.generateBtn = document.getElementById('generateBtn');
         this.outputSection = document.getElementById('outputSection');
         this.loadingSpinner = document.getElementById('loadingSpinner');
@@ -20,11 +21,8 @@ class StudyPlanner {
     bindEvents() {
         this.generateBtn.addEventListener('click', () => this.generateStudyPlan());
         this.copyBtn.addEventListener('click', () => this.copyStudyPlan());
-
-        // Add input validation on change
         [this.daysLeftInput, this.subjectsInput, this.hoursPerDayInput].forEach(input => {
             input.addEventListener('input', () => this.validateForm());
-            // Enable button on initial load if form is valid
             this.validateForm();
         });
     }
@@ -33,11 +31,9 @@ class StudyPlanner {
         const daysLeft = this.daysLeftInput.value.trim();
         const subjects = this.subjectsInput.value.trim();
         const hoursPerDay = this.hoursPerDayInput.value.trim();
-
         const isValid = daysLeft && subjects && hoursPerDay &&
             parseInt(daysLeft) > 0 && parseInt(daysLeft) <= 365 &&
             parseInt(hoursPerDay) > 0 && parseInt(hoursPerDay) <= 24;
-
         this.generateBtn.disabled = !isValid;
         return isValid;
     }
@@ -47,36 +43,29 @@ class StudyPlanner {
             this.showError('Please fill in all fields with valid values.');
             return;
         }
-
         this.showLoading();
         this.outputSection.style.display = 'block';
         this.outputSection.classList.add('show');
-
         try {
             const daysLeft = parseInt(this.daysLeftInput.value);
             const subjects = this.subjectsInput.value.trim();
             const hoursPerDay = parseInt(this.hoursPerDayInput.value);
-
-            // Try with default API key first
+            const learningStyle = this.learningStyleSelect.value;
             let studyPlan = null;
             try {
-                studyPlan = await this.callGeminiAPI(daysLeft, subjects, hoursPerDay);
+                studyPlan = await this.callGeminiAPI(daysLeft, subjects, hoursPerDay, learningStyle);
             } catch (error) {
-                console.log("Error with default API key, trying with user key");
-                // If default key fails, try with user key or prompt for one
                 if (!localStorage.getItem('geminiApiKey')) {
                     this.promptForApiKey();
                 } else {
                     this.geminiApiKey = localStorage.getItem('geminiApiKey');
-                    studyPlan = await this.callGeminiAPI(daysLeft, subjects, hoursPerDay);
+                    studyPlan = await this.callGeminiAPI(daysLeft, subjects, hoursPerDay, learningStyle);
                 }
             }
-
             if (studyPlan) {
                 this.displayStudyPlan(studyPlan);
             }
         } catch (error) {
-            console.error('Error generating study plan:', error);
             this.showError('Failed to generate study plan. Please check your internet connection and try again.');
         } finally {
             this.hideLoading();
@@ -88,20 +77,17 @@ class StudyPlanner {
         if (apiKey && apiKey.trim()) {
             this.geminiApiKey = apiKey.trim();
             localStorage.setItem('geminiApiKey', this.geminiApiKey);
-            this.generateStudyPlan(); // Retry generation
+            this.generateStudyPlan();
         } else {
             this.showError('API key is required to generate study plans.');
             this.hideLoading();
         }
     }
 
-    async callGeminiAPI(daysLeft, subjects, hoursPerDay) {
-        const prompt = this.createPrompt(daysLeft, subjects, hoursPerDay);
-
-        // Timeout after 15 seconds
+    async callGeminiAPI(daysLeft, subjects, hoursPerDay, learningStyle) {
+        const prompt = this.createPrompt(daysLeft, subjects, hoursPerDay, learningStyle);
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 15000);
-
         try {
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.geminiApiKey}`, {
                 method: 'POST',
@@ -111,9 +97,7 @@ class StudyPlanner {
                 },
                 body: JSON.stringify({
                     contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
+                        parts: [{ text: prompt }]
                     }],
                     generationConfig: {
                         temperature: 0.7,
@@ -123,21 +107,16 @@ class StudyPlanner {
                     }
                 })
             });
-
             clearTimeout(timeoutId);
-
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
                 throw new Error(`API request failed: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
             }
-
             const data = await response.json();
-
             if (data.candidates && data.candidates[0] && data.candidates[0].content) {
                 return data.candidates[0].content.parts[0].text;
             } else {
-                // If we got a response but no content, use backup plan
-                return this.createBackupPlan(daysLeft, subjects, hoursPerDay);
+                return this.createBackupPlan(daysLeft, subjects, hoursPerDay, learningStyle);
             }
         } catch (error) {
             if (error.name === 'AbortError') {
@@ -147,66 +126,121 @@ class StudyPlanner {
         }
     }
 
-    createBackupPlan(daysLeft, subjects, hoursPerDay) {
-        // Generate a basic study plan without API
+    // Fallback plan if API fails
+    createBackupPlan(daysLeft, subjects, hoursPerDay, learningStyle) {
         const subjectList = subjects.split(',').map(s => s.trim()).filter(s => s);
-        let plan = "# Your Study Plan\n\n";
-
-        // Calculate time per subject
+        let plan = "# Your AI-Optimized Study Plan\n\n";
+        if (learningStyle) {
+            plan += `## Personalized for ${this.getLearningStyleName(learningStyle)} Learners\n\n`;
+            plan += this.getLearningStyleTips(learningStyle);
+            plan += "\n\n";
+        }
         const subjectsPerDay = Math.ceil(subjectList.length / daysLeft);
         const hoursPerSubject = Math.floor(hoursPerDay / subjectsPerDay);
-
-        // Create simple day-by-day plan
         for (let day = 1; day <= Math.min(daysLeft, 30); day++) {
             plan += `## Day ${day}\n\n`;
-
             const daySubjects = subjectList.slice(
                 ((day - 1) % Math.ceil(daysLeft / subjectList.length)) * subjectsPerDay,
                 ((day - 1) % Math.ceil(daysLeft / subjectList.length) + 1) * subjectsPerDay
             );
-
             daySubjects.forEach((subject, i) => {
                 plan += `* ${subject} (${hoursPerSubject} hours)\n`;
-                plan += `  * Study theory: ${Math.floor(hoursPerSubject * 0.5)} hours\n`;
-                plan += `  * Practice problems: ${Math.floor(hoursPerSubject * 0.5)} hours\n`;
+                if (learningStyle) {
+                    const activities = this.getLearningStyleActivities(learningStyle, subject);
+                    activities.forEach(activity => {
+                        plan += `  * ${activity}\n`;
+                    });
+                } else {
+                    plan += `  * Study theory: ${Math.floor(hoursPerSubject * 0.5)} hours\n`;
+                    plan += `  * Practice problems: ${Math.floor(hoursPerSubject * 0.5)} hours\n`;
+                }
             });
-
             plan += "\n";
         }
-
         plan += "## Final Week Tips\n\n";
         plan += "* Review all subjects daily\n";
         plan += "* Focus on practice problems\n";
         plan += "* Get enough sleep before exams\n";
-
+        plan += "* Use spaced repetition techniques for better retention\n";
         return plan;
     }
 
-    createPrompt(daysLeft, subjects, hoursPerDay) {
-        return `You are an expert academic advisor helping a student create a personalized study plan. 
+    getLearningStyleName(style) {
+        const styles = {
+            'visual': 'Visual',
+            'auditory': 'Auditory',
+            'reading': 'Reading/Writing',
+            'kinesthetic': 'Kinesthetic'
+        };
+        return styles[style] || 'Personalized';
+    }
 
-STUDENT INFORMATION:
-- Days until exam: ${daysLeft} days
-- Subjects to study: ${subjects}
-- Hours available per day: ${hoursPerDay} hours
+    getLearningStyleTips(style) {
+        switch (style) {
+            case 'visual':
+                return "As a visual learner, you learn best through images, diagrams, and spatial understanding. Focus on creating mind maps, using color-coding in your notes, and watching educational videos.";
+            case 'auditory':
+                return "As an auditory learner, you learn best through listening and speaking. Focus on recording lectures, participating in group discussions, and explaining concepts out loud.";
+            case 'reading':
+                return "As a reading/writing learner, you learn best through text-based materials. Focus on taking detailed notes, reading textbooks, and writing summaries of key concepts.";
+            case 'kinesthetic':
+                return "As a kinesthetic learner, you learn best through hands-on activities. Focus on practical applications, building models, and using physical movement while studying.";
+            default:
+                return "Your study plan has been optimized based on general best practices for effective learning.";
+        }
+    }
 
-TASK: Create a detailed, day-by-day study plan that:
-1. Distributes study time across all subjects evenly
-2. Includes theory, practice, and revision for each subject
-3. Uses a friendly, motivational tone
-4. Provides specific, actionable tasks for each day
-5. Includes time for breaks and review sessions
-6. Adapts the plan based on the number of days available
+    getLearningStyleActivities(style, subject) {
+        switch (style) {
+            case 'visual':
+                return [
+                    `Create mind maps for ${subject} concepts (30 min)`,
+                    `Watch video tutorials on ${subject} (45 min)`,
+                    `Use color-coded notes for ${subject} formulas (30 min)`,
+                    `Draw diagrams to visualize ${subject} processes (45 min)`
+                ];
+            case 'auditory':
+                return [
+                    `Record yourself explaining ${subject} concepts (30 min)`,
+                    `Discuss ${subject} topics with study partners (45 min)`,
+                    `Listen to ${subject} lectures or podcasts (45 min)`,
+                    `Recite ${subject} formulas and definitions out loud (30 min)`
+                ];
+            case 'reading':
+                return [
+                    `Read ${subject} textbook chapters and take notes (45 min)`,
+                    `Write summaries of key ${subject} concepts (30 min)`,
+                    `Create flashcards for ${subject} terminology (30 min)`,
+                    `Practice ${subject} problems and write out solutions (45 min)`
+                ];
+            case 'kinesthetic':
+                return [
+                    `Build physical models related to ${subject} concepts (45 min)`,
+                    `Use manipulatives to understand ${subject} problems (30 min)`,
+                    `Study ${subject} while walking or moving (30 min)`,
+                    `Apply ${subject} concepts to real-world scenarios (45 min)`
+                ];
+            default:
+                return [
+                    `Study ${subject} theory (45 min)`,
+                    `Practice ${subject} problems (45 min)`,
+                    `Review ${subject} notes (30 min)`,
+                    `Test yourself on ${subject} concepts (30 min)`
+                ];
+        }
+    }
 
-FORMAT YOUR RESPONSE AS:
-- Use clear headings for each day (Day 1, Day 2, etc.)
-- Include time allocations for each activity
-- Use bullet points for easy reading
-- Add motivational messages and study tips
-- Include a weekly review schedule
-- End with final exam preparation tips
-
-Keep the plan concise but comprehensive. Be direct and practical.`;
+    createPrompt(daysLeft, subjects, hoursPerDay, learningStyle) {
+        let prompt = `You are an expert academic advisor helping a student create a personalized study plan. \n\nSTUDENT INFORMATION:\n- Days until exam: ${daysLeft} days\n- Subjects to study: ${subjects}\n- Hours available per day: ${hoursPerDay} hours`;
+        if (learningStyle) {
+            prompt += `\n- Learning style: ${this.getLearningStyleName(learningStyle)}`;
+        }
+        prompt += `\n\nTASK: Create a detailed, day-by-day study plan that:\n1. Distributes study time across all subjects evenly\n2. Includes theory, practice, and revision for each subject\n3. Uses a friendly, motivational tone\n4. Provides specific, actionable tasks for each day\n5. Includes time for breaks and review sessions\n6. Adapts the plan based on the number of days available`;
+        if (learningStyle) {
+            prompt += `\n7. Tailors study activities to the student's ${this.getLearningStyleName(learningStyle)} learning style`;
+        }
+        prompt += `\n\nFORMAT YOUR RESPONSE AS:\n- Use clear headings for each day (Day 1, Day 2, etc.)\n- Include time allocations for each activity\n- Use bullet points for easy reading\n- Add motivational messages and study tips\n- Include a weekly review schedule\n- End with final exam preparation tips\n\nKeep the plan concise but comprehensive. Be direct and practical.`;
+        return prompt;
     }
 
     displayStudyPlan(plan) {
@@ -214,8 +248,8 @@ Keep the plan concise but comprehensive. Be direct and practical.`;
         this.studyPlan.style.display = 'block';
     }
 
+    // Format plain text plan to HTML
     formatPlan(plan) {
-        // Convert plain text to formatted HTML
         return plan
             .replace(/\n\n/g, '</p><p>')
             .replace(/\n/g, '<br>')
@@ -243,62 +277,55 @@ Keep the plan concise but comprehensive. Be direct and practical.`;
     hideLoading() {
         this.loadingSpinner.style.display = 'none';
         this.generateBtn.disabled = false;
-        this.generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate Study Plan';
+        this.generateBtn.innerHTML = '<i class="fas fa-robot"></i> Generate AI Study Plan';
     }
 
     showError(message) {
         this.studyPlan.innerHTML = `<div style="color: #ef4444; text-align: center; padding: 20px;">
-            <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+            <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
             <p>${message}</p>
         </div>`;
         this.studyPlan.style.display = 'block';
-        this.outputSection.style.display = 'block';
-        this.outputSection.classList.add('show');
     }
 
     async copyStudyPlan() {
-        const planText = this.studyPlan.innerText;
-
+        const text = this.studyPlan.innerText;
         try {
-            await navigator.clipboard.writeText(planText);
+            await navigator.clipboard.writeText(text);
             this.showCopySuccess();
         } catch (err) {
-            // Fallback for older browsers
-            this.fallbackCopyTextToClipboard(planText);
+            this.fallbackCopyTextToClipboard(text);
         }
     }
 
     fallbackCopyTextToClipboard(text) {
-        const textArea = document.createElement('textarea');
+        const textArea = document.createElement("textarea");
         textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-999999px';
-        textArea.style.top = '-999999px';
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-
         try {
             document.execCommand('copy');
             this.showCopySuccess();
         } catch (err) {
-            this.showError('Failed to copy study plan to clipboard.');
+            console.error('Failed to copy text: ', err);
         }
-
         document.body.removeChild(textArea);
     }
 
     showCopySuccess() {
-        this.copyBtn.classList.add('copied');
+        const originalText = this.copyBtn.innerHTML;
         this.copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-
+        this.copyBtn.classList.add('copied');
         setTimeout(() => {
+            this.copyBtn.innerHTML = originalText;
             this.copyBtn.classList.remove('copied');
-            this.copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Plan';
         }, 2000);
     }
 
-    // Load saved API key on page load
     loadSavedApiKey() {
         const savedKey = localStorage.getItem('geminiApiKey');
         if (savedKey) {
@@ -307,75 +334,9 @@ Keep the plan concise but comprehensive. Be direct and practical.`;
     }
 }
 
-// Initialize the Study Planner when the page loads
+// Initialize StudyPlanner on DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', () => {
     const studyPlanner = new StudyPlanner();
     studyPlanner.loadSavedApiKey();
-
-    // Set active state for current page in navbar
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === 'studyplanner.html' || href.includes('studyplanner.html')) {
-            link.classList.add('active');
-        } else if (window.location.pathname.endsWith('studyplanner.html')) {
-            if (link.querySelector('span').textContent === 'Study Planner') {
-                link.classList.add('active');
-            }
-        }
-    });
-
-    // Add some helpful tips
-    const tips = [
-        'Break down complex subjects into smaller topics',
-        'Include regular breaks to maintain focus',
-        'Review previous material before starting new topics',
-        'Practice with past papers and sample questions'
-    ];
-
-    // Add tips to the page before the footer
-    const tipsContainer = document.createElement('div');
-    tipsContainer.className = 'tips-container';
-    tipsContainer.setAttribute('data-aos', 'fade-up');
-    tipsContainer.setAttribute('data-aos-delay', '300');
-
-    tipsContainer.innerHTML = `
-        <h3>Study Tips</h3>
-        <ul>
-            ${tips.map(tip => `<li>${tip}</li>`).join('')}
-        </ul>
-    `;
-
-    // Insert into placeholder
-    const placeholder = document.getElementById('tips-container-placeholder');
-    if (placeholder) {
-        placeholder.appendChild(tipsContainer);
-    } else if (document.querySelector('.site-footer')) {
-        // Fallback: insert before footer
-        const footer = document.querySelector('.site-footer');
-        footer.parentNode.insertBefore(tipsContainer, footer);
-    } else {
-        // Last resort: append to container
-        document.querySelector('.container').appendChild(tipsContainer);
-    }
-});
-
-// Add smooth scrolling
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scroll to output when generated
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                const outputSection = document.getElementById('outputSection');
-                if (outputSection.style.display === 'block') {
-                    outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    });
-
-    observer.observe(document.getElementById('outputSection'), {
-        attributes: true,
-        attributeFilter: ['style']
-    });
 });

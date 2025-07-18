@@ -599,7 +599,7 @@ body {
 }
 
 .subject-card:nth-child(4) .icon-container i {
-    color: #fb8500;
+    color: #f3cf00;
 }
 
 .subject-card:nth-child(5) {
@@ -631,7 +631,7 @@ body {
 }
 
 .subject-card:nth-child(8) .icon-container i {
-    color: #3a86ff;
+    color: #7209b7;
 }
 
 .subject-card:nth-child(9) {
@@ -639,7 +639,7 @@ body {
 }
 
 .subject-card:nth-child(9) .icon-container i {
-    color: #7209b7;
+    color: #06c1d6;
 }
 
 .subject-card:nth-child(10) {
@@ -647,7 +647,7 @@ body {
 }
 
 .subject-card:nth-child(10) .icon-container i {
-    color: #06d6a0;
+    color: #e04305;
 }
 
 .subject-card:nth-child(11) {
@@ -655,7 +655,7 @@ body {
 }
 
 .subject-card:nth-child(11) .icon-container i {
-    color: #ef476f;
+    color: #00ff77;
 }
 
 .subject-card:nth-child(12) {
@@ -663,6 +663,14 @@ body {
 }
 
 .subject-card:nth-child(12) .icon-container i {
+    color: #9d0bff;
+}
+
+.subject-card:nth-child(13) {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 245, 1) 100%);
+}
+
+.subject-card:nth-child(13) .icon-container i {
     color: #ffbe0b;
 }
 
@@ -1082,7 +1090,7 @@ body {
     }
 
     .subject-card {
-        height: 200px;
+        height: 235px;
     }
 
     .card-content {
