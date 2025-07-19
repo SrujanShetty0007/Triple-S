@@ -17,6 +17,8 @@ const uploadArea = document.getElementById('upload-area');
 
 // Store uploaded images
 let uploadedImages = [];
+// Expose uploadedImages to window for authentication script
+window.uploadedImages = uploadedImages;
 
 // Listen for file selection
 imageUpload.addEventListener('change', handleFileSelection);
@@ -43,6 +45,9 @@ function handleFileSelection(event) {
 
     // Update UI
     updateUI();
+
+    // Update window.uploadedImages for authentication script
+    window.uploadedImages = uploadedImages;
 }
 
 // Create image preview
@@ -99,6 +104,9 @@ function removeImage(index) {
 
     // Update UI
     updateUI();
+
+    // Update window.uploadedImages for authentication script
+    window.uploadedImages = uploadedImages;
 }
 
 // Clear all images
@@ -111,6 +119,9 @@ clearBtn.addEventListener('click', function () {
 
     // Update UI
     updateUI();
+
+    // Update window.uploadedImages for authentication script
+    window.uploadedImages = [];
 });
 
 // Update UI based on current state
@@ -131,6 +142,17 @@ function updateUI() {
 // Handle PDF download
 downloadBtn.addEventListener('click', function () {
     if (uploadedImages.length === 0) return;
+
+    // Check if user is authenticated before allowing download
+    const auth = getFirebaseAuth();
+    if (!auth || !auth.currentUser) {
+        // Show auth modal if available
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) {
+            authOverlay.style.display = 'flex';
+        }
+        return;
+    }
 
     // Show loading state
     downloadBtn.disabled = true;
@@ -286,7 +308,11 @@ function preventDefaults(e) {
 }
 
 function highlight() {
-    uploadArea.classList.add('highlight');
+    // Check if user is authenticated before highlighting
+    const auth = getFirebaseAuth();
+    if (auth && auth.currentUser) {
+        uploadArea.classList.add('highlight');
+    }
 }
 
 function unhighlight() {
@@ -294,6 +320,17 @@ function unhighlight() {
 }
 
 function handleDrop(e) {
+    // Check if user is authenticated before handling drop
+    const auth = getFirebaseAuth();
+    if (!auth || !auth.currentUser) {
+        // Show auth modal if available
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) {
+            authOverlay.style.display = 'flex';
+        }
+        return;
+    }
+
     const dt = e.dataTransfer;
     const files = dt.files;
 
@@ -302,6 +339,17 @@ function handleDrop(e) {
     // Trigger change event manually
     const event = new Event('change');
     imageUpload.dispatchEvent(event);
+}
+
+// Helper function to get Firebase Auth instance
+function getFirebaseAuth() {
+    // Check if Firebase Auth is available
+    if (window.firebase && window.firebase.auth) {
+        return window.firebase.auth();
+    } else if (window.firebaseAuth) {
+        return window.firebaseAuth;
+    }
+    return null;
 }
 
 // Initialize

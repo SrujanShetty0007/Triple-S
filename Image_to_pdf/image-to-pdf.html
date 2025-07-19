@@ -16,12 +16,204 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+
+    <!-- Authentication Modal Styles -->
+    <style>
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .auth-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .auth-modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .auth-modal p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .auth-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .auth-btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .auth-btn.primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .auth-btn.google {
+            background: #fff;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .auth-btn.google:hover {
+            background: #f8f9fa;
+            border-color: #ccc;
+        }
+
+        .auth-btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .auth-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .auth-required-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .auth-required-banner h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .auth-required-banner p {
+            margin: 0 0 0.8rem 0;
+            opacity: 0.9;
+        }
+
+        .auth-required-banner .auth-btn {
+            background: white;
+            color: #ee5a24;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-required-banner .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: #f8f8f8;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader"></div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal">
+            <button class="close-modal" id="closeAuthModal" aria-label="Close" title="Close">&times;</button>
+            <h2><i class="fas fa-lock"></i> Authentication Required</h2>
+            <p>Please sign in to access the Image to PDF Converter and create professional PDF documents.</p>
+            <div class="auth-buttons">
+                <button class="auth-btn primary" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+                <button class="auth-btn google" id="googleSignInBtn">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                <button class="auth-btn secondary" id="signupBtn">
+                    <i class="fas fa-user-plus"></i>
+                    Create Account
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Modern Navbar -->
@@ -63,7 +255,7 @@
                 <a href="../studyplanner.html" class="nav-link">
                     <span>Study Planner</span>
                 </a>
-                <a href="image-to-pdf.html" class="nav-link">
+                <a href="image-to-pdf.html" class="nav-link active">
                     <span>Image to PDF</span>
                 </a>
             </div>
@@ -133,6 +325,16 @@
     </section>
 
     <main class="container" id="converter-tool">
+        <!-- Authentication Status Banner -->
+        <div id="authRequiredBanner" class="auth-required-banner" style="display: none;">
+            <h3><i class="fas fa-lock"></i> Authentication Required</h3>
+            <p>Please sign in to access the Image to PDF Converter. Convert your images to professional PDF documents
+                with our secure tool.</p>
+            <button id="authBannerLoginBtn" class="auth-btn">
+                <i class="fas fa-sign-in-alt"></i> Sign In to Use Converter
+            </button>
+        </div>
+
         <header>
             <h1><i class="fas fa-file-pdf"></i> Image to PDF Converter</h1>
             <p class="subtitle">Convert your images to PDF in seconds</p>
@@ -215,7 +417,152 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="image-to-pdf.js"></script>
 
-    <!-- Navbar functionality script -->
+    <!-- Firebase Authentication -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHZcDv3pXIU9J3CASXi3sM-V7mZsMuqBM",
+            authDomain: "triple-s-bd006.firebaseapp.com",
+            projectId: "triple-s-bd006",
+            storageBucket: "triple-s-bd006.firebasestorage.app",
+            messagingSenderId: "933483210420",
+            appId: "1:933483210420:web:66fde1b5571ef1741299e1",
+            measurementId: "G-TPHZ0H6L5J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Expose auth to window for the image-to-pdf.js script
+        window.firebaseAuth = auth;
+
+        // DOM elements
+        const authOverlay = document.getElementById('authOverlay');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const googleSignInBtn = document.getElementById('googleSignInBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const authRequiredBanner = document.getElementById('authRequiredBanner');
+        const uploadSection = document.querySelector('.upload-section');
+        const imageUpload = document.getElementById('image-upload');
+        const uploadArea = document.getElementById('upload-area');
+        const downloadBtn = document.getElementById('download-btn');
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in:", user);
+
+                // Update UI for authenticated user
+                authOverlay.style.display = 'none';
+                authRequiredBanner.style.display = 'none';
+
+                // Enable form inputs
+                uploadSection.classList.remove('form-disabled');
+                imageUpload.disabled = false;
+                uploadArea.style.pointerEvents = 'auto';
+
+                // Re-enable download button if images are uploaded
+                if (window.uploadedImages && window.uploadedImages.length > 0) {
+                    downloadBtn.disabled = false;
+                }
+            } else {
+                // User is not signed in
+                console.log("No user is signed in");
+
+                // Update UI for unauthenticated user
+                authRequiredBanner.style.display = 'block';
+
+                // Disable form inputs
+                uploadSection.classList.add('form-disabled');
+                imageUpload.disabled = true;
+                uploadArea.style.pointerEvents = 'none';
+
+                // Disable download button
+                downloadBtn.disabled = true;
+            }
+        });
+
+        // Show auth modal when clicking on upload area
+        uploadArea.addEventListener('click', function (e) {
+            const user = auth.currentUser;
+            if (!user) {
+                e.preventDefault();
+                authOverlay.style.display = 'flex';
+            }
+        });
+
+        // Close auth modal
+        closeAuthModal.addEventListener('click', () => {
+            authOverlay.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        authOverlay.addEventListener('click', (e) => {
+            if (e.target === authOverlay) {
+                authOverlay.style.display = 'none';
+            }
+        });
+
+        // Google Sign In
+        googleSignInBtn.addEventListener('click', async () => {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                console.log("Google sign in successful:", result.user);
+                authOverlay.style.display = 'none';
+            } catch (error) {
+                console.error("Google sign in error:", error);
+                alert("Failed to sign in with Google. Please try again.");
+            }
+        });
+
+        // Login button (redirect to login page)
+        loginBtn.addEventListener('click', () => {
+            window.location.href = '../login.html';
+        });
+
+        // Signup button (redirect to login page)
+        signupBtn.addEventListener('click', () => {
+            window.location.href = '../login.html';
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && authOverlay.style.display === 'flex') {
+                authOverlay.style.display = 'none';
+            }
+        });
+
+        // Show auth modal when clicking download button if not authenticated
+        downloadBtn.addEventListener('click', function (e) {
+            const user = auth.currentUser;
+            if (!user) {
+                e.preventDefault();
+                e.stopPropagation();
+                authOverlay.style.display = 'flex';
+                return false;
+            }
+        });
+
+        // Banner login button
+        const authBannerLoginBtn = document.getElementById('authBannerLoginBtn');
+        if (authBannerLoginBtn) {
+            authBannerLoginBtn.addEventListener('click', function () {
+                authOverlay.style.display = 'flex';
+            });
+        }
+    </script>
+
+    <!-- Page Loader and Navbar functionality -->
     <script>
         // Page Loader
         document.addEventListener('DOMContentLoaded', function () {
@@ -242,10 +589,8 @@
                     }
                 });
             });
-        });
 
-        // Mobile Navbar Toggle Functionality
-        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Navbar Toggle Functionality
             const navbarToggle = document.getElementById('navbarToggle');
             const navbarMenu = document.querySelector('.navbar-menu');
 
