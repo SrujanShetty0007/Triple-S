@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Image to PDF Converter | Triple-S</title>
     <!-- Import root variables first -->
-    <link rel="stylesheet" href="../assets/css/root-variables.css">
-    <link rel="stylesheet" href="../assets/css/loader.css">
-    <link rel="stylesheet" href="image-to-pdf.css">
-    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="stylesheet" href="Image_to_pdf/image-to-pdf.css">
+    <link rel="stylesheet" href="assets/css/user-dropdown.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="../assets/images/logo1.png" type="image/png">
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
 
     <!-- Authentication Modal Styles -->
     <style>
@@ -220,7 +220,7 @@
     <nav class="sgpa-navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
-                <a href="../index.html" class="brand-link">
+                <a href="index.html" class="brand-link">
                     <div class="brand-logo">
                         <span class="brand-text">Triple S</span>
                     </div>
@@ -228,31 +228,31 @@
             </div>
 
             <div class="navbar-menu">
-                <a href="../index.html" class="nav-link">
+                <a href="index.html" class="nav-link">
                     <span>Home</span>
                 </a>
-                <a href="../about.html" class="nav-link">
+                <a href="about.html" class="nav-link">
                     <span>About</span>
                 </a>
-                <a href="../feedback.html" class="nav-link">
+                <a href="feedback.html" class="nav-link">
                     <span>Feedback</span>
                 </a>
-                <a href="../mathematics.html" class="nav-link">
+                <a href="mathematics.html" class="nav-link">
                     <span>Mathematics</span>
                 </a>
-                <a href="../physics.html" class="nav-link">
+                <a href="physics.html" class="nav-link">
                     <span>Physics</span>
                 </a>
-                <a href="../chemistry.html" class="nav-link">
+                <a href="chemistry.html" class="nav-link">
                     <span>Chemistry</span>
                 </a>
-                <a href="../vtu.html" class="nav-link">
+                <a href="vtu.html" class="nav-link">
                     <span>VTU Tools</span>
                 </a>
-                <a href="../quiz_pages/quiz.html" class="nav-link">
+                <a href="quiz.html" class="nav-link">
                     <span>Quizzes</span>
                 </a>
-                <a href="../studyplanner.html" class="nav-link">
+                <a href="studyplanner.html" class="nav-link">
                     <span>Study Planner</span>
                 </a>
                 <a href="image-to-pdf.html" class="nav-link active">
@@ -415,7 +415,7 @@
 
     <!-- Include jsPDF library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="image-to-pdf.js"></script>
+    <script src="Image_to_pdf/image-to-pdf.js"></script>
 
     <!-- Firebase Authentication -->
     <script type="module">
@@ -527,12 +527,12 @@
 
         // Login button (redirect to login page)
         loginBtn.addEventListener('click', () => {
-            window.location.href = '../login.html';
+            window.location.href = 'login.html';
         });
 
         // Signup button (redirect to login page)
         signupBtn.addEventListener('click', () => {
-            window.location.href = '../login.html';
+            window.location.href = 'login.html';
         });
 
         // Close modal on Escape key

@@ -966,3 +966,63 @@
         font-size: 1.5rem;
     }
 }
+
+/* Download button states */
+.pdf-download-btn.download-success {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+    color: white !important;
+    cursor: default;
+}
+
+.pdf-download-btn.download-error {
+    background-color: #f44336 !important;
+    border-color: #d32f2f !important;
+    color: white !important;
+    cursor: default;
+}
+
+/* Subject-specific success/error states */
+.math-download-btn.download-success {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+}
+
+.phys-download-btn.download-success {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+}
+
+.chem-download-btn.download-success {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+}
+
+.math-download-btn.download-error,
+.phys-download-btn.download-error,
+.chem-download-btn.download-error {
+    background-color: #f44336 !important;
+    border-color: #d32f2f !important;
+}
+
+/* Disabled button styles */
+.pdf-download-btn:disabled,
+.pdf-view-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}

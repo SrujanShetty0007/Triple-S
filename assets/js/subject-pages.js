@@ -310,9 +310,8 @@ function displayPdfFile(container, fileName, filePath) {
     fileActions.appendChild(viewBtn);
 
     // Download button
-    const downloadBtn = document.createElement('a');
+    const downloadBtn = document.createElement('button');
     downloadBtn.className = `pdf-download-btn ${subjectClass ? subjectClass + '-download-btn' : ''}`;
-    downloadBtn.href = 'javascript:void(0);';
     downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download';
     downloadBtn.setAttribute('aria-label', `Download ${fileName}`);
     downloadBtn.setAttribute('data-file', filePath);
@@ -322,12 +321,18 @@ function displayPdfFile(container, fileName, filePath) {
     if (window.pdfWatermarker) {
         downloadBtn.addEventListener('click', async function (e) {
             e.preventDefault();
+
+            // Disable the button during download
+            this.disabled = true;
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
             try {
                 // Get file path and name from data attributes
                 const filePath = this.getAttribute('data-file');
                 const fileName = this.getAttribute('data-filename');
 
-                // Watermark the PDF
+                // Watermark the PDF - the watermarker will show its own loading indicator
                 const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
 
                 // Create download link for the watermarked PDF
@@ -339,20 +344,77 @@ function displayPdfFile(container, fileName, filePath) {
                 tempLink.click();
                 document.body.removeChild(tempLink);
 
+                // Update button to show success
+                this.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+                this.classList.add('download-success');
+
                 // Clean up
                 setTimeout(() => {
                     URL.revokeObjectURL(downloadUrl);
-                }, 100);
+                    this.innerHTML = originalText;
+                    this.classList.remove('download-success');
+                    this.disabled = false;
+                }, 2000);
             } catch (error) {
                 console.error('Error downloading watermarked PDF:', error);
+
+                // Update button to show error
+                this.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+                this.classList.add('download-error');
+
+                // Restore button after delay
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('download-error');
+                    this.disabled = false;
+                }, 2000);
+
                 // Fallback to direct download if watermarking fails
-                window.location.href = filePath + '?download=true';
+                setTimeout(() => {
+                    const directLink = document.createElement('a');
+                    directLink.href = filePath + '?download=true';
+                    directLink.download = fileName;
+                    directLink.target = '_blank';
+                    document.body.appendChild(directLink);
+                    directLink.click();
+                    document.body.removeChild(directLink);
+                }, 500);
             }
         });
     } else {
         // Fallback if watermarker not available
-        downloadBtn.href = filePath + '?download=true';
-        downloadBtn.download = fileName;
+        downloadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Disable the button during download
+            this.disabled = true;
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+
+            // Get file path and name from data attributes
+            const filePath = this.getAttribute('data-file');
+            const fileName = this.getAttribute('data-filename');
+
+            // Create download link
+            const directLink = document.createElement('a');
+            directLink.href = filePath + '?download=true';
+            directLink.download = fileName;
+            directLink.target = '_blank';
+            document.body.appendChild(directLink);
+            directLink.click();
+            document.body.removeChild(directLink);
+
+            // Update button to show success
+            this.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+            this.classList.add('download-success');
+
+            // Restore button after delay
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.classList.remove('download-success');
+                this.disabled = false;
+            }, 2000);
+        });
     }
 
     fileActions.appendChild(downloadBtn);

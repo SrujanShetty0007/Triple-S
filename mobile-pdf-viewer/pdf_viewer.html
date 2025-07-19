@@ -31,6 +31,8 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./pdf_viewer.css">
+    <link rel="stylesheet" href="../assets/css/pdf-loading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- PDF Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
@@ -39,22 +41,35 @@
 </head>
 
 <body>
-    <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+    <header class="pdf-header">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+        <h1 id="document-title">PDF Viewer</h1>
+    </header>
 
     <div id="viewer-container" class="viewer-container">
-        <div class="viewer-header">
-            <button id="download-btn">Download PDF</button>
-            <span id="page-info">Page <span id="current-page">1</span> / <span id="total-pages">1</span></span>
+        <div class="viewer-toolbar">
+            <div class="page-navigation">
+                <button id="prev-page" class="nav-btn" title="Previous Page"><i
+                        class="fas fa-chevron-left"></i></button>
+                <div class="page-info">
+                    <span>Page <span id="current-page">1</span> of <span id="total-pages">1</span></span>
+                </div>
+                <button id="next-page" class="nav-btn" title="Next Page"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <button id="download-btn" class="action-btn" title="Download PDF">
+                <i class="fas fa-download"></i> Download
+            </button>
         </div>
 
         <div class="canvas-container">
             <canvas id="pdf-canvas"></canvas>
         </div>
+    </div>
 
-        <div class="nav-buttons">
-            <button id="prev-page">Previous Page</button>
-            <button id="next-page">Next Page</button>
-        </div>
+    <!-- Download notification -->
+    <div id="download-notification" class="download-notification">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <span id="notification-text">Processing download...</span>
     </div>
 
     <script>
@@ -69,11 +84,41 @@
         const downloadBtn = document.getElementById("download-btn");
         const prevPageBtn = document.getElementById("prev-page");
         const nextPageBtn = document.getElementById("next-page");
+        const downloadNotification = document.getElementById("download-notification");
+        const notificationText = document.getElementById("notification-text");
+        const documentTitle = document.getElementById("document-title");
 
         let currentPDF = null;
         let currentPage = 1;
         let totalPages = 0;
         let currentPdfUrl = '';
+
+        // Show download notification
+        function showNotification(message, type = 'loading') {
+            downloadNotification.className = 'download-notification show';
+            notificationText.textContent = message;
+
+            const icon = downloadNotification.querySelector('i');
+            icon.className = type === 'loading' ? 'fas fa-circle-notch fa-spin' :
+                type === 'success' ? 'fas fa-check-circle' :
+                    'fas fa-exclamation-circle';
+
+            downloadNotification.classList.add(type);
+
+            if (type !== 'loading') {
+                setTimeout(() => {
+                    downloadNotification.classList.remove('show');
+                    setTimeout(() => {
+                        downloadNotification.classList.remove(type);
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // Hide download notification
+        function hideNotification() {
+            downloadNotification.classList.remove('show');
+        }
 
         function getPDFFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -94,6 +139,9 @@
             const titleParam = urlParams.get('title');
             const displayTitle = titleParam || fileName;
 
+            // Set document title
+            documentTitle.textContent = displayTitle;
+
             const url = `../${pdfPath}`;
             currentPdfUrl = url;
 
@@ -101,7 +149,7 @@
 
             const loadingIndicator = document.createElement("div");
             loadingIndicator.id = "loading-indicator";
-            loadingIndicator.textContent = "Loading PDF...";
+            loadingIndicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading PDF...';
             viewerContainer.appendChild(loadingIndicator);
 
             pdfjsLib.getDocument(url).promise.then((pdf) => {
@@ -117,40 +165,63 @@
 
                 downloadBtn.onclick = async () => {
                     try {
+                        // Show download notification
+                        showNotification('Preparing download...');
+                        downloadBtn.disabled = true;
+
                         // Check if watermarker is available
                         if (window.pdfWatermarker) {
-                            // Watermark the PDF
-                            const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(url);
+                            try {
+                                // Watermark the PDF
+                                showNotification('Applying watermark...');
+                                const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(url);
 
-                            // Create download link
-                            const downloadUrl = URL.createObjectURL(watermarkedPdf);
-                            const tempLink = document.createElement('a');
-                            tempLink.href = downloadUrl;
-                            tempLink.download = fileName;
-                            document.body.appendChild(tempLink);
-                            tempLink.click();
-                            document.body.removeChild(tempLink);
+                                // Create download link
+                                showNotification('Starting download...');
+                                const downloadUrl = URL.createObjectURL(watermarkedPdf);
+                                const tempLink = document.createElement('a');
+                                tempLink.href = downloadUrl;
+                                tempLink.download = fileName;
+                                document.body.appendChild(tempLink);
+                                tempLink.click();
+                                document.body.removeChild(tempLink);
 
-                            // Clean up
-                            setTimeout(() => {
-                                URL.revokeObjectURL(downloadUrl);
-                            }, 100);
+                                // Show success notification
+                                showNotification('Download complete!', 'success');
+
+                                // Clean up
+                                setTimeout(() => {
+                                    URL.revokeObjectURL(downloadUrl);
+                                }, 100);
+                            } catch (error) {
+                                console.error('Error downloading watermarked PDF:', error);
+                                showNotification('Watermarking failed. Trying direct download...', 'error');
+
+                                // Fallback to direct download
+                                setTimeout(() => {
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = fileName;
+                                    a.target = '_blank';
+                                    a.click();
+                                    showNotification('Download started!', 'success');
+                                }, 1000);
+                            }
                         } else {
                             // Fallback to direct download
+                            showNotification('Starting download...');
                             const a = document.createElement('a');
                             a.href = url;
                             a.download = fileName;
                             a.target = '_blank';
                             a.click();
+                            showNotification('Download started!', 'success');
                         }
                     } catch (error) {
-                        console.error('Error downloading watermarked PDF:', error);
-                        // Fallback to direct download if watermarking fails
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = fileName;
-                        a.target = '_blank';
-                        a.click();
+                        console.error('Error during download:', error);
+                        showNotification('Download failed. Please try again.', 'error');
+                    } finally {
+                        downloadBtn.disabled = false;
                     }
                 };
                 renderPage(currentPage);
@@ -195,7 +266,12 @@
         function updateButtonStates() {
             prevPageBtn.disabled = currentPage <= 1;
             nextPageBtn.disabled = currentPage >= totalPages;
+
+            // Update button appearance based on state
+            prevPageBtn.classList.toggle('disabled', currentPage <= 1);
+            nextPageBtn.classList.toggle('disabled', currentPage >= totalPages);
         }
+
         prevPageBtn.onclick = () => {
             if (currentPage > 1) {
                 currentPage--;
