@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-links a');
+        // Close menu when clicking on a link (but not dropdown buttons)
+        const navLinks = document.querySelectorAll('.nav-links a:not(.dropbtn)');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenuButton.classList.remove('active');
@@ -39,6 +39,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuButton.classList.remove('active');
                 navContainer.classList.remove('active');
                 body.classList.remove('menu-open');
+            }
+        });
+
+        // Mobile dropdown functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const dropbtn = dropdown.querySelector('.dropbtn');
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+            if (dropbtn && dropdownContent) {
+                dropbtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            }
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
     }

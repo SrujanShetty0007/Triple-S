@@ -446,23 +446,58 @@ header .container {
         text-align: center;
         padding: 10px 0;
         justify-content: center;
+        color: white;
+
     }
 
     .dropdown-content {
         position: static;
         width: 100%;
         box-shadow: none;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.05);
         margin-top: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        display: block;
     }
 
     .dropdown-content a {
         color: white !important;
         text-align: center;
-        padding: 10px 0;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.95rem;
     }
 
     .dropdown-content a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown.active .dropdown-content {
+        max-height: 300px;
+    }
+
+    .dropdown.active .dropbtn i {
+        transform: rotate(180deg);
+    }
+
+    /* Ensure dropdowns are properly styled in mobile menu */
+    .nav-container.active .dropdown {
+        width: 100%;
+    }
+
+    .nav-container.active .dropdown .dropbtn {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0;
+    }
+
+    .nav-container.active .dropdown-content {
+        position: static;
+        background-color: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 0;
     }
 }
