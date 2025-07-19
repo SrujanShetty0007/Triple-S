@@ -1,8 +1,8 @@
 @import url(../assets/css/root-variables.css);
 
 :root {
-    --primary-color: #3a86ff;
-    --secondary-color: #38b000;
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
     --text-color: #333;
     --light-text: #666;
     --border-color: #e0e0e0;
@@ -40,7 +40,7 @@ body {
 /* Header */
 .pdf-header {
     height: var(--header-height);
-    background-color: var(--primary-color);
+    background: var(--gradient);
     color: white;
     display: flex;
     align-items: center;
@@ -152,7 +152,7 @@ body {
 
 .action-btn {
     padding: 0.5rem 1rem;
-    background-color: var(--secondary-color);
+    background-color: #2d9900;
     color: white;
     border: none;
     border-radius: var(--border-radius);

@@ -450,7 +450,12 @@
           "name": "Module 3  Lasers And Optical Fibers"
         }
       ],
-      "previous-papers": []
+      "previous-papers": [
+        {
+          "filename": "Physics Repeated Important Questions.pdf",
+          "name": "Physics Repeated Important Questions"
+        }
+      ]
     },
     "physics-eee": {
       "model-papers": [],
