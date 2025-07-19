@@ -4,6 +4,9 @@ class StudyPlanner {
         this.initializeElements();
         this.bindEvents();
         this.geminiApiKey = "AIzaSyBgNb24UuDYtaGWnkrb4VGWWikOjORNb_A"; // Default API key
+        this.isAuthenticated = false; // Track authentication status
+        this.loadSavedApiKey(); // Load saved API key if available
+        this.checkAuthStatus();
     }
 
     initializeElements() {
@@ -16,15 +19,93 @@ class StudyPlanner {
         this.loadingSpinner = document.getElementById('loadingSpinner');
         this.studyPlan = document.getElementById('studyPlan');
         this.copyBtn = document.getElementById('copyBtn');
+        this.authOverlay = document.getElementById('authOverlay');
+        this.authRequiredBanner = document.getElementById('authRequiredBanner');
+        this.inputSection = document.getElementById('inputSection');
     }
 
     bindEvents() {
-        this.generateBtn.addEventListener('click', () => this.generateStudyPlan());
+        this.generateBtn.addEventListener('click', () => this.handleGenerateClick());
         this.copyBtn.addEventListener('click', () => this.copyStudyPlan());
         [this.daysLeftInput, this.subjectsInput, this.hoursPerDayInput].forEach(input => {
             input.addEventListener('input', () => this.validateForm());
+            input.addEventListener('click', (e) => this.handleInputClick(e));
             this.validateForm();
         });
+
+        // Add click handler for learning style select
+        this.learningStyleSelect.addEventListener('click', (e) => this.handleInputClick(e));
+    }
+
+    // Check authentication status from Firebase
+    checkAuthStatus() {
+        // This will be handled by the Firebase auth state change listener in the HTML
+        // We'll just set up the method here for completeness
+    }
+
+    // Handle input field clicks
+    handleInputClick(e) {
+        if (!this.isAuthenticated) {
+            e.preventDefault();
+            this.showAuthModal();
+        }
+    }
+
+    // Show authentication modal
+    showAuthModal() {
+        if (this.authOverlay) {
+            this.authOverlay.style.display = 'flex';
+        }
+    }
+
+    // Handle generate button click
+    handleGenerateClick() {
+        if (!this.isAuthenticated) {
+            this.showAuthModal();
+            return;
+        }
+
+        this.generateStudyPlan();
+    }
+
+    // Set authentication state
+    setAuthState(isAuthenticated) {
+        this.isAuthenticated = isAuthenticated;
+
+        if (isAuthenticated) {
+            this.showAuthenticatedState();
+        } else {
+            this.showUnauthenticatedState();
+        }
+    }
+
+    // Show authenticated state UI
+    showAuthenticatedState() {
+        if (this.authRequiredBanner) this.authRequiredBanner.style.display = 'none';
+        if (this.inputSection) this.inputSection.classList.remove('form-disabled');
+
+        // Enable form inputs
+        const formInputs = document.querySelectorAll('#inputSection input, #inputSection select');
+        formInputs.forEach(input => {
+            input.disabled = false;
+        });
+
+        this.validateForm(); // Re-validate form to update button state
+    }
+
+    // Show unauthenticated state UI
+    showUnauthenticatedState() {
+        if (this.authRequiredBanner) this.authRequiredBanner.style.display = 'block';
+        if (this.inputSection) this.inputSection.classList.add('form-disabled');
+
+        // Disable form inputs
+        const formInputs = document.querySelectorAll('#inputSection input, #inputSection select');
+        formInputs.forEach(input => {
+            input.disabled = true;
+        });
+
+        // Disable generate button
+        if (this.generateBtn) this.generateBtn.disabled = true;
     }
 
     validateForm() {
@@ -34,7 +115,9 @@ class StudyPlanner {
         const isValid = daysLeft && subjects && hoursPerDay &&
             parseInt(daysLeft) > 0 && parseInt(daysLeft) <= 365 &&
             parseInt(hoursPerDay) > 0 && parseInt(hoursPerDay) <= 24;
-        this.generateBtn.disabled = !isValid;
+
+        // Only enable button if form is valid AND user is authenticated
+        this.generateBtn.disabled = !isValid || !this.isAuthenticated;
         return isValid;
     }
 
@@ -43,6 +126,13 @@ class StudyPlanner {
             this.showError('Please fill in all fields with valid values.');
             return;
         }
+
+        // Double-check authentication
+        if (!this.isAuthenticated) {
+            this.showAuthModal();
+            return;
+        }
+
         this.showLoading();
         this.outputSection.style.display = 'block';
         this.outputSection.classList.add('show');
@@ -334,9 +424,8 @@ class StudyPlanner {
     }
 }
 
-// Initialize StudyPlanner on DOMContentLoaded
+// Initialize the study planner
+const studyPlanner = new StudyPlanner();
 
-document.addEventListener('DOMContentLoaded', () => {
-    const studyPlanner = new StudyPlanner();
-    studyPlanner.loadSavedApiKey();
-});
+// Export for Firebase auth integration
+window.studyPlanner = studyPlanner;
