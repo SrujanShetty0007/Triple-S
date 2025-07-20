@@ -1,0 +1,524 @@
+[
+  {
+    "question": "Which of the following is not a valid JavaScript data type?",
+    "options": ["string", "number", "boolean", "character"],
+    "answer": 3,
+    "explanation": "JavaScript does not have a 'character' data type. It uses 'string' for both single characters and text."
+  },
+  {
+    "question": "What is the correct way to declare a variable in JavaScript?",
+    "options": ["var x = 5;", "let x = 5;", "const x = 5;", "All of the above"],
+    "answer": 3,
+    "explanation": "All three are valid ways to declare variables in JavaScript. 'var' is function-scoped, 'let' and 'const' are block-scoped."
+  },
+  {
+    "question": "Which operator is used for strict equality comparison in JavaScript?",
+    "options": ["==", "===", "=", "!="],
+    "answer": 1,
+    "explanation": "The '===' operator checks both value and type equality, while '==' only checks value equality with type coercion."
+  },
+  {
+    "question": "What is the output of console.log(typeof null);",
+    "options": ["null", "undefined", "object", "number"],
+    "answer": 2,
+    "explanation": "typeof null returns 'object' in JavaScript, which is considered a bug in the language."
+  },
+  {
+    "question": "Which method is used to add an element to the end of an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": 0,
+    "explanation": "The push() method adds one or more elements to the end of an array and returns the new length."
+  },
+  {
+    "question": "What is the purpose of the 'use strict' directive?",
+    "options": ["To enable strict mode", "To disable strict mode", "To declare variables", "To create functions"],
+    "answer": 0,
+    "explanation": "'use strict' enables strict mode, which helps catch common coding mistakes and prevents certain unsafe actions."
+  },
+  {
+    "question": "Which function is used to parse a string to an integer in JavaScript?",
+    "options": ["parseInt()", "parseFloat()", "Number()", "All of the above"],
+    "answer": 3,
+    "explanation": "All three functions can parse strings to numbers, but parseInt() is specifically for integers."
+  },
+  {
+    "question": "What is the output of console.log(2 + '2');",
+    "options": ["4", "22", "NaN", "Error"],
+    "answer": 1,
+    "explanation": "JavaScript performs type coercion, converting the number 2 to a string and concatenating them to '22'."
+  },
+  {
+    "question": "Which keyword is used to declare a function in JavaScript?",
+    "options": ["function", "def", "func", "method"],
+    "answer": 0,
+    "explanation": "The 'function' keyword is used to declare functions in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'this' keyword in JavaScript?",
+    "options": ["To refer to the current object", "To create a new object", "To call a function", "To declare a variable"],
+    "answer": 0,
+    "explanation": "The 'this' keyword refers to the current object context in which the code is executing."
+  },
+  {
+    "question": "Which method is used to remove the last element from an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": 1,
+    "explanation": "The pop() method removes the last element from an array and returns that element."
+  },
+  {
+    "question": "What is the output of console.log(typeof undefined);",
+    "options": ["undefined", "null", "object", "string"],
+    "answer": 0,
+    "explanation": "typeof undefined returns 'undefined' in JavaScript."
+  },
+  {
+    "question": "Which operator is used for logical AND in JavaScript?",
+    "options": ["&&", "||", "!", "&"],
+    "answer": 0,
+    "explanation": "The '&&' operator is used for logical AND operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'return' statement in JavaScript?",
+    "options": ["To exit a function", "To return a value from a function", "To create a loop", "To declare a variable"],
+    "answer": 1,
+    "explanation": "The 'return' statement is used to return a value from a function and exit the function execution."
+  },
+  {
+    "question": "Which method is used to convert a string to lowercase?",
+    "options": ["toLowerCase()", "toUpper()", "lower()", "case()"],
+    "answer": 0,
+    "explanation": "The toLowerCase() method converts a string to lowercase letters."
+  },
+  {
+    "question": "What is the output of console.log(5 == '5');",
+    "options": ["true", "false", "NaN", "Error"],
+    "answer": 0,
+    "explanation": "The '==' operator performs type coercion, so 5 == '5' evaluates to true."
+  },
+  {
+    "question": "Which keyword is used to declare a constant in JavaScript?",
+    "options": ["var", "let", "const", "constant"],
+    "answer": 2,
+    "explanation": "The 'const' keyword is used to declare constants that cannot be reassigned."
+  },
+  {
+    "question": "What is the purpose of the 'setTimeout' function?",
+    "options": ["To set a timer", "To delay execution of code", "To create a loop", "To declare a variable"],
+    "answer": 1,
+    "explanation": "setTimeout() is used to delay the execution of a function for a specified number of milliseconds."
+  },
+  {
+    "question": "Which method is used to find the length of a string?",
+    "options": ["length()", "size()", "count()", "length property"],
+    "answer": 3,
+    "explanation": "The 'length' property returns the number of characters in a string."
+  },
+  {
+    "question": "What is the output of console.log(typeof []);",
+    "options": ["array", "object", "list", "undefined"],
+    "answer": 1,
+    "explanation": "typeof [] returns 'object' because arrays are objects in JavaScript."
+  },
+  {
+    "question": "Which operator is used for logical OR in JavaScript?",
+    "options": ["&&", "||", "!", "|"],
+    "answer": 1,
+    "explanation": "The '||' operator is used for logical OR operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'break' statement in JavaScript?",
+    "options": ["To exit a loop", "To exit a function", "To create a loop", "To declare a variable"],
+    "answer": 0,
+    "explanation": "The 'break' statement is used to exit a loop or switch statement."
+  },
+  {
+    "question": "Which method is used to add an element to the beginning of an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": 3,
+    "explanation": "The unshift() method adds one or more elements to the beginning of an array."
+  },
+  {
+    "question": "What is the output of console.log(5 === '5');",
+    "options": ["true", "false", "NaN", "Error"],
+    "answer": 1,
+    "explanation": "The '===' operator checks both value and type, so 5 === '5' is false because they are different types."
+  },
+  {
+    "question": "Which keyword is used to declare a block-scoped variable?",
+    "options": ["var", "let", "const", "Both let and const"],
+    "answer": 3,
+    "explanation": "Both 'let' and 'const' declare block-scoped variables, while 'var' is function-scoped."
+  },
+  {
+    "question": "What is the purpose of the 'continue' statement in JavaScript?",
+    "options": ["To exit a loop", "To skip the current iteration", "To exit a function", "To declare a variable"],
+    "answer": 1,
+    "explanation": "The 'continue' statement skips the current iteration of a loop and continues with the next iteration."
+  },
+  {
+    "question": "Which method is used to remove the first element from an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": 2,
+    "explanation": "The shift() method removes the first element from an array and returns that element."
+  },
+  {
+    "question": "What is the output of console.log(typeof function(){});",
+    "options": ["function", "object", "undefined", "string"],
+    "answer": 0,
+    "explanation": "typeof function(){} returns 'function' in JavaScript."
+  },
+  {
+    "question": "Which operator is used for logical NOT in JavaScript?",
+    "options": ["&&", "||", "!", "~"],
+    "answer": 2,
+    "explanation": "The '!' operator is used for logical NOT operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'arguments' object in JavaScript?",
+    "options": ["To access function parameters", "To create arguments", "To declare variables", "To create functions"],
+    "answer": 0,
+    "explanation": "The 'arguments' object is an array-like object that contains the arguments passed to a function."
+  },
+  {
+    "question": "Which method is used to convert a string to uppercase?",
+    "options": ["toUpperCase()", "toLower()", "upper()", "case()"],
+    "answer": 0,
+    "explanation": "The toUpperCase() method converts a string to uppercase letters."
+  },
+  {
+    "question": "What is the output of console.log(0 == false);",
+    "options": ["true", "false", "NaN", "Error"],
+    "answer": 0,
+    "explanation": "The '==' operator performs type coercion, so 0 == false evaluates to true because both are falsy values."
+  },
+  {
+    "question": "Which keyword is used to declare a function-scoped variable?",
+    "options": ["var", "let", "const", "function"],
+    "answer": 0,
+    "explanation": "The 'var' keyword declares function-scoped variables, while 'let' and 'const' are block-scoped."
+  },
+  {
+    "question": "What is the purpose of the 'setInterval' function?",
+    "options": ["To set a timer", "To repeat execution of code", "To create a loop", "To declare a variable"],
+    "answer": 1,
+    "explanation": "setInterval() is used to repeatedly execute a function at specified time intervals."
+  },
+  {
+    "question": "Which method is used to find the index of an element in an array?",
+    "options": ["indexOf()", "findIndex()", "search()", "locate()"],
+    "answer": 0,
+    "explanation": "The indexOf() method returns the first index at which a given element can be found in an array."
+  },
+  {
+    "question": "What is the output of console.log(typeof null === 'object');",
+    "options": ["true", "false", "undefined", "Error"],
+    "answer": 0,
+    "explanation": "typeof null returns 'object', so typeof null === 'object' is true."
+  },
+  {
+    "question": "Which operator is used for bitwise AND in JavaScript?",
+    "options": ["&&", "&", "||", "|"],
+    "answer": 1,
+    "explanation": "The '&' operator is used for bitwise AND operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'default' parameter in JavaScript?",
+    "options": ["To set default values", "To create default functions", "To declare variables", "To create loops"],
+    "answer": 0,
+    "explanation": "Default parameters allow you to set default values for function parameters."
+  },
+  {
+    "question": "Which method is used to join array elements into a string?",
+    "options": ["join()", "concat()", "merge()", "combine()"],
+    "answer": 0,
+    "explanation": "The join() method joins all elements of an array into a string."
+  },
+  {
+    "question": "What is the output of console.log(1 + '1' + 1);",
+    "options": ["3", "111", "12", "Error"],
+    "answer": 1,
+    "explanation": "JavaScript performs left-to-right evaluation: 1 + '1' = '11', then '11' + 1 = '111'."
+  },
+  {
+    "question": "Which keyword is used to declare a variable that can be reassigned?",
+    "options": ["var", "let", "const", "Both var and let"],
+    "answer": 3,
+    "explanation": "Both 'var' and 'let' declare variables that can be reassigned, while 'const' cannot be reassigned."
+  },
+  {
+    "question": "What is the purpose of the 'rest' parameter in JavaScript?",
+    "options": ["To collect multiple arguments", "To create rest functions", "To declare variables", "To create loops"],
+    "answer": 0,
+    "explanation": "The rest parameter allows you to collect multiple arguments into an array."
+  },
+  {
+    "question": "Which method is used to reverse the order of elements in an array?",
+    "options": ["reverse()", "flip()", "invert()", "turn()"],
+    "answer": 0,
+    "explanation": "The reverse() method reverses the order of elements in an array."
+  },
+  {
+    "question": "What is the output of console.log(typeof NaN);",
+    "options": ["NaN", "number", "undefined", "string"],
+    "answer": 1,
+    "explanation": "typeof NaN returns 'number' in JavaScript, even though NaN stands for 'Not a Number'."
+  },
+  {
+    "question": "Which operator is used for bitwise OR in JavaScript?",
+    "options": ["||", "|", "&&", "&"],
+    "answer": 1,
+    "explanation": "The '|' operator is used for bitwise OR operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'spread' operator in JavaScript?",
+    "options": ["To spread elements", "To create spread functions", "To declare variables", "To create loops"],
+    "answer": 0,
+    "explanation": "The spread operator (...) allows you to expand elements from arrays or objects."
+  },
+  {
+    "question": "Which method is used to sort elements in an array?",
+    "options": ["sort()", "order()", "arrange()", "organize()"],
+    "answer": 0,
+    "explanation": "The sort() method sorts the elements of an array in place and returns the sorted array."
+  },
+  {
+    "question": "What is the output of console.log(2 ** 3);",
+    "options": ["5", "6", "8", "Error"],
+    "answer": 2,
+    "explanation": "The '**' operator is the exponentiation operator, so 2 ** 3 = 8."
+  },
+  {
+    "question": "Which keyword is used to declare a variable that cannot be reassigned?",
+    "options": ["var", "let", "const", "final"],
+    "answer": 2,
+    "explanation": "The 'const' keyword declares a constant that cannot be reassigned after initialization."
+  },
+  {
+    "question": "What is the purpose of the 'destructuring' assignment in JavaScript?",
+    "options": ["To extract values", "To create destructuring functions", "To declare variables", "To create loops"],
+    "answer": 0,
+    "explanation": "Destructuring assignment allows you to extract values from arrays or properties from objects into distinct variables."
+  },
+  {
+    "question": "Which method is used to create a new array with filtered elements?",
+    "options": ["filter()", "select()", "choose()", "pick()"],
+    "answer": 0,
+    "explanation": "The filter() method creates a new array with elements that pass a test function."
+  },
+  {
+    "question": "What is the output of console.log(typeof Symbol());",
+    "options": ["symbol", "object", "string", "undefined"],
+    "answer": 0,
+    "explanation": "typeof Symbol() returns 'symbol' in JavaScript."
+  },
+  {
+    "question": "Which operator is used for bitwise XOR in JavaScript?",
+    "options": ["^", "xor", "&&", "||"],
+    "answer": 0,
+    "explanation": "The '^' operator is used for bitwise XOR operations in JavaScript."
+  },
+  {
+    "question": "What is the purpose of the 'template literals' in JavaScript?",
+    "options": ["To create templates", "To create string templates", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Template literals allow you to create strings with embedded expressions using backticks."
+  },
+  {
+    "question": "Which method is used to create a new array with transformed elements?",
+    "options": ["map()", "transform()", "change()", "convert()"],
+    "answer": 0,
+    "explanation": "The map() method creates a new array with the results of calling a function for every array element."
+  },
+  {
+    "question": "What is the output of console.log(typeof BigInt(1));",
+    "options": ["bigint", "number", "object", "undefined"],
+    "answer": 0,
+    "explanation": "typeof BigInt(1) returns 'bigint' in JavaScript."
+  },
+  {
+    "question": "Which operator is used for nullish coalescing in JavaScript?",
+    "options": ["??", "||", "&&", "?:]"],
+    "answer": 0,
+    "explanation": "The '??' operator is the nullish coalescing operator that returns the right operand when the left is null or undefined."
+  },
+  {
+    "question": "What is the purpose of the 'optional chaining' operator in JavaScript?",
+    "options": ["To chain operations", "To safely access properties", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "The optional chaining operator (?.) allows you to safely access nested object properties without causing an error."
+  },
+  {
+    "question": "Which method is used to reduce an array to a single value?",
+    "options": ["reduce()", "sum()", "total()", "combine()"],
+    "answer": 0,
+    "explanation": "The reduce() method reduces an array to a single value by executing a reducer function on each element."
+  },
+  {
+    "question": "What is the output of console.log(typeof class {});",
+    "options": ["class", "function", "object", "undefined"],
+    "answer": 1,
+    "explanation": "typeof class {} returns 'function' because classes are functions in JavaScript."
+  },
+  {
+    "question": "Which operator is used for logical assignment in JavaScript?",
+    "options": ["&&=", "||=", "??=", "All of the above"],
+    "answer": 3,
+    "explanation": "All three are logical assignment operators: &&=, ||=, and ??= for different logical operations."
+  },
+  {
+    "question": "What is the purpose of the 'private fields' in JavaScript?",
+    "options": ["To create private variables", "To hide class fields", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Private fields (denoted by #) allow you to create truly private class fields that cannot be accessed from outside the class."
+  },
+  {
+    "question": "Which method is used to check if an array includes a specific element?",
+    "options": ["includes()", "contains()", "has()", "find()"],
+    "answer": 0,
+    "explanation": "The includes() method determines whether an array includes a certain value among its entries."
+  },
+  {
+    "question": "What is the output of console.log(typeof async function(){});",
+    "options": ["async", "function", "object", "undefined"],
+    "answer": 1,
+    "explanation": "typeof async function(){} returns 'function' because async functions are still functions."
+  },
+  {
+    "question": "Which operator is used for pipeline operator in JavaScript?",
+    "options": ["|>", "->", "=>", ">>"],
+    "answer": 0,
+    "explanation": "The pipeline operator (|>) is a proposed feature that allows you to chain function calls in a more readable way."
+  },
+  {
+    "question": "What is the purpose of the 'top-level await' in JavaScript?",
+    "options": ["To await at top level", "To create top-level functions", "To declare variables", "To create loops"],
+    "answer": 0,
+    "explanation": "Top-level await allows you to use await at the top level of a module without wrapping it in an async function."
+  },
+  {
+    "question": "Which method is used to create a shallow copy of an array?",
+    "options": ["slice()", "copy()", "clone()", "duplicate()"],
+    "answer": 0,
+    "explanation": "The slice() method creates a shallow copy of an array without modifying the original array."
+  },
+  {
+    "question": "What is the output of console.log(typeof Proxy);",
+    "options": ["proxy", "function", "object", "undefined"],
+    "answer": 1,
+    "explanation": "typeof Proxy returns 'function' because Proxy is a constructor function."
+  },
+  {
+    "question": "Which operator is used for optional chaining assignment in JavaScript?",
+    "options": ["?=", "??=", "||=", "&&="],
+    "answer": 0,
+    "explanation": "The '?=' operator is used for optional chaining assignment, though it's not a standard JavaScript operator."
+  },
+  {
+    "question": "What is the purpose of the 'WeakMap' in JavaScript?",
+    "options": ["To create weak maps", "To create maps with weak references", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "WeakMap is a collection of key-value pairs where the keys are weakly referenced, allowing garbage collection of the keys."
+  },
+  {
+    "question": "Which method is used to check if an object has a specific property?",
+    "options": ["hasOwnProperty()", "has()", "contains()", "includes()"],
+    "answer": 0,
+    "explanation": "The hasOwnProperty() method returns a boolean indicating whether the object has the specified property as its own property."
+  },
+  {
+    "question": "What is the output of console.log(typeof GeneratorFunction);",
+    "options": ["generator", "function", "object", "undefined"],
+    "answer": 1,
+    "explanation": "typeof GeneratorFunction returns 'function' because GeneratorFunction is a constructor function."
+  },
+  {
+    "question": "Which operator is used for exponentiation assignment in JavaScript?",
+    "options": ["**=", "^=", "pow=", "exp="],
+    "answer": 0,
+    "explanation": "The '**=' operator is used for exponentiation assignment, equivalent to x = x ** y."
+  },
+  {
+    "question": "What is the purpose of the 'Symbol' in JavaScript?",
+    "options": ["To create symbols", "To create unique identifiers", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Symbol is a primitive data type that creates unique, immutable values that can be used as object property keys."
+  },
+  {
+    "question": "Which method is used to merge multiple arrays?",
+    "options": ["concat()", "merge()", "join()", "combine()"],
+    "answer": 0,
+    "explanation": "The concat() method is used to merge two or more arrays and returns a new array."
+  },
+  {
+    "question": "What is the output of console.log(typeof Reflect);",
+    "options": ["reflect", "function", "object", "undefined"],
+    "answer": 1,
+    "explanation": "typeof Reflect returns 'function' because Reflect is a built-in object that provides methods for interceptable JavaScript operations."
+  },
+  {
+    "question": "Which operator is used for bitwise left shift assignment in JavaScript?",
+    "options": ["<<=", ">>=", ">>>=", "&="],
+    "answer": 0,
+    "explanation": "The '<<=' operator is used for bitwise left shift assignment, equivalent to x = x << y."
+  },
+  {
+    "question": "What is the purpose of the 'Promise' in JavaScript?",
+    "options": ["To create promises", "To handle asynchronous operations", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Promise is an object representing the eventual completion or failure of an asynchronous operation."
+  },
+  {
+    "question": "Which method is used to check if a string starts with a specific substring?",
+    "options": ["startsWith()", "startWith()", "beginWith()", "hasPrefix()"],
+    "answer": 0,
+    "explanation": "The startsWith() method determines whether a string begins with the characters of a specified string."
+  },
+  {
+    "question": "What is the output of console.log(typeof Intl);",
+    "options": ["intl", "function", "object", "undefined"],
+    "answer": 2,
+    "explanation": "typeof Intl returns 'object' because Intl is a built-in object that provides internationalization features."
+  },
+  {
+    "question": "Which operator is used for bitwise right shift assignment in JavaScript?",
+    "options": ["<<=", ">>=", ">>>=", "&="],
+    "answer": 1,
+    "explanation": "The '>>=' operator is used for bitwise right shift assignment, equivalent to x = x >> y."
+  },
+  {
+    "question": "What is the purpose of the 'Map' in JavaScript?",
+    "options": ["To create maps", "To create key-value collections", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Map is a collection of key-value pairs where keys can be of any type, unlike objects where keys must be strings or symbols."
+  },
+  {
+    "question": "Which method is used to check if a string ends with a specific substring?",
+    "options": ["endsWith()", "endWith()", "finishWith()", "hasSuffix()"],
+    "answer": 0,
+    "explanation": "The endsWith() method determines whether a string ends with the characters of a specified string."
+  },
+  {
+    "question": "What is the output of console.log(typeof Atomics);",
+    "options": ["atomics", "function", "object", "undefined"],
+    "answer": 2,
+    "explanation": "typeof Atomics returns 'object' because Atomics is a built-in object that provides atomic operations."
+  },
+  {
+    "question": "Which operator is used for unsigned right shift assignment in JavaScript?",
+    "options": ["<<=", ">>=", ">>>=", "&="],
+    "answer": 2,
+    "explanation": "The '>>>=' operator is used for unsigned right shift assignment, equivalent to x = x >>> y."
+  },
+  {
+    "question": "What is the purpose of the 'Set' in JavaScript?",
+    "options": ["To create sets", "To create unique value collections", "To declare variables", "To create loops"],
+    "answer": 1,
+    "explanation": "Set is a collection of unique values where each value can only occur once in the collection."
+  },
+  {
+    "question": "Which method is used to check if a string includes a specific substring?",
+    "options": ["includes()", "contains()", "has()", "find()"],
+    "answer": 0,
+    "explanation": "The includes() method determines whether a string contains the characters of a specified string."
+  }
+]

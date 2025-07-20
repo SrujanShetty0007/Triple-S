@@ -4,26 +4,28 @@ import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.0/f
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 
 // DOM Elements
-const profileImageView = document.getElementById('profile-image-view');
-const profileImage = document.getElementById('profile-image');
-const profilePictureInput = document.getElementById('profile-picture-input');
-const changePictureBtn = document.getElementById('change-picture-btn');
-const displayNameView = document.getElementById('display-name-view');
-const emailView = document.getElementById('email-view');
-const displayNameInput = document.getElementById('display-name');
-const emailInput = document.getElementById('email');
-const dobInput = document.getElementById('dob');
-const editProfileBtn = document.getElementById('edit-profile-btn');
-const saveProfileBtn = document.getElementById('save-profile-btn');
-const cancelEditBtn = document.getElementById('cancel-edit-btn');
-const logoutBtn = document.getElementById('logout-btn');
-const notification = document.getElementById('notification');
-const notificationIcon = document.getElementById('notification-icon');
-const notificationMessage = document.getElementById('notification-message');
-const profilePictureOverlay = document.querySelector('.profile-picture-overlay');
-const viewProfileSection = document.getElementById('view-profile-section');
-const editProfileSection = document.getElementById('edit-profile-section');
-const loader = document.getElementById('page-loader');
+const elements = {
+    profileImageView: document.getElementById('profile-image-view'),
+    profileImage: document.getElementById('profile-image'),
+    profilePictureInput: document.getElementById('profile-picture-input'),
+    changePictureBtn: document.getElementById('change-picture-btn'),
+    displayNameView: document.getElementById('display-name-view'),
+    emailView: document.getElementById('email-view'),
+    displayNameInput: document.getElementById('display-name'),
+    emailInput: document.getElementById('email'),
+    dobInput: document.getElementById('dob'),
+    editProfileBtn: document.getElementById('edit-profile-btn'),
+    saveProfileBtn: document.getElementById('save-profile-btn'),
+    cancelEditBtn: document.getElementById('cancel-edit-btn'),
+    logoutBtn: document.getElementById('logout-btn'),
+    notification: document.getElementById('notification'),
+    notificationIcon: document.getElementById('notification-icon'),
+    notificationMessage: document.getElementById('notification-message'),
+    profilePictureOverlay: document.querySelector('.profile-picture-overlay'),
+    viewProfileSection: document.getElementById('view-profile-section'),
+    editProfileSection: document.getElementById('edit-profile-section'),
+    loader: document.getElementById('page-loader')
+};
 
 // Variables
 let currentUser = null;
@@ -31,12 +33,10 @@ let profilePictureFile = null;
 let auth, db, storage;
 let userData = {};
 
-// Initialize application when DOM is loaded
+// Initialize application
 document.addEventListener('DOMContentLoaded', () => {
-    if (loader) {
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
+    if (elements.loader) {
+        setTimeout(() => elements.loader.style.display = 'none', 500);
     }
     initializeApp();
 });
@@ -46,8 +46,8 @@ function initializeApp() {
     if (!window.firebaseAuth || !window.firebaseDb || !window.firebaseStorage) {
         console.error('Firebase not initialized properly');
         showNotification('Error initializing application', 'error');
-        displayNameView.textContent = 'Error loading profile';
-        emailView.textContent = 'Please refresh the page';
+        elements.displayNameView.textContent = 'Error loading profile';
+        elements.emailView.textContent = 'Please refresh the page';
         return;
     }
 
@@ -61,119 +61,109 @@ function initializeApp() {
 
 // Handle authentication state changes
 async function handleAuthStateChanged(user) {
-    if (user) {
-        currentUser = user;
-
-        try {
-            const userDoc = await getDoc(doc(db, "users", user.uid));
-
-            if (userDoc.exists()) {
-                userData = userDoc.data();
-                updateProfileDisplay(user, userData);
-            } else {
-                updateProfileDisplay(user, {});
-            }
-        } catch (error) {
-            console.error('Error loading profile:', error);
-            showNotification('Error loading profile data', 'error');
-            updateProfileDisplay(user, {});
-        }
-    } else {
+    if (!user) {
         window.location.href = '../login.html';
+        return;
+    }
+
+    currentUser = user;
+    try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        userData = userDoc.exists() ? userDoc.data() : {};
+        updateProfileDisplay(user, userData);
+    } catch (error) {
+        console.error('Error loading profile:', error);
+        showNotification('Error loading profile data', 'error');
+        updateProfileDisplay(user, {});
     }
 }
 
 // Update profile display with user data
 function updateProfileDisplay(user, userData) {
+    const displayName = userData.displayName || user.displayName || 'User';
+    const email = user.email || userData.email || 'No email available';
+    const profilePictureURL = userData.profilePictureURL || user.photoURL;
+
     // Update view mode
-    displayNameView.textContent = userData.displayName || user.displayName || 'User';
-    emailView.textContent = user.email || userData.email || 'No email available';
+    elements.displayNameView.textContent = displayName;
+    elements.emailView.textContent = email;
 
     // Update profile picture
-    if (userData.profilePictureURL) {
-        profileImageView.src = userData.profilePictureURL;
-        profileImage.src = userData.profilePictureURL;
-    } else if (user.photoURL) {
-        profileImageView.src = user.photoURL;
-        profileImage.src = user.photoURL;
+    if (profilePictureURL) {
+        elements.profileImageView.src = profilePictureURL;
+        elements.profileImage.src = profilePictureURL;
     }
 
     // Update edit mode fields
-    displayNameInput.value = userData.displayName || user.displayName || '';
-    emailInput.value = user.email || userData.email || '';
-    dobInput.value = userData.dateOfBirth || '';
+    elements.displayNameInput.value = displayName;
+    elements.emailInput.value = email;
+    elements.dobInput.value = userData.dateOfBirth || '';
 }
 
 // Set up event listeners
 function setupEventListeners() {
-    editProfileBtn.addEventListener('click', showEditMode);
-    cancelEditBtn.addEventListener('click', showViewMode);
+    elements.editProfileBtn.addEventListener('click', () => toggleMode('edit'));
+    elements.cancelEditBtn.addEventListener('click', () => toggleMode('view'));
+    elements.saveProfileBtn.addEventListener('click', saveProfile);
+    elements.logoutBtn.addEventListener('click', handleLogout);
     setupProfilePictureListeners();
-    saveProfileBtn.addEventListener('click', saveProfile);
-    logoutBtn.addEventListener('click', handleLogout);
 }
 
-// Toggle to edit mode
-function showEditMode() {
-    viewProfileSection.style.display = 'none';
-    editProfileSection.style.display = 'block';
-}
+// Toggle between view and edit modes
+function toggleMode(mode) {
+    const isEdit = mode === 'edit';
+    elements.viewProfileSection.style.display = isEdit ? 'none' : 'block';
+    elements.editProfileSection.style.display = isEdit ? 'block' : 'none';
 
-// Toggle to view mode
-function showViewMode() {
-    if (userData.profilePictureURL) {
-        profileImage.src = userData.profilePictureURL;
-    } else if (currentUser.photoURL) {
-        profileImage.src = currentUser.photoURL;
-    } else {
-        profileImage.src = '../assets/images/user.png';
+    if (!isEdit) {
+        // Reset to original values when canceling
+        const profilePictureURL = userData.profilePictureURL || currentUser.photoURL;
+        elements.profileImage.src = profilePictureURL || '../assets/images/user.png';
+        elements.displayNameInput.value = userData.displayName || currentUser.displayName || '';
+        elements.dobInput.value = userData.dateOfBirth || '';
+        profilePictureFile = null;
+        if (elements.profilePictureInput) elements.profilePictureInput.value = '';
     }
-
-    displayNameInput.value = userData.displayName || currentUser.displayName || '';
-    dobInput.value = userData.dateOfBirth || '';
-
-    profilePictureFile = null;
-    if (profilePictureInput) profilePictureInput.value = '';
-
-    viewProfileSection.style.display = 'block';
-    editProfileSection.style.display = 'none';
 }
 
 // Event listeners for profile picture
 function setupProfilePictureListeners() {
-    const triggerFileInput = () => profilePictureInput.click();
+    const triggerFileInput = () => elements.profilePictureInput.click();
 
-    if (profilePictureOverlay) {
-        profilePictureOverlay.addEventListener('click', triggerFileInput);
+    if (elements.profilePictureOverlay) {
+        elements.profilePictureOverlay.addEventListener('click', triggerFileInput);
     }
 
-    if (changePictureBtn) {
-        changePictureBtn.addEventListener('click', triggerFileInput);
+    if (elements.changePictureBtn) {
+        elements.changePictureBtn.addEventListener('click', triggerFileInput);
     }
 
-    if (profilePictureInput) {
-        profilePictureInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                if (!file.type.match('image.*')) {
-                    showNotification('Please select an image file', 'error');
-                    return;
-                }
-
-                if (file.size > 2 * 1024 * 1024) {
-                    showNotification('Image size should be less than 2MB', 'error');
-                    return;
-                }
-
-                profilePictureFile = file;
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    profileImage.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+    if (elements.profilePictureInput) {
+        elements.profilePictureInput.addEventListener('change', handleProfilePictureChange);
     }
+}
+
+// Handle profile picture file selection
+function handleProfilePictureChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.match('image.*')) {
+        showNotification('Please select an image file', 'error');
+        return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+        showNotification('Image size should be less than 2MB', 'error');
+        return;
+    }
+
+    profilePictureFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        elements.profileImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
 
 // Save profile changes
@@ -183,28 +173,28 @@ async function saveProfile() {
         return;
     }
 
-    if (!displayNameInput.value.trim()) {
+    if (!elements.displayNameInput.value.trim()) {
         showNotification('Please enter a display name', 'error');
         return;
     }
 
-    saveProfileBtn.disabled = true;
-    saveProfileBtn.textContent = 'Saving...';
+    elements.saveProfileBtn.disabled = true;
+    elements.saveProfileBtn.textContent = 'Saving...';
 
     try {
         const userRef = doc(db, "users", currentUser.uid);
+        const displayName = elements.displayNameInput.value.trim();
+        const dateOfBirth = elements.dobInput.value || '';
 
-        let profileUpdateData = {
-            displayName: displayNameInput.value.trim()
-        };
-
+        let profileUpdateData = { displayName };
         let firestoreData = {
-            displayName: displayNameInput.value.trim(),
-            dateOfBirth: dobInput.value || '',
+            displayName,
+            dateOfBirth,
             email: currentUser.email,
             lastUpdated: new Date().toISOString()
         };
 
+        // Upload profile picture if selected
         if (profilePictureFile) {
             try {
                 const fileExtension = profilePictureFile.name.split('.').pop();
@@ -215,7 +205,7 @@ async function saveProfile() {
 
                 profileUpdateData.photoURL = downloadURL;
                 firestoreData.profilePictureURL = downloadURL;
-                profileImageView.src = downloadURL;
+                elements.profileImageView.src = downloadURL;
             } catch (uploadError) {
                 console.error('Error uploading image:', uploadError);
                 showNotification('Failed to upload profile picture', 'error');
@@ -226,20 +216,20 @@ async function saveProfile() {
         await setDoc(userRef, firestoreData, { merge: true });
 
         userData = { ...userData, ...firestoreData };
-        displayNameView.textContent = firestoreData.displayName;
-        emailView.textContent = currentUser.email || firestoreData.email || 'No email available';
+        elements.displayNameView.textContent = firestoreData.displayName;
+        elements.emailView.textContent = currentUser.email || firestoreData.email || 'No email available';
 
         showNotification('Profile updated successfully!', 'success');
-        showViewMode();
+        toggleMode('view');
 
         profilePictureFile = null;
-        if (profilePictureInput) profilePictureInput.value = '';
+        if (elements.profilePictureInput) elements.profilePictureInput.value = '';
     } catch (error) {
         console.error('Error updating profile:', error);
         showNotification('Error updating profile', 'error');
     } finally {
-        saveProfileBtn.disabled = false;
-        saveProfileBtn.textContent = 'Save Changes';
+        elements.saveProfileBtn.disabled = false;
+        elements.saveProfileBtn.textContent = 'Save Changes';
     }
 }
 
@@ -256,12 +246,11 @@ async function handleLogout() {
 
 // Show notification
 function showNotification(message, type = 'success') {
-    notificationMessage.textContent = message;
-    notificationIcon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-    notification.classList.add('show');
+    elements.notificationMessage.textContent = message;
+    elements.notificationIcon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    elements.notification.classList.add('show');
 
     setTimeout(() => {
-        notification.classList.remove('show');
+        elements.notification.classList.remove('show');
     }, 3000);
 }
-

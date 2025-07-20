@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let quizData = [];
     // Fetch questions from JSON
-    fetch('java-questions.json')
+    fetch('javascript-questions.json')
         .then(response => response.json())
         .then(data => {
             quizData = shuffleArray(data).slice(0, 10); // Only use 10 questions per round
@@ -345,4 +345,4 @@ document.addEventListener('DOMContentLoaded', () => {
         totalQuestionsEl.textContent = quizData.length;
         totalScoreEl.textContent = quizData.length * 10;
     }
-}); 
+});

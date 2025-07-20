@@ -78,7 +78,10 @@
 <body>
     <!-- Loader -->
     <div id="page-loader" class="page-loader">
-        <div class="loader"></div>
+        <div class="loader-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-text">Loading...</div>
+        </div>
     </div>
 
     <!-- Header -->
@@ -128,80 +131,181 @@
 
     <main>
         <div class="container profile-container">
+            <!-- Profile Header Section -->
+            <div class="profile-hero">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h1>My Profile</h1>
+                    <p>Manage your account settings and personal information</p>
+                </div>
+            </div>
+
+            <!-- Main Profile Card -->
             <div class="profile-card">
-                <div class="profile-header">
-                    <h2>My Profile</h2>
-                    <p>Your account information</p>
+                <div class="card-header">
+                    <div class="header-content">
+                        <h2><i class="fas fa-user-edit"></i> Profile Information</h2>
+                        <p>Update your personal details and profile picture</p>
+                    </div>
                 </div>
 
                 <!-- View Mode - Initially visible -->
                 <div class="profile-content" id="view-profile-section">
                     <div class="profile-view-mode">
-                        <div class="profile-picture-view">
-                            <img id="profile-image-view" src="assets/images/user.png" alt="Profile Picture">
+                        <div class="profile-picture-section">
+                            <div class="profile-picture-view">
+                                <img id="profile-image-view" src="assets/images/user.png" alt="Profile Picture">
+                                <div class="picture-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="picture-info">
+                                <span class="picture-label">Profile Picture</span>
+                            </div>
                         </div>
+
                         <div class="profile-info">
-                            <h3 id="display-name-view">User Name</h3>
-                            <p id="email-view" class="email-display">Loading...</p>
-                            <button id="edit-profile-btn" class="primary-btn">Edit Profile</button>
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="fas fa-user"></i>
+                                    <span>Display Name</span>
+                                </div>
+                                <div class="info-value" id="display-name-view">User Name</div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email Address</span>
+                                </div>
+                                <div class="info-value" id="email-view">Loading...</div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button id="edit-profile-btn" class="primary-btn">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Profile
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Edit Mode - Initially hidden -->
                 <div class="profile-content" id="edit-profile-section" style="display: none;">
-                    <div class="profile-picture-section">
-                        <div class="profile-picture-container">
-                            <img id="profile-image" src="assets/images/user.png" alt="Profile Picture">
-                            <div class="profile-picture-overlay">
-                                <i class="fas fa-camera"></i>
+                    <div class="edit-layout">
+                        <div class="profile-picture-section">
+                            <div class="picture-upload-area">
+                                <div class="profile-picture-container">
+                                    <img id="profile-image" src="assets/images/user.png" alt="Profile Picture">
+                                    <div class="profile-picture-overlay">
+                                        <div class="overlay-content">
+                                            <i class="fas fa-camera"></i>
+                                            <span>Change Photo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="file" id="profile-picture-input" accept="image/*" hidden>
+                                <button id="change-picture-btn" class="secondary-btn">
+                                    <i class="fas fa-upload"></i>
+                                    Upload New Picture
+                                </button>
+                                <div class="upload-hint">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Max size: 2MB, Formats: JPG, PNG</span>
+                                </div>
                             </div>
                         </div>
-                        <input type="file" id="profile-picture-input" accept="image/*" hidden>
-                        <button id="change-picture-btn" class="secondary-btn">Change Picture</button>
-                    </div>
 
-                    <div class="profile-details">
-                        <div class="form-group">
-                            <label for="display-name">Display Name</label>
-                            <input type="text" id="display-name" placeholder="Your display name" class="form-control">
-                        </div>
+                        <div class="profile-details">
+                            <div class="form-section">
+                                <h3><i class="fas fa-user-edit"></i> Personal Information</h3>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Your email address" class="form-control"
-                                disabled>
-                        </div>
+                                <div class="form-group">
+                                    <label for="display-name">
+                                        <i class="fas fa-user"></i>
+                                        Display Name
+                                    </label>
+                                    <input type="text" id="display-name" placeholder="Enter your display name"
+                                        class="form-control">
+                                    <div class="form-hint">This name will be displayed to other users</div>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" class="form-control">
-                        </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address
+                                    </label>
+                                    <input type="email" id="email" placeholder="Your email address" class="form-control"
+                                        disabled>
+                                    <div class="form-hint">Email cannot be changed for security reasons</div>
+                                </div>
 
-                        <div class="button-group">
-                            <button id="save-profile-btn" class="primary-btn">Save Changes</button>
-                            <button id="cancel-edit-btn" class="outline-btn">Cancel</button>
+                                <div class="form-group">
+                                    <label for="dob">
+                                        <i class="fas fa-calendar"></i>
+                                        Date of Birth
+                                    </label>
+                                    <input type="date" id="dob" class="form-control">
+                                    <div class="form-hint">Optional: Add your date of birth</div>
+                                </div>
+                            </div>
+
+                            <div class="button-group">
+                                <button id="save-profile-btn" class="primary-btn">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                                <button id="cancel-edit-btn" class="outline-btn">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="profile-actions">
-                <button id="logout-btn" class="outline-btn">Logout</button>
+            <!-- Account Actions Card -->
+            <div class="account-actions-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-cog"></i> Account Actions</h3>
+                </div>
+                <div class="actions-content">
+                    <div class="action-item">
+                        <div class="action-info">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <div class="action-details">
+                                <h4>Sign Out</h4>
+                                <p>Log out of your account</p>
+                            </div>
+                        </div>
+                        <button id="logout-btn" class="danger-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Alert notification -->
+        <!-- Enhanced notification -->
         <div id="notification" class="notification">
             <div class="notification-content">
-                <i id="notification-icon" class="fas"></i>
-                <p id="notification-message"></p>
+                <div class="notification-icon">
+                    <i id="notification-icon" class="fas"></i>
+                </div>
+                <div class="notification-body">
+                    <p id="notification-message"></p>
+                </div>
+                <button class="notification-close">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         </div>
     </main>
-
-
-
 
     <!-- Footer -->
     <footer>

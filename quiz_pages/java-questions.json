@@ -58,5 +58,365 @@
     "options": ["Object-oriented", "Use of pointers", "Platform independent", "Automatic garbage collection"],
     "answer": 1,
     "explanation": "Java does not support explicit pointer manipulation like C/C++."
+  },
+  {
+    "question": "What is the purpose of the 'final' keyword in Java?",
+    "options": ["To make a class abstract", "To prevent inheritance and overriding", "To create a constant", "To make a method static"],
+    "answer": 1,
+    "explanation": "The 'final' keyword prevents inheritance of classes and overriding of methods."
+  },
+  {
+    "question": "Which of the following is true about abstract classes in Java?",
+    "options": ["They can be instantiated", "They can have constructors", "They cannot have any methods", "They must be declared final"],
+    "answer": 1,
+    "explanation": "Abstract classes can have constructors, but they cannot be instantiated directly."
+  },
+  {
+    "question": "What is the difference between '==' and '.equals()' in Java?",
+    "options": ["No difference", "== compares references, .equals() compares content", "== compares content, .equals() compares references", "Both compare references"],
+    "answer": 1,
+    "explanation": "== compares object references, while .equals() compares the actual content of objects."
+  },
+  {
+    "question": "Which of the following is a checked exception in Java?",
+    "options": ["NullPointerException", "ArrayIndexOutOfBoundsException", "IOException", "RuntimeException"],
+    "answer": 2,
+    "explanation": "IOException is a checked exception that must be handled or declared."
+  },
+  {
+    "question": "What is the purpose of the 'static' keyword in Java?",
+    "options": ["To make a class final", "To create instance variables", "To create class-level members", "To make a method abstract"],
+    "answer": 2,
+    "explanation": "The 'static' keyword creates class-level members that belong to the class rather than instances."
+  },
+  {
+    "question": "Which of the following is not a valid way to create a thread in Java?",
+    "options": ["Extending Thread class", "Implementing Runnable interface", "Using ExecutorService", "Using the 'thread' keyword"],
+    "answer": 3,
+    "explanation": "There is no 'thread' keyword in Java. Threads are created by extending Thread or implementing Runnable."
+  },
+  {
+    "question": "What is the purpose of the 'synchronized' keyword in Java?",
+    "options": ["To make a class immutable", "To prevent multiple threads from accessing a resource simultaneously", "To create a constant", "To make a method static"],
+    "answer": 1,
+    "explanation": "The 'synchronized' keyword prevents multiple threads from accessing a resource simultaneously."
+  },
+  {
+    "question": "Which of the following is true about interfaces in Java?",
+    "options": ["They can have constructors", "They can have instance variables", "They can have default methods", "They can be instantiated"],
+    "answer": 2,
+    "explanation": "Interfaces can have default methods (since Java 8) but cannot have constructors or be instantiated."
+  },
+  {
+    "question": "What is the purpose of the 'transient' keyword in Java?",
+    "options": ["To make a variable static", "To prevent serialization of a field", "To make a class abstract", "To create a constant"],
+    "answer": 1,
+    "explanation": "The 'transient' keyword prevents a field from being serialized."
+  },
+  {
+    "question": "Which of the following is not a valid Java identifier?",
+    "options": ["_variable", "variable123", "123variable", "variable_name"],
+    "answer": 2,
+    "explanation": "Java identifiers cannot start with a digit. '123variable' is invalid."
+  },
+  {
+    "question": "What is the purpose of the 'volatile' keyword in Java?",
+    "options": ["To make a variable constant", "To ensure visibility of changes across threads", "To prevent inheritance", "To create a static variable"],
+    "answer": 1,
+    "explanation": "The 'volatile' keyword ensures that changes to a variable are visible to all threads."
+  },
+  {
+    "question": "Which of the following is true about method overloading in Java?",
+    "options": ["Methods must have different return types", "Methods must have different parameter lists", "Methods must be in different classes", "Methods must be static"],
+    "answer": 1,
+    "explanation": "Method overloading requires methods to have different parameter lists (number, type, or order)."
+  },
+  {
+    "question": "What is the purpose of the 'super' keyword in Java?",
+    "options": ["To call the parent class constructor", "To create a new object", "To make a class final", "To create a static method"],
+    "answer": 0,
+    "explanation": "The 'super' keyword is used to call the parent class constructor or access parent class members."
+  },
+  {
+    "question": "Which of the following is not a valid Java loop?",
+    "options": ["for", "while", "do-while", "repeat-until"],
+    "answer": 3,
+    "explanation": "Java has for, while, and do-while loops. 'repeat-until' is not a valid Java loop."
+  },
+  {
+    "question": "What is the purpose of the 'break' statement in Java?",
+    "options": ["To exit a loop or switch", "To skip the current iteration", "To continue to the next iteration", "To return from a method"],
+    "answer": 0,
+    "explanation": "The 'break' statement is used to exit a loop or switch statement."
+  },
+  {
+    "question": "Which of the following is true about Java arrays?",
+    "options": ["They are dynamic in size", "They can only store primitive types", "They have a fixed length", "They cannot be sorted"],
+    "answer": 2,
+    "explanation": "Java arrays have a fixed length that is determined when they are created."
+  },
+  {
+    "question": "What is the purpose of the 'continue' statement in Java?",
+    "options": ["To exit a loop", "To skip the current iteration", "To return from a method", "To break out of a switch"],
+    "answer": 1,
+    "explanation": "The 'continue' statement skips the current iteration and continues with the next iteration."
+  },
+  {
+    "question": "Which of the following is not a valid Java access modifier?",
+    "options": ["public", "private", "protected", "internal"],
+    "answer": 3,
+    "explanation": "'internal' is not a valid Java access modifier. Java uses public, private, protected, and default."
+  },
+  {
+    "question": "What is the purpose of the 'this' keyword in Java?",
+    "options": ["To refer to the current object", "To create a new object", "To call a static method", "To make a class final"],
+    "answer": 0,
+    "explanation": "The 'this' keyword refers to the current object instance."
+  },
+  {
+    "question": "Which of the following is true about Java packages?",
+    "options": ["They must be declared in every file", "They can contain only one class", "They help organize classes", "They cannot be nested"],
+    "answer": 2,
+    "explanation": "Packages help organize classes and provide namespace management."
+  },
+  {
+    "question": "What is the purpose of the 'import' statement in Java?",
+    "options": ["To create a new class", "To include classes from other packages", "To make a class public", "To create a package"],
+    "answer": 1,
+    "explanation": "The 'import' statement is used to include classes from other packages."
+  },
+  {
+    "question": "Which of the following is not a valid Java primitive type?",
+    "options": ["byte", "short", "long", "integer"],
+    "answer": 3,
+    "explanation": "'integer' is not a valid Java primitive type. The correct type is 'int'."
+  },
+  {
+    "question": "What is the purpose of the 'instanceof' operator in Java?",
+    "options": ["To check if an object is an instance of a class", "To create a new object", "To compare two objects", "To cast an object"],
+    "answer": 0,
+    "explanation": "The 'instanceof' operator checks if an object is an instance of a specific class or interface."
+  },
+  {
+    "question": "Which of the following is true about Java constructors?",
+    "options": ["They must have a return type", "They cannot be overloaded", "They have the same name as the class", "They cannot be private"],
+    "answer": 2,
+    "explanation": "Constructors have the same name as the class and are used to initialize objects."
+  },
+  {
+    "question": "What is the purpose of the 'new' keyword in Java?",
+    "options": ["To create a new object", "To declare a variable", "To import a class", "To make a method static"],
+    "answer": 0,
+    "explanation": "The 'new' keyword is used to create a new object instance."
+  },
+  {
+    "question": "Which of the following is not a valid Java collection?",
+    "options": ["ArrayList", "HashMap", "LinkedList", "ArrayStack"],
+    "answer": 3,
+    "explanation": "'ArrayStack' is not a standard Java collection. Java has Stack, but not ArrayStack."
+  },
+  {
+    "question": "What is the purpose of the 'toString()' method in Java?",
+    "options": ["To convert a string to an object", "To return a string representation of an object", "To create a new object", "To compare two objects"],
+    "answer": 1,
+    "explanation": "The 'toString()' method returns a string representation of an object."
+  },
+  {
+    "question": "Which of the following is true about Java interfaces?",
+    "options": ["They can have instance variables", "They can have constructors", "They can have default methods", "They can be instantiated"],
+    "answer": 2,
+    "explanation": "Interfaces can have default methods (since Java 8) but cannot have constructors or be instantiated."
+  },
+  {
+    "question": "What is the purpose of the 'clone()' method in Java?",
+    "options": ["To create a copy of an object", "To delete an object", "To compare two objects", "To convert an object to string"],
+    "answer": 0,
+    "explanation": "The 'clone()' method creates a copy of an object."
+  },
+  {
+    "question": "Which of the following is not a valid Java exception?",
+    "options": ["NullPointerException", "ArrayIndexOutOfBoundsException", "FileNotFoundException", "InvalidException"],
+    "answer": 3,
+    "explanation": "'InvalidException' is not a standard Java exception."
+  },
+  {
+    "question": "What is the purpose of the 'finally' block in Java?",
+    "options": ["To handle exceptions", "To execute code that always runs", "To create a loop", "To define a method"],
+    "answer": 1,
+    "explanation": "The 'finally' block executes code that always runs, regardless of whether an exception occurs."
+  },
+  {
+    "question": "Which of the following is true about Java generics?",
+    "options": ["They only work with primitive types", "They provide type safety", "They cannot be used with collections", "They are only for methods"],
+    "answer": 1,
+    "explanation": "Generics provide type safety by allowing you to specify the type of objects a collection can hold."
+  },
+  {
+    "question": "What is the purpose of the 'enum' keyword in Java?",
+    "options": ["To create a class", "To define a set of constants", "To create an interface", "To define a method"],
+    "answer": 1,
+    "explanation": "The 'enum' keyword is used to define a set of named constants."
+  },
+  {
+    "question": "Which of the following is not a valid Java annotation?",
+    "options": ["@Override", "@Deprecated", "@SuppressWarnings", "@Method"],
+    "answer": 3,
+    "explanation": "'@Method' is not a standard Java annotation."
+  },
+  {
+    "question": "What is the purpose of the 'assert' statement in Java?",
+    "options": ["To handle exceptions", "To test assumptions", "To create a loop", "To define a method"],
+    "answer": 1,
+    "explanation": "The 'assert' statement is used to test assumptions about the program."
+  },
+  {
+    "question": "Which of the following is true about Java threads?",
+    "options": ["They cannot share data", "They always run in parallel", "They can share memory", "They cannot be interrupted"],
+    "answer": 2,
+    "explanation": "Threads can share memory and data, which can lead to synchronization issues."
+  },
+  {
+    "question": "What is the purpose of the 'wait()' method in Java?",
+    "options": ["To pause a thread", "To terminate a thread", "To start a thread", "To join threads"],
+    "answer": 0,
+    "explanation": "The 'wait()' method pauses a thread until it is notified by another thread."
+  },
+  {
+    "question": "Which of the following is not a valid Java modifier?",
+    "options": ["public", "private", "protected", "friendly"],
+    "answer": 3,
+    "explanation": "'friendly' is not a valid Java modifier. The default access level has no keyword."
+  },
+  {
+    "question": "What is the purpose of the 'notify()' method in Java?",
+    "options": ["To wake up a waiting thread", "To terminate a thread", "To start a thread", "To join threads"],
+    "answer": 0,
+    "explanation": "The 'notify()' method wakes up a thread that is waiting on the same object."
+  },
+  {
+    "question": "Which of the following is true about Java serialization?",
+    "options": ["All objects can be serialized", "Only primitive types can be serialized", "Objects must implement Serializable", "Only strings can be serialized"],
+    "answer": 2,
+    "explanation": "Objects must implement the Serializable interface to be serialized."
+  },
+  {
+    "question": "What is the purpose of the 'readObject()' method in Java?",
+    "options": ["To read from a file", "To deserialize an object", "To create a new object", "To write to a file"],
+    "answer": 1,
+    "explanation": "The 'readObject()' method is used to deserialize an object from a stream."
+  },
+  {
+    "question": "Which of the following is not a valid Java collection interface?",
+    "options": ["List", "Set", "Map", "Array"],
+    "answer": 3,
+    "explanation": "'Array' is not a collection interface. Java has List, Set, and Map interfaces."
+  },
+  {
+    "question": "What is the purpose of the 'writeObject()' method in Java?",
+    "options": ["To write to a file", "To serialize an object", "To create a new object", "To read from a file"],
+    "answer": 1,
+    "explanation": "The 'writeObject()' method is used to serialize an object to a stream."
+  },
+  {
+    "question": "Which of the following is true about Java reflection?",
+    "options": ["It allows runtime inspection of classes", "It only works with primitive types", "It cannot access private members", "It is only for static methods"],
+    "answer": 0,
+    "explanation": "Reflection allows runtime inspection of classes, methods, and fields."
+  },
+  {
+    "question": "What is the purpose of the 'Class.forName()' method in Java?",
+    "options": ["To create a new class", "To load a class dynamically", "To get the class name", "To create an object"],
+    "answer": 1,
+    "explanation": "The 'Class.forName()' method loads a class dynamically at runtime."
+  },
+  {
+    "question": "Which of the following is not a valid Java stream operation?",
+    "options": ["map", "filter", "reduce", "loop"],
+    "answer": 3,
+    "explanation": "'loop' is not a valid stream operation. Java streams have map, filter, reduce, etc."
+  },
+  {
+    "question": "What is the purpose of the 'Optional' class in Java?",
+    "options": ["To create optional parameters", "To handle null values safely", "To create optional methods", "To make classes optional"],
+    "answer": 1,
+    "explanation": "The 'Optional' class is used to handle null values safely and avoid NullPointerException."
+  },
+  {
+    "question": "Which of the following is true about Java lambda expressions?",
+    "options": ["They can only be used with interfaces", "They can have multiple parameters", "They cannot return values", "They are only for static methods"],
+    "answer": 1,
+    "explanation": "Lambda expressions can have multiple parameters and can return values."
+  },
+  {
+    "question": "What is the purpose of the 'Stream.collect()' method in Java?",
+    "options": ["To collect all elements", "To convert stream to collection", "To filter elements", "To sort elements"],
+    "answer": 1,
+    "explanation": "The 'collect()' method is used to convert a stream to a collection or other data structure."
+  },
+  {
+    "question": "Which of the following is not a valid Java functional interface?",
+    "options": ["Runnable", "Callable", "Supplier", "Method"],
+    "answer": 3,
+    "explanation": "'Method' is not a functional interface. Java has Runnable, Callable, Supplier, etc."
+  },
+  {
+    "question": "What is the purpose of the 'CompletableFuture' class in Java?",
+    "options": ["To create future objects", "To handle asynchronous operations", "To create threads", "To handle exceptions"],
+    "answer": 1,
+    "explanation": "The 'CompletableFuture' class is used to handle asynchronous operations and their results."
+  },
+  {
+    "question": "Which of the following is true about Java modules (Java 9+)?",
+    "options": ["They are optional", "They provide better encapsulation", "They cannot be used with packages", "They are only for static methods"],
+    "answer": 1,
+    "explanation": "Java modules provide better encapsulation and control over dependencies."
+  },
+  {
+    "question": "What is the purpose of the 'var' keyword in Java (Java 10+)?",
+    "options": ["To create variables", "To declare local variables with type inference", "To create constants", "To make variables final"],
+    "answer": 1,
+    "explanation": "The 'var' keyword allows local variable type inference, letting the compiler determine the type."
+  },
+  {
+    "question": "Which of the following is not a valid Java record feature (Java 14+)?",
+    "options": ["Automatic getters", "Automatic equals/hashCode", "Mutable fields", "Compact constructor"],
+    "answer": 2,
+    "explanation": "Records have immutable fields by default. They cannot have mutable fields."
+  },
+  {
+    "question": "What is the purpose of the 'sealed' keyword in Java (Java 15+)?",
+    "options": ["To seal classes", "To restrict inheritance", "To create constants", "To make classes final"],
+    "answer": 1,
+    "explanation": "The 'sealed' keyword restricts which classes can extend or implement a sealed class/interface."
+  },
+  {
+    "question": "Which of the following is true about Java pattern matching (Java 16+)?",
+    "options": ["It only works with strings", "It simplifies instanceof checks", "It cannot be used with switch", "It is only for primitive types"],
+    "answer": 1,
+    "explanation": "Pattern matching simplifies instanceof checks by automatically casting the object."
+  },
+  {
+    "question": "What is the purpose of the 'yield' statement in Java (Java 13+)?",
+    "options": ["To yield control", "To return values from switch expressions", "To create loops", "To handle exceptions"],
+    "answer": 1,
+    "explanation": "The 'yield' statement is used to return values from switch expressions."
+  },
+  {
+    "question": "Which of the following is not a valid Java text block feature (Java 13+)?",
+    "options": ["Multi-line strings", "Preserved formatting", "Escape sequences", "Dynamic content"],
+    "answer": 3,
+    "explanation": "Text blocks are compile-time constants and cannot contain dynamic content."
+  },
+  {
+    "question": "What is the purpose of the 'instanceof' pattern matching in Java (Java 16+)?",
+    "options": ["To check object type", "To automatically cast after instanceof", "To create patterns", "To handle exceptions"],
+    "answer": 1,
+    "explanation": "Pattern matching with instanceof automatically casts the object after the type check."
+  },
+  {
+    "question": "Which of the following is true about Java virtual threads (Java 19+)?",
+    "options": ["They are lightweight threads", "They cannot be interrupted", "They always run in parallel", "They cannot share data"],
+    "answer": 0,
+    "explanation": "Virtual threads are lightweight threads managed by the JVM, not the operating system."
   }
 ] 

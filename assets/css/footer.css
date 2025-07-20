@@ -32,6 +32,7 @@ footer::after {
     margin-bottom: 2rem;
     position: relative;
     z-index: 1;
+    align-items: start;
 }
 
 /* Footer Brand Section */
@@ -39,6 +40,7 @@ footer::after {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .footer-logo {
@@ -64,6 +66,7 @@ footer::after {
     line-height: 1.6;
     color: #b0b0b0;
     margin-bottom: 1.5rem;
+    max-width: 100%;
 }
 
 /* Footer Social Links */
@@ -71,6 +74,7 @@ footer::after {
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .footer-social a {
@@ -126,6 +130,13 @@ footer::after {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    width: 100%;
+}
+
+.footer-links-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-links-column h3 {
@@ -135,6 +146,7 @@ footer::after {
     color: #ffffff;
     position: relative;
     padding-bottom: 0.5rem;
+    width: 100%;
 }
 
 .footer-links-column h3::after {
@@ -151,6 +163,8 @@ footer::after {
 .footer-links {
     list-style: none;
     padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .footer-links li {
@@ -165,6 +179,7 @@ footer::after {
     display: inline-block;
     position: relative;
     padding-left: 0;
+    line-height: 1.4;
 }
 
 .footer-links a::before {
@@ -216,6 +231,7 @@ footer .contact-link i {
     color: white;
     transform: none !important;
     transition: background-color 0.3s ease;
+    flex-shrink: 0;
 }
 
 footer .contact-link:hover i {
@@ -304,13 +320,14 @@ footer .contact-link span {
     .footer-main {
         grid-template-columns: 1fr;
         gap: 3rem;
+        text-align: center;
     }
 
     .footer-brand {
         text-align: center;
         align-items: center;
         max-width: 100%;
-        margin-right: 0;
+        margin: 0 auto;
     }
 
     .footer-brand h3 {
@@ -319,6 +336,7 @@ footer .contact-link span {
 
     .footer-brand p {
         margin-bottom: 1rem;
+        max-width: 600px;
     }
 
     .footer-social {
@@ -329,6 +347,13 @@ footer .contact-link span {
         width: 100%;
         gap: 2rem;
         justify-content: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .footer-links-column {
+        align-items: center;
+        text-align: center;
     }
 
     .footer-links-column h3,
@@ -364,6 +389,10 @@ footer .contact-link span {
         padding: 3rem 0 1rem;
     }
 
+    .footer-main {
+        gap: 2.5rem;
+    }
+
     .footer-links-section {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -386,6 +415,10 @@ footer .contact-link span {
     footer .contact-link i {
         margin-right: 8px;
     }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
 }
 
 /* Extra Small Screens */
@@ -396,7 +429,7 @@ footer .contact-link span {
 
     .footer-brand p {
         font-size: 0.9rem;
-        max-width: 90%;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -413,6 +446,10 @@ footer .contact-link span {
     .footer-links a {
         font-size: 0.9rem;
     }
+
+    .footer-links-section {
+        gap: 1.5rem;
+    }
 }
 
 /* Mobile Screens */
@@ -424,6 +461,7 @@ footer .contact-link span {
 
     .footer-links-column {
         text-align: center;
+        align-items: center;
     }
 
     .footer-links-column h3 {
@@ -452,6 +490,10 @@ footer .contact-link span {
 
     footer .contact-link span {
         font-size: 0.9rem;
+    }
+
+    .footer-main {
+        gap: 2rem;
     }
 }
 
@@ -489,5 +531,9 @@ footer .contact-link span {
 
     footer .contact-link span {
         font-size: 0.85rem;
+    }
+
+    .footer-main {
+        gap: 1.5rem;
     }
 }
