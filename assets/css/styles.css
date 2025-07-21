@@ -3872,6 +3872,7 @@ html {
     border-radius: 30px;
     font-weight: 700;
     font-size: 1.15rem;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.18);
     letter-spacing: 0.03em;
     display: inline-flex;
     align-items: center;
@@ -3882,19 +3883,9 @@ html {
     outline: none;
 }
 
-
-.btn-about i {
-    font-size: 1.3rem;
-    transition: transform 0.3s;
-}
-
-.btn-about:hover i,
-.btn-about:focus i {
-    transform: rotate(-8deg) scale(1.1);
-}
-
-.btn-about:active {
-    transform: translateY(0);
+.btn-about:hover,
+.btn-about:focus {
+    transform: translateY(-2px) scale(1.04);
 }
 
 .btn-about i {
@@ -3907,18 +3898,15 @@ html {
     transform: rotate(-8deg) scale(1.1);
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
 
-    50% {
-        transform: scale(1.05);
-    }
+.btn-about i {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
 
-    100% {
-        transform: scale(1);
-    }
+.btn-about:hover i,
+.btn-about:focus i {
+    transform: rotate(-8deg) scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -5562,7 +5550,7 @@ html {
 .search-container {
     width: 92%;
     max-width: 600px;
-    margin: 4.5rem auto 3rem;
+    margin: 6.5rem auto 3rem;
     position: relative;
 }
 
@@ -5732,17 +5720,17 @@ html {
 
 @media (max-width: 768px) {
     .search-container {
-        width: 95%;
+        width: 98%;
         max-width: 500px;
-        margin: 3rem auto 2.5rem;
+        margin: 6rem auto 2.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .search-container {
-        width: 92%;
+        width: 98%;
         max-width: 100%;
-        margin: 2rem auto 2rem;
+        margin: 6rem auto 2rem;
     }
 
     .search-bar input {
@@ -5887,35 +5875,28 @@ html {
 }
 
 .feature-highlight .btn-primary {
-    padding: 0.9rem 1.8rem;
+    background: #4361ee;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 6px;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.25);
-    font-family: var(--body-font);
-    max-width: 300px;
-    text-align: center;
+    font-size: 1rem;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
 }
 
-.feature-highlight .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
+.feature-highlight .btn-primary:hover,
+.feature-highlight .btn-primary:focus {
+    background: #2743a6;
+    color: #fff;
 }
 
-.feature-highlight .btn-primary:hover {
-    transform: translateY(-3px);
-}
-
-.feature-highlight .btn-primary:hover::before {
-    left: 100%;
+.feature-highlight .btn-primary i {
+    font-size: 1.1rem;
 }
 
 .feature-highlights {
