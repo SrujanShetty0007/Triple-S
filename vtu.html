@@ -393,7 +393,6 @@
 </head>
 
 <body>
-    <!-- Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader"></div>
     </div>
@@ -495,6 +494,13 @@
                     <h3>Results Checker</h3>
                     <span class="available-badge">Available Now</span>
                     <p>Quick access to your VTU exam results</p>
+                </a>
+
+                <a href="unit-convertor.html" class="feature-item active">
+                    <i class="fas fa-search"></i>
+                    <h3>Unit Convertor</h3>
+                    <span class="available-badge">Available Now</span>
+                    <p>Convert units of different quantities</p>
                 </a>
 
             </div>
@@ -637,11 +643,6 @@
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/dropdown.js"></script>
     <script>
-        // Page loader
-        window.addEventListener('load', function () {
-            document.getElementById('page-loader').style.display = 'none';
-        });
-
         // Back to Top Button
         document.addEventListener('DOMContentLoaded', function () {
             const backToTopButton = document.getElementById('backToTop');
@@ -767,6 +768,7 @@
             }
         });
     </script>
+    <script src="assets/js/loader.js"></script>
 </body>
 
 </html>

@@ -37,7 +37,6 @@
 </head>
 
 <body>
-    <!-- Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader"></div>
     </div>
@@ -426,17 +425,8 @@
     </footer>
 
     <script src="quiz_pages/quiz.js"></script>
+    <script src="assets/js/loader.js"></script>
     <script>
-        // Page Loader
-        document.addEventListener('DOMContentLoaded', function () {
-            const loader = document.getElementById('page-loader');
-            if (loader) {
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }
-        });
-
         // Mobile Navbar Toggle Functionality
         document.addEventListener('DOMContentLoaded', function () {
             const navbarToggle = document.getElementById('navbarToggle');

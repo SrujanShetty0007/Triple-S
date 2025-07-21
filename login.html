@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPTSX512J');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Triple-S</title>
@@ -11,8 +20,10 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/root-variables.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
     <style>
         @import url('assets/css/root-variables.css');
+
         * {
             margin: 0;
             padding: 0;
@@ -267,29 +278,6 @@
             margin-bottom: 0.1rem;
         }
 
-        .loader {
-            display: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-left: 8px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .btn-with-loader {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .error-message {
             color: var(--error-color);
             font-size: 0.85rem;
@@ -340,6 +328,9 @@
 </head>
 
 <body>
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
     <div class="container">
         <div class="login-title">Welcome to Triple-S</div>
         <div class="tabs">
@@ -362,9 +353,8 @@
                 <input type="password" id="signin-password" name="password" placeholder="Enter your password" required>
             </div>
             <div class="error-message" id="signin-error"></div>
-            <button type="submit" class="btn btn-with-loader">
+            <button type="submit" class="btn">
                 Sign In
-                <span class="loader" id="signin-loader"></span>
             </button>
 
             <div class="social-divider">Or sign in with</div>
@@ -404,9 +394,8 @@
                 <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
             </div>
             <div class="error-message" id="signup-error"></div>
-            <button type="submit" class="btn btn-with-loader">
+            <button type="submit" class="btn">
                 Sign Up
-                <span class="loader" id="signup-loader"></span>
             </button>
 
             <div class="social-divider">Or sign up with</div>
@@ -645,6 +634,7 @@
             document.getElementById('signup-error').style.display = 'none';
         }
     </script>
+    <script src="assets/js/loader.js"></script>
 </body>
 
 </html>

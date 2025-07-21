@@ -8,23 +8,10 @@
 
 body {
     min-height: 100vh;
-    background: var(--gradient);
+    background: #f5f7fa;
     font-family: var(--body-font);
     color: var(--dark-color);
     position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    z-index: -1;
 }
 
 /* Enhanced Loader */
@@ -34,7 +21,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--gradient);
+    background: #f5f7fa;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,10 +74,11 @@ body::before {
     text-align: center;
     margin-bottom: 2rem;
     padding: 3rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: #fff;
     border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Remove glassmorphism */
+    box-shadow: 0 2px 12px rgba(67, 97, 238, 0.07);
+    border: 1px solid #e1e5e9;
 }
 
 .hero-content {
@@ -123,14 +111,14 @@ body::before {
 /* Profile Cards */
 .profile-card,
 .account-actions-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
     border-radius: var(--card-border-radius);
     box-shadow: var(--shadow);
     overflow: hidden;
     margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
+    border: 1px solid #e1e5e9;
+    /* Remove glassmorphism */
+    backdrop-filter: none;
 }
 
 .profile-card:hover,
@@ -141,7 +129,7 @@ body::before {
 
 /* Card Headers */
 .card-header {
-    background: var(--header-gradient);
+    background: var(--primary-color);
     color: white;
     padding: 2rem;
     position: relative;
@@ -149,14 +137,7 @@ body::before {
 }
 
 .card-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.3;
+    content: none;
 }
 
 .header-content {
@@ -254,15 +235,15 @@ body::before {
 }
 
 .info-item {
-    background: rgba(67, 97, 238, 0.05);
+    background: #f7f9fc;
     padding: 1.5rem;
     border-radius: 15px;
-    border: 1px solid rgba(67, 97, 238, 0.1);
+    border: 1px solid #e1e5e9;
     transition: var(--transition);
 }
 
 .info-item:hover {
-    background: rgba(67, 97, 238, 0.08);
+    background: #f0f4fa;
     transform: translateX(5px);
 }
 
@@ -369,10 +350,10 @@ body::before {
     gap: 0.5rem;
     font-size: 0.8rem;
     color: #666;
-    background: rgba(67, 97, 238, 0.1);
+    background: #f7f9fc;
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    border: 1px solid rgba(67, 97, 238, 0.2);
+    border: 1px solid #e1e5e9;
 }
 
 .upload-hint i {
@@ -387,10 +368,10 @@ body::before {
 }
 
 .form-section {
-    background: rgba(67, 97, 238, 0.03);
+    background: #f7f9fc;
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(67, 97, 238, 0.1);
+    border: 1px solid #e1e5e9;
 }
 
 .form-section h3 {
@@ -540,14 +521,14 @@ body::before {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-    background: rgba(231, 76, 60, 0.05);
+    background: #fbeaea;
     border-radius: 15px;
-    border: 1px solid rgba(231, 76, 60, 0.1);
+    border: 1px solid #f5c6cb;
     transition: var(--transition);
 }
 
 .action-item:hover {
-    background: rgba(231, 76, 60, 0.08);
+    background: #f8d7da;
     transform: translateX(5px);
 }
 
