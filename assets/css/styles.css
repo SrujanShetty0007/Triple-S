@@ -491,7 +491,7 @@ html {
 
 /* Welcome Banner */
 .welcome-banner {
-    background: linear-gradient(rgba(247, 245, 245, 0.5), rgba(9, 80, 245, 0.747)),
+    background: linear-gradient(rgba(180, 222, 254, 0.669), rgba(0, 84, 181, 0.728), rgba(56, 59, 61, 0.852)),
         url('/assets/images/welcome-banner.jpg');
     background-size: cover;
     background-position: center;
@@ -2190,64 +2190,48 @@ html {
 }
 
 .btn-about {
-    background: var(--hero-gradient);
-    color: white;
+    background: linear-gradient(90deg, #4361ee 0%, #4cc9f0 100%);
+    color: #fff;
     border: none;
-    padding: 0.8rem 3rem;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.18);
+    letter-spacing: 0.03em;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
+    gap: 0.7rem;
     position: relative;
     overflow: hidden;
-    min-width: 200px;
+    min-width: 180px;
+    outline: none;
 }
 
-.btn-about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
+.btn-about:hover,
+.btn-about:focus {
+    transform: translateY(-2px) scale(1.04);
 }
 
 .btn-about i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+    font-size: 1.3rem;
+    transition: transform 0.3s;
 }
 
-.btn-about:hover {
-    animation: none;
-    background: var(--hero-gradient);
-}
-
-.btn-about:hover::before {
-    left: 100%;
+.btn-about:hover i,
+.btn-about:focus i {
+    transform: rotate(-8deg) scale(1.1);
 }
 
 
+.btn-about i {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+.btn-about:hover i,
+.btn-about:focus i {
+    transform: rotate(-8deg) scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -3881,51 +3865,47 @@ html {
 }
 
 .btn-about {
-    background: var(--hero-gradient);
-    color: white;
+    background: linear-gradient(90deg, #4361ee 0%, #4cc9f0 100%);
+    color: #fff;
     border: none;
-    padding: 0.8rem 3rem;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
+    gap: 0.7rem;
     position: relative;
     overflow: hidden;
-    min-width: 200px;
+    min-width: 180px;
+    outline: none;
 }
 
-.btn-about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
+
+.btn-about i {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
+
+.btn-about:hover i,
+.btn-about:focus i {
+    transform: rotate(-8deg) scale(1.1);
+}
+
+.btn-about:active {
+    transform: translateY(0);
 }
 
 .btn-about i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+    font-size: 1.3rem;
+    transition: transform 0.3s;
 }
 
-.btn-about:hover {
-    animation: none;
-    background: var(--hero-gradient);
+.btn-about:hover i,
+.btn-about:focus i {
+    transform: rotate(-8deg) scale(1.1);
 }
-
-.btn-about:hover::before {
-    left: 100%;
-}
-
-
 
 @keyframes pulse {
     0% {
