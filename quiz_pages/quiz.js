@@ -80,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Detect mobile devices and adjust animations accordingly
+
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (isMobile) {
-        // Simplify animations on mobile for better performance
         document.querySelectorAll('.floating-shape').forEach(shape => {
             shape.style.animationDuration = '15s';
         });

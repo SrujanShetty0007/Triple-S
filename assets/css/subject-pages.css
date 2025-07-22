@@ -13,21 +13,6 @@
     overflow: hidden;
 }
 
-.subject-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 30px 30px;
-    opacity: 0.5;
-    z-index: 1;
-}
-
 .subject-hero h1 {
     font-family: var(--heading-font);
     font-size: 3rem;
@@ -50,18 +35,20 @@
 .floating-element,
 .math-element,
 .phys-element,
-.chem-element {
+.chem-element,
+.esc-element {
     position: absolute;
     color: rgba(255, 255, 255, 0.2);
     font-family: 'Times New Roman', serif;
-    z-index: 1;
+    z-index: 2;
     animation: float 8s ease-in-out infinite;
 }
 
 .floating-element:nth-child(1),
 .math-element:nth-child(1),
 .phys-element:nth-child(1),
-.chem-element:nth-child(1) {
+.chem-element:nth-child(1),
+.esc-element:nth-child(1) {
     top: 20%;
     left: 10%;
     font-size: 40px;
@@ -71,7 +58,8 @@
 .floating-element:nth-child(2),
 .math-element:nth-child(2),
 .phys-element:nth-child(2),
-.chem-element:nth-child(2) {
+.chem-element:nth-child(2),
+.esc-element:nth-child(2) {
     top: 30%;
     right: 15%;
     font-size: 60px;
@@ -81,7 +69,8 @@
 .floating-element:nth-child(3),
 .math-element:nth-child(3),
 .phys-element:nth-child(3),
-.chem-element:nth-child(3) {
+.chem-element:nth-child(3),
+.esc-element:nth-child(3) {
     bottom: 25%;
     left: 20%;
     font-size: 50px;
@@ -91,7 +80,8 @@
 .floating-element:nth-child(4),
 .math-element:nth-child(4),
 .phys-element:nth-child(4),
-.chem-element:nth-child(4) {
+.chem-element:nth-child(4),
+.esc-element:nth-child(4) {
     bottom: 15%;
     right: 10%;
     font-size: 45px;
@@ -184,7 +174,8 @@
 .subject-buttons,
 .math-buttons,
 .phys-buttons,
-.chem-buttons {
+.chem-buttons,
+.esc-buttons {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -193,7 +184,8 @@
 .subject-btn,
 .math-btn,
 .phys-btn,
-.chem-btn {
+.chem-btn,
+.esc-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,7 +204,8 @@
 
 .subject-btn i,
 .phys-btn i,
-.chem-btn i {
+.chem-btn i,
+.esc-btn i {
     margin-right: 10px;
     font-size: 1.1rem;
 }
@@ -806,41 +799,111 @@
     border-top-color: #10b981;
 }
 
-/* PDF Section Titles */
-.pdf-section-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 1.5rem 0 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    color: #333;
-    font-family: var(--heading-font);
+/* Engineering Science Courses (ESC) */
+
+/* ESC Hero Section */
+.esc-hero {
+    background: linear-gradient(135deg, #6A5ACD 0%, #4B0082 100%);
 }
 
-.pdf-section-title:first-child {
-    margin-top: 0;
+.stream-header.esc-header,
+.pdf-modal-header.esc-modal-header,
+.pdf-viewer-header.esc-viewer-header {
+    background: linear-gradient(135deg, #6A5ACD 0%, #4B0082 100%);
 }
 
-.pdf-section-container {
-    margin-bottom: 1.5rem;
+.esc-btn {
+    border-radius: var(--button-border-radius);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    background: #f8f9fa;
 }
 
-/* Adjust spacing for empty sections */
-.pdf-section-container .no-files-message {
-    margin: 0.5rem 0;
-    padding: 0.8rem;
-    background-color: #f8f9fa;
-    border-radius: 5px;
+.esc-btn:hover {
+    background: #6A5ACD;
+    color: white;
+    box-shadow: 0 5px 15px rgba(106, 90, 205, 0.3);
+}
+
+.stream-card.esc-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow);
+    border-radius: var(--card-border-radius);
+    transition: var(--transition);
+}
+
+.stream-card.esc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.pdf-file-info i.esc-file-icon {
+    color: #6A5ACD;
+}
+
+.pdf-view-btn.esc-view-btn:hover {
+    background: #6A5ACD;
+    color: white;
+    border-color: #6A5ACD;
+}
+
+.pdf-download-btn.esc-download-btn:hover {
+    background: #4B0082;
+    color: white;
+    border-color: #4B0082;
+}
+
+.pdf-loading-spinner.esc-loading-spinner {
+    border-top-color: #6A5ACD;
+}
+
+.esc-download-btn.download-success {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+}
+
+.esc-download-btn.download-error {
+    background-color: #f44336 !important;
+    border-color: #d32f2f !important;
+}
+
+/* Section header styling */
+.section-header {
     text-align: center;
+    margin: 3rem auto 2.5rem;
 }
 
-/* Add some spacing between PDF items in sections */
-.pdf-section-container .pdf-file-item {
-    margin-bottom: 0.5rem;
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
 
-.pdf-section-container .pdf-file-item:last-child {
-    margin-bottom: 0;
+/* Section title with icon */
+.section-title {
+    text-align: center;
+    margin: 3rem auto 2rem;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, #6A5ACD 0%, #4B0082 100%);
+    border-radius: 3px;
 }
 
 /* Responsive Styles */
@@ -851,6 +914,14 @@
 
     .subject-hero p {
         font-size: 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
     }
 
     .streams-container {
@@ -907,6 +978,14 @@
     .custom-alert-body p {
         font-size: 1rem;
     }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -921,7 +1000,8 @@
     .subject-buttons,
     .math-buttons,
     .phys-buttons,
-    .chem-buttons {
+    .chem-buttons,
+    .esc-buttons {
         gap: 10px;
     }
 

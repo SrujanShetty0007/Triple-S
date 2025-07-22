@@ -59,8 +59,8 @@ function initializeSubjectPdfLinks() {
         });
     });
 
-    // Set up event listeners for Physics and Chemistry buttons
-    const subjectButtons = document.querySelectorAll('.phys-btn, .chem-btn');
+    // Set up event listeners for Physics, Chemistry, and ESC buttons
+    const subjectButtons = document.querySelectorAll('.phys-btn, .chem-btn, .esc-btn');
     subjectButtons.forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
@@ -85,9 +85,18 @@ function initializeSubjectPdfLinks() {
             // Extract semester and subject from path
             const pathParts = path.split('/');
             const semester = pathParts[2]; // e.g., sem2
-            const subject = pathParts[3]; // e.g., physics, physics-eee, chemistry, chemistry-eee
+            const subject = pathParts[3]; // e.g., physics, physics-eee, chemistry, chemistry-eee, electronics-eng, electrical-engineering
 
-            const streamText = streamHeader.includes('CSE') ? 'CSE' : 'EEE';
+            // Determine the stream text based on the path or header
+            let streamText = '';
+            if (subject.includes('electronics')) {
+                streamText = 'Electronics Engineering';
+            } else if (subject.includes('electrical')) {
+                streamText = 'Electrical Engineering';
+            } else {
+                streamText = streamHeader.includes('CSE') ? 'CSE' : 'EEE';
+            }
+
             const displayTitle = `${paperType} for ${streamText}`;
 
             showPdfListModal(path, semester, subject, displayTitle);
@@ -162,6 +171,8 @@ function showPdfListModal(path, semester, subject, paperType) {
         headerClass = 'chem-modal-header';
     } else if (subject.includes('mathematics')) {
         headerClass = 'math-modal-header';
+    } else if (subject.includes('electronics') || subject.includes('electrical')) {
+        headerClass = 'esc-modal-header';
     }
 
     // Set up the modal content
@@ -281,7 +292,8 @@ function displayPdfFile(container, fileName, filePath) {
     // Determine subject-specific classes
     const subjectClass = filePath.includes('physics') ? 'phys' :
         filePath.includes('chemistry') ? 'chem' :
-            filePath.includes('mathematics') ? 'math' : '';
+            filePath.includes('mathematics') ? 'math' :
+                filePath.includes('electronics') || filePath.includes('electrical') ? 'esc' : '';
 
     // Create file info section
     const fileInfo = document.createElement('div');
@@ -446,7 +458,8 @@ function showPdfViewer(pdfPath, fileName) {
     // Determine subject-specific classes
     const subjectType = pdfPath.includes('physics') ? 'phys' :
         pdfPath.includes('chemistry') ? 'chem' :
-            pdfPath.includes('mathematics') ? 'math' : '';
+            pdfPath.includes('mathematics') ? 'math' :
+                pdfPath.includes('electronics') || pdfPath.includes('electrical') ? 'esc' : '';
 
     const headerClass = subjectType ? `${subjectType}-viewer-header` : '';
     const spinnerClass = subjectType ? `${subjectType}-loading-spinner` : '';
