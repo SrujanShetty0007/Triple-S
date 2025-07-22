@@ -1158,7 +1158,8 @@ html {
     justify-content: center;
     align-items: center;
     margin: 2rem auto 3rem;
-    max-width: 400px;
+    max-width: 500px;
+    width: 100%;
     position: relative;
 }
 
@@ -1175,6 +1176,7 @@ html {
 
 .upload-vector {
     max-width: 100%;
+    min-width: 300px;
     height: auto;
     animation: float 6s ease-in-out infinite;
     filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
@@ -1584,10 +1586,11 @@ html {
     }
 
     .upload-vector {
-        max-width: 400px;
+        max-width: 500px;
     }
 
     .upload-illustration {
+        width: 100%;
         margin: 1.5rem auto;
     }
 
@@ -1765,11 +1768,12 @@ html {
     }
 
     .upload-vector {
-        max-width: 350px;
+        max-width: 100%;
     }
 
     .upload-illustration {
-        margin: 1rem auto 2rem;
+        width: 550px;
+        margin: 1rem auto 0.5rem;
     }
 
     .form-group {
@@ -3343,11 +3347,14 @@ html {
     }
 
     .upload-vector {
-        max-width: 350px;
+        max-width: 450px;
+        width: 100%;
     }
 
     .upload-illustration {
         margin: 1rem auto 2rem;
+        max-width: 450px;
+        width: 100%;
     }
 
     .form-group {
@@ -3550,11 +3557,14 @@ html {
     }
 
     .upload-vector {
-        max-width: 280px;
+        max-width: 380px;
+        width: 100%;
     }
 
     .upload-illustration {
         margin: 0.5rem auto 1.5rem;
+        max-width: 400px;
+        width: 100%;
     }
 
     .form-group {
@@ -4159,6 +4169,7 @@ html {
     overflow: hidden;
     border: 1px solid rgba(67, 97, 238, 0.1);
     width: 100%;
+    height: fit-content;
     max-width: 100%;
 }
 
@@ -5848,5 +5859,51 @@ html {
 
     .feature-highlight p {
         font-size: 0.85rem;
+    }
+}
+
+/*desktop layout for contribution section */
+@media (min-width: 992px) {
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 0 8%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .contact-section h2 {
+        padding-top: 160px;
+    }
+
+    .contact-section h2,
+    .contact-section>p {
+        text-align: left;
+        margin-left: 0;
+        max-width: 45%;
+    }
+
+    .contact-section h2::after {
+        left: 40px;
+        transform: none;
+    }
+
+    .contact-section .upload-illustration {
+        position: absolute;
+        top: 20px;
+        right: 8%;
+        max-width: 38%;
+        margin: 0;
+    }
+
+    .upload-container {
+        clear: both;
+        margin-top: 20px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -34,6 +34,8 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
     <meta name="theme-color" content="#4361ee">
+    <!-- Add dropdown styles -->
+    <link rel="stylesheet" href="assets/css/menu.css">
 </head>
 
 <body>
@@ -73,18 +75,32 @@
                 <a href="feedback.html" class="nav-link">
                     <span>Feedback</span>
                 </a>
-                <a href="mathematics.html" class="nav-link">
-                    <span>Mathematics</span>
-                </a>
-                <a href="physics.html" class="nav-link">
-                    <span>Physics</span>
-                </a>
-                <a href="chemistry.html" class="nav-link">
-                    <span>Chemistry</span>
-                </a>
+                <div class="dropdown">
+                    <button class="dropbtn nav-link">
+                        <span>Subjects</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="mathematics.html">Mathematics</a>
+                        <a href="physics.html">Physics</a>
+                        <a href="chemistry.html">Chemistry</a>
+                        <a href="esc.html">ESC</a>
+                    </div>
+                </div>
                 <a href="vtu.html" class="nav-link">
-                    <span>VTU Tools</span>
+                    <span>VTU</span>
                 </a>
+                <div class="dropdown">
+                    <button class="dropbtn nav-link">
+                        <span>Tools</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="vtu-sgpa-calculator.html">SGPA Calculator</a>
+                        <a href="vtu-cgpa-calculator.html">CGPA Calculator</a>
+                        <a href="vtu.html">VTU Results</a>
+                    </div>
+                </div>
                 <a href="quiz.html" class="nav-link active">
                     <span>Quizzes</span>
                 </a>
@@ -426,6 +442,7 @@
 
     <script src="quiz_pages/quiz.js"></script>
     <script src="assets/js/loader.js"></script>
+    <script src="assets/js/menu.js"></script>
     <script>
         // Mobile Navbar Toggle Functionality
         document.addEventListener('DOMContentLoaded', function () {
@@ -438,12 +455,14 @@
                     navbarToggle.classList.toggle('active');
                 });
 
-                // Close menu when clicking on a nav link
-                const navLinks = document.querySelectorAll('.nav-link');
+                // Close menu when clicking on a nav link (but not dropdown buttons)
+                const navLinks = document.querySelectorAll('.nav-link:not(.dropbtn)');
                 navLinks.forEach(link => {
                     link.addEventListener('click', function () {
-                        navbarMenu.classList.remove('active');
-                        navbarToggle.classList.remove('active');
+                        if (!link.closest('.dropdown')) {
+                            navbarMenu.classList.remove('active');
+                            navbarToggle.classList.remove('active');
+                        }
                     });
                 });
 
@@ -452,6 +471,41 @@
                     if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
                         navbarMenu.classList.remove('active');
                         navbarToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            // Mobile dropdown functionality
+            const dropdowns = document.querySelectorAll('.dropdown');
+            if (window.innerWidth < 768) {
+                dropdowns.forEach(dropdown => {
+                    const dropbtn = dropdown.querySelector('.dropbtn');
+                    const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+                    if (dropbtn) {
+                        dropbtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            // Close other dropdowns
+                            dropdowns.forEach(otherDropdown => {
+                                if (otherDropdown !== dropdown) {
+                                    otherDropdown.classList.remove('active');
+                                }
+                            });
+
+                            // Toggle current dropdown
+                            dropdown.classList.toggle('active');
+                        });
+                    }
+                });
+
+                // Close dropdowns when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
                     }
                 });
             }

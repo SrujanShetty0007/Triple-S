@@ -13,18 +13,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Triple S Physics - Access comprehensive physics notes, model papers, and previous year question papers for all engineering streams.">
+        content="Triple S Engineering Science Courses - Access comprehensive notes, model papers, and previous year question papers for electronics and electrical engineering.">
     <meta name="keywords"
-        content="physics, engineering physics, notes, model papers, previous year papers, VTU, exam preparation, Triple S">
+        content="engineering science courses, electronics engineering, electrical engineering, notes, model papers, previous year papers, VTU, exam preparation, Triple S">
     <meta name="author" content="Srujan S Shetty">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Triple S Physics - Engineering Physics Resources">
+    <meta property="og:title"
+        content="Triple S Engineering Science Courses - Electronics and Electrical Engineering Resources">
     <meta property="og:description"
-        content="Comprehensive physics notes, model papers, and previous year question papers for engineering students.">
+        content="Comprehensive electronics and electrical engineering notes, model papers, and previous year question papers for engineering students.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://triple-s.netlify.app/physics.html">
+    <meta property="og:url" content="https://triple-s.netlify.app/esc.html">
     <meta property="og:image" content="assets/images/logo1.png">
-    <title>Triple S Physics | Engineering Physics Resources</title>
+    <title>Triple S Engineering Science Courses | Electronics and Electrical Engineering Resources</title>
     <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/subject-pages.css">
@@ -43,10 +44,86 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="assets/js/pdf-watermarker.js"></script>
+
+    <style>
+        /* Custom styles for ESC page */
+        .esc-hero {
+            /* background: linear-gradient(135deg, #089e64 0%, #049f63 100%); */
+            background-image: url(assets/images/Engineers.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .esc-hero::after {
+            content: '⚡ ∿ Ω V A W Hz F H';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            font-family: 'Times New Roman', serif;
+            opacity: 0.08;
+            letter-spacing: 10px;
+            z-index: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transform: rotate(-5deg);
+        }
+
+        .esc-element {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: 'Times New Roman', serif;
+            z-index: 1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .esc-btn:hover {
+            background: #6A5ACD;
+            color: white;
+        }
+
+        .stream-card.esc-card::before,
+        .stream-header.esc-header,
+        .pdf-modal-header.esc-modal-header,
+        .pdf-viewer-header.esc-viewer-header {
+            background: linear-gradient(135deg, #6A5ACD 0%, #4B0082 100%);
+        }
+
+        .pdf-loading-spinner.esc-loading-spinner {
+            border-top-color: #6A5ACD;
+        }
+
+        .pdf-view-btn.esc-view-btn:hover {
+            background: #6A5ACD;
+            color: white;
+            border-color: #6A5ACD;
+        }
+
+        .pdf-download-btn.esc-download-btn:hover {
+            background: #4B0082;
+            color: white;
+            border-color: #4B0082;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader"></div>
     </div>
@@ -110,55 +187,57 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="subject-hero physics-hero">
-        <div class="phys-element">E=mc²</div>
-        <div class="phys-element">F=ma</div>
-        <div class="phys-element">v=u+at</div>
-        <div class="phys-element">PV=nRT</div>
+    <section class="subject-hero esc-hero">
+        <div class="gradient-overlay"></div>
+        <div class="esc-element">⚡</div>
+        <div class="esc-element">∿</div>
+        <div class="esc-element">Ω</div>
+        <div class="esc-element">V</div>
         <div class="container">
-            <h1>Physics</h1>
-            <p>Access comprehensive physics resources for all engineering streams</p>
+            <h1>Engineering Science Courses</h1>
+            <p>Access comprehensive electronics and electrical engineering resources</p>
         </div>
     </section>
 
-    <h2 class="stream-header phys-header" style="margin-bottom: 2rem;">2022 Scheme</h2>
+    <h2 class="stream-header esc-header" style="margin-bottom: 2rem;">2022 Scheme</h2>
+
     <!-- Stream Sections -->
     <section class="container">
         <div class="streams-container">
-            <!-- CSE Stream -->
-            <div class="stream-card phys-card">
-                <div class="stream-header phys-header">
-                    <h2>CSE Stream</h2>
+            <!-- Electronics and Communication -->
+            <div class="stream-card esc-card">
+                <div class="stream-header esc-header">
+                    <h2>Introduction to Electronics and Communication</h2>
                 </div>
                 <div class="stream-content">
-                    <div class="phys-buttons">
-                        <a href="assets/pdfs/sem2/physics/notes" class="phys-btn">
+                    <div class="chem-buttons">
+                        <a href="assets/pdfs/sem2/electronics-eng/notes" class="chem-btn">
                             <i class="fas fa-book"></i><span>Notes</span>
                         </a>
-                        <a href="assets/pdfs/sem2/physics/model-papers" class="phys-btn">
+                        <a href="assets/pdfs/sem2/electronics-eng/model-papers" class="chem-btn">
                             <i class="fas fa-file-alt"></i><span>Model Papers</span>
                         </a>
-                        <a href="assets/pdfs/sem2/physics/previous-papers" class="phys-btn">
+                        <a href="assets/pdfs/sem2/electronics-eng/previous-papers" class="chem-btn">
                             <i class="fas fa-history"></i><span>Previous Year Papers</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- EEE Stream -->
-            <div class="stream-card phys-card">
-                <div class="stream-header phys-header">
-                    <h2>EEE Stream</h2>
+            <!-- Electrical Engineering -->
+            <div class="stream-card esc-card">
+                <div class="stream-header esc-header">
+                    <h2>Introduction to Electrical Engineering</h2>
                 </div>
                 <div class="stream-content">
-                    <div class="phys-buttons">
-                        <a href="assets/pdfs/sem2/physics-eee/notes" class="phys-btn">
+                    <div class="chem-buttons">
+                        <a href="assets/pdfs/sem2/electrical-engineering/notes" class="chem-btn">
                             <i class="fas fa-book"></i><span>Notes</span>
                         </a>
-                        <a href="assets/pdfs/sem2/physics-eee/model-papers" class="phys-btn">
+                        <a href="assets/pdfs/sem2/electrical-engineering/model-papers" class="chem-btn">
                             <i class="fas fa-file-alt"></i><span>Model Papers</span>
                         </a>
-                        <a href="assets/pdfs/sem2/physics-eee/previous-papers" class="phys-btn">
+                        <a href="assets/pdfs/sem2/electrical-engineering/previous-papers" class="chem-btn">
                             <i class="fas fa-history"></i><span>Previous Year Papers</span>
                         </a>
                     </div>
@@ -170,9 +249,9 @@
     <!-- PDF Modal -->
     <div id="pdf-modal" class="pdf-modal">
         <div class="pdf-modal-content">
-            <div class="pdf-modal-header phys-modal-header">
+            <div class="pdf-modal-header esc-modal-header">
                 <h3>PDF Resources</h3>
-                <p>Physics Materials</p>
+                <p>Engineering Science Materials</p>
                 <button class="pdf-close-btn">&times;</button>
             </div>
             <div class="pdf-modal-body">
@@ -188,13 +267,13 @@
     <!-- PDF Viewer Modal -->
     <div id="pdf-viewer-modal" class="pdf-viewer-modal">
         <div class="pdf-viewer-content">
-            <div class="pdf-viewer-header phys-viewer-header">
+            <div class="pdf-viewer-header esc-viewer-header">
                 <h3>PDF Viewer</h3>
                 <span class="pdf-viewer-close">&times;</span>
             </div>
             <div class="pdf-viewer-body">
                 <div class="pdf-loading">
-                    <div class="pdf-loading-spinner phys-loading-spinner"></div>
+                    <div class="pdf-loading-spinner esc-loading-spinner"></div>
                     <p>Loading PDF...</p>
                 </div>
                 <iframe id="pdf-iframe" src="about:blank" title="PDF Viewer"></iframe>
@@ -239,6 +318,7 @@
                             <li><a href="mathematics.html">Mathematics</a></li>
                             <li><a href="physics.html">Physics</a></li>
                             <li><a href="chemistry.html">Chemistry</a></li>
+                            <li><a href="esc.html">Engineering Science</a></li>
                             <li><a href="vtu.html">VTU</a></li>
                             <li><a href="index.html#my-contribution-section">Contribute</a></li>
                         </ul>
