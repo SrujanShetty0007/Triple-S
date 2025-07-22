@@ -105,17 +105,7 @@ header .title-container h1 {
     letter-spacing: 0.02em;
 }
 
-/* Welcome Banner */
-.welcome-banner h2 {
-    font-family: var(--heading-font);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-}
 
-.welcome-banner p {
-    line-height: 1.8;
-    font-size: 1.05rem;
-}
 
 /* Buttons */
 .btn {
@@ -214,10 +204,7 @@ footer .footer-brand h3 {
         line-height: 1.4;
     }
 
-    .welcome-banner p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
+
 
     .semester-section h2,
     .about-section h2,

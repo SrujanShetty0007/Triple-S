@@ -425,8 +425,8 @@
     <!-- Firebase SDK imports -->
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
         import {
             getAuth,
             createUserWithEmailAndPassword,
@@ -436,7 +436,7 @@
             updateProfile,
             GoogleAuthProvider,
             signInWithPopup
-        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+        } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -467,13 +467,15 @@
 
         // Helper function to show/hide loaders and error messages
         function showLoader(formId) {
-            document.getElementById(`${formId}-loader`).style.display = 'inline-block';
             document.getElementById(`${formId}-error`).style.display = 'none';
             document.getElementById(`${formId}-error`).textContent = '';
+            // Show page loader instead
+            document.getElementById('page-loader').style.display = 'flex';
         }
 
         function hideLoader(formId) {
-            document.getElementById(`${formId}-loader`).style.display = 'none';
+            // Hide page loader
+            document.getElementById('page-loader').style.display = 'none';
         }
 
         function showError(formId, message) {
@@ -563,38 +565,44 @@
                 });
         });
 
-        // Google Authentication
-        const googleProvider = new GoogleAuthProvider();
-        googleProvider.addScope('email');
+        // Google Authentication initialization is now done in each click handler
 
         // Google Sign In
-        document.getElementById('googleLogin').addEventListener('click', () => {
-            showLoader('signin');
+        document.getElementById('googleLogin').addEventListener('click', async () => {
+            try {
+                showLoader('signin');
 
-            signInWithPopup(auth, googleProvider)
-                .then((result) => {
-                    console.log("Google sign in successful:", result.user);
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    console.error("Google sign in error:", error.code, error.message);
-                    showError('signin', "Google sign in failed. Please try again.");
-                });
+                // Create a new provider instance each time
+                const googleProvider = new GoogleAuthProvider();
+                googleProvider.addScope('email');
+
+                const result = await signInWithPopup(auth, googleProvider);
+                console.log("Google sign in successful:", result.user);
+                window.location.href = "index.html";
+            } catch (error) {
+                console.error("Google sign in error:", error.code, error.message);
+                showError('signin', "Google sign in failed. Please try again.");
+                hideLoader('signin');
+            }
         });
 
         // Google Sign Up
-        document.getElementById('googleSignup').addEventListener('click', () => {
-            showLoader('signup');
+        document.getElementById('googleSignup').addEventListener('click', async () => {
+            try {
+                showLoader('signup');
 
-            signInWithPopup(auth, googleProvider)
-                .then((result) => {
-                    console.log("Google sign up successful:", result.user);
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    console.error("Google sign up error:", error.code, error.message);
-                    showError('signup', "Google sign up failed. Please try again.");
-                });
+                // Create a new provider instance each time
+                const googleProvider = new GoogleAuthProvider();
+                googleProvider.addScope('email');
+
+                const result = await signInWithPopup(auth, googleProvider);
+                console.log("Google sign up successful:", result.user);
+                window.location.href = "index.html";
+            } catch (error) {
+                console.error("Google sign up error:", error.code, error.message);
+                showError('signup', "Google sign up failed. Please try again.");
+                hideLoader('signup');
+            }
         });
 
         // Check if user is already signed in

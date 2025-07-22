@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const semesterSections = document.querySelectorAll('.semester-section');
     const subjectCards = document.querySelectorAll('.subject-card');
-    const welcomeBanner = document.querySelector('.welcome-banner');
     const backToTopButton = document.getElementById('backToTop');
     const pageLoader = document.getElementById('page-loader');
     window.addEventListener('load', () => {
@@ -56,10 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initializeAnimations() {
-        setTimeout(() => {
-            if (welcomeBanner) welcomeBanner.classList.add('animated');
-        }, 300);
-
         if (subjectCards.length > 0) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {

@@ -1106,7 +1106,7 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
-        const googleProvider = new GoogleAuthProvider();
+        // Google provider is now initialized in the click handler
 
         // DOM elements
         const authOverlay = document.getElementById('authOverlay');
@@ -1195,12 +1195,24 @@
         // Google Sign In
         googleSignInBtn.addEventListener('click', async () => {
             try {
+                // Show loader
+                document.getElementById('page-loader').style.display = 'flex';
+
+                // Create a new provider instance each time
+                const googleProvider = new GoogleAuthProvider();
+                googleProvider.addScope('email');
+
                 const result = await signInWithPopup(auth, googleProvider);
                 console.log("Google sign in successful:", result.user);
                 authOverlay.style.display = 'none';
+
+                // Hide loader
+                document.getElementById('page-loader').style.display = 'none';
             } catch (error) {
                 console.error("Google sign in error:", error);
                 alert("Failed to sign in with Google. Please try again.");
+                // Hide loader on error
+                document.getElementById('page-loader').style.display = 'none';
             }
         });
 

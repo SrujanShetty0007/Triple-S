@@ -13,6 +13,167 @@
 
         gtag('config', 'G-9NPTSX512J');
     </script>
+    <!-- Additional styling for cleaner profile layout -->
+    <style>
+        body {
+            font-size: 14px;
+            line-height: 1.5;
+            background: #f8fafc;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            padding: 1rem 0.8rem;
+            margin: 2rem auto;
+        }
+
+        .profile-card,
+        .account-actions-card {
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeef2;
+            transition: all 0.2s ease;
+        }
+
+        .profile-card:hover,
+        .account-actions-card:hover {
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            padding: 0.8rem 1.2rem;
+        }
+
+        .card-header h2,
+        .card-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .card-header p {
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .profile-content {
+            padding: 1rem;
+        }
+
+        .profile-view-mode {
+            gap: 1rem;
+        }
+
+        .profile-picture-view,
+        .profile-picture-container {
+            width: 90px;
+            height: 90px;
+        }
+
+        .info-item {
+            padding: 0.8rem;
+            background: #f7f9fc;
+            border-radius: 8px;
+            border: 1px solid #eaeef2;
+            transition: all 0.2s ease;
+        }
+
+        .info-item:hover {
+            background: #f0f4fa;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .info-value {
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        .form-section {
+            padding: 1rem;
+            background: #f7f9fc;
+            border-radius: 8px;
+            border: 1px solid #eaeef2;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-control {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            outline: none;
+        }
+
+        .primary-btn,
+        .secondary-btn,
+        .outline-btn,
+        .danger-btn {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .primary-btn {
+            background: #4361ee;
+            color: white;
+            border: none;
+        }
+
+        .primary-btn:hover {
+            background: #3a56d4;
+            transform: translateY(-1px);
+        }
+
+        .action-item {
+            padding: 0.8rem;
+            background: #fdf2f2;
+            border-radius: 8px;
+            border: 1px solid #fecaca;
+        }
+
+        @media (max-width: 640px) {
+            .profile-container {
+                margin: 1rem auto;
+                padding: 0.5rem;
+            }
+
+            .button-group,
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .button-group button,
+            .action-buttons button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .action-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
