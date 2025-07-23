@@ -100,20 +100,8 @@
     "electrical-engineering": {
       "model-papers": [
         {
-          "filename": "Intro to electrical engg-SIMP.pdf",
-          "name": "Intro To Electrical Engg Simp"
-        },
-        {
-          "filename": "most imp qns.pdf",
-          "name": "Most Imp Qns"
-        },
-        {
-          "filename": "sample-model-paper.pdf",
-          "name": "Sample Model Paper"
-        },
-        {
-          "filename": "SOLVED MQP ELE (2).pdf",
-          "name": "Solved Mqp Ele (2)"
+          "filename": "Solved Mqp ESC.pdf",
+          "name": "Solved Mqp Esc"
         }
       ],
       "notes": [
@@ -142,12 +130,7 @@
           "name": "Module5 Besck104b Mitk"
         }
       ],
-      "previous-papers": [
-        {
-          "filename": "question bank.pdf",
-          "name": "Question Bank"
-        }
-      ]
+      "previous-papers": []
     },
     "electronics-eng": {
       "model-papers": [
