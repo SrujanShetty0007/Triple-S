@@ -204,6 +204,19 @@ main {
 /* Feedback Section */
 .feedback-section {
     padding: 2rem 1rem 3rem;
+    position: relative;
+}
+
+.feedback-section::before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background: linear-gradient(to bottom, rgba(248, 249, 252, 0), rgba(248, 249, 252, 1));
+    pointer-events: none;
+    z-index: -1;
 }
 
 .feedback-intro {
@@ -361,22 +374,55 @@ main {
     font-family: 'Montserrat', sans-serif;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 50px;
-    height: 3px;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
 /* Form Styles */
 .feedback-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    position: relative;
+}
+
+/* Form Progress Indicator */
+.form-progress {
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-progress-bar {
+    height: 100%;
+    background: var(--gradient);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+    position: relative;
+}
+
+.form-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .form-group {
@@ -387,6 +433,25 @@ main {
 
 .form-group:focus-within {
     transform: translateY(-2px);
+}
+
+.form-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.02), rgba(58, 12, 163, 0.02));
+    border-radius: var(--button-border-radius);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.form-group:focus-within::before {
+    opacity: 1;
 }
 
 .form-group label {
@@ -438,15 +503,23 @@ main {
 .form-group select {
     width: 100%;
     padding: 0.95rem 1.25rem;
-    border: 1px solid #ddd;
+    border: 2px solid #e2e8f0;
     border-radius: var(--button-border-radius);
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     font-size: 1rem;
     font-family: inherit;
     color: #222;
     transition: all 0.3s ease;
     letter-spacing: 0.01em;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .form-group input:focus,
@@ -480,6 +553,18 @@ main {
 .form-group select:invalid:focus {
     border-color: var(--error-color);
     box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-group input:valid,
+.form-group textarea:valid,
+.form-group select:valid {
+    border-color: var(--success-color);
+}
+
+.form-group input:valid:focus,
+.form-group textarea:valid:focus,
+.form-group select:valid:focus {
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
 }
 
 .form-field-feedback {
@@ -630,6 +715,12 @@ main {
 
 .emoji-option input:checked+.emoji-icon {
     animation: bounce 0.4s ease-in-out;
+}
+
+.emoji-option.selected {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(58, 12, 163, 0.05));
+    border-radius: 8px;
+    transform: scale(1.02);
 }
 
 /* Responsive adjustments */
@@ -902,6 +993,25 @@ main {
     display: flex;
 }
 
+.submit-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.submit-btn.loading .btn-loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Contact Info Card */
 .feedback-contact-info {
     background-color: white;
@@ -912,9 +1022,10 @@ main {
     overflow: hidden;
     transition: var(--transition);
     animation: slideInFromRight 0.8s ease-out;
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(67, 97, 238, 0.1);
 }
 
 .feedback-contact-info:hover {
@@ -1157,6 +1268,14 @@ main {
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(67, 97, 238, 0.1);
 }
 
 .faq-item:last-child {
@@ -1237,8 +1356,70 @@ main {
     opacity: 1;
 }
 
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 992px) {
+    .feedback-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .feedback-contact-info {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+
+    .feedback-form-container {
+        animation: slideInFromBottom 0.8s ease-out;
+    }
+
+    @keyframes slideInFromBottom {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
 /* Responsive styles for FAQ section */
 @media (max-width: 768px) {
+    .feedback-section {
+        padding: 1.5rem 0.5rem 2.5rem;
+    }
+
+    .feedback-intro {
+        padding: 2rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .feedback-intro h2 {
+        font-size: 2rem;
+    }
+
+    .feedback-intro p {
+        font-size: 1rem;
+        max-width: 95%;
+    }
+
+    .feedback-container {
+        padding: 0 0.5rem;
+        gap: 1.5rem;
+    }
+
+    .feedback-form-container,
+    .feedback-contact-info {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     .faq-section h2 {
         font-size: 1.8rem;
         margin-bottom: 2rem;

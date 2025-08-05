@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize emoji rating
     initEmojiRating();
 
+    // Initialize form progress tracking
+    initFormProgress();
+
     // Update email subject with selected category
     if (categorySelect && subjectField) {
         categorySelect.addEventListener("change", function () {
@@ -213,8 +216,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (parentLabel) {
                     parentLabel.classList.add('selected');
                 }
+
+                // Update form progress
+                updateFormProgress();
             });
         });
+    }
+
+    // Form progress tracking
+    function initFormProgress() {
+        const requiredFields = document.querySelectorAll('#feedbackForm [required]');
+
+        requiredFields.forEach(field => {
+            field.addEventListener('input', updateFormProgress);
+            field.addEventListener('change', updateFormProgress);
+        });
+
+        // Initial progress calculation
+        updateFormProgress();
+    }
+
+    function updateFormProgress() {
+        const progressBar = document.getElementById('formProgressBar');
+        if (!progressBar) return;
+
+        const requiredFields = document.querySelectorAll('#feedbackForm [required]');
+        let filledFields = 0;
+
+        requiredFields.forEach(field => {
+            if (field.type === 'radio') {
+                // For radio buttons, check if any in the group is selected
+                const radioGroup = document.querySelectorAll(`input[name="${field.name}"]`);
+                const isSelected = Array.from(radioGroup).some(radio => radio.checked);
+                if (isSelected) filledFields++;
+            } else if (field.type === 'checkbox') {
+                if (field.checked) filledFields++;
+            } else {
+                if (field.value.trim() !== '') filledFields++;
+            }
+        });
+
+        const progress = (filledFields / requiredFields.length) * 100;
+        progressBar.style.width = `${progress}%`;
     }
 
     // Prevent zooming on focus in iOS

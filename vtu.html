@@ -47,48 +47,105 @@
     <style>
         body {
             height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(248, 250, 255, 0.8) 0%, rgba(240, 245, 255, 0.6) 100%);
+            position: relative;
         }
 
         body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(67, 97, 238, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(76, 201, 240, 0.03) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234361ee' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .vtu-hero-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.95) 0%, rgba(76, 201, 240, 0.9) 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2);
+        }
+
+        .vtu-hero-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234361ee' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: -1;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        .vtu-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .vtu-hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-family: var(--heading-font);
+        }
+
+        .vtu-hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
         .coming-soon-section {
-            min-height: 70vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem auto;
+            padding: 3rem 2rem;
             position: relative;
             overflow: hidden;
         }
 
         .vtu-logo {
-            width: 120px;
+            width: 140px;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .vtu-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.3);
         }
 
         .features-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 1000px;
+            width: 100%;
         }
 
         .feature-item a {
@@ -97,80 +154,158 @@
         }
 
         .feature-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            width: 220px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.1);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             text-decoration: none;
             color: var(--dark-color);
             display: block;
             cursor: pointer;
+            border: 2px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .feature-item.active {
-            border: 2px solid var(--primary-color);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.2);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+
+        .feature-item.active::before {
+            transform: scaleX(1);
         }
 
         .available-badge {
             position: absolute;
-            top: 25px;
-            right: -47px;
-            background: var(--primary-color);
+            top: 20px;
+            right: -45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            font-size: 0.7rem;
-            padding: 4px 50px;
+            font-size: 0.75rem;
+            padding: 6px 50px;
             transform: rotate(45deg);
             font-weight: 600;
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
+            letter-spacing: 0.5px;
         }
 
         .feature-item i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-item:hover i {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(76, 201, 240, 0.2));
         }
 
         .feature-item h3 {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
         }
 
         .feature-item p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .vtu-resources-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.08);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vtu-resources-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .vtu-link-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-family: var(--heading-font);
+            position: relative;
+        }
+
+        .vtu-link-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         .vtu-link {
-            margin: 2rem 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 0;
         }
 
         .vtu-link a {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
+            gap: 0.8rem;
+            padding: 1.2rem 1.8rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 15px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.25);
             position: relative;
             overflow: hidden;
-            min-width: 220px;
             justify-content: center;
+            border: 2px solid transparent;
         }
 
         .vtu-link a::before {
@@ -180,13 +315,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s ease;
         }
 
         .vtu-link a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(67, 97, 238, 0.35);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .vtu-link a:hover::before {
@@ -194,18 +330,21 @@
         }
 
         .vtu-link i {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
         .vtu-link a:hover i {
-            transform: translateX(3px);
+            transform: translateX(4px) scale(1.1);
         }
 
         .vtu-link p {
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
         }
 
         @media (max-width: 600px) {
@@ -224,98 +363,217 @@
         }
 
         @media (max-width: 768px) {
+            .vtu-hero-section {
+                padding: 3rem 0;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .vtu-hero-title {
+                font-size: 2rem;
+            }
+
+            .vtu-hero-subtitle {
+                font-size: 1.1rem;
+            }
 
             .features-list {
-                gap: 1rem;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
             }
 
             .feature-item {
-                width: calc(50% - 1rem);
-                padding: 1rem;
+                padding: 1.5rem 1.2rem;
+            }
+
+            .feature-item i {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
             }
 
             .vtu-logo {
-                margin-top: -10px;
-                width: 180px;
+                width: 120px;
+            }
+
+            .vtu-resources-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .vtu-link {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .vtu-link-title {
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 480px) {
-            .coming-soon-icon {
-                font-size: 4rem;
+            .vtu-hero-section {
+                padding: 2.5rem 0;
+                border-radius: 0 0 15px 15px;
+            }
+
+            .vtu-hero-content {
+                padding: 0 1rem;
+            }
+
+            .vtu-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .vtu-hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .coming-soon-section {
+                padding: 2rem 1rem;
             }
 
             .features-list {
-                flex-direction: column;
-                align-items: center;
+                margin: 1.5rem 0;
             }
 
             .feature-item {
-                width: 100%;
-                max-width: 280px;
+                padding: 1.2rem 1rem;
+            }
+
+            .feature-item i {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .feature-item p {
+                font-size: 0.9rem;
             }
 
             .vtu-logo {
-                margin-top: -10px;
-                width: 180px;
+                width: 100px;
+                margin-bottom: 1.5rem;
+            }
+
+            .vtu-resources-section {
+                padding: 1.5rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .vtu-link-title {
+                font-size: 1.4rem;
+                margin-bottom: 2rem;
+            }
+
+            .vtu-link a {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .about-university-container {
+                padding: 2rem 1rem 1.5rem 1rem;
+            }
+
+            .about-university-title {
+                font-size: 1.6rem;
             }
         }
 
-        /* About University Section */
+        /* Enhanced About University Section */
         .about-university-container {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(67, 97, 238, 0.07);
-            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-            margin: 2.5rem auto 2rem auto;
-            max-width: 900px;
-            border: 1px solid var(--primary-color);
+            background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.1);
+            padding: 3rem 2rem 2rem 2rem;
+            margin: 3rem auto 2rem auto;
+            max-width: 1000px;
+            border: 2px solid rgba(67, 97, 238, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-university-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .about-university-title {
             text-align: center;
             font-family: var(--heading-font);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.01em;
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .about-university-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         .about-university-table-wrapper {
             overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.08);
         }
 
         .about-university-table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--light-color);
-            border-radius: 10px;
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
             font-family: var(--body-font);
-            font-size: 1.08rem;
-            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.04);
+            font-size: 1.1rem;
+            box-shadow: none;
         }
 
         .about-university-table th,
         .about-university-table td {
-            padding: 1rem 1.2rem;
-            border-bottom: 1px solid #e6e6e6;
+            padding: 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(67, 97, 238, 0.1);
             text-align: left;
+            transition: background-color 0.3s ease;
         }
 
         .about-university-table th {
-            background: var(--light-color);
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.08) 0%, rgba(76, 201, 240, 0.08) 100%);
             color: var(--primary-color);
             font-weight: 600;
-            width: 220px;
+            width: 250px;
             font-family: var(--heading-font);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
         }
 
         .about-university-table td {
             color: var(--dark-color);
             font-weight: 500;
+            background: white;
+        }
+
+        .about-university-table tr:hover td {
+            background: rgba(67, 97, 238, 0.02);
         }
 
         .about-university-table tr:last-child th,
@@ -326,67 +584,133 @@
         .vtu-official-link {
             color: var(--primary-color);
             font-weight: 600;
-            text-decoration: underline;
-            transition: color 0.2s;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .vtu-official-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
         }
 
         .vtu-official-link:hover {
             color: var(--secondary-color);
-            text-decoration: underline wavy;
+            background: rgba(67, 97, 238, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .vtu-official-link:hover::after {
+            width: 100%;
         }
 
         @media (max-width: 700px) {
             .about-university-container {
-                padding: 1.2rem 0.5rem 1rem 0.5rem;
+                padding: 2rem 1rem 1.5rem 1rem;
+                margin: 2rem auto;
             }
 
             .about-university-title {
-                font-size: 1.3rem;
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
             }
 
             .about-university-table th,
             .about-university-table td {
-                padding: 0.7rem 0.7rem;
-                font-size: 0.98rem;
+                padding: 1rem 0.8rem;
+                font-size: 1rem;
+            }
+
+            .about-university-table th {
+                width: 180px;
             }
         }
 
         @media (max-width: 480px) {
             .about-university-container {
-                padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+                padding: 1.5rem 0.8rem 1.2rem 0.8rem;
+                margin: 1.5rem auto;
             }
 
             .about-university-title {
-                font-size: 1.1rem;
+                font-size: 1.5rem;
+                margin-bottom: 1.2rem;
             }
 
             .about-university-table th,
             .about-university-table td {
-                padding: 0.5rem 0.4rem;
-                font-size: 0.93rem;
+                padding: 0.8rem 0.6rem;
+                font-size: 0.95rem;
+            }
+
+            .about-university-table th {
+                width: 140px;
+                font-size: 1rem;
             }
         }
 
         .vtu-feature-highlight {
-            background: var(--light-color);
-            border-left: 5px solid var(--primary-color);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(67, 97, 238, 0.06);
-            padding: 1.2rem 1.5rem;
-            margin: 0 auto 2rem auto;
-            max-width: 700px;
-            font-size: 1.13rem;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(76, 201, 240, 0.05) 100%);
+            border: 2px solid rgba(67, 97, 238, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.08);
+            padding: 2rem 2.5rem;
+            margin: 0 auto 3rem auto;
+            max-width: 800px;
+            font-size: 1.2rem;
             color: var(--dark-color);
             font-family: var(--body-font);
             font-weight: 500;
             text-align: center;
-            letter-spacing: 0.01em;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vtu-feature-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .vtu-feature-highlight::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .vtu-feature-highlight {
+                padding: 1.5rem 1.8rem;
+                font-size: 1.1rem;
+                margin: 0 auto 2.5rem auto;
+            }
         }
 
         @media (max-width: 600px) {
             .vtu-feature-highlight {
-                padding: 0.8rem 0.5rem;
+                padding: 1.2rem 1.5rem;
                 font-size: 1rem;
+                margin: 0 auto 2rem auto;
             }
         }
     </style>
@@ -461,17 +785,19 @@
         </div>
     </header>
 
+    <!-- VTU Hero Section -->
+    <section class="vtu-hero-section" data-aos="fade-down" data-aos-duration="800">
+        <div class="vtu-hero-content container">
+            <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo">
+            <h1 class="vtu-hero-title">VTU Resources & Tools</h1>
+            <p class="vtu-hero-subtitle">Your one-stop destination for VTU results, calculators, and academic resources.
+                Fast, reliable, and designed specifically for VTU students.</p>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="container">
         <section class="coming-soon-section">
-            <img src="assets/images/VTU-Logo.webp" alt="VTU Logo" class="vtu-logo" data-aos="fade-down"
-                data-aos-duration="900">
-
-            <div class="vtu-feature-highlight" data-aos="fade-left" data-aos-duration="900">
-                Check your VTU results instantly and calculate your SGPA and CGPA with ease. Fast, reliable, and
-                designed for VTU
-                students.
-            </div>
 
             <div class="features-list" data-aos="fade-up" data-aos-duration="900">
 
@@ -498,30 +824,35 @@
                 </a>
             </div>
 
-            <h2 class="vtu-link-title" data-aos="fade-right" data-aos-duration="900">VTU Resources</h2>
-            <div class="vtu-link" data-aos="fade-left" data-aos-duration="900">
+        </section>
+
+        <!-- VTU Resources Section -->
+        <section class="vtu-resources-section" data-aos="fade-up" data-aos-duration="900">
+            <h2 class="vtu-link-title">Official VTU Resources</h2>
+            <div class="vtu-link">
                 <a href="https://vtu.ac.in/model-question-paper-b-e-b-tech-b-arch/" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    <p>Visit VTU Model Question Papers</p>
+                    <i class="fas fa-file-alt"></i>
+                    <p>Model Question Papers</p>
                 </a>
-                <a href="https://vtu.ac.in/model-question-paper-b-e-b-tech-b-arch/" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    <p>VTU Exam Circulars & Notifications</p>
+                <a href="https://vtu.ac.in/category/circulars/" target="_blank">
+                    <i class="fas fa-bell"></i>
+                    <p>Exam Circulars & Notifications</p>
                 </a>
                 <a href="https://vtu.ac.in/b-e-scheme-syllabus/" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    <p>VTU B.E Scheme & Syllabus</p>
+                    <i class="fas fa-book-open"></i>
+                    <p>B.E Scheme & Syllabus</p>
                 </a>
                 <a href="https://vtu.ac.in/category/time-table/" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    <p>VTU Exam Time Table</p>
+                    <i class="fas fa-calendar-alt"></i>
+                    <p>Exam Time Table</p>
                 </a>
             </div>
         </section>
 
         <div class="vtu-feature-highlight" data-aos="fade-up" data-aos-duration="900">
-            The official VTU website provides students and faculty with access to results, notifications, academic
-            resources, and important updates from Visvesvaraya Technological University.
+            <strong>About VTU:</strong> The official VTU website provides students and faculty with comprehensive access
+            to results, notifications, academic resources, and important updates from Visvesvaraya Technological
+            University. Stay connected with the latest announcements and academic information.
         </div>
 
         <!-- About University Section -->
