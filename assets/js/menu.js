@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobileMenuButton');
     const navContainer = document.getElementById('navContainer');
     const body = document.body;
 
     if (mobileMenuButton && navContainer) {
-        // Toggle menu when button is clicked
+        // Toggle mobile menu
         mobileMenuButton.addEventListener('click', () => {
             mobileMenuButton.classList.toggle('active');
             navContainer.classList.toggle('active');
-            body.classList.toggle('menu-open'); // Prevent scrolling when menu is open
+            body.classList.toggle('menu-open');
         });
 
         // Close menu when clicking outside
@@ -17,50 +16,40 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navContainer.classList.contains('active') &&
                 !mobileMenuButton.contains(e.target) &&
                 !navContainer.contains(e.target)) {
-                mobileMenuButton.classList.remove('active');
-                navContainer.classList.remove('active');
-                body.classList.remove('menu-open');
+                closeMenu();
             }
         });
 
-        // Close menu when clicking on a link (but not dropdown buttons)
+        // Close menu when clicking on nav links
         const navLinks = document.querySelectorAll('.nav-links a:not(.dropbtn)');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuButton.classList.remove('active');
-                navContainer.classList.remove('active');
-                body.classList.remove('menu-open');
-            });
+            link.addEventListener('click', closeMenu);
         });
 
-        // Close menu when pressing Escape key
+        // Close menu with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navContainer.classList.contains('active')) {
-                mobileMenuButton.classList.remove('active');
-                navContainer.classList.remove('active');
-                body.classList.remove('menu-open');
+                closeMenu();
             }
         });
 
-        // Mobile dropdown functionality
+        // Dropdown functionality
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
             const dropbtn = dropdown.querySelector('.dropbtn');
-            const dropdownContent = dropdown.querySelector('.dropdown-content');
 
-            if (dropbtn && dropdownContent) {
+            if (dropbtn) {
                 dropbtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
 
                     // Close other dropdowns
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
                         }
                     });
 
-                    // Toggle current dropdown
                     dropdown.classList.toggle('active');
                 });
             }
@@ -74,5 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    }
+
+    function closeMenu() {
+        mobileMenuButton.classList.remove('active');
+        navContainer.classList.remove('active');
+        body.classList.remove('menu-open');
     }
 });

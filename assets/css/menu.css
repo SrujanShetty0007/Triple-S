@@ -35,10 +35,8 @@ header .container {
     gap: 15px;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.3s ease;
     cursor: pointer;
 }
-
 
 .logo {
     display: flex;
@@ -91,31 +89,15 @@ header .container {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
     padding: 5px 0;
-    position: relative;
-    overflow: hidden;
 }
 
-.nav-links a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-    opacity: 0;
+.nav-links a:hover {
+    color: #f0f8ff;
 }
 
-.nav-links a:hover:after {
-    width: 100%;
-    opacity: 1;
-}
-
-/* Enhanced Mobile Menu Button */
+/* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
     background: none;
@@ -123,11 +105,6 @@ header .container {
     cursor: pointer;
     padding: 5px;
     z-index: 101;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.mobile-menu-button:hover {
-    transform: scale(1.1);
 }
 
 .hamburger {
@@ -145,42 +122,23 @@ header .container {
     width: 100%;
     background-color: white;
     border-radius: 3px;
-    transform-origin: center;
-    transition: transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
-        opacity 0.3s ease,
-        width 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Improved hamburger animation */
-.hamburger span:nth-child(1) {
-    width: 100%;
-}
-
-.hamburger span:nth-child(2) {
-    width: 100%;
-}
-
-.hamburger span:nth-child(3) {
-    width: 100%;
-}
-
-/* Active state for mobile menu button with improved animation */
+/* Hamburger animation */
 .mobile-menu-button.active .hamburger span:nth-child(1) {
     transform: translateY(8.5px) rotate(45deg);
-    width: 100%;
 }
 
 .mobile-menu-button.active .hamburger span:nth-child(2) {
     opacity: 0;
-    transform: translateX(-10px);
 }
 
 .mobile-menu-button.active .hamburger span:nth-child(3) {
     transform: translateY(-8.5px) rotate(-45deg);
-    width: 100%;
 }
 
-/* Responsive Navigation with enhanced animations */
+/* Mobile Navigation */
 @media (max-width: 768px) {
     .mobile-menu-button {
         display: block;
@@ -190,12 +148,10 @@ header .container {
         display: flex;
     }
 
-    /* Hide desktop auth link */
     #auth-link {
         display: none;
     }
 
-    /* Mobile user avatar styling */
     #mobile-auth-link .user-menu-container {
         position: relative;
     }
@@ -209,10 +165,6 @@ header .container {
     #mobile-auth-link .user-dropdown {
         top: calc(100% + 15px);
         right: -100px;
-    }
-
-    #mobile-auth-link .user-dropdown::before {
-        right: 110px;
     }
 
     #mobile-auth-link a {
@@ -230,7 +182,7 @@ header .container {
         height: 100vh;
         background: var(--gradient);
         z-index: 100;
-        transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: right 0.3s ease;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: center;
@@ -243,8 +195,6 @@ header .container {
     .nav-links {
         flex-direction: column;
         gap: 20px;
-        top: -20px;
-        position: relative;
         align-items: center;
         justify-content: center;
     }
@@ -308,12 +258,7 @@ header .container {
 
     .nav-links a {
         font-size: 1.1rem;
-        display: block;
-        padding: 5px 15px;
-    }
-
-    .nav-links a:hover {
-        color: #fff;
+        padding: 10px 15px;
     }
 
     .logo img {
@@ -378,7 +323,7 @@ header .container {
     }
 }
 
-/* Dropdown menu styles */
+/* Dropdown Styles */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -389,7 +334,7 @@ header .container {
     border: none;
     outline: none;
     color: white;
-    padding: 1px 0;
+    padding: 5px 0;
     background-color: transparent;
     font-family: inherit;
     margin: 0;
@@ -401,6 +346,7 @@ header .container {
 
 .dropdown .dropbtn i {
     margin-left: 5px;
+    transition: transform 0.3s ease;
 }
 
 .dropdown-content {
@@ -408,7 +354,7 @@ header .container {
     position: absolute;
     background-color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 101;
     border-radius: 4px;
     top: 100%;
@@ -428,14 +374,14 @@ header .container {
     background-color: #f1f1f1;
 }
 
-/* Only show dropdown on hover for desktop */
+/* Desktop dropdown hover */
 @media (min-width: 769px) {
     .dropdown:hover .dropdown-content {
         display: block;
     }
 }
 
-/* Mobile dropdown adjustments */
+/* Mobile dropdown */
 @media (max-width: 768px) {
     .dropdown {
         width: 100%;
@@ -446,8 +392,6 @@ header .container {
         text-align: center;
         padding: 10px 0;
         justify-content: center;
-        color: white;
-
     }
 
     .dropdown-content {
@@ -480,24 +424,5 @@ header .container {
 
     .dropdown.active .dropbtn i {
         transform: rotate(180deg);
-    }
-
-    /* Ensure dropdowns are properly styled in mobile menu */
-    .nav-container.active .dropdown {
-        width: 100%;
-    }
-
-    .nav-container.active .dropdown .dropbtn {
-        width: 100%;
-        text-align: left;
-        padding: 15px 0;
-    }
-
-    .nav-container.active .dropdown-content {
-        position: static;
-        background-color: rgba(255, 255, 255, 0.05);
-        box-shadow: none;
-        border-radius: 0;
-        margin-top: 0;
     }
 }
