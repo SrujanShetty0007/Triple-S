@@ -3,7 +3,12 @@
     "chemistry": {
       "model-papers": [],
       "notes": [],
-      "previous-papers": []
+      "previous-papers": [
+        {
+          "filename": "Applied Chemistry for CSE.pdf",
+          "name": "Applied Chemistry For Cse"
+        }
+      ]
     },
     "electronics": {
       "model-papers": [],

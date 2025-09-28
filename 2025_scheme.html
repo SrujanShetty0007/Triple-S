@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPTSX512J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9NPTSX512J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="VTU 2025 Scheme - Access comprehensive study materials, notes, model papers, and previous year question papers for all semesters under the new 2025 scheme.">
+    <meta name="keywords"
+        content="VTU 2025 scheme, engineering notes, model papers, previous year papers, semester materials, VTU syllabus">
+    <meta name="author" content="Srujan S Shetty">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="VTU 2025 Scheme - Triple S Study Materials">
+    <meta property="og:description"
+        content="Complete study materials for VTU 2025 scheme - notes, model papers & previous year question papers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://triple-s.netlify.app/2025_scheme.html">
+    <meta property="og:image" content="assets/images/logo1.png">
+    <title>VTU 2025 Scheme - Study Materials | Triple S</title>
+
+    <!-- Stylesheets -->
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/typography-enhancements.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/2025_scheme.css">
+    <link rel="stylesheet" href="assets/css/pdf-loading.css">
+    <link rel="stylesheet" href="assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="assets/js/pdf-watermarker.js"></script>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-container">
+                <div class="logo">
+                    <img src="assets/images/logo1.png" alt="Triple S Logo">
+                </div>
+                <div class="title-container">
+                    <h1>Triple S</h1>
+                    <p class="tagline">Student Study Support</p>
+                </div>
+            </a>
+
+            <!-- Mobile Menu Controls -->
+            <div class="mobile-controls">
+                <div id="mobile-auth-link"></div>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="navContainer">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Navigation Container -->
+            <nav class="nav-container" id="navContainer" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Subjects
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="mathematics.html">Mathematics</a>
+                            <a href="physics.html">Physics</a>
+                            <a href="chemistry.html">Chemistry</a>
+                            <a href="esc.html">ESC</a>
+                        </div>
+                    </li>
+                    <li><a href="vtu.html">VTU</a></li>
+                    <li><a href="2025_scheme.html" aria-current="page">2025 Scheme</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Tools
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="vtu-sgpa-calculator.html">SGPA Calculator</a>
+                            <a href="vtu-cgpa-calculator.html">CGPA Calculator</a>
+                            <a href="vtu.html">VTU Results</a>
+                        </div>
+                    </li>
+                    <li><a href="quiz.html">Quizzes</a></li>
+                    <li><a href="image-to-pdf.html">Image to PDF</a></li>
+                    <li><a href="#my-contribution-section">Contribute</a></li>
+                    <li id="auth-link"><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1><i class="fas fa-graduation-cap"></i> VTU 2025 Scheme</h1>
+                <p>Comprehensive study materials for the new VTU 2025 curriculum scheme</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Semester Filter Buttons -->
+        <div class="semester-filter">
+            <button class="filter-btn active" data-semester="all">All Semesters</button>
+            <button class="filter-btn" data-semester="sem1">Semester 1</button>
+            <button class="filter-btn" data-semester="sem2">Semester 2</button>
+            <button class="filter-btn" data-semester="sem3">Semester 3</button>
+            <button class="filter-btn" data-semester="sem4">Semester 4</button>
+            <button class="filter-btn" data-semester="sem5">Semester 5</button>
+            <button class="filter-btn" data-semester="sem6">Semester 6</button>
+            <button class="filter-btn" data-semester="sem7">Semester 7</button>
+            <button class="filter-btn" data-semester="sem8">Semester 8</button>
+        </div>
+
+        <!-- Notice -->
+        <div class="notice-banner">
+            <i class="fas fa-info-circle"></i>
+            <p>Materials are being updated regularly. Currently focusing on Semester 1 & 2 subjects.</p>
+        </div>
+
+        <!-- Semester 1 Section -->
+        <section id="sem1" class="semester-section">
+            <h2><i class="fas fa-book-open"></i> Semester 1</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Mathematics-I for CSE Stream</h3>
+                        <span class="subject-code">BMATS101</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/mathematics/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/mathematics/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/mathematics/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Chemistry for CSE Stream</h3>
+                        <span class="subject-code">BCHES102</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/chemistry/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/chemistry/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/chemistry/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Computer-Aided Engineering Drawing</h3>
+                        <span class="subject-code">BCADK103</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/engineering-drawing/model-papers"
+                                class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/engineering-drawing/previous-papers"
+                                class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/engineering-drawing/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Electronics Communication</h3>
+                        <span class="subject-code">BESCK104C</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/electronics/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/electronics/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/electronics/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Embedded System</h3>
+                        <span class="subject-code">BETCK105J</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/embedded-systems/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/embedded-systems/previous-papers"
+                                class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/embedded-systems/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Communicative English</h3>
+                        <span class="subject-code">BENGK106</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/english/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/english/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/english/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Samskrutika Kannada/ Balake Kannada</h3>
+                        <span class="subject-code">BKSK107/ BKBKK107</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/kannada/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/kannada/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/kannada/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Scientific Foundations of Health</h3>
+                        <span class="subject-code">BSFHK158</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem1/health/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/health/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem1/health/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semester 2 Section -->
+        <section id="sem2" class="semester-section">
+            <h2><i class="fas fa-book-open"></i> Semester 2</h2>
+            <div class="subjects-container">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Mathematics-II for CSE Stream</h3>
+                        <span class="subject-code">BMATS201</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/mathematics/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/mathematics/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/mathematics/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Physics for CSE Stream</h3>
+                        <span class="subject-code">BPHYS202</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/physics/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/physics/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/physics/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Applied Chemistry for CSE Stream</h3>
+                        <span class="subject-code">BCHES202</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/chemistry/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/chemistry/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/chemistry/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Principles of Programming using C</h3>
+                        <span class="subject-code">BPOPS203</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/programming-c/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/programming-c/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/programming-c/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Computer Aided Engineering Drawing</h3>
+                        <span class="subject-code">BCEDK203</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/caed/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/caed/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/caed/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Electrical Engineering</h3>
+                        <span class="subject-code">BESCK204B</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/electrical/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/electrical/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/electrical/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <h3>Introduction to Python Programming</h3>
+                        <span class="subject-code">BPLCK205B</span>
+                    </div>
+                    <div class="subject-content">
+                        <div class="materials">
+                            <a href="assets/pdfs/2025-scheme/sem2/python/model-papers" class="material-link">
+                                <i class="fas fa-file-alt"></i> Model Question Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/python/previous-papers" class="material-link">
+                                <i class="fas fa-history"></i> Previous Year Papers
+                            </a>
+                            <a href="assets/pdfs/2025-scheme/sem2/python/notes" class="material-link">
+                                <i class="fas fa-book"></i> Notes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder sections for other semesters -->
+        <section id="sem3" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 3</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 3 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+
+        <section id="sem4" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 4</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 4 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+
+        <section id="sem5" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 5</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 5 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+
+        <section id="sem6" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 6</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 6 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+
+        <section id="sem7" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 7</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 7 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+
+        <section id="sem8" class="semester-section" style="display: none;">
+            <h2><i class="fas fa-book-open"></i> Semester 8</h2>
+            <div class="coming-soon">
+                <i class="fas fa-clock"></i>
+                <h3>Coming Soon</h3>
+                <p>Materials for Semester 8 are being prepared and will be available soon.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo1.png" alt="Triple S Logo">
+                    </a>
+                    <h3>Triple S</h3>
+                    <p>Empowering students with knowledge and resources for academic excellence.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/+918217358117" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:triples.studies.edu@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/srujanshetty0007" class="social-link" target="_blank"
+                            aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/srujan-shetty0007/" class="social-link" target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                            <li><a href="mathematics.html">Mathematics</a></li>
+                            <li><a href="physics.html">Physics</a></li>
+                            <li><a href="chemistry.html">Chemistry</a></li>
+                            <li><a href="vtu.html">VTU</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>2025 Scheme</h3>
+                        <ul class="footer-links">
+                            <li><a href="#sem1">Semester 1</a></li>
+                            <li><a href="#sem2">Semester 2</a></li>
+                            <li><a href="#sem3">Semester 3</a></li>
+                            <li><a href="#sem4">Semester 4</a></li>
+                            <li><a href="#sem5">Semester 5+</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:triples.studies.edu@gmail.com">Contact Us</a></li>
+                            <li><a href="index.html#my-contribution-section">Share Materials</a></li>
+                            <li><a href="feedback.html">Report Issues</a></li>
+                            <li><a href="feedback.html#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p class="copyright">&copy; 2025 Triple S. All rights reserved.</p>
+                    <p class="made-with">Made with <i class="fas fa-heart"></i> for students</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/auto-pdf-scanner.js"></script>
+    <script src="assets/js/2025_scheme.js"></script>
+    <script src="assets/js/dropdown.js"></script>
+
+    <!-- Firebase Authentication -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHZcDv3pXIU9J3CASXi3sM-V7mZsMuqBM",
+            authDomain: "triple-s-bd006.firebaseapp.com",
+            projectId: "triple-s-bd006",
+            storageBucket: "triple-s-bd006.firebasestorage.app",
+            messagingSenderId: "933483210420",
+            appId: "1:933483210420:web:66fde1b5571ef1741299e1",
+            measurementId: "G-TPHZ0H6L5J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // DOM elements
+        const authLink = document.getElementById('auth-link');
+        const mobileAuthLink = document.getElementById('mobile-auth-link');
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in:", user);
+
+                // Create user icon with dropdown
+                let displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
+                let userInitial = displayName.charAt(0).toUpperCase();
+
+                // Create user menu HTML
+                const userMenuHTML = `
+                    <div class="user-menu-container">
+                        <div class="user-avatar-nav" title="${displayName}">
+                            ${userInitial}
+                        </div>
+                        <div class="user-dropdown">
+                            <div class="user-dropdown-header">
+                                <div class="user-dropdown-name">${displayName}</div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html" class="user-dropdown-item">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                            <a href="profile.html" class="user-dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="#" id="logout-btn" class="user-dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // Update auth link to show user icon with dropdown
+                authLink.innerHTML = userMenuHTML;
+                mobileAuthLink.innerHTML = userMenuHTML; // Also update mobile link
+
+                // Add logout functionality
+                setTimeout(() => {
+                    // Add click event for user avatar to toggle dropdown
+                    const userAvatars = document.querySelectorAll('.user-avatar-nav');
+                    const userDropdowns = document.querySelectorAll('.user-dropdown');
+
+                    userAvatars.forEach((avatar, index) => {
+                        avatar.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            userDropdowns[index].classList.toggle('show');
+                        });
+                    });
+
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', (e) => {
+                        userDropdowns.forEach((dropdown, index) => {
+                            if (!dropdown.contains(e.target) && !userAvatars[index].contains(e.target)) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('#logout-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            signOut(auth).then(() => {
+                                // Sign-out successful
+                                console.log("User signed out");
+                                window.location.reload();
+                            }).catch((error) => {
+                                // An error happened
+                                console.error("Sign out error:", error);
+                                alert("Failed to sign out. Please try again.");
+                            });
+                        });
+                    });
+                }, 100);
+            } else {
+                // User is not signed in
+                console.log("No user is signed in.");
+
+                // Show login link
+                authLink.innerHTML = '<a href="login.html">Login</a>';
+                mobileAuthLink.innerHTML = '<a href="login.html">Login</a>'; // Also update mobile link
+            }
+        });
+    </script>
+
+</body>
+
+</html>

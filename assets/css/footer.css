@@ -1,4 +1,9 @@
 /* Footer Styles */
+@import url('root-variables.css');
+@import url('typography-enhancements.css');
+
+/* Container for Footer */
+
 
 /* Main Footer */
 footer {

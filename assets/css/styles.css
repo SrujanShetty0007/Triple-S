@@ -529,6 +529,29 @@ html {
     transform: translateY(1px);
 }
 
+/* Notice Banner */
+.notice-banner {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+}
+
+.notice-banner i {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.notice-banner p {
+    margin: 0;
+    font-weight: 500;
+}
+
 /* Semester Section */
 .semester-section {
     margin-bottom: 2rem;

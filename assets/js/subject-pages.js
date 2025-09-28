@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
     if (backToTopButton) {
-        window.addEventListener('scroll', function () {
+        window.addEventListener ('scroll', function () {
             backToTopButton.classList.toggle('visible', window.pageYOffset > 300);
         });
 
