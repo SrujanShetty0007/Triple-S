@@ -156,6 +156,23 @@
     font-weight: 500;
 }
 
+/* Notice Banner */
+.notice-banner-bottom{
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    margin-bottom: -64px;
+    color: white;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+}
+
+.notice-banner-bottom p {
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+}
+
 /* Coming Soon Section */
 .coming-soon {
     text-align: center;

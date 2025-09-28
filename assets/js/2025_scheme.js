@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializePdfLinks();
     initializeAnimations();
     initializeBackToTop();
+    initializeCTAButtons();
 
     // Hide loader
     const loader = document.getElementById('page-loader');
@@ -53,6 +54,7 @@ function initializeSemesterFilter() {
 function initializePdfLinks() {
     const materialLinks = document.querySelectorAll('.material-link');
 
+    // Clear cache if pdfScanner2025 exists
     if (window.pdfScanner2025) {
         window.pdfScanner2025.clearCache();
     }
@@ -61,6 +63,7 @@ function initializePdfLinks() {
         link.addEventListener('click', function (e) {
             e.preventDefault();
 
+            // Clear cache again on click
             if (window.pdfScanner2025) {
                 window.pdfScanner2025.clearCache();
             }
@@ -375,8 +378,3 @@ function initializeCTAButtons() {
         });
     });
 }
-
-// Call the CTA button initialization
-document.addEventListener('DOMContentLoaded', function () {
-    initializeCTAButtons();
-});

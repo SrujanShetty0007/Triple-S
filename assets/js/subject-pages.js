@@ -5,16 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
     if (backToTopButton) {
-        window.addEventListener ('scroll', function () {
+        window.addEventListener('scroll', () => {
             backToTopButton.classList.toggle('visible', window.pageYOffset > 300);
         });
 
-        backToTopButton.addEventListener('click', function (e) {
+        backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
@@ -32,39 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeSubjectPdfLinks() {
     // Set up event listeners for Mathematics buttons
-    const mathButtons = document.querySelectorAll('.math-btn');
-    mathButtons.forEach(button => {
+    document.querySelectorAll('.math-btn').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
-
             const mathText = this.querySelector('span').textContent.trim();
             const streamHeader = this.closest('.stream-card').querySelector('.stream-header h2').textContent.trim();
 
             // Check which mathematics button was clicked
             if (mathText === 'Mathematics-2') {
                 if (streamHeader === 'CSE Stream') {
-                    // For CSE Mathematics-2
                     showPdfListModal('assets/pdfs/sem2/mathematics', 'sem2', 'mathematics', 'Mathematics 2 for CSE');
                 } else if (streamHeader === 'EEE Stream') {
-                    // For EEE Mathematics-2
                     showPdfListModal('assets/pdfs/sem2/mathematics-eee', 'sem2', 'mathematics', 'Mathematics 2 for EEE');
                 } else {
-                    // For other streams that are not yet implemented
-                    showCustomAlert('Materials for ' + mathText + ' in ' + streamHeader + ' are coming soon!');
+                    showCustomAlert(`Materials for ${mathText} in ${streamHeader} are coming soon!`);
                 }
             } else {
-                // For other buttons that are not yet implemented
-                showCustomAlert('Materials for ' + mathText + ' are coming soon!');
+                showCustomAlert(`Materials for ${mathText} are coming soon!`);
             }
         });
     });
 
     // Set up event listeners for Physics, Chemistry, and ESC buttons
-    const subjectButtons = document.querySelectorAll('.phys-btn, .chem-btn, .esc-btn');
-    subjectButtons.forEach(button => {
+    document.querySelectorAll('.phys-btn, .chem-btn, .esc-btn').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
-
             const path = this.getAttribute('href');
             if (!path) return;
 
@@ -84,8 +73,8 @@ function initializeSubjectPdfLinks() {
 
             // Extract semester and subject from path
             const pathParts = path.split('/');
-            const semester = pathParts[2]; // e.g., sem2
-            const subject = pathParts[3]; // e.g., physics, physics-eee, chemistry, chemistry-eee, electronics-eng, electrical-engineering
+            const semester = pathParts[2];
+            const subject = pathParts[3];
 
             // Determine the stream text based on the path or header
             let streamText = '';
@@ -97,20 +86,15 @@ function initializeSubjectPdfLinks() {
                 streamText = streamHeader.includes('CSE') ? 'CSE' : 'EEE';
             }
 
-            const displayTitle = `${paperType} for ${streamText}`;
-
-            showPdfListModal(path, semester, subject, displayTitle);
+            showPdfListModal(path, semester, subject, `${paperType} for ${streamText}`);
         });
     });
 }
 
 // Custom styled alert function
 function showCustomAlert(message) {
-    // Create alert container
     const alertContainer = document.createElement('div');
     alertContainer.className = 'custom-alert';
-
-    // Create alert content
     alertContainer.innerHTML = `
         <div class="custom-alert-content">
             <div class="custom-alert-header">
@@ -126,14 +110,10 @@ function showCustomAlert(message) {
         </div>
     `;
 
-    // Add to body
     document.body.appendChild(alertContainer);
     document.body.style.overflow = 'hidden';
-
-    // Show with animation
     setTimeout(() => alertContainer.classList.add('show'), 10);
 
-    // Handle closing
     const closeAlert = () => {
         alertContainer.classList.remove('show');
         setTimeout(() => {
@@ -142,20 +122,14 @@ function showCustomAlert(message) {
         }, 300);
     };
 
-    // Close on button click
     alertContainer.querySelector('.custom-alert-button').addEventListener('click', closeAlert);
-
-    // Close on outside click
     alertContainer.addEventListener('click', (e) => {
         if (e.target === alertContainer) closeAlert();
     });
 }
 
 function showPdfListModal(path, semester, subject, paperType) {
-    // Get the existing modal
     let pdfModal = document.getElementById('pdf-modal');
-
-    // If no modal exists in the HTML, create one dynamically
     if (!pdfModal) {
         pdfModal = document.createElement('div');
         pdfModal.id = 'pdf-modal';
@@ -175,7 +149,6 @@ function showPdfListModal(path, semester, subject, paperType) {
         headerClass = 'esc-modal-header';
     }
 
-    // Set up the modal content
     pdfModal.innerHTML = `
         <div class="pdf-modal-content">
             <div class="pdf-modal-header ${headerClass}">
@@ -193,25 +166,19 @@ function showPdfListModal(path, semester, subject, paperType) {
         </div>
     `;
 
-    // Show the modal
     pdfModal.classList.add('show');
     document.body.style.overflow = 'hidden';
 
-    // Handle closing
     const closeModal = () => {
         pdfModal.classList.remove('show');
         document.body.style.overflow = '';
     };
 
-    // Close button functionality
     pdfModal.querySelector('.pdf-close-btn').addEventListener('click', closeModal);
-
-    // Close on outside click
     pdfModal.addEventListener('click', (e) => {
         if (e.target === pdfModal) closeModal();
     });
 
-    // Fetch PDFs
     fetchPdfs(path, document.getElementById('pdf-files-container'));
 }
 
@@ -224,7 +191,6 @@ async function fetchPdfs(path, container, forceRefresh = false) {
     try {
         // Check if this is a mathematics-2 path (contains multiple types of PDFs)
         if (path.endsWith('/mathematics') || path.endsWith('/mathematics-eee')) {
-            // Create sections for different types of PDFs
             container.innerHTML = `
                 <h4 class="pdf-section-title">Notes</h4>
                 <div id="notes-container" class="pdf-section-container">
@@ -333,22 +299,16 @@ function displayPdfFile(container, fileName, filePath) {
     if (window.pdfWatermarker) {
         downloadBtn.addEventListener('click', async function (e) {
             e.preventDefault();
-
-            // Disable the button during download
             this.disabled = true;
             const originalText = this.innerHTML;
             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
             try {
-                // Get file path and name from data attributes
                 const filePath = this.getAttribute('data-file');
                 const fileName = this.getAttribute('data-filename');
-
-                // Watermark the PDF - the watermarker will show its own loading indicator
                 const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
-
-                // Create download link for the watermarked PDF
                 const downloadUrl = URL.createObjectURL(watermarkedPdf);
+
                 const tempLink = document.createElement('a');
                 tempLink.href = downloadUrl;
                 tempLink.download = fileName;
@@ -356,11 +316,9 @@ function displayPdfFile(container, fileName, filePath) {
                 tempLink.click();
                 document.body.removeChild(tempLink);
 
-                // Update button to show success
                 this.innerHTML = '<i class="fas fa-check"></i> Downloaded';
                 this.classList.add('download-success');
 
-                // Clean up
                 setTimeout(() => {
                     URL.revokeObjectURL(downloadUrl);
                     this.innerHTML = originalText;
@@ -369,19 +327,15 @@ function displayPdfFile(container, fileName, filePath) {
                 }, 2000);
             } catch (error) {
                 console.error('Error downloading watermarked PDF:', error);
-
-                // Update button to show error
                 this.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
                 this.classList.add('download-error');
 
-                // Restore button after delay
                 setTimeout(() => {
                     this.innerHTML = originalText;
                     this.classList.remove('download-error');
                     this.disabled = false;
                 }, 2000);
 
-                // Fallback to direct download if watermarking fails
                 setTimeout(() => {
                     const directLink = document.createElement('a');
                     directLink.href = filePath + '?download=true';
@@ -397,17 +351,13 @@ function displayPdfFile(container, fileName, filePath) {
         // Fallback if watermarker not available
         downloadBtn.addEventListener('click', function (e) {
             e.preventDefault();
-
-            // Disable the button during download
             this.disabled = true;
             const originalText = this.innerHTML;
             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
 
-            // Get file path and name from data attributes
             const filePath = this.getAttribute('data-file');
             const fileName = this.getAttribute('data-filename');
 
-            // Create download link
             const directLink = document.createElement('a');
             directLink.href = filePath + '?download=true';
             directLink.download = fileName;
@@ -416,11 +366,9 @@ function displayPdfFile(container, fileName, filePath) {
             directLink.click();
             document.body.removeChild(directLink);
 
-            // Update button to show success
             this.innerHTML = '<i class="fas fa-check"></i> Downloaded';
             this.classList.add('download-success');
 
-            // Restore button after delay
             setTimeout(() => {
                 this.innerHTML = originalText;
                 this.classList.remove('download-success');
@@ -439,15 +387,11 @@ function showPdfViewer(pdfPath, fileName) {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     if (isMobile) {
-        // For mobile, use a different viewer
         window.location.href = `mobile-pdf-viewer/pdf_viewer.html?file=${encodeURIComponent(pdfPath)}&name=${encodeURIComponent(fileName)}`;
         return;
     }
 
-    // Get the existing viewer modal
     let viewerModal = document.getElementById('pdf-viewer-modal');
-
-    // If no modal exists in the HTML, create one dynamically
     if (!viewerModal) {
         viewerModal = document.createElement('div');
         viewerModal.id = 'pdf-viewer-modal';
@@ -464,7 +408,6 @@ function showPdfViewer(pdfPath, fileName) {
     const headerClass = subjectType ? `${subjectType}-viewer-header` : '';
     const spinnerClass = subjectType ? `${subjectType}-loading-spinner` : '';
 
-    // Set up the viewer content
     viewerModal.innerHTML = `
         <div class="pdf-viewer-content">
             <div class="pdf-viewer-header ${headerClass}">
@@ -481,12 +424,10 @@ function showPdfViewer(pdfPath, fileName) {
         </div>
     `;
 
-    // Show the modal
     viewerModal.style.display = 'flex';
     setTimeout(() => viewerModal.classList.add('show'), 10);
     document.body.style.overflow = 'hidden';
 
-    // Handle closing
     const closeViewer = () => {
         viewerModal.classList.remove('show');
         setTimeout(() => {
@@ -495,16 +436,11 @@ function showPdfViewer(pdfPath, fileName) {
         }, 300);
     };
 
-    // Close button functionality
     viewerModal.querySelector('.pdf-viewer-close').addEventListener('click', closeViewer);
-
-    // Load the PDF
     const iframe = document.getElementById('pdf-iframe');
-    iframe.onload = function () {
+    iframe.onload = () => {
         const loading = viewerModal.querySelector('.pdf-loading');
         if (loading) loading.style.display = 'none';
     };
-
-    // Use direct PDF path
     iframe.src = pdfPath;
-} 
+}
