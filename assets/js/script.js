@@ -148,7 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const subject = subjectSelect.options[subjectSelect.selectedIndex].text;
                 const materialType = materialTypeSelect.options[materialTypeSelect.selectedIndex].text;
                 const emailSubject = `Study Material Contribution: ${subject} - ${materialType}`;
-                const emailBody = `Hello,\n\nI am ${studentName} and I would like to contribute a ${materialType} for ${subject}.\n\nPlease find the attached file.\n\nThank you.`;
+                const emailBody = `Hello,
+
+I am ${studentName} and I would like to contribute a ${materialType} for ${subject}.
+
+Please find the attached file.
+
+Thank you.`;
                 const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
                 shareEmailBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
@@ -322,35 +328,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                const semester = btn.dataset.semester;
+                const targetSemester = btn.dataset.semester;
 
-                if (semester === 'all') {
-                    semesterSections.forEach(section => {
-                        section.style.display = 'block';
-                        setTimeout(() => {
-                            section.style.opacity = '1';
-                            section.style.transform = 'translateY(0)';
-                        }, 100);
-                    });
-                } else {
-                    semesterSections.forEach(section => {
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            section.style.display = 'none';
-                        }, 300);
-                    });
+                // Show/hide semester sections with smooth transitions
+                semesterSections.forEach(section => {
+                    const show = targetSemester === 'all' || section.id === targetSemester;
+                    section.style.display = show ? 'block' : 'none';
+                    section.style.opacity = show ? '1' : '0';
+                    section.style.transform = show ? 'translateY(0)' : 'translateY(20px)';
+                });
 
-                    const selectedSection = document.getElementById(semester);
-                    if (selectedSection) {
-                        setTimeout(() => {
-                            selectedSection.style.display = 'block';
-                            setTimeout(() => {
-                                selectedSection.style.opacity = '1';
-                                selectedSection.style.transform = 'translateY(0)';
-                            }, 100);
-                        }, 300);
-                    }
+                // Smooth scroll to content
+                if (targetSemester !== 'all') {
+                    setTimeout(() => {
+                        const targetSection = document.getElementById(targetSemester);
+                        targetSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
             });
         });

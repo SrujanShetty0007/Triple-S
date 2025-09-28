@@ -1,6 +1,5 @@
 // 2025 Scheme Page JavaScript
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize page functionality
     initializeSemesterFilter();
     initializePdfLinks();
     initializeAnimations();
@@ -33,46 +32,24 @@ function initializeSemesterFilter() {
 
             // Show/hide semester sections
             semesterSections.forEach(section => {
-                if (targetSemester === 'all') {
-                    section.style.display = 'block';
-                    setTimeout(() => {
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    if (section.id === targetSemester) {
-                        section.style.display = 'block';
-                        setTimeout(() => {
-                            section.style.opacity = '1';
-                            section.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            section.style.display = 'none';
-                        }, 300);
-                    }
-                }
+                const show = targetSemester === 'all' || section.id === targetSemester;
+                section.style.display = show ? 'block' : 'none';
+                section.style.opacity = show ? '1' : '0';
+                section.style.transform = show ? 'translateY(0)' : 'translateY(20px)';
             });
 
             // Smooth scroll to content
             if (targetSemester !== 'all') {
                 setTimeout(() => {
                     const targetSection = document.getElementById(targetSemester);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                    targetSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
             }
         });
     });
 }
 
-// PDF Links Functionality (similar to main page)
+// PDF Links Functionality
 function initializePdfLinks() {
     const materialLinks = document.querySelectorAll('.material-link');
 
@@ -90,13 +67,11 @@ function initializePdfLinks() {
 
             const path = this.getAttribute('href');
             const isModelPaper = this.textContent.includes('Model');
-            const paperType = isModelPaper ? 'Model Question Papers' : (
-                this.textContent.includes('Previous') ? 'Previous Year Papers' : 'Notes'
-            );
+            const paperType = isModelPaper ? 'Model Question Papers' :
+                (this.textContent.includes('Previous') ? 'Previous Year Papers' : 'Notes');
 
             const pathParts = path.split('/');
-            // For 2025 scheme, path is: 2025_scheme/sem1/mathematics/model-papers
-            const semester = pathParts[1]; // 2025_scheme/sem1 -> sem1
+            const semester = pathParts[1];
             const subject = pathParts[2];
 
             showPdfListModal(path, semester, subject, paperType);
@@ -131,32 +106,26 @@ function showPdfListModal(path, semester, subject, paperType) {
 
     document.body.appendChild(modal);
 
-    setTimeout(() => {
-        modal.classList.add('show');
-    }, 10);
+    setTimeout(() => modal.classList.add('show'), 10);
 
     // Close modal functionality
     const closeBtn = modal.querySelector('.pdf-close-btn');
-    closeBtn.addEventListener('click', () => {
-        closeModal(modal);
-    });
+    closeBtn.addEventListener('click', () => closeModal(modal));
 
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal(modal);
-        }
+        if (e.target === modal) closeModal(modal);
     });
 
     // Fetch PDFs
     fetchPdfs(path, modal.querySelector('#pdfList'));
 }
 
-async function fetchPdfs(path, container, forceRefresh = false) {
+async function fetchPdfs(path, container) {
     try {
         container.innerHTML = '<p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading files...</p>';
 
         if (window.pdfScanner2025) {
-            const pdfFiles = await window.pdfScanner2025.scanDirectory(path, forceRefresh);
+            const pdfFiles = await window.pdfScanner2025.scanDirectory(path);
             displayPDFFiles(pdfFiles, container);
         } else {
             container.innerHTML = `
@@ -182,14 +151,11 @@ async function fetchPdfs(path, container, forceRefresh = false) {
 function displayPDFFiles(pdfFiles, container) {
     container.innerHTML = '';
 
-    if (pdfFiles && pdfFiles.length > 0) {
+    if (pdfFiles?.length > 0) {
         const fileListContainer = document.createElement('div');
         fileListContainer.classList.add('pdf-files-container');
 
-        pdfFiles.forEach(file => {
-            displayPdfFile(fileListContainer, file.name, file.path);
-        });
-
+        pdfFiles.forEach(file => displayPdfFile(fileListContainer, file.name, file.path));
         container.appendChild(fileListContainer);
     } else {
         const noFilesMessage = document.createElement('div');
@@ -207,24 +173,15 @@ function displayPDFFiles(pdfFiles, container) {
 }
 
 function displayPdfFile(container, fileName, filePath) {
-    const viewPath = `${filePath}?t=${Date.now()}`;
-
-    // Check if on mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const fileExtension = filePath.split('.').pop().toLowerCase();
+
+    const fileIcon = fileExtension === 'pdf' ? '<i class="far fa-file-pdf"></i>' :
+        (['jpg', 'jpeg', 'png'].includes(fileExtension) ? '<i class="far fa-file-image"></i>' :
+            '<i class="far fa-file"></i>');
 
     const fileItem = document.createElement('div');
     fileItem.classList.add('pdf-file-item');
-
-    const fileExtension = filePath.split('.').pop().toLowerCase();
-    let fileIcon;
-    if (fileExtension === 'pdf') {
-        fileIcon = '<i class="far fa-file-pdf"></i>';
-    } else if (['jpg', 'jpeg', 'png'].includes(fileExtension)) {
-        fileIcon = '<i class="far fa-file-image"></i>';
-    } else {
-        fileIcon = '<i class="far fa-file"></i>';
-    }
-
     fileItem.innerHTML = `
         <div class="pdf-file-info">
             ${fileIcon}
@@ -233,9 +190,8 @@ function displayPdfFile(container, fileName, filePath) {
         <div class="pdf-file-actions">
             ${fileExtension === 'pdf' ?
             `<button class="pdf-view-btn" data-file="${filePath}">
-                    <i class="fas fa-eye"></i> View
-                </button>` : ''
-        }
+                <i class="fas fa-eye"></i> View
+            </button>` : ''}
             <a href="javascript:void(0);" class="pdf-download-btn" data-file="${filePath}" data-filename="${fileName}">
                 <i class="fas fa-download"></i> Download
             </a>
@@ -244,60 +200,49 @@ function displayPdfFile(container, fileName, filePath) {
 
     container.appendChild(fileItem);
 
-    // Add event listener for the view button if this is a PDF
+    // Add event listeners
     if (fileExtension === 'pdf') {
         const viewBtn = fileItem.querySelector('.pdf-view-btn');
         if (viewBtn) {
-            if (isMobile) {
-                viewBtn.addEventListener('click', function () {
+            viewBtn.addEventListener('click', () => {
+                if (isMobile) {
                     window.location.href = `mobile-pdf-viewer/pdf_viewer.html?pdf=${encodeURIComponent(filePath)}`;
-                });
-            } else {
-                viewBtn.addEventListener('click', function () {
+                } else {
                     showPdfViewer(filePath, fileName);
-                });
-            }
-        }
-
-        // Add event listener for the download button
-        const downloadBtn = fileItem.querySelector('.pdf-download-btn');
-        if (downloadBtn && window.pdfWatermarker) {
-            downloadBtn.addEventListener('click', async function (e) {
-                e.preventDefault();
-                try {
-                    // Get file path and name from data attributes
-                    const filePath = this.getAttribute('data-file');
-                    const fileName = this.getAttribute('data-filename');
-
-                    // Watermark the PDF
-                    const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
-
-                    // Create download link for the watermarked PDF
-                    const downloadUrl = URL.createObjectURL(watermarkedPdf);
-                    const tempLink = document.createElement('a');
-                    tempLink.href = downloadUrl;
-                    tempLink.download = fileName;
-                    document.body.appendChild(tempLink);
-                    tempLink.click();
-                    document.body.removeChild(tempLink);
-
-                    // Clean up
-                    setTimeout(() => {
-                        URL.revokeObjectURL(downloadUrl);
-                    }, 100);
-                } catch (error) {
-                    console.error('Error downloading watermarked PDF:', error);
-                    // Fallback to direct download if watermarking fails
-                    window.location.href = filePath + '?download=true';
                 }
             });
-        } else if (downloadBtn) {
-            // Fallback if watermarker not available
-            downloadBtn.href = filePath + '?download=true';
-            downloadBtn.download = fileName;
+        }
+
+        const downloadBtn = fileItem.querySelector('.pdf-download-btn');
+        if (downloadBtn) {
+            if (window.pdfWatermarker) {
+                downloadBtn.addEventListener('click', async function (e) {
+                    e.preventDefault();
+                    try {
+                        const filePath = this.getAttribute('data-file');
+                        const fileName = this.getAttribute('data-filename');
+                        const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
+                        const downloadUrl = URL.createObjectURL(watermarkedPdf);
+
+                        const tempLink = document.createElement('a');
+                        tempLink.href = downloadUrl;
+                        tempLink.download = fileName;
+                        document.body.appendChild(tempLink);
+                        tempLink.click();
+                        document.body.removeChild(tempLink);
+
+                        setTimeout(() => URL.revokeObjectURL(downloadUrl), 100);
+                    } catch (error) {
+                        console.error('Error downloading watermarked PDF:', error);
+                        window.location.href = filePath + '?download=true';
+                    }
+                });
+            } else {
+                downloadBtn.href = filePath + '?download=true';
+                downloadBtn.download = fileName;
+            }
         }
     } else {
-        // For non-PDF files, use direct download
         const downloadBtn = fileItem.querySelector('.pdf-download-btn');
         if (downloadBtn) {
             downloadBtn.href = filePath + '?download=true';
@@ -308,14 +253,12 @@ function displayPdfFile(container, fileName, filePath) {
 
 // Function to show PDF viewer modal
 function showPdfViewer(pdfPath, fileName) {
-    // Check if viewer modal already exists, if not create it
     let viewerModal = document.getElementById('pdf-viewer-modal');
 
     if (!viewerModal) {
         viewerModal = document.createElement('div');
         viewerModal.id = 'pdf-viewer-modal';
         viewerModal.className = 'pdf-viewer-modal';
-
         viewerModal.innerHTML = `
             <div class="pdf-viewer-content">
                 <div class="pdf-viewer-header">
@@ -331,18 +274,15 @@ function showPdfViewer(pdfPath, fileName) {
                 </div>
             </div>
         `;
-
         document.body.appendChild(viewerModal);
 
-        // Add close button event listener
         const closeBtn = viewerModal.querySelector('.pdf-viewer-close');
-        closeBtn.addEventListener('click', function () {
+        closeBtn.addEventListener('click', () => {
             viewerModal.classList.remove('show');
             document.body.style.overflow = 'auto';
         });
 
-        // Close modal when clicking outside content
-        viewerModal.addEventListener('click', function (e) {
+        viewerModal.addEventListener('click', (e) => {
             if (e.target === viewerModal) {
                 viewerModal.classList.remove('show');
                 document.body.style.overflow = 'auto';
@@ -350,40 +290,19 @@ function showPdfViewer(pdfPath, fileName) {
         });
     }
 
-    // Update modal content
     const viewerTitle = viewerModal.querySelector('#pdf-viewer-title');
     const pdfIframe = viewerModal.querySelector('#pdf-iframe');
     const pdfLoading = viewerModal.querySelector('#pdf-loading');
 
     viewerTitle.textContent = fileName;
+    pdfLoading.style.display = 'flex';
 
-    // Show loading indicator
-    if (pdfLoading) {
-        pdfLoading.style.display = 'flex';
-    }
-
-    // Set iframe src and add load event listener
-    pdfIframe.onload = function () {
-        // Hide loading indicator
-        if (pdfLoading) {
-            pdfLoading.style.display = 'none';
-        }
-    };
-
-    // Handle iframe load errors
-    pdfIframe.onerror = function () {
-        // Hide loading indicator
-        if (pdfLoading) {
-            pdfLoading.style.display = 'none';
-        }
-    };
-
-    // Set iframe src after setting up event handlers
+    pdfIframe.onload = () => pdfLoading.style.display = 'none';
+    pdfIframe.onerror = () => pdfLoading.style.display = 'none';
     pdfIframe.src = pdfPath;
 
-    // Show modal
     viewerModal.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal(modal) {
@@ -425,8 +344,7 @@ function initializeBackToTop() {
     const backToTopButton = document.getElementById('backToTop');
 
     if (backToTopButton) {
-        // Show/hide button based on scroll position
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('visible');
             } else {
@@ -434,21 +352,9 @@ function initializeBackToTop() {
             }
         });
 
-        // Smooth scroll to top when clicked
-        backToTopButton.addEventListener('click', function (e) {
+        backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-}
-
-// Utility function to format display names
-function formatDisplayName(filename) {
-    return filename
-        .replace(/\.[^/.]+$/, '') // Remove extension
-        .replace(/[-_]/g, ' ') // Replace hyphens and underscores with spaces
-        .replace(/\b\w/g, l => l.toUpperCase()); // Capitalize first letter of each word
 }

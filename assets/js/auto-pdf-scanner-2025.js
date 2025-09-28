@@ -28,18 +28,12 @@ class PDFScanner2025 {
      */
     expireCacheEntries() {
         const now = Date.now();
-        const expiredEntries = [];
-
-        this.cacheTimestamps.forEach((timestamp, key) => {
+        for (const [key, timestamp] of this.cacheTimestamps) {
             if (now - timestamp > this.cacheLifetime) {
-                expiredEntries.push(key);
+                this.pdfCache.delete(key);
+                this.cacheTimestamps.delete(key);
             }
-        });
-
-        expiredEntries.forEach(key => {
-            this.pdfCache.delete(key);
-            this.cacheTimestamps.delete(key);
-        });
+        }
     }
 
     /**
@@ -70,29 +64,20 @@ class PDFScanner2025 {
     async scanDirectory(directoryPath, forceRefresh = false) {
         // Check cache first, unless force refresh is requested
         if (!forceRefresh && this.pdfCache.has(directoryPath)) {
-            const now = Date.now();
             const timestamp = this.cacheTimestamps.get(directoryPath);
-
-            if (timestamp && now - timestamp < this.cacheLifetime) {
+            if (timestamp && Date.now() - timestamp < this.cacheLifetime) {
                 return this.pdfCache.get(directoryPath);
             }
         }
 
         try {
             const manifestResults = await this.getFilesFromManifest(directoryPath);
-
             this.pdfCache.set(directoryPath, manifestResults);
             this.cacheTimestamps.set(directoryPath, Date.now());
-
             return manifestResults;
         } catch (error) {
             console.error('Error scanning directory:', error);
-
-            if (this.pdfCache.has(directoryPath)) {
-                return this.pdfCache.get(directoryPath);
-            }
-
-            return [];
+            return this.pdfCache.get(directoryPath) || [];
         }
     }
 
@@ -103,21 +88,16 @@ class PDFScanner2025 {
         try {
             const manifest = await this.loadManifest();
             const pathParts = directoryPath.split('/');
-
             const baseIndex = pathParts.indexOf('2025_scheme');
+
             if (baseIndex === -1) return [];
 
             const semester = pathParts[baseIndex + 1];
             const subject = pathParts[baseIndex + 2];
             const materialType = pathParts[baseIndex + 3];
 
-            if (manifest &&
-                manifest[semester] &&
-                manifest[semester][subject] &&
-                manifest[semester][subject][materialType]) {
-
-                const files = manifest[semester][subject][materialType];
-                return files.map(file => ({
+            if (manifest?.[semester]?.[subject]?.[materialType]) {
+                return manifest[semester][subject][materialType].map(file => ({
                     name: file.name || this.formatDisplayName(file.filename),
                     path: `${directoryPath}/${file.filename}`
                 }));
@@ -125,7 +105,6 @@ class PDFScanner2025 {
         } catch (error) {
             console.warn('Error getting files from manifest:', error);
         }
-
         return [];
     }
 
@@ -134,8 +113,7 @@ class PDFScanner2025 {
      */
     async loadManifest() {
         try {
-            const timestamp = Date.now();
-            const response = await fetch(`${this.manifestPath}?t=${timestamp}`, {
+            const response = await fetch(`${this.manifestPath}?t=${Date.now()}`, {
                 cache: 'no-store'
             });
 
@@ -144,27 +122,21 @@ class PDFScanner2025 {
             }
 
             const manifest = await response.json();
-
             try {
                 localStorage.setItem('pdf_manifest_cache_2025', JSON.stringify(manifest));
             } catch (e) {
                 console.warn('Could not cache manifest in localStorage', e);
             }
-
             return manifest;
         } catch (error) {
             console.warn('Error loading manifest:', error);
-
             try {
                 const cachedManifest = localStorage.getItem('pdf_manifest_cache_2025');
-                if (cachedManifest) {
-                    return JSON.parse(cachedManifest);
-                }
+                return cachedManifest ? JSON.parse(cachedManifest) : null;
             } catch (e) {
                 console.warn('Could not load cached manifest', e);
+                return null;
             }
-
-            return null;
         }
     }
 }
