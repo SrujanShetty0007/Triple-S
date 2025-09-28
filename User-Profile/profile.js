@@ -2,6 +2,7 @@
 import { onAuthStateChanged, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
+import { auth as firebaseAuth } from "../assets/js/firebase/auth.js";
 
 // DOM Elements
 const elements = {
@@ -43,7 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Initialize Firebase services
 function initializeApp() {
-    if (!window.firebaseAuth || !window.firebaseDb || !window.firebaseStorage) {
+    // Use the auth from our new module
+    auth = firebaseAuth;
+
+    // Get other services from the global window object (set in profile.html)
+    if (!window.firebaseDb || !window.firebaseStorage) {
         console.error('Firebase not initialized properly');
         showNotification('Error initializing application', 'error');
         elements.displayNameView.textContent = 'Error loading profile';
@@ -51,7 +56,6 @@ function initializeApp() {
         return;
     }
 
-    auth = window.firebaseAuth;
     db = window.firebaseDb;
     storage = window.firebaseStorage;
 

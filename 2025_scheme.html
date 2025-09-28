@@ -619,114 +619,12 @@
 
     <!-- Firebase Authentication -->
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
-        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+        // Import the centralized authentication module
+        import { initializeUserMenu } from "./assets/js/firebase/auth.js";
 
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCHZcDv3pXIU9J3CASXi3sM-V7mZsMuqBM",
-            authDomain: "triple-s-bd006.firebaseapp.com",
-            projectId: "triple-s-bd006",
-            storageBucket: "triple-s-bd006.firebasestorage.app",
-            messagingSenderId: "933483210420",
-            appId: "1:933483210420:web:66fde1b5571ef1741299e1",
-            measurementId: "G-TPHZ0H6L5J"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-
-        // DOM elements
-        const authLink = document.getElementById('auth-link');
-        const mobileAuthLink = document.getElementById('mobile-auth-link');
-
-        // Check authentication state
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in
-                console.log("User is signed in:", user);
-
-                // Create user icon with dropdown
-                let displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
-                let userInitial = displayName.charAt(0).toUpperCase();
-
-                // Create user menu HTML
-                const userMenuHTML = `
-                    <div class="user-menu-container">
-                        <div class="user-avatar-nav" title="${displayName}">
-                            ${userInitial}
-                        </div>
-                        <div class="user-dropdown">
-                            <div class="user-dropdown-header">
-                                <div class="user-dropdown-name">${displayName}</div>
-                            </div>
-                            <div class="user-dropdown-divider"></div>
-                            <a href="dashboard.html" class="user-dropdown-item">
-                                <i class="fas fa-tachometer-alt"></i> Dashboard
-                            </a>
-                            <a href="profile.html" class="user-dropdown-item">
-                                <i class="fas fa-user"></i> Profile
-                            </a>
-                            <a href="#" id="logout-btn" class="user-dropdown-item">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </div>
-                    </div>
-                `;
-
-                // Update auth link to show user icon with dropdown
-                authLink.innerHTML = userMenuHTML;
-                mobileAuthLink.innerHTML = userMenuHTML; // Also update mobile link
-
-                // Add logout functionality
-                setTimeout(() => {
-                    // Add click event for user avatar to toggle dropdown
-                    const userAvatars = document.querySelectorAll('.user-avatar-nav');
-                    const userDropdowns = document.querySelectorAll('.user-dropdown');
-
-                    userAvatars.forEach((avatar, index) => {
-                        avatar.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            userDropdowns[index].classList.toggle('show');
-                        });
-                    });
-
-                    // Close dropdown when clicking outside
-                    document.addEventListener('click', (e) => {
-                        userDropdowns.forEach((dropdown, index) => {
-                            if (!dropdown.contains(e.target) && !userAvatars[index].contains(e.target)) {
-                                dropdown.classList.remove('show');
-                            }
-                        });
-                    });
-
-                    document.querySelectorAll('#logout-btn').forEach(btn => {
-                        btn.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            signOut(auth).then(() => {
-                                // Sign-out successful
-                                console.log("User signed out");
-                                window.location.reload();
-                            }).catch((error) => {
-                                // An error happened
-                                console.error("Sign out error:", error);
-                                alert("Failed to sign out. Please try again.");
-                            });
-                        });
-                    });
-                }, 100);
-            } else {
-                // User is not signed in
-                console.log("No user is signed in.");
-
-                // Show login link
-                authLink.innerHTML = '<a href="login.html">Login</a>';
-                mobileAuthLink.innerHTML = '<a href="login.html">Login</a>'; // Also update mobile link
-            }
+        // Initialize user menu
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeUserMenu();
         });
     </script>
 
