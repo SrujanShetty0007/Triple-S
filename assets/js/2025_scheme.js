@@ -76,9 +76,17 @@ function initializeSemesterFilter() {
 function initializePdfLinks() {
     const materialLinks = document.querySelectorAll('.material-link');
 
+    if (window.pdfScanner2025) {
+        window.pdfScanner2025.clearCache();
+    }
+
     materialLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
+
+            if (window.pdfScanner2025) {
+                window.pdfScanner2025.clearCache();
+            }
 
             const path = this.getAttribute('href');
             const isModelPaper = this.textContent.includes('Model');
@@ -87,8 +95,9 @@ function initializePdfLinks() {
             );
 
             const pathParts = path.split('/');
-            const semester = pathParts[3]; // 2025-scheme/sem1/...
-            const subject = pathParts[4];
+            // For 2025 scheme, path is: 2025_scheme/sem1/mathematics/model-papers
+            const semester = pathParts[1]; // 2025_scheme/sem1 -> sem1
+            const subject = pathParts[2];
 
             showPdfListModal(path, semester, subject, paperType);
         });
@@ -138,8 +147,243 @@ function showPdfListModal(path, semester, subject, paperType) {
         }
     });
 
-    // Fetch PDFs (placeholder - would need actual implementation)
+    // Fetch PDFs
     fetchPdfs(path, modal.querySelector('#pdfList'));
+}
+
+async function fetchPdfs(path, container, forceRefresh = false) {
+    try {
+        container.innerHTML = '<p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading files...</p>';
+
+        if (window.pdfScanner2025) {
+            const pdfFiles = await window.pdfScanner2025.scanDirectory(path, forceRefresh);
+            displayPDFFiles(pdfFiles, container);
+        } else {
+            container.innerHTML = `
+                <div class="error-message">
+                    <p><i class="fas fa-exclamation-triangle"></i></p>
+                    <p>PDF scanner not available.</p>
+                    <p>Please refresh the page and try again.</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Error fetching PDFs:', error);
+        container.innerHTML = `
+            <div class="error-message">
+                <p><i class="fas fa-exclamation-triangle"></i></p>
+                <p>There was an error loading the files.</p>
+                <p>Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+function displayPDFFiles(pdfFiles, container) {
+    container.innerHTML = '';
+
+    if (pdfFiles && pdfFiles.length > 0) {
+        const fileListContainer = document.createElement('div');
+        fileListContainer.classList.add('pdf-files-container');
+
+        pdfFiles.forEach(file => {
+            displayPdfFile(fileListContainer, file.name, file.path);
+        });
+
+        container.appendChild(fileListContainer);
+    } else {
+        const noFilesMessage = document.createElement('div');
+        noFilesMessage.classList.add('no-files-message');
+        noFilesMessage.innerHTML = `
+            <p><i class="fas fa-folder-open"></i></p>
+            <p>No PDF files available yet for 2025 scheme.</p>
+            <p>Materials are being prepared and will be available soon.</p>
+            <a href="index.html#my-contribution-section" class="contribute-btn">
+                <i class="fas fa-upload"></i> Contribute Materials
+            </a>
+        `;
+        container.appendChild(noFilesMessage);
+    }
+}
+
+function displayPdfFile(container, fileName, filePath) {
+    const viewPath = `${filePath}?t=${Date.now()}`;
+
+    // Check if on mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    const fileItem = document.createElement('div');
+    fileItem.classList.add('pdf-file-item');
+
+    const fileExtension = filePath.split('.').pop().toLowerCase();
+    let fileIcon;
+    if (fileExtension === 'pdf') {
+        fileIcon = '<i class="far fa-file-pdf"></i>';
+    } else if (['jpg', 'jpeg', 'png'].includes(fileExtension)) {
+        fileIcon = '<i class="far fa-file-image"></i>';
+    } else {
+        fileIcon = '<i class="far fa-file"></i>';
+    }
+
+    fileItem.innerHTML = `
+        <div class="pdf-file-info">
+            ${fileIcon}
+            <span class="pdf-file-name">${fileName}</span>
+        </div>
+        <div class="pdf-file-actions">
+            ${fileExtension === 'pdf' ?
+            `<button class="pdf-view-btn" data-file="${filePath}">
+                    <i class="fas fa-eye"></i> View
+                </button>` : ''
+        }
+            <a href="javascript:void(0);" class="pdf-download-btn" data-file="${filePath}" data-filename="${fileName}">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </div>
+    `;
+
+    container.appendChild(fileItem);
+
+    // Add event listener for the view button if this is a PDF
+    if (fileExtension === 'pdf') {
+        const viewBtn = fileItem.querySelector('.pdf-view-btn');
+        if (viewBtn) {
+            if (isMobile) {
+                viewBtn.addEventListener('click', function () {
+                    window.location.href = `mobile-pdf-viewer/pdf_viewer.html?pdf=${encodeURIComponent(filePath)}`;
+                });
+            } else {
+                viewBtn.addEventListener('click', function () {
+                    showPdfViewer(filePath, fileName);
+                });
+            }
+        }
+
+        // Add event listener for the download button
+        const downloadBtn = fileItem.querySelector('.pdf-download-btn');
+        if (downloadBtn && window.pdfWatermarker) {
+            downloadBtn.addEventListener('click', async function (e) {
+                e.preventDefault();
+                try {
+                    // Get file path and name from data attributes
+                    const filePath = this.getAttribute('data-file');
+                    const fileName = this.getAttribute('data-filename');
+
+                    // Watermark the PDF
+                    const watermarkedPdf = await window.pdfWatermarker.watermarkPDF(filePath);
+
+                    // Create download link for the watermarked PDF
+                    const downloadUrl = URL.createObjectURL(watermarkedPdf);
+                    const tempLink = document.createElement('a');
+                    tempLink.href = downloadUrl;
+                    tempLink.download = fileName;
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+
+                    // Clean up
+                    setTimeout(() => {
+                        URL.revokeObjectURL(downloadUrl);
+                    }, 100);
+                } catch (error) {
+                    console.error('Error downloading watermarked PDF:', error);
+                    // Fallback to direct download if watermarking fails
+                    window.location.href = filePath + '?download=true';
+                }
+            });
+        } else if (downloadBtn) {
+            // Fallback if watermarker not available
+            downloadBtn.href = filePath + '?download=true';
+            downloadBtn.download = fileName;
+        }
+    } else {
+        // For non-PDF files, use direct download
+        const downloadBtn = fileItem.querySelector('.pdf-download-btn');
+        if (downloadBtn) {
+            downloadBtn.href = filePath + '?download=true';
+            downloadBtn.download = fileName;
+        }
+    }
+}
+
+// Function to show PDF viewer modal
+function showPdfViewer(pdfPath, fileName) {
+    // Check if viewer modal already exists, if not create it
+    let viewerModal = document.getElementById('pdf-viewer-modal');
+
+    if (!viewerModal) {
+        viewerModal = document.createElement('div');
+        viewerModal.id = 'pdf-viewer-modal';
+        viewerModal.className = 'pdf-viewer-modal';
+
+        viewerModal.innerHTML = `
+            <div class="pdf-viewer-content">
+                <div class="pdf-viewer-header">
+                    <h3 id="pdf-viewer-title"></h3>
+                    <span class="pdf-viewer-close">&times;</span>
+                </div>
+                <div class="pdf-viewer-body">
+                    <div id="pdf-loading" class="pdf-loading">
+                        <div class="pdf-loading-spinner"></div>
+                        <p>Loading PDF...</p>
+                    </div>
+                    <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(viewerModal);
+
+        // Add close button event listener
+        const closeBtn = viewerModal.querySelector('.pdf-viewer-close');
+        closeBtn.addEventListener('click', function () {
+            viewerModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside content
+        viewerModal.addEventListener('click', function (e) {
+            if (e.target === viewerModal) {
+                viewerModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Update modal content
+    const viewerTitle = viewerModal.querySelector('#pdf-viewer-title');
+    const pdfIframe = viewerModal.querySelector('#pdf-iframe');
+    const pdfLoading = viewerModal.querySelector('#pdf-loading');
+
+    viewerTitle.textContent = fileName;
+
+    // Show loading indicator
+    if (pdfLoading) {
+        pdfLoading.style.display = 'flex';
+    }
+
+    // Set iframe src and add load event listener
+    pdfIframe.onload = function () {
+        // Hide loading indicator
+        if (pdfLoading) {
+            pdfLoading.style.display = 'none';
+        }
+    };
+
+    // Handle iframe load errors
+    pdfIframe.onerror = function () {
+        // Hide loading indicator
+        if (pdfLoading) {
+            pdfLoading.style.display = 'none';
+        }
+    };
+
+    // Set iframe src after setting up event handlers
+    pdfIframe.src = pdfPath;
+
+    // Show modal
+    viewerModal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
 function closeModal(modal) {
@@ -149,22 +393,6 @@ function closeModal(modal) {
             document.body.removeChild(modal);
         }
     }, 300);
-}
-
-// Placeholder for PDF fetching (would need actual implementation)
-function fetchPdfs(path, container) {
-    setTimeout(() => {
-        container.innerHTML = `
-            <div class="no-files-message">
-                <p><i class="fas fa-folder-open"></i></p>
-                <p>No PDF files available yet for 2025 scheme.</p>
-                <p>Materials are being prepared and will be available soon.</p>
-                <a href="index.html#my-contribution-section" class="contribute-btn">
-                    <i class="fas fa-upload"></i> Contribute Materials
-                </a>
-            </div>
-        `;
-    }, 1000);
 }
 
 // Animation functionality

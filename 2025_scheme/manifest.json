@@ -1,0 +1,163 @@
+{
+  "sem1": {
+    "chemistry": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": [
+        {
+          "filename": "Applied Chemistry for CSE.pdf",
+          "name": "Applied Chemistry For Cse"
+        }
+      ]
+    },
+    "electronics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "embedded-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "engineering-drawing": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "english": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "health": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "kannada": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mathematics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem2": {
+    "caed": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "chemistry": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "electrical": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mathematics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "physics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "programming-c": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "python": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem3": {
+    "data-structures": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem4": {
+    "algorithms": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "algorithms-lab": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "biology": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "database-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "discrete-mathematics": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "human-values": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "microcontrollers": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    },
+    "mongodb-lab": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem5": {
+    "database-systems": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem6": {
+    "web-technologies": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem7": {
+    "machine-learning": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  },
+  "sem8": {
+    "cloud-computing": {
+      "model-papers": [],
+      "notes": [],
+      "previous-papers": []
+    }
+  }
+}
