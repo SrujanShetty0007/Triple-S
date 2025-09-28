@@ -5,11 +5,12 @@
 .page-header {
     background: var(--hero-gradient);
     color: white;
-    padding: 4rem 0 3rem;
+    padding: 5rem 0 4rem;
     margin-bottom: 3rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-radius: 0 0 30px 30px;
 }
 
 .page-header::before {
@@ -38,18 +39,98 @@
 }
 
 .header-content h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content h1 i {
+    margin-right: 15px;
+    font-size: 2.5rem;
+}
+
+.header-content p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-weight: 500;
+}
+
+/* Header Features */
+.header-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
     position: relative;
     z-index: 1;
 }
 
-.header-content p {
-    font-size: 1.1rem;
-    opacity: 0.9;
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-item i {
+    font-size: 1.25rem;
+}
+
+/* Header CTA Buttons */
+.header-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Notice Banner */
@@ -103,6 +184,25 @@
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-content p {
+        font-size: 1.1rem;
+    }
+
+    .header-features {
+        gap: 1.5rem;
+    }
+
+    .feature-item {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
     .page-header {
         padding: 3rem 0 2rem;
@@ -110,6 +210,32 @@
 
     .header-content h1 {
         font-size: 2rem;
+    }
+
+    .header-content p {
+        font-size: 1rem;
+    }
+
+    .header-features {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .feature-item {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .header-cta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+        text-align: center;
     }
 
     .notice-banner {
@@ -125,6 +251,18 @@
     }
 
     .header-content p {
+        font-size: 0.9rem;
+    }
+
+    .feature-item {
+        width: 90%;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        width: 90%;
+        padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
 }
